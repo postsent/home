@@ -1,11 +1,21 @@
 format: jb-book
 root: index
+defaults:  # The defaults key will be applied to all chapters and sub-sections
+  maxdepth: 2
 parts:
 - caption: Machine Learning
   chapters:
-  - file: ml/ml-basic
-    title: Machine Learning Basic
-
+  - file: ml/9417-intro
+    sections:
+    - file: ml/9417-basic
+    - file: ml/9417-project
+- caption: Computer Vision
+  chapters:
+  - file: cv/9517-intro
+    sections:
+    - file: cv/9517-lane_detection
+    - file: cv/9517-vehicle-detection
+    
     # sections:
 #     - file: start/overview
 #     - file: start/create

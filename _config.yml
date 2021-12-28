@@ -1,7 +1,7 @@
 # Based https://jupyterbook.org/customize/config.html
 #######################################################################################
 # Book settings
-title                       : My Jupter Notebook on Machine Learing and more.  # The title of the book. Will be placed in the left navbar.
+title                       : My Jupter Notebook on data science.  # The title of the book. Will be placed in the left navbar.
 author                      : Jerry  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : ""  # A path to the book logo

@@ -1,4 +1,21 @@
 format: jb-book
 root: index
-chapters:
-- file: nbs/test
+parts:
+- caption: Machine Learning
+  chapters:
+  - file: ml/ml-basic
+    title: Machine Learning Basic
+
+    # sections:
+#     - file: start/overview
+#     - file: start/create
+#     - file: start/build
+#     - file: start/publish
+#     - file: start/example-book
+#   - file: tutorials/references
+
+# - caption: Topic Guides
+#   chapters:
+#   - file: basics/organize
+#     sections:
+#     - file: customize/toc

@@ -1,2 +1,0 @@
-# nb
-Jupyter Notebook store

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Basic with examples &#8212; My Jupter Notebook on data science.</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -115,6 +116,35 @@
    <li class="toctree-l2">
     <a class="reference internal" href="9417-project.html">
      Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cv/9517-intro.html">
+   UNSW CV course - COMP9517
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cv/9517-lane_detection.html">
+     Lane detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cv/9517-vehicle-detection.html">
+     Vehicle detection
     </a>
    </li>
   </ul>
@@ -280,11 +310,11 @@
               <div>
                 
   <h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#SVM---find-weighted-vector" data-toc-modified-id="SVM---find-weighted-vector-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>SVM - find weighted vector</a></span><ul class="toc-item"><li><span><a href="#example" data-toc-modified-id="example-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>example</a></span></li></ul></li><li><span><a href="#PCA" data-toc-modified-id="PCA-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>PCA</a></span></li><li><span><a href="#linear-separable-among-possible-function" data-toc-modified-id="linear-separable-among-possible-function-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>linear separable among possible function</a></span><ul class="toc-item"><li><span><a href="#XOR" data-toc-modified-id="XOR-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>XOR</a></span></li></ul></li><li><span><a href="#least-square---w0-,-w1" data-toc-modified-id="least-square---w0-,-w1-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>least square - w0 , w1</a></span></li><li><span><a href="#perceptron" data-toc-modified-id="perceptron-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>perceptron</a></span><ul class="toc-item"><li><span><a href="#other" data-toc-modified-id="other-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>other</a></span></li></ul></li><li><span><a href="#k-means" data-toc-modified-id="k-means-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>k means</a></span></li><li><span><a href="#more" data-toc-modified-id="more-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>more</a></span></li></ul></div><div class="tex2jax_ignore mathjax_ignore section" id="basic-with-examples">
+<div class="toc"><ul class="toc-item"><li><span><a href="#SVM---find-weighted-vector" data-toc-modified-id="SVM---find-weighted-vector-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>SVM - find weighted vector</a></span><ul class="toc-item"><li><span><a href="#example" data-toc-modified-id="example-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>example</a></span></li></ul></li><li><span><a href="#PCA" data-toc-modified-id="PCA-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>PCA</a></span></li><li><span><a href="#linear-separable-among-possible-function" data-toc-modified-id="linear-separable-among-possible-function-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>linear separable among possible function</a></span><ul class="toc-item"><li><span><a href="#XOR" data-toc-modified-id="XOR-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>XOR</a></span></li></ul></li><li><span><a href="#least-square---w0-,-w1" data-toc-modified-id="least-square---w0-,-w1-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>least square - w0 , w1</a></span></li><li><span><a href="#perceptron" data-toc-modified-id="perceptron-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>perceptron</a></span><ul class="toc-item"><li><span><a href="#other" data-toc-modified-id="other-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>other</a></span></li></ul></li><li><span><a href="#k-means" data-toc-modified-id="k-means-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>k means</a></span></li><li><span><a href="#more" data-toc-modified-id="more-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>more</a></span></li></ul></div><section class="tex2jax_ignore mathjax_ignore" id="basic-with-examples">
 <h1>Basic with examples<a class="headerlink" href="#basic-with-examples" title="Permalink to this headline">¶</a></h1>
 <p>This file contains some ML basic learnt from COMP9417</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="svm-find-weighted-vector">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="svm-find-weighted-vector">
 <h1>SVM - find weighted vector<a class="headerlink" href="#svm-find-weighted-vector" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -342,7 +372,7 @@ Coefficients of the support vector in the decision function =  [[0.625 0.25  0.3
 </div>
 </div>
 </div>
-<div class="section" id="example">
+<section id="example">
 <h2>example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -397,9 +427,9 @@ Coefficients of the support vector in the decision function =  [[0.667 0.333 1. 
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="pca">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pca">
 <h1>PCA<a class="headerlink" href="#pca" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -471,15 +501,15 @@ Coefficients of the support vector in the decision function =  [[0.667 0.333 1. 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length:  0.7625315008826112 vector: [-0.94446029 -0.32862557]
-length:  0.018477895513562565 vector: [-0.32862557  0.94446029]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length:  0.7625315008826115 vector: [-0.94446029 -0.32862557]
+length:  0.018477895513562572 vector: [-0.32862557  0.94446029]
 </pre></div>
 </div>
 <img alt="../_images/9417-basic_12_1.png" src="../_images/9417-basic_12_1.png" />
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="linear-separable-among-possible-function">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="linear-separable-among-possible-function">
 <h1>linear separable among possible function<a class="headerlink" href="#linear-separable-among-possible-function" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -532,7 +562,7 @@ length:  0.018477895513562565 vector: [-0.32862557  0.94446029]
 <img alt="../_images/9417-basic_14_9.png" src="../_images/9417-basic_14_9.png" />
 </div>
 </div>
-<div class="section" id="xor">
+<section id="xor">
 <h2>XOR<a class="headerlink" href="#xor" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -585,9 +615,9 @@ length:  0.018477895513562565 vector: [-0.32862557  0.94446029]
 <img alt="../_images/9417-basic_16_9.png" src="../_images/9417-basic_16_9.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="least-square-w0-w1">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="least-square-w0-w1">
 <h1>least square - w0 , w1<a class="headerlink" href="#least-square-w0-w1" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,8 +660,8 @@ w0: -2.457013073343674
 </div>
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="perceptron">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="perceptron">
 <h1>perceptron<a class="headerlink" href="#perceptron" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,7 +738,7 @@ class -1
 </div>
 </div>
 </div>
-<div class="section" id="other">
+<section id="other">
 <h2>other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -801,9 +831,9 @@ class -1
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="k-means">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="k-means">
 <h1>k means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -867,8 +897,8 @@ class -1
 </div>
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="more">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="more">
 <h1>more<a class="headerlink" href="#more" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -956,7 +986,7 @@ class -1
 </div>
 </div>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

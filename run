@@ -1,1 +1,2 @@
 jupyter-book build .
+cp -TRv _build/html docs/

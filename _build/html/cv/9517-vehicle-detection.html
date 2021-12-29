@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Vehicle detection &#8212; My Jupter Notebook on data science.</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -283,7 +284,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="vehicle-detection">
+  <section class="tex2jax_ignore mathjax_ignore" id="vehicle-detection">
 <h1>Vehicle detection<a class="headerlink" href="#vehicle-detection" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -339,8 +340,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="drawing-and-plotting-routines">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="drawing-and-plotting-routines">
 <h1>Drawing and plotting routines.<a class="headerlink" href="#drawing-and-plotting-routines" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -400,8 +401,8 @@ To choose a reasonable value of R, we calculate the average width of the vehicle
 R = 2.15418 m
 </pre></div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="ssd-tensorflow-network">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ssd-tensorflow-network">
 <h1>SSD TensorFlow Network<a class="headerlink" href="#ssd-tensorflow-network" title="Permalink to this headline">¶</a></h1>
 <p>Build up the convolutional network and load the checkpoint.</p>
 <div class="cell docutils container">
@@ -556,8 +557,8 @@ INFO:tensorflow:Restoring parameters from ./checkpoints/ssd_model.ckpt
 </div>
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="image-pipeline">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="image-pipeline">
 <h1>Image Pipeline<a class="headerlink" href="#image-pipeline" title="Permalink to this headline">¶</a></h1>
 <p>Presenting the different steps of the vehicle detection pipeline.</p>
 <div class="cell docutils container">
@@ -706,7 +707,7 @@ consider it as a valid detection.</p>
 </div>
 </div>
 </div>
-<div class="section" id="load-sample-image">
+<section id="load-sample-image">
 <h2>Load sample image<a class="headerlink" href="#load-sample-image" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,8 +727,8 @@ consider it as a valid detection.</p>
 <img alt="../_images/9517-vehicle-detection_22_1.png" src="../_images/9517-vehicle-detection_22_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="raw-ssd-output-multiple-detections-after-simple-thresholding">
+</section>
+<section id="raw-ssd-output-multiple-detections-after-simple-thresholding">
 <h2>Raw SSD output: multiple detections after simple thresholding<a class="headerlink" href="#raw-ssd-output-multiple-detections-after-simple-thresholding" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -903,9 +904,9 @@ consider it as a valid detection.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="evaluation">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluation">
 <h1>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Evaluate the results by comparing the output position value with the position value in the annotations. We can get the mean absolute error of the distance.
 
@@ -988,7 +989,7 @@ No vehicle detected images: 71
 </div>
 </div>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

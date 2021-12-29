@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Lane detection &#8212; My Jupter Notebook on data science.</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -93,6 +94,35 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ml/9417-intro.html">
+   UNSW ML course - COMP9417
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/9417-basic.html">
+     Basic with examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/9417-project.html">
+     Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Computer Vision
  </span>
 </p>
@@ -101,8 +131,8 @@
   <a class="reference internal" href="9517-intro.html">
    UNSW CV course - COMP9517
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -335,10 +365,10 @@
               <div>
                 
   <h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#import" data-toc-modified-id="import-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>import</a></span></li><li><span><a href="#helper" data-toc-modified-id="helper-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>helper</a></span></li><li><span><a href="#merge-lines" data-toc-modified-id="merge-lines-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>merge lines</a></span></li><li><span><a href="#houghtransform" data-toc-modified-id="houghtransform-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>houghtransform</a></span><ul class="toc-item"><li><span><a href="#find-close-lines" data-toc-modified-id="find-close-lines-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>find close lines</a></span></li><li><span><a href="#extrapolate-lines" data-toc-modified-id="extrapolate-lines-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>extrapolate lines</a></span></li><li><span><a href="#cut-lines" data-toc-modified-id="cut-lines-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>cut lines</a></span></li><li><span><a href="#show-lines" data-toc-modified-id="show-lines-4.4"><span class="toc-item-num">4.4&nbsp;&nbsp;</span>show lines</a></span></li><li><span><a href="#draw-lines" data-toc-modified-id="draw-lines-4.5"><span class="toc-item-num">4.5&nbsp;&nbsp;</span>draw lines</a></span></li></ul></li><li><span><a href="#start" data-toc-modified-id="start-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>start</a></span><ul class="toc-item"><li><span><a href="#threshold" data-toc-modified-id="threshold-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>threshold</a></span><ul class="toc-item"><li><span><a href="#sobel-operator" data-toc-modified-id="sobel-operator-5.1.1"><span class="toc-item-num">5.1.1&nbsp;&nbsp;</span>sobel operator</a></span></li><li><span><a href="#canny-no-parameter" data-toc-modified-id="canny-no-parameter-5.1.2"><span class="toc-item-num">5.1.2&nbsp;&nbsp;</span>canny no parameter</a></span></li><li><span><a href="#HSL" data-toc-modified-id="HSL-5.1.3"><span class="toc-item-num">5.1.3&nbsp;&nbsp;</span>HSL</a></span></li></ul></li><li><span><a href="#combine-filter-and-show-steps" data-toc-modified-id="combine-filter-and-show-steps-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>combine filter and show steps</a></span></li><li><span><a href="#k-means---image-segmentation" data-toc-modified-id="k-means---image-segmentation-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>k means - image segmentation</a></span></li><li><span><a href="#final" data-toc-modified-id="final-5.4"><span class="toc-item-num">5.4&nbsp;&nbsp;</span>final</a></span></li><li><span><a href="#evaluate-result" data-toc-modified-id="evaluate-result-5.5"><span class="toc-item-num">5.5&nbsp;&nbsp;</span>evaluate result</a></span></li><li><span><a href="#make-videos" data-toc-modified-id="make-videos-5.6"><span class="toc-item-num">5.6&nbsp;&nbsp;</span>make videos</a></span></li><li><span><a href="#evulation" data-toc-modified-id="evulation-5.7"><span class="toc-item-num">5.7&nbsp;&nbsp;</span>evulation</a></span></li><li><span><a href="#trial" data-toc-modified-id="trial-5.8"><span class="toc-item-num">5.8&nbsp;&nbsp;</span>trial</a></span></li><li><span><a href="#normal-houghtransform" data-toc-modified-id="normal-houghtransform-5.9"><span class="toc-item-num">5.9&nbsp;&nbsp;</span>normal houghtransform</a></span></li></ul></li></ul></div><div class="tex2jax_ignore mathjax_ignore section" id="lane-detection">
+<div class="toc"><ul class="toc-item"><li><span><a href="#import" data-toc-modified-id="import-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>import</a></span></li><li><span><a href="#helper" data-toc-modified-id="helper-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>helper</a></span></li><li><span><a href="#merge-lines" data-toc-modified-id="merge-lines-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>merge lines</a></span></li><li><span><a href="#houghtransform" data-toc-modified-id="houghtransform-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>houghtransform</a></span><ul class="toc-item"><li><span><a href="#find-close-lines" data-toc-modified-id="find-close-lines-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>find close lines</a></span></li><li><span><a href="#extrapolate-lines" data-toc-modified-id="extrapolate-lines-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>extrapolate lines</a></span></li><li><span><a href="#cut-lines" data-toc-modified-id="cut-lines-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>cut lines</a></span></li><li><span><a href="#show-lines" data-toc-modified-id="show-lines-4.4"><span class="toc-item-num">4.4&nbsp;&nbsp;</span>show lines</a></span></li><li><span><a href="#draw-lines" data-toc-modified-id="draw-lines-4.5"><span class="toc-item-num">4.5&nbsp;&nbsp;</span>draw lines</a></span></li></ul></li><li><span><a href="#start" data-toc-modified-id="start-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>start</a></span><ul class="toc-item"><li><span><a href="#threshold" data-toc-modified-id="threshold-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>threshold</a></span><ul class="toc-item"><li><span><a href="#sobel-operator" data-toc-modified-id="sobel-operator-5.1.1"><span class="toc-item-num">5.1.1&nbsp;&nbsp;</span>sobel operator</a></span></li><li><span><a href="#canny-no-parameter" data-toc-modified-id="canny-no-parameter-5.1.2"><span class="toc-item-num">5.1.2&nbsp;&nbsp;</span>canny no parameter</a></span></li><li><span><a href="#HSL" data-toc-modified-id="HSL-5.1.3"><span class="toc-item-num">5.1.3&nbsp;&nbsp;</span>HSL</a></span></li></ul></li><li><span><a href="#combine-filter-and-show-steps" data-toc-modified-id="combine-filter-and-show-steps-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>combine filter and show steps</a></span></li><li><span><a href="#k-means---image-segmentation" data-toc-modified-id="k-means---image-segmentation-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>k means - image segmentation</a></span></li><li><span><a href="#final" data-toc-modified-id="final-5.4"><span class="toc-item-num">5.4&nbsp;&nbsp;</span>final</a></span></li><li><span><a href="#evaluate-result" data-toc-modified-id="evaluate-result-5.5"><span class="toc-item-num">5.5&nbsp;&nbsp;</span>evaluate result</a></span></li><li><span><a href="#make-videos" data-toc-modified-id="make-videos-5.6"><span class="toc-item-num">5.6&nbsp;&nbsp;</span>make videos</a></span></li><li><span><a href="#evulation" data-toc-modified-id="evulation-5.7"><span class="toc-item-num">5.7&nbsp;&nbsp;</span>evulation</a></span></li><li><span><a href="#trial" data-toc-modified-id="trial-5.8"><span class="toc-item-num">5.8&nbsp;&nbsp;</span>trial</a></span></li><li><span><a href="#normal-houghtransform" data-toc-modified-id="normal-houghtransform-5.9"><span class="toc-item-num">5.9&nbsp;&nbsp;</span>normal houghtransform</a></span></li></ul></li></ul></div><section class="tex2jax_ignore mathjax_ignore" id="lane-detection">
 <h1>Lane detection<a class="headerlink" href="#lane-detection" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="import">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="import">
 <h1>import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -377,8 +407,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="helper">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="helper">
 <h1>helper<a class="headerlink" href="#helper" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -431,8 +461,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="merge-lines">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="merge-lines">
 <h1>merge lines<a class="headerlink" href="#merge-lines" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -483,10 +513,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="houghtransform">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="houghtransform">
 <h1>houghtransform<a class="headerlink" href="#houghtransform" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="find-close-lines">
+<section id="find-close-lines">
 <h2>find close lines<a class="headerlink" href="#find-close-lines" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -514,8 +544,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="extrapolate-lines">
+</section>
+<section id="extrapolate-lines">
 <h2>extrapolate lines<a class="headerlink" href="#extrapolate-lines" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -561,8 +591,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="cut-lines">
+</section>
+<section id="cut-lines">
 <h2>cut lines<a class="headerlink" href="#cut-lines" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -632,8 +662,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="show-lines">
+</section>
+<section id="show-lines">
 <h2>show lines<a class="headerlink" href="#show-lines" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -786,8 +816,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="draw-lines">
+</section>
+<section id="draw-lines">
 <h2>draw lines<a class="headerlink" href="#draw-lines" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -805,13 +835,13 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="start">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="start">
 <h1>start<a class="headerlink" href="#start" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="threshold">
+<section id="threshold">
 <h2>threshold<a class="headerlink" href="#threshold" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="sobel-operator">
+<section id="sobel-operator">
 <h3>sobel operator<a class="headerlink" href="#sobel-operator" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -844,8 +874,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="canny-no-parameter">
+</section>
+<section id="canny-no-parameter">
 <h3>canny no parameter<a class="headerlink" href="#canny-no-parameter" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -880,8 +910,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="hsl">
+</section>
+<section id="hsl">
 <h3>HSL<a class="headerlink" href="#hsl" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -906,9 +936,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="combine-filter-and-show-steps">
+</section>
+</section>
+<section id="combine-filter-and-show-steps">
 <h2>combine filter and show steps<a class="headerlink" href="#combine-filter-and-show-steps" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -942,8 +972,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="k-means-image-segmentation">
+</section>
+<section id="k-means-image-segmentation">
 <h2>k means - image segmentation<a class="headerlink" href="#k-means-image-segmentation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -984,8 +1014,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="final">
+</section>
+<section id="final">
 <h2>final<a class="headerlink" href="#final" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1030,8 +1060,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="evaluate-result">
+</section>
+<section id="evaluate-result">
 <h2>evaluate result<a class="headerlink" href="#evaluate-result" title="Permalink to this headline">¶</a></h2>
 <p>Methods and evaluation</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Problem Definition 
@@ -1179,8 +1209,8 @@ Pipeline
 <img alt="../_images/9517-lane_detection_44_6.png" src="../_images/9517-lane_detection_44_6.png" />
 </div>
 </div>
-</div>
-<div class="section" id="evulation">
+</section>
+<section id="evulation">
 <h2>evulation<a class="headerlink" href="#evulation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1318,8 +1348,8 @@ Pipeline
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="make-videos">
+</section>
+<section id="make-videos">
 <h2>make videos<a class="headerlink" href="#make-videos" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1348,8 +1378,8 @@ Pipeline
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="trial">
+</section>
+<section id="trial">
 <h2>trial<a class="headerlink" href="#trial" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1389,8 +1419,8 @@ Pipeline
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

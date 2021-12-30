@@ -98,6 +98,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://https://postsent.github.io/">
+   https://https://postsent.github.io/
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../ml/9417-intro.html">
    UNSW ML course - COMP9417
@@ -311,14 +316,12 @@
 <p>Where t is the threshold (an intensity value in [0, 255]), w0 and w1 is the probability of two classes of each intensity pixel).</p>
 <p>So, threshold t split the colour pixel into two classes, one ranges from [0, t - 1], the other from [t, 255]. Then w, mean, variance is calculated based on the formula above. (grayscale zero (black) represents the background, and grayscale 255 (white) represents the foreground).</p>
 <p>The goal is to minimise the weighted within-class variance, which is the sum of w0*var0 + w1*var1.</p>
-<p>![Background pattern</p>
-<p>Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.006.jpeg)<img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.007.png" /></p>
+<p><img alt="Background pattern Description automatically generated" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.006.jpeg" /><img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.007.png" /></p>
 <p><em>Figure 2 – Input and output image with Otsu</em></p>
 <p><strong>HSV</strong></p>
 <p>The threshold for HSV is found by observing the HSV image of the original image, and the HSV colour space below. Based on the image, saturation could be used to separate the foreground and the back gourd.</p>
 <p>Then the threshold for saturation is tunned by the output image.</p>
-<p><img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.008.png" /> ![A picture containing cosmetic</p>
-<p>Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.009.jpeg)<img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.010.png" /> <img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.011.png" />**</p>
+<p><img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.008.png" /> <img alt="A picture containing cosmetic Description automatically generated" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.009.jpeg" /><img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.010.png" /> <img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.011.png" />**</p>
 <p><em>Figure 3 – HSV colour space, input, HSV, HSV threshold images</em></p>
 <p><strong>Task 2: Counting the number of cells (5 marks)</strong></p>
 <p><img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.012.png" /></p>
@@ -337,11 +340,7 @@
 <p>The maximum area (overlapping area) for two cells is set to <em><strong>2 * median(normalised_areas).</strong></em> This is because it is found that the overlapping cell is smaller than the sum of two individual cells and normalised_areas  is smaller than the sum of two individual cells due to a few outliers.</p>
 <p>Now, cells that have min_area &lt; pixel area &lt; overlap_area is considered as one cell where those that has pixel_area &gt; overlap_area is counted as two cells.</p>
 <p>Result for c1, c2, c3, c4 shown below</p>
-<p><code class="docutils literal notranslate"> </code>![Background pattern</p>
-<p>Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.013.jpeg)  ![Background pattern</p>
-<p>Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.014.jpeg)  ![A picture containing cosmetic</p>
-<p>Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.015.jpeg)  ![A picture containing cosmetic</p>
-<p>Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.016.jpeg)</p>
+<p><code class="docutils literal notranslate"> </code><img alt="Background pattern Description automatically generated" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.013.jpeg" />  <img alt="Background pattern Description automatically generated" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.014.jpeg" />  <img alt="A picture containing cosmetic Description automatically generated" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.015.jpeg" />  <img alt="A picture containing cosmetic Description automatically generated" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.016.jpeg" /></p>
 <p><em>Figure 4 - c1, c2, c3, c4 input images</em></p>
 <p><img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.017.png" />   <img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.018.png" /> <img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.019.png" /> <img alt="" src="../../_images/Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.020.png" /></p>
 <p><em>Figure 5 – c1, c2, c3, c4 output images</em></p>

@@ -2,7 +2,14 @@ format: jb-book
 root: index
 defaults:  # The defaults key will be applied to all chapters and sub-sections
   maxdepth: 2
+
 parts:
+
+- caption: About 
+  chapters:
+  - url: https://postsent.github.io/
+    title: Back to Blog
+
 - caption: Machine Learning
   chapters:
   - file: ml/9417-intro
@@ -30,8 +37,8 @@ parts:
     sections:
     - file: dl/9444-project
     - file: dl/assignment1/assignment1.md
-      
-    
+
+
     
     # sections:
 #     - file: start/overview

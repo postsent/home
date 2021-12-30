@@ -30,9 +30,7 @@ So, threshold t split the colour pixel into two classes, one ranges from [0, t -
 
 The goal is to minimise the weighted within-class variance, which is the sum of w0\*var0 + w1\*var1. 
 
-![Background pattern
-
-Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.006.jpeg)![](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.007.png)
+![Background pattern Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.006.jpeg)![](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.007.png)
 
 *Figure 2 – Input and output image with Otsu*
 
@@ -42,9 +40,7 @@ The threshold for HSV is found by observing the HSV image of the original image,
 
 Then the threshold for saturation is tunned by the output image.
 
-![](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.008.png) ![A picture containing cosmetic
-
-Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.009.jpeg)![](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.010.png) ![](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.011.png)**   
+![](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.008.png) ![A picture containing cosmetic Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.009.jpeg)![](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.010.png) ![](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.011.png)**   
 
 *Figure 3 – HSV colour space, input, HSV, HSV threshold images*
 
@@ -82,15 +78,7 @@ Now, cells that have min\_area < pixel area < overlap\_area is considered as one
 
 Result for c1, c2, c3, c4 shown below
 
-` `![Background pattern
-
-Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.013.jpeg)  ![Background pattern
-
-Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.014.jpeg)  ![A picture containing cosmetic
-
-Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.015.jpeg)  ![A picture containing cosmetic
-
-Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.016.jpeg)
+` `![Background pattern Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.013.jpeg)  ![Background pattern Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.014.jpeg)  ![A picture containing cosmetic Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.015.jpeg)  ![A picture containing cosmetic Description automatically generated](Aspose.Words.3e12a7b3-45e1-46da-a4a9-d94645603854.016.jpeg)
 
 *Figure 4 - c1, c2, c3, c4 input images*
 

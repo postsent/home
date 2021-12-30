@@ -9,7 +9,7 @@ parts:
   chapters:
   - url: https://postsent.github.io/
     title: Back to Blog
-
+  - file: reference
 - caption: Machine Learning
   chapters:
   - file: ml/9417-intro

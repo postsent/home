@@ -60,8 +60,6 @@ Referencing is: transit state by NumPy dot product, then set evidence (linear) a
 
 Below is another reason why HMM is used.
 
-![Text, letter
-
-Description automatically generated](Aspose.Words.95f2baf2-99b0-4a46-a300-c3f14d3c7f4a.006.png)
+![Text, letter Description automatically generated](Aspose.Words.95f2baf2-99b0-4a46-a300-c3f14d3c7f4a.006.png)
 
 [Towards scalable deployment of Hidden Markov models in occupancy estimation: A novel methodology applied to the study case of occupancy detection - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0378778821008781#b0080)

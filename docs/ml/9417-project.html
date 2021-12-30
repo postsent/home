@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Project &#8212; My Jupter Notebook on data science.</title>
+    <title>Project - Classification &#8212; My Jupter Notebook on data science.</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,7 +52,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="UNSW CV course - COMP9517" href="../cv/9517-intro.html" />
+    <link rel="next" title="UNSW PGM course - COMP9418" href="9418-intro.html" />
     <link rel="prev" title="Basic with examples" href="9417-basic.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -115,7 +115,34 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Project
+     Project - Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="9418-intro.html">
+   UNSW PGM course - COMP9418
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9418-EDA.html">
+     EDA on Times Series Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9418-project.html">
+     Time series project code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9418-project/report.html">
+     Time series report
     </a>
    </li>
   </ul>
@@ -131,12 +158,22 @@
   <a class="reference internal" href="../cv/9517-intro.html">
    UNSW CV course - COMP9517
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cv/9517-a1-code.html">
+     Task 1: Otsu and HSV Thresholding (5 marks)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cv/9517-a1/report.html">
+     Basic image processing, thresholding, count cells
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cv/9517-lane_detection.html">
      Lane detection
@@ -145,6 +182,35 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../cv/9517-vehicle-detection.html">
      Vehicle detection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../dl/9444-intro.html">
+   UNSW DL course - COMP9444
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dl/9444-project.html">
+     Image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dl/assignment1/assignment1.html">
+     Characters, Spirals and Hidden Unit Dynamics (Assignment 1)
     </a>
    </li>
   </ul>
@@ -239,7 +305,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Project
+   Project - Classification
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -513,9 +579,9 @@
               <div>
                 
   <h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Explore-data" data-toc-modified-id="Explore-data-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Explore data</a></span><ul class="toc-item"><li><span><a href="#basic-info" data-toc-modified-id="basic-info-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>basic info</a></span></li><li><span><a href="#missing-values,-boxplot-for-data" data-toc-modified-id="missing-values,-boxplot-for-data-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>missing values, boxplot for data</a></span><ul class="toc-item"><li><span><a href="#five-feature-pairwise-plot" data-toc-modified-id="five-feature-pairwise-plot-1.2.1"><span class="toc-item-num">1.2.1&nbsp;&nbsp;</span>five feature pairwise plot</a></span></li><li><span><a href="#boxplot" data-toc-modified-id="boxplot-1.2.2"><span class="toc-item-num">1.2.2&nbsp;&nbsp;</span>boxplot</a></span></li></ul></li><li><span><a href="#pie-chart-for-class-distribution" data-toc-modified-id="pie-chart-for-class-distribution-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>pie chart for class distribution</a></span></li></ul></li><li><span><a href="#Model-comparison" data-toc-modified-id="Model-comparison-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Model comparison</a></span><ul class="toc-item"><li><span><a href="#setup-code" data-toc-modified-id="setup-code-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>setup code</a></span></li><li><span><a href="#basedline-score" data-toc-modified-id="basedline-score-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>basedline score</a></span></li><li><span><a href="#standarised-scores-(0-mean)" data-toc-modified-id="standarised-scores-(0-mean)-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>standarised scores (0 mean)</a></span></li><li><span><a href="#display-result-for-final-model-choices" data-toc-modified-id="display-result-for-final-model-choices-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>display result for final model choices</a></span></li></ul></li><li><span><a href="#Feature-selection" data-toc-modified-id="Feature-selection-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Feature selection</a></span><ul class="toc-item"><li><span><a href="#features-correlation" data-toc-modified-id="features-correlation-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>features correlation</a></span></li><li><span><a href="#correlated-with-y" data-toc-modified-id="correlated-with-y-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>correlated with y</a></span></li><li><span><a href="#Feature-Importance-using-extra-forest" data-toc-modified-id="Feature-Importance-using-extra-forest-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Feature Importance using extra forest</a></span></li><li><span><a href="#Tree-based-feature-selection" data-toc-modified-id="Tree-based-feature-selection-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Tree-based feature selection</a></span></li><li><span><a href="#linear-SVM" data-toc-modified-id="linear-SVM-3.5"><span class="toc-item-num">3.5&nbsp;&nbsp;</span>linear SVM</a></span></li><li><span><a href="#PCA" data-toc-modified-id="PCA-3.6"><span class="toc-item-num">3.6&nbsp;&nbsp;</span>PCA</a></span><ul class="toc-item"><li><span><a href="#performance-comparison-using-PCA" data-toc-modified-id="performance-comparison-using-PCA-3.6.1"><span class="toc-item-num">3.6.1&nbsp;&nbsp;</span>performance comparison using PCA</a></span></li></ul></li><li><span><a href="#ANOVA-f-test" data-toc-modified-id="ANOVA-f-test-3.7"><span class="toc-item-num">3.7&nbsp;&nbsp;</span>ANOVA f-test</a></span></li><li><span><a href="#chi-square-test" data-toc-modified-id="chi-square-test-3.8"><span class="toc-item-num">3.8&nbsp;&nbsp;</span>chi-square test</a></span></li></ul></li><li><span><a href="#Remove-Outlier" data-toc-modified-id="Remove-Outlier-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Remove Outlier</a></span><ul class="toc-item"><li><span><a href="#Isolation-forest" data-toc-modified-id="Isolation-forest-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Isolation forest</a></span></li><li><span><a href="#DBSCAN" data-toc-modified-id="DBSCAN-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>DBSCAN</a></span></li><li><span><a href="#Interquatile-range" data-toc-modified-id="Interquatile-range-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>Interquatile range</a></span><ul class="toc-item"><li><span><a href="#filter-using-interqutertile" data-toc-modified-id="filter-using-interqutertile-4.3.1"><span class="toc-item-num">4.3.1&nbsp;&nbsp;</span>filter using interqutertile</a></span></li><li><span><a href="#boxplot-after-outlier-removal" data-toc-modified-id="boxplot-after-outlier-removal-4.3.2"><span class="toc-item-num">4.3.2&nbsp;&nbsp;</span>boxplot after outlier removal</a></span></li></ul></li></ul></li><li><span><a href="#Parameter-tuning" data-toc-modified-id="Parameter-tuning-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Parameter tuning</a></span><ul class="toc-item"><li><span><a href="#KNN" data-toc-modified-id="KNN-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>KNN</a></span></li><li><span><a href="#extra-tree" data-toc-modified-id="extra-tree-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>extra tree</a></span></li><li><span><a href="#random-forest" data-toc-modified-id="random-forest-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>random forest</a></span></li><li><span><a href="#logistic-regression" data-toc-modified-id="logistic-regression-5.4"><span class="toc-item-num">5.4&nbsp;&nbsp;</span>logistic regression</a></span></li><li><span><a href="#MLP" data-toc-modified-id="MLP-5.5"><span class="toc-item-num">5.5&nbsp;&nbsp;</span>MLP</a></span></li></ul></li><li><span><a href="#Testing-on-validation-set" data-toc-modified-id="Testing-on-validation-set-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Testing on validation set</a></span><ul class="toc-item"><li><span><a href="#XGboost" data-toc-modified-id="XGboost-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>XGboost</a></span></li><li><span><a href="#extra-tree" data-toc-modified-id="extra-tree-6.2"><span class="toc-item-num">6.2&nbsp;&nbsp;</span>extra tree</a></span><ul class="toc-item"><li><span><a href="#visulisation" data-toc-modified-id="visulisation-6.2.1"><span class="toc-item-num">6.2.1&nbsp;&nbsp;</span>visulisation</a></span></li></ul></li><li><span><a href="#random-forest" data-toc-modified-id="random-forest-6.3"><span class="toc-item-num">6.3&nbsp;&nbsp;</span>random forest</a></span></li><li><span><a href="#MLP" data-toc-modified-id="MLP-6.4"><span class="toc-item-num">6.4&nbsp;&nbsp;</span>MLP</a></span></li><li><span><a href="#KNN" data-toc-modified-id="KNN-6.5"><span class="toc-item-num">6.5&nbsp;&nbsp;</span>KNN</a></span></li><li><span><a href="#Logistic-Regression" data-toc-modified-id="Logistic-Regression-6.6"><span class="toc-item-num">6.6&nbsp;&nbsp;</span>Logistic Regression</a></span></li></ul></li><li><span><a href="#Voting-ensemble" data-toc-modified-id="Voting-ensemble-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Voting ensemble</a></span><ul class="toc-item"><li><span><a href="#KNN-+-MLP-+-RF-+-ET" data-toc-modified-id="KNN-+-MLP-+-RF-+-ET-7.1"><span class="toc-item-num">7.1&nbsp;&nbsp;</span>KNN + MLP + RF + ET</a></span></li><li><span><a href="#RF-+-ET-+-MLP-(not-used)" data-toc-modified-id="RF-+-ET-+-MLP-(not-used)-7.2"><span class="toc-item-num">7.2&nbsp;&nbsp;</span>RF + ET + MLP (not used)</a></span></li></ul></li><li><span><a href="#Submit---model-used:-voting-ensemble-(KNN-+-MLP-+-RF-+-ET)" data-toc-modified-id="Submit---model-used:-voting-ensemble-(KNN-+-MLP-+-RF-+-ET)-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Submit - model used: voting ensemble (KNN + MLP + RF + ET)</a></span><ul class="toc-item"><li><span><a href="#compare-extra-tree-with-voting-ensemble" data-toc-modified-id="compare-extra-tree-with-voting-ensemble-8.1"><span class="toc-item-num">8.1&nbsp;&nbsp;</span>compare extra tree with voting ensemble</a></span></li><li><span><a href="#csv" data-toc-modified-id="csv-8.2"><span class="toc-item-num">8.2&nbsp;&nbsp;</span>csv</a></span></li></ul></li></ul></div><section class="tex2jax_ignore mathjax_ignore" id="project">
-<h1>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h1>
-<p>This is ML project done in COMP9417 where I practise the standard ML pipeline skill based on various sources mostly Kaggle.</p>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Explore-data" data-toc-modified-id="Explore-data-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Explore data</a></span><ul class="toc-item"><li><span><a href="#basic-info" data-toc-modified-id="basic-info-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>basic info</a></span></li><li><span><a href="#missing-values,-boxplot-for-data" data-toc-modified-id="missing-values,-boxplot-for-data-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>missing values, boxplot for data</a></span><ul class="toc-item"><li><span><a href="#five-feature-pairwise-plot" data-toc-modified-id="five-feature-pairwise-plot-1.2.1"><span class="toc-item-num">1.2.1&nbsp;&nbsp;</span>five feature pairwise plot</a></span></li><li><span><a href="#boxplot" data-toc-modified-id="boxplot-1.2.2"><span class="toc-item-num">1.2.2&nbsp;&nbsp;</span>boxplot</a></span></li></ul></li><li><span><a href="#pie-chart-for-class-distribution" data-toc-modified-id="pie-chart-for-class-distribution-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>pie chart for class distribution</a></span></li></ul></li><li><span><a href="#Model-comparison" data-toc-modified-id="Model-comparison-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Model comparison</a></span><ul class="toc-item"><li><span><a href="#setup-code" data-toc-modified-id="setup-code-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>setup code</a></span></li><li><span><a href="#basedline-score" data-toc-modified-id="basedline-score-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>basedline score</a></span></li><li><span><a href="#standarised-scores-(0-mean)" data-toc-modified-id="standarised-scores-(0-mean)-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>standarised scores (0 mean)</a></span></li><li><span><a href="#display-result-for-final-model-choices" data-toc-modified-id="display-result-for-final-model-choices-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>display result for final model choices</a></span></li></ul></li><li><span><a href="#Feature-selection" data-toc-modified-id="Feature-selection-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Feature selection</a></span><ul class="toc-item"><li><span><a href="#features-correlation" data-toc-modified-id="features-correlation-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>features correlation</a></span></li><li><span><a href="#correlated-with-y" data-toc-modified-id="correlated-with-y-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>correlated with y</a></span></li><li><span><a href="#Feature-Importance-using-extra-forest" data-toc-modified-id="Feature-Importance-using-extra-forest-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Feature Importance using extra forest</a></span></li><li><span><a href="#Tree-based-feature-selection" data-toc-modified-id="Tree-based-feature-selection-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Tree-based feature selection</a></span></li><li><span><a href="#linear-SVM" data-toc-modified-id="linear-SVM-3.5"><span class="toc-item-num">3.5&nbsp;&nbsp;</span>linear SVM</a></span></li><li><span><a href="#PCA" data-toc-modified-id="PCA-3.6"><span class="toc-item-num">3.6&nbsp;&nbsp;</span>PCA</a></span><ul class="toc-item"><li><span><a href="#performance-comparison-using-PCA" data-toc-modified-id="performance-comparison-using-PCA-3.6.1"><span class="toc-item-num">3.6.1&nbsp;&nbsp;</span>performance comparison using PCA</a></span></li></ul></li><li><span><a href="#ANOVA-f-test" data-toc-modified-id="ANOVA-f-test-3.7"><span class="toc-item-num">3.7&nbsp;&nbsp;</span>ANOVA f-test</a></span></li><li><span><a href="#chi-square-test" data-toc-modified-id="chi-square-test-3.8"><span class="toc-item-num">3.8&nbsp;&nbsp;</span>chi-square test</a></span></li></ul></li><li><span><a href="#Remove-Outlier" data-toc-modified-id="Remove-Outlier-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Remove Outlier</a></span><ul class="toc-item"><li><span><a href="#Isolation-forest" data-toc-modified-id="Isolation-forest-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Isolation forest</a></span></li><li><span><a href="#DBSCAN" data-toc-modified-id="DBSCAN-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>DBSCAN</a></span></li><li><span><a href="#Interquatile-range" data-toc-modified-id="Interquatile-range-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>Interquatile range</a></span><ul class="toc-item"><li><span><a href="#filter-using-interqutertile" data-toc-modified-id="filter-using-interqutertile-4.3.1"><span class="toc-item-num">4.3.1&nbsp;&nbsp;</span>filter using interqutertile</a></span></li><li><span><a href="#boxplot-after-outlier-removal" data-toc-modified-id="boxplot-after-outlier-removal-4.3.2"><span class="toc-item-num">4.3.2&nbsp;&nbsp;</span>boxplot after outlier removal</a></span></li></ul></li></ul></li><li><span><a href="#Parameter-tuning" data-toc-modified-id="Parameter-tuning-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Parameter tuning</a></span><ul class="toc-item"><li><span><a href="#KNN" data-toc-modified-id="KNN-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>KNN</a></span></li><li><span><a href="#extra-tree" data-toc-modified-id="extra-tree-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>extra tree</a></span></li><li><span><a href="#random-forest" data-toc-modified-id="random-forest-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>random forest</a></span></li><li><span><a href="#logistic-regression" data-toc-modified-id="logistic-regression-5.4"><span class="toc-item-num">5.4&nbsp;&nbsp;</span>logistic regression</a></span></li><li><span><a href="#MLP" data-toc-modified-id="MLP-5.5"><span class="toc-item-num">5.5&nbsp;&nbsp;</span>MLP</a></span></li></ul></li><li><span><a href="#Testing-on-validation-set" data-toc-modified-id="Testing-on-validation-set-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Testing on validation set</a></span><ul class="toc-item"><li><span><a href="#XGboost" data-toc-modified-id="XGboost-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>XGboost</a></span></li><li><span><a href="#extra-tree" data-toc-modified-id="extra-tree-6.2"><span class="toc-item-num">6.2&nbsp;&nbsp;</span>extra tree</a></span><ul class="toc-item"><li><span><a href="#visulisation" data-toc-modified-id="visulisation-6.2.1"><span class="toc-item-num">6.2.1&nbsp;&nbsp;</span>visulisation</a></span></li></ul></li><li><span><a href="#random-forest" data-toc-modified-id="random-forest-6.3"><span class="toc-item-num">6.3&nbsp;&nbsp;</span>random forest</a></span></li><li><span><a href="#MLP" data-toc-modified-id="MLP-6.4"><span class="toc-item-num">6.4&nbsp;&nbsp;</span>MLP</a></span></li><li><span><a href="#KNN" data-toc-modified-id="KNN-6.5"><span class="toc-item-num">6.5&nbsp;&nbsp;</span>KNN</a></span></li><li><span><a href="#Logistic-Regression" data-toc-modified-id="Logistic-Regression-6.6"><span class="toc-item-num">6.6&nbsp;&nbsp;</span>Logistic Regression</a></span></li></ul></li><li><span><a href="#Voting-ensemble" data-toc-modified-id="Voting-ensemble-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Voting ensemble</a></span><ul class="toc-item"><li><span><a href="#KNN-+-MLP-+-RF-+-ET" data-toc-modified-id="KNN-+-MLP-+-RF-+-ET-7.1"><span class="toc-item-num">7.1&nbsp;&nbsp;</span>KNN + MLP + RF + ET</a></span></li><li><span><a href="#RF-+-ET-+-MLP-(not-used)" data-toc-modified-id="RF-+-ET-+-MLP-(not-used)-7.2"><span class="toc-item-num">7.2&nbsp;&nbsp;</span>RF + ET + MLP (not used)</a></span></li></ul></li><li><span><a href="#Submit---model-used:-voting-ensemble-(KNN-+-MLP-+-RF-+-ET)" data-toc-modified-id="Submit---model-used:-voting-ensemble-(KNN-+-MLP-+-RF-+-ET)-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Submit - model used: voting ensemble (KNN + MLP + RF + ET)</a></span><ul class="toc-item"><li><span><a href="#compare-extra-tree-with-voting-ensemble" data-toc-modified-id="compare-extra-tree-with-voting-ensemble-8.1"><span class="toc-item-num">8.1&nbsp;&nbsp;</span>compare extra tree with voting ensemble</a></span></li><li><span><a href="#csv" data-toc-modified-id="csv-8.2"><span class="toc-item-num">8.2&nbsp;&nbsp;</span>csv</a></span></li></ul></li></ul></div><section class="tex2jax_ignore mathjax_ignore" id="project-classification">
+<h1>Project - Classification<a class="headerlink" href="#project-classification" title="Permalink to this headline">¶</a></h1>
+<p>This is ML project done in COMP9417 where I practise the standard ML pipeline skill based on various sources mostly Kaggle.  Numerical Dataset is supplied.</p>
 <p>TOC(2) nbextension is suggested to install for below section</p>
 <p>External libraries are needed to run the below code:</p>
 <ul class="simple">
@@ -540,20 +606,6 @@
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.container { width:80% !important; }&lt;/style&gt;&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">0</span><span class="n">cfb56284ac7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#  set a seed for reproducibility</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">SEED</span> <span class="o">=</span> <span class="mi">23</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span> <span class="c1"># needed</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -3633,10 +3685,10 @@ weighted avg       0.99      0.99      0.99      2782
             <p class="prev-next-title">Basic with examples</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../cv/9517-intro.html" title="next page">
+    <a class='right-next' id="next-link" href="9418-intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">UNSW CV course - COMP9517</p>
+        <p class="prev-next-title">UNSW PGM course - COMP9418</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

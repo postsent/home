@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Vehicle detection" href="9517-vehicle-detection.html" />
-    <link rel="prev" title="UNSW CV course - COMP9517" href="9517-intro.html" />
+    <link rel="prev" title="Basic image processing, thresholding, count cells" href="9517-a1/report.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,7 +115,34 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/9417-project.html">
-     Project
+     Project - Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ml/9418-intro.html">
+   UNSW PGM course - COMP9418
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/9418-EDA.html">
+     EDA on Times Series Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/9418-project.html">
+     Time series project code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/9418-project/report.html">
+     Time series report
     </a>
    </li>
   </ul>
@@ -131,12 +158,22 @@
   <a class="reference internal" href="9517-intro.html">
    UNSW CV course - COMP9517
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="9517-a1-code.html">
+     Task 1: Otsu and HSV Thresholding (5 marks)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9517-a1/report.html">
+     Basic image processing, thresholding, count cells
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Lane detection
@@ -145,6 +182,35 @@
    <li class="toctree-l2">
     <a class="reference internal" href="9517-vehicle-detection.html">
      Vehicle detection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../dl/9444-intro.html">
+   UNSW DL course - COMP9444
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dl/9444-project.html">
+     Image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dl/assignment1/assignment1.html">
+     Characters, Spirals and Hidden Unit Dynamics (Assignment 1)
     </a>
    </li>
   </ul>
@@ -1095,16 +1161,6 @@ Pipeline
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="n">a5fd2102e2c0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">json_0313</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./train_set/label_data_0313.json&#39;</span><span class="p">)]</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;./train_set/label_data_0313.json&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1447,11 +1503,11 @@ Pipeline
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="9517-intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="9517-a1/report.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">UNSW CV course - COMP9517</p>
+            <p class="prev-next-title">Basic image processing, thresholding, count cells</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="9517-vehicle-detection.html" title="next page">

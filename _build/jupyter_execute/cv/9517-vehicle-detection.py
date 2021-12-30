@@ -89,8 +89,6 @@ def plot_image(img, figsize=(24, 9)):
 #     Distance Estimation
 #         ·Apply triangle similarity
 
-# ![1618665600%281%29.jpg](attachment:1618665600%281%29.jpg)
-
 #     focus length = (fx + fx) / 2 = (714.1526 + 710.3725) / 2
 #     r is the pixel width of the vehicle in the image (px)
 #     R is the width of the vehicle in the real world (m)

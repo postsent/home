@@ -10,7 +10,7 @@
 
 # # SVM - find weighted vector 
 
-# In[1]:
+# In[5]:
 
 
 from sklearn.svm import SVC
@@ -32,7 +32,7 @@ print('Coefficients of the support vector in the decision function = ', np.abs(c
 print('Number of support vectors for each class = ', clf.n_support_)
 
 
-# In[2]:
+# In[6]:
 
 
 from fractions import Fraction
@@ -46,7 +46,7 @@ print(Fraction(a), Fraction(b), Fraction(c))
 
 # ## example
 
-# In[3]:
+# In[7]:
 
 
 from sklearn.svm import SVC
@@ -65,7 +65,7 @@ print('Coefficients of the support vector in the decision function = ', np.abs(c
 print('Number of support vectors for each class = ', clf.n_support_)
 
 
-# In[4]:
+# In[8]:
 
 
 from fractions import Fraction
@@ -79,7 +79,7 @@ print(Fraction(a), Fraction(b), Fraction(c))
 
 # # PCA
 
-# In[5]:
+# In[9]:
 
 
 import matplotlib.pyplot as plt
@@ -93,7 +93,7 @@ plt.axis('equal')
 tmp = 0 # to filter graph output
 
 
-# In[6]:
+# In[10]:
 
 
 from sklearn.decomposition import PCA
@@ -101,7 +101,7 @@ pca = PCA(n_components=2)
 pca.fit(X)
 
 
-# In[7]:
+# In[11]:
 
 
 print(pca.components_)
@@ -109,7 +109,7 @@ print()
 print(pca.explained_variance_)
 
 
-# In[8]:
+# In[12]:
 
 
 def draw_vector(v0, v1, ax=None):
@@ -131,7 +131,7 @@ tmp = 2
 
 # # linear separable among possible function
 
-# In[9]:
+# In[13]:
 
 
 import itertools
@@ -171,7 +171,7 @@ for c in itertools.combinations(ls, 2):
 
 # ## XOR
 
-# In[10]:
+# In[14]:
 
 
 import itertools
@@ -211,7 +211,7 @@ for c in itertools.combinations(ls, 2):
 
 # # least square - w0 , w1
 
-# In[11]:
+# In[15]:
 
 
 x = np.array([4,6,12,25,29,46,59])
@@ -231,7 +231,7 @@ w0 = y.mean() - w1 * x.mean()
 print("w0:", w0)
 
 
-# In[12]:
+# In[16]:
 
 
 x_test = 50
@@ -241,7 +241,7 @@ print(y_pred)
 
 # # perceptron
 
-# In[13]:
+# In[17]:
 
 
 x1 = np.array([-2, 2, 1 ,-1, 3])
@@ -286,7 +286,7 @@ w = np.array([5,1,1], dtype=np.float) # for computation
 _, res = train_perceptron(X, y, w)
 
 
-# In[14]:
+# In[18]:
 
 
 w0, w1, w2 = res
@@ -299,7 +299,7 @@ if y_pred <0:
 
 # ## other
 
-# In[15]:
+# In[22]:
 
 
 x1 = np.array([-2, 2, 1 ,-1, 3])

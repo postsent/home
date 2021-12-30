@@ -9,14 +9,14 @@
 # 
 # # import
 
-# In[1]:
+# In[84]:
 
 
 from IPython.core.display import display, HTML
 display(HTML("<style>.container { width:100% !important; }</style>"))
 
 
-# In[2]:
+# In[85]:
 
 
 import numpy as np
@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 import math
 
 
-# In[3]:
+# In[86]:
 
 
 def get_slope_intecept(lines):
@@ -43,7 +43,7 @@ def get_slope_intecept(lines):
 
 # # helper
 
-# In[4]:
+# In[87]:
 
 
 def plot_one_img(img):
@@ -85,7 +85,7 @@ def display_expected(nth_img, nth_data_h_smaples, nth_data_lanes):
     return img_plot
 
 
-# In[5]:
+# In[88]:
 
 
 y_sky = 330
@@ -94,7 +94,7 @@ y_max = 720
 
 # # merge lines
 
-# In[6]:
+# In[89]:
 
 
 def merge_lane_lines(lines, slope_similarity_threshold=0.1, intercept_similarity_threshold=40, min_slope_threshold=0.3, max_slope_threshold=5):
@@ -146,7 +146,7 @@ def merge_lane_lines(lines, slope_similarity_threshold=0.1, intercept_similarity
 
 # ## find close lines
 
-# In[7]:
+# In[90]:
 
 
 def find_closest_lines(lines, point):
@@ -173,7 +173,7 @@ def find_closest_lines(lines, point):
 
 # ## extrapolate lines
 
-# In[8]:
+# In[91]:
 
 
 def extrapolate_lines(lines, y_min, y_max):
@@ -218,7 +218,7 @@ def extrapolate_lines(lines, y_min, y_max):
 
 # ## cut lines
 
-# In[9]:
+# In[92]:
 
 
 def line_y_intersection(lines):
@@ -258,7 +258,7 @@ def line_y_intersection(lines):
         return 350
 
 
-# In[10]:
+# In[93]:
 
 
 def cut_lines(lines, y_cut):
@@ -286,7 +286,7 @@ def cut_lines(lines, y_cut):
 
 # ## show lines
 
-# In[11]:
+# In[94]:
 
 
 def display_lines(lines, w=1280, h=720):
@@ -319,7 +319,7 @@ def display_lines(lines, w=1280, h=720):
     plt.show()
 
 
-# In[12]:
+# In[95]:
 
 
 def filter_short_line(lines):
@@ -348,7 +348,7 @@ def filter_short_line(lines):
     return tmp
 
 
-# In[13]:
+# In[96]:
 
 
 # #
@@ -436,7 +436,7 @@ def show_lines(canny_lines, is_merged=True, minL=10, maxG=30, is_final=False, is
 
 # ## draw lines
 
-# In[14]:
+# In[97]:
 
 
 def draw_lines(img, lines):   # Draw the right and left lines on image
@@ -457,7 +457,7 @@ def draw_lines(img, lines):   # Draw the right and left lines on image
 
 # ### sobel operator
 
-# In[15]:
+# In[98]:
 
 
 def abs_sobel_thresh(img, orient='x', thresh=(0,255)):
@@ -489,7 +489,7 @@ def abs_sobel_thresh(img, orient='x', thresh=(0,255)):
 
 # ### canny no parameter
 
-# In[16]:
+# In[99]:
 
 
 # https://www.pyimagesearch.com/2015/04/06/zero-parameter-automatic-canny-edge-detection-with-python-and-opencv/
@@ -523,7 +523,7 @@ def canny_no_parameter(img_canny):
 
 # ### HSL
 
-# In[17]:
+# In[100]:
 
 
 def hls_select(img, sthresh=(0, 255),lthresh=()):
@@ -547,7 +547,7 @@ def hls_select(img, sthresh=(0, 255),lthresh=()):
 
 # ## combine filter and show steps
 
-# In[18]:
+# In[101]:
 
 
 def binary_pipeline(img):
@@ -580,7 +580,7 @@ def binary_pipeline(img):
 
 # ## k means - image segmentation
 
-# In[19]:
+# In[153]:
 
 
 from sklearn.cluster import KMeans
@@ -620,7 +620,7 @@ def filter_cars(img, binary, is_demo=False):
 
 # ## final
 
-# In[20]:
+# In[103]:
 
 
 def final_pipline(img, is_demo=False, is_line=False):
@@ -691,7 +691,7 @@ def final_pipline(img, is_demo=False, is_line=False):
 # 				
 # 				4) short lines, lines in opposite direction are filtered as well
 
-# In[21]:
+# In[104]:
 
 
 json_0313 = [json.loads(line) for line in open('./train_set/label_data_0313.json')]

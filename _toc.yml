@@ -13,31 +13,31 @@ parts:
 - caption: Machine Learning
   chapters:
   - file: ml/p1-crypto-prediction
-  - file: ml/9417-intro
+  - file: ml/9417/9417-intro
     sections:
-    - file: ml/9417-basic
-    - file: ml/9417-project
-  - file: ml/9418-intro
+    - file: ml/9417/9417-basic
+    - file: ml/9417/9417-project
+  - file: ml/9418/9418-intro
     sections:
-    - file: ml/9418-EDA
-    - file: ml/9418-project
-    - file: ml/9418-project/report
+    - file: ml/9418/9418-EDA
+    - file: ml/9418/9418-project
+    - file: ml/9418/9418-project/report
     
 
 - caption: Computer Vision
   chapters:
-  - file: cv/9517-intro
+  - file: cv/9517/9517-intro
     sections:
-    - file: cv/9517-a1-code
-    - file: cv/9517-a1/report
-    - file: cv/9517-lane_detection
-    - file: cv/9517-vehicle-detection
+    - file: cv/9517/9517-a1-code
+    - file: cv/9517/9517-a1/report
+    - file: cv/9517/9517-lane_detection
+    - file: cv/9517/9517-vehicle-detection
 - caption: Deep Learning
   chapters:
-  - file: dl/9444-intro
+  - file: dl/9444/9444-intro
     sections:
-    - file: dl/9444-project
-    - file: dl/assignment1/assignment1.md
+    - file: dl/9444/9444-project
+    - file: dl/9444/assignment1/assignment1.md
 
 
     

@@ -1,0 +1,850 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Basic image processing, thresholding, count cells &#8212; My Jupter Notebook on data science.</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Report on Basic image processing, etc" href="9517-a1/report.html" />
+    <link rel="prev" title="CV course (UNSW)" href="9517-intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupter Notebook on data science.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Home Page
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://postsent.github.io/">
+   Back to Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference.html">
+   References
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../ml/p1-crypto-prediction.html">
+   Crypto Prediction(Regression)
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../ml/9417/9417-intro.html">
+   ML course (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ml/9417/9417-basic.html">
+     Basic with examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ml/9417/9417-project.html">
+     Project - Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../ml/9418/9418-intro.html">
+   PGM course (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ml/9418/9418-EDA.html">
+     EDA on Times Series Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ml/9418/9418-project.html">
+     Time series project code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ml/9418/9418-project/report.html">
+     Time series report
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="9517-intro.html">
+   CV course (UNSW)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Basic image processing, thresholding, count cells
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9517-a1/report.html">
+     Report on Basic image processing, etc
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9517-lane_detection.html">
+     Lane detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9517-vehicle-detection.html">
+     Vehicle detection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../dl/9444/9444-intro.html">
+   DL course (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dl/9444/9444-project.html">
+     Image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../dl/9444/assignment1/assignment1.html">
+     Characters, Spirals and Hidden Unit Dynamics (Assignment 1)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/cv/9517/9517-a1-code.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/postsent/nb/main?urlpath=tree/cv/9517/9517-a1-code.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Basic image processing, thresholding, count cells
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-1-otsu-and-hsv-thresholding-5-marks">
+   Task 1: Otsu and HSV Thresholding (5 marks)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hsv">
+     hsv
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-2-counting-the-number-of-cells-5-marks">
+   Task 2: Counting the number of cells (5 marks)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#median-filter">
+     median filter
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-pass-connected-components">
+     two pass connected components
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#benchmark-on-four-images">
+   benchmark on four images
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Task-1:-Otsu-and-HSV-Thresholding-(5-marks)" data-toc-modified-id="Task-1:-Otsu-and-HSV-Thresholding-(5-marks)-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Task 1: Otsu and HSV Thresholding (5 marks)</a></span><ul class="toc-item"><li><span><a href="#hsv" data-toc-modified-id="hsv-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>hsv</a></span></li></ul></li><li><span><a href="#Task-2:-Counting-the-number-of-cells-(5-marks)" data-toc-modified-id="Task-2:-Counting-the-number-of-cells-(5-marks)-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Task 2: Counting the number of cells (5 marks)</a></span><ul class="toc-item"><li><span><a href="#median-filter" data-toc-modified-id="median-filter-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>median filter</a></span></li><li><span><a href="#two-pass-connected-components" data-toc-modified-id="two-pass-connected-components-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>two pass connected components</a></span></li></ul></li><li><span><a href="#benchmark-on-four-images" data-toc-modified-id="benchmark-on-four-images-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>benchmark on four images</a></span></li></ul></div><section class="tex2jax_ignore mathjax_ignore" id="basic-image-processing-thresholding-count-cells">
+<h1>Basic image processing, thresholding, count cells<a class="headerlink" href="#basic-image-processing-thresholding-count-cells" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="task-1-otsu-and-hsv-thresholding-5-marks">
+<h1>Task 1: Otsu and HSV Thresholding (5 marks)<a class="headerlink" href="#task-1-otsu-and-hsv-thresholding-5-marks" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">0 / b - background</span>
+<span class="sd">1 / f - foreground</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span> <span class="k">as</span> <span class="nn">cv</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">myimshow</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">#     ax1.imshow(np.random.rand(8, 90), interpolation=&#39;nearest&#39;)</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;original&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">))</span>
+    
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">))</span>
+    
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">0 / b - background</span>
+<span class="sd">1 / f - foreground</span>
+<span class="sd">use within class variance</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">otsu_thresholding</span><span class="p">(</span><span class="n">gray</span><span class="p">):</span>
+    <span class="c1"># Compute histogram and probabilities of each intensity pixel</span>
+    <span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">257</span><span class="p">)))</span> <span class="c1"># ensure size 256, Compute histogram and probabilities of each intensity pixel</span>
+    <span class="n">hist</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">gray</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">])</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">gray</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">gray</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">within_var</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hist</span><span class="p">)):</span>
+        <span class="n">hb</span><span class="p">,</span> <span class="n">hf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="p">[</span><span class="n">t</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hb</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hf</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># avoid divide by zero</span>
+            <span class="k">continue</span>
+
+        <span class="n">w0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hb</span><span class="p">)</span> <span class="o">/</span> <span class="n">total</span> <span class="c1">#  Setup initial 𝜔𝑖(0) and μ𝑖(0)</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hf</span><span class="p">)</span> <span class="o">/</span> <span class="n">total</span>
+    
+        <span class="n">mub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">i</span> <span class="o">*</span> <span class="n">freq</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hb</span><span class="p">)])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hb</span><span class="p">)</span> <span class="c1"># mean for discrete random variable</span>
+        <span class="n">muf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="n">i</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">hb</span><span class="p">))</span> <span class="o">*</span> <span class="n">freq</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hf</span><span class="p">)])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hf</span><span class="p">)</span> <span class="c1"># (i+len(hb)) - add on from end of previous bin</span>
+        
+        <span class="n">var0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([((</span><span class="n">i</span> <span class="o">-</span> <span class="n">mub</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">freq</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hb</span><span class="p">)])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hb</span><span class="p">)</span>
+        <span class="n">var1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([((</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">hb</span><span class="p">))</span> <span class="o">-</span> <span class="n">muf</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">freq</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hf</span><span class="p">)])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hf</span><span class="p">)</span>
+        
+        <span class="n">var</span> <span class="o">=</span> <span class="n">w0</span> <span class="o">*</span> <span class="n">var0</span> <span class="o">+</span> <span class="n">w1</span><span class="o">*</span><span class="n">var1</span>
+        
+        <span class="k">if</span> <span class="n">var</span> <span class="o">&lt;</span> <span class="n">within_var</span><span class="p">:</span> <span class="c1"># 4.Desired threshold corresponds to the maximum -  lowest sum of weighted variances</span>
+            <span class="n">within_var</span> <span class="o">=</span> <span class="n">var</span> <span class="c1"># minimumn var that distingusih two classes</span>
+            <span class="n">thresh</span> <span class="o">=</span> <span class="n">t</span> 
+  
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;thresh&quot;</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span> 
+    <span class="n">img_desired</span> <span class="o">=</span> <span class="n">gray</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># aovid in-place change</span>
+    <span class="n">img_desired</span><span class="p">[</span><span class="n">img_desired</span> <span class="o">&gt;</span> <span class="n">thresh</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span> <span class="c1"># white</span>
+    <span class="n">img_desired</span><span class="p">[</span><span class="n">img_desired</span> <span class="o">&lt;</span> <span class="n">thresh</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># black</span>
+    
+    <span class="c1"># dp below as order matters</span>
+    <span class="n">img_desired</span><span class="p">[</span><span class="n">img_desired</span><span class="o">==</span><span class="mi">255</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">img_desired</span><span class="p">[</span><span class="n">img_desired</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+    <span class="n">img_desired</span><span class="p">[</span><span class="n">img_desired</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">img_desired</span>
+
+
+<span class="n">gray</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;c3.jpg&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">otsu_thresholding</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+<span class="c1"># dp below as order matters</span>
+<span class="c1"># plt.title(&quot;Otsu threshold&quot;)</span>
+<span class="c1"># plt.imshow(cv.cvtColor(res, cv.COLOR_BGR2RGB))</span>
+<span class="n">myimshow</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="s2">&quot;Otsu threshold&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>thresh 202
+</pre></div>
+</div>
+<img alt="../../_images/9517-a1-code_3_1.png" src="../../_images/9517-a1-code_3_1.png" />
+</div>
+</div>
+<section id="hsv">
+<h2>hsv<a class="headerlink" href="#hsv" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="c1"># For HSV, hue range is [0,179], saturation range is [0,255], and value range is [0,255].</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;c3.jpg&#39;</span><span class="p">)</span>
+<span class="n">img_hsv</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># plt.imshow(img_hsv)</span>
+<span class="c1"># plt.show() </span>
+<span class="c1"># based on above img, compared with the color space cylindar of hsv value, saturation is what differentiate the background and the fore</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">img_hsv</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># where hsv is 3 channel (list of list of list), so go down twice [:,:hsv here] , for grayscale, it is [:,here]</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">img_hsv</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">img_hsv</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">S</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">)</span> <span class="c1"># e.g. (S &lt; 40) &amp; (H &gt; 1) </span>
+<span class="n">img_hsv</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">img_hsv</span><span class="p">[</span><span class="n">S</span> <span class="o">&gt;=</span><span class="mi">40</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;with HSV threshold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_hsv</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9517-a1-code_5_0.png" src="../../_images/9517-a1-code_5_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="task-2-counting-the-number-of-cells-5-marks">
+<h1>Task 2: Counting the number of cells (5 marks)<a class="headerlink" href="#task-2-counting-the-number-of-cells-5-marks" title="Permalink to this headline">¶</a></h1>
+<section id="median-filter">
+<h2>median filter<a class="headerlink" href="#median-filter" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">@definition - find all neghtbour and itself within kernel size and change to that median value</span>
+<span class="sd">ignore the outer pixels depends on the kernel size</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">median_filter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">window_width</span><span class="p">,</span> <span class="n">window_height</span><span class="p">):</span>
+    <span class="c1"># asusme gray scale</span>
+    <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">window_width</span> <span class="o">*</span> <span class="n">window_height</span><span class="p">)]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="n">expandx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">window_width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> 
+    <span class="n">expandy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">window_height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> 
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">expandx</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="n">expandx</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">expandy</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="n">expandy</span><span class="p">):</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">xw</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">window_width</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">yw</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">window_height</span><span class="p">):</span>
+                    <span class="n">window</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">y</span> <span class="o">+</span> <span class="n">yw</span> <span class="o">-</span> <span class="n">expandy</span><span class="p">][</span><span class="n">x</span> <span class="o">+</span> <span class="n">xw</span> <span class="o">-</span> <span class="n">expandx</span><span class="p">]</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">window</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">window</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">window_width</span> <span class="o">*</span> <span class="n">window_height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
+    
+    <span class="k">return</span> <span class="n">res</span>
+
+    
+<span class="n">gray</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;c3.jpg&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;before&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">))</span>
+<span class="n">img_medianf</span> <span class="o">=</span> <span class="n">median_filter</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;with median filter&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img_medianf</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x27ca21f0940&gt;
+</pre></div>
+</div>
+<img alt="../../_images/9517-a1-code_8_1.png" src="../../_images/9517-a1-code_8_1.png" />
+<img alt="../../_images/9517-a1-code_8_2.png" src="../../_images/9517-a1-code_8_2.png" />
+</div>
+</div>
+</section>
+<section id="two-pass-connected-components">
+<h2>two pass connected components<a class="headerlink" href="#two-pass-connected-components" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">0 - black: foreground</span>
+<span class="sd">255 - white: background</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">is_background</span><span class="p">(</span><span class="n">pixel</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pixel</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">4-neighbourhood up, down, left, right</span>
+<span class="sd">-1 if not labeled / background</span>
+<span class="sd">-2 if idx out of bound - no neighbour</span>
+<span class="sd">Consider two pixels to be adjacent if they share the same colour / intensity and each belongs to the other’s four-neighbourhood</span>
+
+<span class="sd">@return list of labels</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">get_neighbours</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+    
+    <span class="n">not_exist</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># invalid position</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">up</span> <span class="o">=</span> <span class="n">down</span> <span class="o">=</span> <span class="n">left</span> <span class="o">=</span> <span class="n">right</span> <span class="o">=</span> <span class="n">not_exist</span>
+    
+    <span class="k">if</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">img</span><span class="p">[</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="n">pixel</span><span class="p">:</span>
+        <span class="n">up</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="c1"># neighbor elements whose labels are not assigned yet are ignored</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">img</span><span class="p">[</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="n">pixel</span><span class="p">:</span>
+        <span class="n">down</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">img</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">pixel</span><span class="p">:</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">cols</span> <span class="ow">and</span> <span class="n">img</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">pixel</span><span class="p">:</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">up</span> <span class="o">==</span> <span class="n">down</span> <span class="o">==</span> <span class="n">right</span> <span class="o">==</span> <span class="n">left</span> <span class="o">==</span> <span class="n">not_exist</span><span class="p">:</span> <span class="c1"># no neighbou</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+    
+    <span class="c1"># if same intensity</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">up</span><span class="p">,</span> <span class="n">down</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">left</span><span class="p">])</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">add to eq_sets if elements in inserted list not appear in other list in eq_set</span>
+<span class="sd">otherwise, union two list with no duplicate</span>
+<span class="sd">@ls list of labels e.g [1,2,3]</span>
+<span class="sd">@eq_sets - list of list of labels</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="k">def</span> <span class="nf">add_to_eq_sets</span><span class="p">(</span><span class="n">eq_sets</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">ls</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
+    <span class="n">idxes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eq_sets</span><span class="p">):</span>
+        <span class="c1"># any element from the input list is in the list in eq sets</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">idxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># find all lists contain element in the input ls</span>
+                <span class="k">break</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">idxes</span><span class="p">:</span> <span class="c1"># no neighbours</span>
+        <span class="n">eq_sets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="c1"># make a merge list</span>
+    <span class="n">be_append</span> <span class="o">=</span> <span class="p">[</span><span class="n">eq_sets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idxes</span><span class="p">]</span>
+    <span class="n">be_append</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">be_append</span><span class="p">)))</span>
+    
+    <span class="c1"># remove individual lists from eq_sets</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idxes</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="c1"># remove in reverse order to make index persist during deletion</span>
+        <span class="k">del</span> <span class="n">eq_sets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">eq_sets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">be_append</span><span class="p">)</span>
+        
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">find list contains e, return the min of that list</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">get_min_labels</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">ls</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ls</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+<span class="c1">#             return min(l)</span>
+            <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># idx of equivalence set [1~ n labels]</span>
+        
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">median</span>
+
+<span class="k">def</span> <span class="nf">two_passed_connected_component</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">))</span> <span class="c1"># store label </span>
+    <span class="n">eq_set</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># equivalence sets - list of lists</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># start from 1</span>
+    
+    <span class="c1"># first pass</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+        
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">pixel</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span>
+            
+            <span class="k">if</span> <span class="n">is_background</span><span class="p">(</span><span class="n">pixel</span><span class="p">):</span> <span class="c1"># ignore</span>
+               <span class="k">continue</span>
+            
+            <span class="n">neighbours</span> <span class="o">=</span> <span class="n">get_neighbours</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">,</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+            <span class="n">neighbours</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">neighbours</span><span class="p">[</span><span class="n">neighbours</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span> <span class="c1"># ignore 0 - not labeled</span>
+            
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">neighbours</span><span class="p">:</span> <span class="c1"># If there are no neighbors, uniquely label the current element and continue</span>
+                <span class="n">labels</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes</span>
+                <span class="n">classes</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+            
+            <span class="n">labels</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">neighbours</span><span class="p">)</span> <span class="c1"># Otherwise, find the neighbor with the smallest label and assign it to the current element</span>
+            <span class="n">add_to_eq_sets</span><span class="p">(</span><span class="n">eq_set</span><span class="p">,</span> <span class="n">neighbours</span><span class="p">)</span>
+    
+    <span class="c1"># store area (number of pixels) for each label</span>
+    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eq_set</span><span class="p">))]</span>
+    
+    <span class="c1"># second pass</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+        
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">is_background</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]):</span> <span class="c1"># ignore</span>
+               <span class="k">continue</span>
+            <span class="c1"># find the list contain the label of current pixel in the eq_sets</span>
+            <span class="c1"># assign the min</span>
+            <span class="n">lb</span> <span class="o">=</span> <span class="n">get_min_labels</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">],</span> <span class="n">eq_set</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">lb</span> <span class="ow">or</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">lb</span><span class="p">):</span> <span class="c1"># aviod none type</span>
+                <span class="k">continue</span>
+            <span class="n">labels</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">lb</span>
+            <span class="n">areas</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">lb</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># -1  starts from 0, label starts from 1</span>
+            
+    <span class="c1"># callobrate</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;median(areas) before nomalised&quot;</span><span class="p">,</span> <span class="n">median</span><span class="p">(</span><span class="n">areas</span><span class="p">))</span>
+    
+    <span class="c1"># normalised - remove obvious small cell, assume any large cell (e.g. 10x larger) are overlapped cell (overlap of two)</span>
+    <span class="n">normalised_thresh</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">median</span><span class="p">(</span><span class="n">areas</span><span class="p">)</span> <span class="c1"># median with outier (noise)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;normalised_thresh&quot;</span><span class="p">,</span> <span class="n">normalised_thresh</span><span class="p">)</span>
+    <span class="n">normalised_areas</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">areas</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">normalised_thresh</span><span class="p">]</span> 
+    
+    
+    <span class="n">min_ara_thresh</span> <span class="o">=</span> <span class="mf">0.65</span> <span class="o">*</span> <span class="n">median</span><span class="p">(</span><span class="n">normalised_areas</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;min_ara_thresh&quot;</span><span class="p">,</span> <span class="n">min_ara_thresh</span><span class="p">)</span>
+    <span class="n">max_area_thresh</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">median</span><span class="p">(</span><span class="n">normalised_areas</span><span class="p">)</span> <span class="c1"># </span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;max_area_thresh&quot;</span><span class="p">,</span> <span class="n">max_area_thresh</span><span class="p">)</span>
+    
+    <span class="c1"># remove small cells </span>
+    <span class="n">new_areas</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">normalised_areas</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">min_ara_thresh</span><span class="p">]</span> 
+    <span class="c1"># double overlap cells</span>
+    <span class="n">count_cell</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">new_areas</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">max_area_thresh</span><span class="p">:</span>
+            <span class="n">count_cell</span> <span class="o">+=</span> <span class="mi">2</span> <span class="c1"># assume max two  overlaps</span>
+        
+        <span class="n">count_cell</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;count_cell&quot;</span><span class="p">,</span> <span class="n">count_cell</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">new_areas</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">count_cell</span>
+    
+<span class="n">count_labels</span> <span class="o">=</span> <span class="n">two_passed_connected_component</span><span class="p">(</span><span class="n">img_binary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median(areas) before nomalised 848
+normalised_thresh 424.0
+min_ara_thresh 828.1
+max_area_thresh 2548.0
+count_cell 29
+[836, 848, 873, 959, 1001, 1040, 1061, 1114, 1126, 1150, 1170, 1207, 1209, 1268, 1280, 1300, 1329, 1334, 1350, 1393, 1412, 1453, 1462, 1608, 1632, 1650, 1655, 1758, 1763]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="benchmark-on-four-images">
+<h1>benchmark on four images<a class="headerlink" href="#benchmark-on-four-images" title="Permalink to this headline">¶</a></h1>
+<p>if load four at the same time, takes about 1min</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_image</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_image</span><span class="p">):</span>
+    
+    <span class="n">gray</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;c</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">otsu_thresholding</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">img_binary</span> <span class="o">=</span> <span class="n">median_filter</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">count_labels</span> <span class="o">=</span> <span class="n">two_passed_connected_component</span><span class="p">(</span><span class="n">img_binary</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of cells: </span><span class="si">{</span><span class="n">count_labels</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_binary</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>thresh 202
+median(areas) before nomalised 869
+normalised_thresh 434.5
+min_ara_thresh 854.75
+max_area_thresh 2630
+count_cell 51
+[869, 878, 920, 955, 993, 1020, 1032, 1068, 1073, 1111, 1127, 1139, 1165, 1185, 1206, 1208, 1212, 1220, 1231, 1236, 1254, 1279, 1315, 1336, 1352, 1361, 1392, 1396, 1419, 1423, 1427, 1489, 1496, 1550, 1566, 1582, 1593, 1618, 1636, 1662, 1667, 1798, 1872, 1918, 1935, 1955, 2411, 2591, 2688]
+thresh 202
+median(areas) before nomalised 327.5
+normalised_thresh 163.75
+min_ara_thresh 624.0
+max_area_thresh 1920.0
+count_cell 35
+[685, 899, 913, 937, 983, 1016, 1078, 1137, 1142, 1142, 1160, 1197, 1199, 1263, 1271, 1284, 1309, 1314, 1328, 1338, 1342, 1360, 1363, 1372, 1446, 1502, 1518, 1549, 1582, 1596, 1631, 1729, 1734, 1750, 1800]
+thresh 202
+median(areas) before nomalised 1100
+normalised_thresh 550.0
+min_ara_thresh 827.125
+max_area_thresh 2545.0
+count_cell 24
+[866, 915, 924, 925, 1100, 1103, 1130, 1188, 1205, 1206, 1246, 1253, 1292, 1311, 1389, 1402, 1432, 1433, 1475, 1530, 1736, 1816, 2008, 2232]
+thresh 202
+median(areas) before nomalised 848
+normalised_thresh 424.0
+min_ara_thresh 828.1
+max_area_thresh 2548.0
+count_cell 29
+[836, 848, 873, 959, 1001, 1040, 1061, 1114, 1126, 1150, 1170, 1207, 1209, 1268, 1280, 1300, 1329, 1334, 1350, 1393, 1412, 1453, 1462, 1608, 1632, 1650, 1655, 1758, 1763]
+</pre></div>
+</div>
+<img alt="../../_images/9517-a1-code_12_1.png" src="../../_images/9517-a1-code_12_1.png" />
+<img alt="../../_images/9517-a1-code_12_2.png" src="../../_images/9517-a1-code_12_2.png" />
+<img alt="../../_images/9517-a1-code_12_3.png" src="../../_images/9517-a1-code_12_3.png" />
+<img alt="../../_images/9517-a1-code_12_4.png" src="../../_images/9517-a1-code_12_4.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python38132bit26ce60d8d4d94dd6abf9b9323d7d5c00",
+            path: "./cv/9517"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python38132bit26ce60d8d4d94dd6abf9b9323d7d5c00'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="9517-intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">CV course (UNSW)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="9517-a1/report.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Report on Basic image processing, etc</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jerry<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

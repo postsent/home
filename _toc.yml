@@ -38,7 +38,13 @@ parts:
     sections:
     - file: dl/9444/9444-project
     - file: dl/9444/assignment1/assignment1.md
-
+- caption: Coding Basic
+  chapters:
+  - file: basic/basic-intro
+    sections:
+    - file: basic/numpy
+    - file: basic/pandas
+    - file: basic/python
 
     
     # sections:

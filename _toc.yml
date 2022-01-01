@@ -1,24 +1,30 @@
 format: jb-book
 root: index
 defaults:  # The defaults key will be applied to all chapters and sub-sections
-  maxdepth: 2
+  maxdepth: 3
 
 parts:
 
-- caption: About 
+- caption: About   
   chapters:
   - url: https://postsent.github.io/
     title: Back to Blog
   - file: reference
 
-- caption: Kaggle-ish
+- caption: Machine Learning
   chapters:
-  - file: kaggle/regression/regression
+  - file: ml/regression/regression
     sections:
-    - file: kaggle/p1-crypto-prediction
-  - file: kaggle/classification/classification
-  - file: kaggle/time-series/time-series
-  - file: kaggle/nlp/nlp
+    - file: ml/p1-crypto-prediction
+  - file: ml/classification/classification
+  - file: ml/time-series/time-series
+
+- caption: Computer Vision
+  chapters:
+  - file: cv/cv
+- caption: NLP
+  chapters:
+  - file: nlp/nlp
 
 - caption: Data Science Courses
   chapters:

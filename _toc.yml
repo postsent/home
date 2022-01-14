@@ -22,9 +22,12 @@ parts:
 - caption: Computer Vision
   chapters:
   - file: cv/cv
+  - file: cv/3431_project/project.md
+
 - caption: NLP
   chapters:
   - file: nlp/nlp
+  
 
 - caption: Data Science Courses
   chapters:
@@ -55,7 +58,7 @@ parts:
     sections:
     - file: basic/numpy
     - file: basic/pandas
-    - file: basic/python
+    - file: basic/leetcode
 
     
     # sections:

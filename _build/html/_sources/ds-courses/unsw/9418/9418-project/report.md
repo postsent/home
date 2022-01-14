@@ -1,5 +1,7 @@
 ﻿# Time series report
 Room light control 
+![Room](room.png)
+Figure 1: Floor plan (note that dotted grey lines denote the boundaries of areas when the boundary is unclear).
 # Report – COMP9418 Assignment
 # Background
 Standard ML pipeline is used to control the flow of this project which includes explore data analysis(EDA), pre-processing, model selection, model evaluation and post-processing.

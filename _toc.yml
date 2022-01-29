@@ -27,6 +27,7 @@ parts:
 - caption: NLP
   chapters:
   - file: nlp/nlp
+  - file: nlp/nlp-code
   
 
 - caption: Data Science Courses
@@ -51,6 +52,10 @@ parts:
     sections:
     - file: ds-courses/unsw/9444/9444-project
     - file: ds-courses/unsw/9444/assignment1/assignment1.md
+
+- caption: Misc
+  chapters:
+  - file: misc/math
 
 - caption: Coding Basic
   chapters:

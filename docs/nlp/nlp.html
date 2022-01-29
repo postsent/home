@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -52,8 +52,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Machine Learning (UNSW)" href="../ds-courses/unsw/9417/9417-intro.html" />
-    <link rel="prev" title="7. Bibliography" href="../cv/3431_project/project.html" />
+    <link rel="next" title="Acknowledgement" href="nlp-code.html" />
+    <link rel="prev" title="Mini self-driving - turtlebot" href="../cv/3431_project/project.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -149,9 +149,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../cv/3431_project/project.html">
-   <strong>
-    7. Bibliography
-   </strong>
+   Mini self-driving - turtlebot
   </a>
  </li>
 </ul>
@@ -164,6 +162,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nlp-code.html">
+   Acknowledgement
   </a>
  </li>
 </ul>
@@ -279,6 +282,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Misc
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../misc/math.html">
+   Math
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Coding Basic
  </span>
 </p>
@@ -356,7 +371,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -387,18 +402,97 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Placeholder
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading">
+   Reading
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Placeholder</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Placeholder
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading">
+   Reading
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="placeholder">
 <h1>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reading">
+<h1>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h1>
+<p>Feature engineering</p>
+<ul class="simple">
+<li><p>book by Zheng and Casari (2016).</p></li>
+</ul>
+<p>Word sense semi-supervisr learninh</p>
+<ul class="simple">
+<li><p>automatic discovery of word
+senses from text was actually the first place semi-supervised learning was
+applied to NLP</p></li>
+</ul>
+<p>traditional NLP</p>
+<ol class="simple">
+<li><p>Manning, Christopher D., and Hinrich Schütze. (1999). Foundations of
+Statistical Natural Language Processing. MIT press.</p></li>
+<li><p>Bird, Steven, Ewan Klein, and Edward Loper. (2009). Natural
+Language Processing with Python: Analyzing Text with the Natural
+Language Toolkit. O’Reilly.</p></li>
+<li><p>Smith, Noah A. (2011). Linguistic Structure prediction. Morgan and
+Claypool.</p></li>
+<li><p>Jurafsky, Dan, and James H. Martin. (2014). Speech and Language
+Processing, Vol. 3. Pearson.</p></li>
+<li><p>Russell, Stuart J., and Peter Norvig. (2016). Artificial Intelligence: A
+Modern Approach. Pearson.</p></li>
+<li><p>Zheng, Alice, and Casari, Amanda. (2018). Feature Engineering for
+Machine Learning: Principles and Techniques for Data Scientists.</p></li>
+</ol>
+<p>misc:</p>
+<ul class="simple">
+<li><p>“Diving Deep into Supervised Training”.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -423,37 +517,35 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../cv/3431_project/project.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><strong>7. Bibliography</strong></p>
+            <p class="prev-next-title">Mini self-driving - turtlebot</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../ds-courses/unsw/9417/9417-intro.html" title="next page">
+    <a class='right-next' id="next-link" href="nlp-code.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Machine Learning (UNSW)</p>
+        <p class="prev-next-title">Acknowledgement</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Jerry<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Jerry<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

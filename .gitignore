@@ -128,9 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-*.csv
 # TODO, after comp, add below
-jigsaw/
 
 templates/
 _build/

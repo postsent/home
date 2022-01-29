@@ -1,2 +1,0 @@
-![](imgs/ml-paradigm.png)
-

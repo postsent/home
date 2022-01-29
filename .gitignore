@@ -130,12 +130,11 @@ dmypy.json
 
 # TODO, after comp, add below
 
-templates/
 _build/
 .vscode/
-basic/
-cv/
-ds-courses/
-misc/
-ml/
-nlp/
+/basic
+/cv
+/ds-courses
+/misc
+/ml
+/nlp

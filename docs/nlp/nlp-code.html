@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Acknowledgement &#8212; My Jupter Notebook on data science.</title>
+    <title>Set seed &#8212; My Jupter Notebook on data science.</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,7 +55,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Machine Learning (UNSW)" href="../ds-courses/unsw/9417/9417-intro.html" />
-    <link rel="prev" title="Placeholder" href="nlp.html" />
+    <link rel="prev" title="Reading" href="nlp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -137,6 +137,11 @@
    Time Series
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/ml.html">
+   General
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -163,12 +168,12 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="nlp.html">
-   Placeholder
+   Reading
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Acknowledgement
+   Set seed
   </a>
  </li>
 </ul>
@@ -430,6 +435,11 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
+   Set seed
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgement">
    Acknowledgement
   </a>
  </li>
@@ -660,6 +670,89 @@
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-use-e-in-the-formula">
      why use e in the formula?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-cross-entropy-loss">
+     Binary cross-entropy loss
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#supervised-training">
+   Supervised Training
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview">
+     Overview
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optimiser">
+     Optimiser
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instantiating-the-adam-optimizer">
+     Instantiating the Adam optimizer
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gradient-descent-overview">
+       Gradient Descent overview
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#toy-example">
+   Toy Example
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-settings">
+     Global Settings
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pseudo-classification">
+     Pseudo Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example">
+   Example
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-yelp-review-dataset">
+   The Yelp Review Dataset
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#note">
+     Note
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-training-validation-and-testing-splits">
+     Creating training, validation, and testing splits
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimally-cleaning-the-data">
+     Minimally cleaning the data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-pytorch-dataset-class">
+     A PyTorch Dataset class
     </a>
    </li>
   </ul>
@@ -679,7 +772,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Acknowledgement</h1>
+                <h1>Set seed</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -691,6 +784,11 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
+   Set seed
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgement">
    Acknowledgement
   </a>
  </li>
@@ -921,6 +1019,89 @@
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-use-e-in-the-formula">
      why use e in the formula?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-cross-entropy-loss">
+     Binary cross-entropy loss
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#supervised-training">
+   Supervised Training
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview">
+     Overview
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optimiser">
+     Optimiser
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instantiating-the-adam-optimizer">
+     Instantiating the Adam optimizer
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#gradient-descent-overview">
+       Gradient Descent overview
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#toy-example">
+   Toy Example
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-settings">
+     Global Settings
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pseudo-classification">
+     Pseudo Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example">
+   Example
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-yelp-review-dataset">
+   The Yelp Review Dataset
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#note">
+     Note
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-training-validation-and-testing-splits">
+     Creating training, validation, and testing splits
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimally-cleaning-the-data">
+     Minimally cleaning the data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-pytorch-dataset-class">
+     A PyTorch Dataset class
     </a>
    </li>
   </ul>
@@ -947,10 +1128,31 @@
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
+<section class="tex2jax_ignore mathjax_ignore" id="set-seed">
+<h1>Set seed<a class="headerlink" href="#set-seed" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="mi">23</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch._C.Generator at 0x2614acf7db0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="acknowledgement">
 <h1>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/joosthub/PyTorchNLPBookm">Supp code and exampels</a>
@@ -989,7 +1191,7 @@ Perface &gt; using code example: “”</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/nlp-code_5_2.png" src="../_images/nlp-code_5_2.png" />
+<img alt="../_images/nlp-code_7_2.png" src="../_images/nlp-code_7_2.png" />
 </div>
 </div>
 </section>
@@ -1012,7 +1214,7 @@ Perface &gt; using code example: “”</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/nlp-code_7_1.png" src="../_images/nlp-code_7_1.png" />
+<img alt="../_images/nlp-code_9_1.png" src="../_images/nlp-code_9_1.png" />
 </div>
 </div>
 </section>
@@ -1783,7 +1985,7 @@ tensor([[0.9864, 0.5348, 0.2743],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nlp-code_69_0.png" src="../_images/nlp-code_69_0.png" />
+<img alt="../_images/nlp-code_71_0.png" src="../_images/nlp-code_71_0.png" />
 </div>
 </div>
 </section>
@@ -1817,7 +2019,7 @@ the range [-1, +1].</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nlp-code_74_0.png" src="../_images/nlp-code_74_0.png" />
+<img alt="../_images/nlp-code_76_0.png" src="../_images/nlp-code_76_0.png" />
 </div>
 </div>
 </section>
@@ -1842,7 +2044,7 @@ become <strong>zero and never revive again</strong>. This is called the “dying
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nlp-code_79_0.png" src="../_images/nlp-code_79_0.png" />
+<img alt="../_images/nlp-code_81_0.png" src="../_images/nlp-code_81_0.png" />
 </div>
 </div>
 <p>To mitigate that effect, variants such as the <strong>Leaky ReLU</strong> and <strong>Parametric ReLU</strong>
@@ -1861,7 +2063,7 @@ become <strong>zero and never revive again</strong>. This is called the “dying
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/nlp-code_82_0.png" src="../_images/nlp-code_82_0.png" />
+<img alt="../_images/nlp-code_84_0.png" src="../_images/nlp-code_84_0.png" />
 </div>
 </div>
 </section>
@@ -1931,16 +2133,33 @@ Product = sum of log</p>
 <span class="n">outputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">targets</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
 <span class="n">loss</span> <span class="o">=</span> <span class="n">ce_loss</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+<span class="n">outputs</span>
+<span class="n">targets</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(2.8919, grad_fn=&lt;NllLossBackward0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 1.3654, -0.6839, -1.2567,  0.6865, -0.1485],
+        [ 1.6060, -1.1797,  0.6773, -0.0960, -0.3345],
+        [ 0.5175, -0.5598, -0.3623, -0.0477,  0.8693]], requires_grad=True)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([1, 0, 3])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(1.7233, grad_fn=&lt;NllLossBackward0&gt;)
 </pre></div>
 </div>
 </div>
 </div>
+<p>For above, a vector of random values is first used to simulate network
+output. Then, the ground truth vector, called targets, is created as a vector of
+integers because PyTorch’s implementation of CrossEntropyLoss() assumes
+that each input has one particular <strong>class</strong>, and each class has a unique <strong>index</strong>. This
+is why targets has <strong>three</strong> elements: an index representing the <strong>correct class</strong> for
+each <strong>input</strong>. From this assumption, it performs the computationally more efficient
+operation of indexing into the model output</p>
 </section>
 <section id="why-use-e-in-the-formula">
 <h2>why use e in the formula?<a class="headerlink" href="#why-use-e-in-the-formula" title="Permalink to this headline">¶</a></h2>
@@ -1957,6 +2176,240 @@ mathematical simplifications are made assuming the <strong>exponential</strong>
 function that is the <strong>core</strong> of the softmax function and the <strong>log</strong> function that is used
 in the cross-entropy computations in order to be more numerically <strong>stable</strong> and
 <strong>avoid</strong> really <strong>small</strong> or really <strong>large</strong> numbers (log property).</p>
+</section>
+<section id="binary-cross-entropy-loss">
+<h2>Binary cross-entropy loss<a class="headerlink" href="#binary-cross-entropy-loss" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bce_loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>
+<span class="n">sigmoid</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">probabilities</span>
+<span class="n">targets</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">bce_loss</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.3914],
+        [0.2337],
+        [0.5652],
+        [0.6740]], grad_fn=&lt;SigmoidBackward0&gt;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[1.],
+        [0.],
+        [1.],
+        [0.]])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.3914],
+        [0.2337],
+        [0.5652],
+        [0.6740]], grad_fn=&lt;SigmoidBackward0&gt;)
+tensor(0.7239, grad_fn=&lt;BinaryCrossEntropyBackward0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="supervised-training">
+<h1>Supervised Training<a class="headerlink" href="#supervised-training" title="Permalink to this headline">¶</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Supervised learning requires the following: a <strong>model</strong>, a
+<strong>loss</strong> function, <strong>training</strong> data, and an <strong>optimization</strong> algorithm. The training data for
+supervised learning is pairs of observations and targets; the model computes
+predictions from the observations, and the loss measures the error of the
+predictions as compared to the targets. The goal of the training is to use the
+8
+gradient-based optimization algorithm to adjust the model’s parameters so that
+the losses are as low as possible.</p>
+</section>
+<section id="optimiser">
+<h2>Optimiser<a class="headerlink" href="#optimiser" title="Permalink to this headline">¶</a></h2>
+<p>While the model produces predictions and the loss function measures
+the error between predictions and targets, the optimizer <strong>updates</strong> the <strong>weights</strong> of
+the model using the <strong>error signal</strong>. In its simplest form, there is a single
+hyperparameter that controls the update behavior of the optimizer. This
+hyperparameter, called a learning rate, controls how much impact the error
+signal has on updating the weights.</p>
+</section>
+<section id="instantiating-the-adam-optimizer">
+<h2>Instantiating the Adam optimizer<a class="headerlink" href="#instantiating-the-adam-optimizer" title="Permalink to this headline">¶</a></h2>
+<section id="gradient-descent-overview">
+<h3>Gradient Descent overview<a class="headerlink" href="#gradient-descent-overview" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>any <strong>bookkeeping</strong> information, such as gradients, currently stored inside the model (perceptron) object is <strong>cleared</strong> with a function named zero_grad().</p></li>
+<li><p>make <strong>prediction</strong>: the model computes outputs (y_pred) given the input data (x_data).</p></li>
+<li><p>the <strong>loss</strong> is computed by comparing model outputs (y_pred) to intended targets (y_target).<br />
+The PyTorch loss object (<strong>criterion</strong>) has a function named backward() that iteratively propagates the loss backward through the computational graph and notifies each parameter of its gradient.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="toy-example">
+<h1>Toy Example<a class="headerlink" href="#toy-example" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<section id="global-settings">
+<h2>Global Settings<a class="headerlink" href="#global-settings" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LEFT_CENTER</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">RIGHT_CENTER</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pseudo-classification">
+<h2>Pseudo Classification<a class="headerlink" href="#pseudo-classification" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_dim</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">perceptron</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">input_dim</span><span class="p">)</span>
+<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">perceptron</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">input_dim</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">perceptron</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">input_dim</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">bce_loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">perceptron</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;Perceptron&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># each epoch is a complete pass over the training data</span>
+<span class="k">for</span> <span class="n">epoch_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+<span class="c1"># the inner loop is over the batches in the dataset</span>
+    <span class="k">for</span> <span class="n">batch_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_batches</span><span class="p">):</span>
+        <span class="c1"># Step 0: Get the data</span>
+        <span class="n">x_data</span><span class="p">,</span> <span class="n">y_target</span> <span class="o">=</span> <span class="n">get_toy_data</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="c1"># Step 1: Clear the gradients</span>
+        <span class="n">perceptron</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="c1"># Step 2: Compute the forward pass of the model</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">perceptron</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">apply_sigmoid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Step 3: Compute the loss value that we wish to optimize</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">bce_loss</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_target</span><span class="p">)</span>
+        <span class="c1"># Step 4: Propagate the loss signal backward</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="c1"># Step 5: Trigger the optimizer to perform one update</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example">
+<h1>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Vocabulary</strong> coordinates the <strong>integer-to-token mappings</strong> that
+we discussed in “Observation and Target Encoding”. We use a Vocabulary both
+for mapping the text tokens to integers and for mapping the class labels to
+integers. Next, the <strong>Vectorizer</strong> encapsulates the <strong>vocabularies</strong> and is responsible
+for ingesting string data, like a review’s text, and <strong>converting</strong> it to numerical
+<strong>vectors</strong> that will be used in the training routine. We use the final assisting class,
+PyTorch’s <strong>DataLoader</strong>, to group and <strong>collate</strong> the individual vectorized data
+points into <strong>minibatches</strong></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-yelp-review-dataset">
+<h1>The Yelp Review Dataset<a class="headerlink" href="#the-yelp-review-dataset" title="Permalink to this headline">¶</a></h1>
+<p>In 2015, Yelp held a contest in which it asked participants to predict the rating of
+a restaurant given its review. Zhang, Zhao, and Lecun (2015) simplified the
+dataset by converting the 1- and 2-star ratings into a “negative” sentiment class
+and the 3- and 4-star ratings into a “positive” sentiment class, and split it into
+560,000 training samples and 38,000 testing samples.</p>
+<section id="note">
+<h2>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h2>
+<p>we use a “light” version of the
+dataset, which is derived by selecting 10% of the training samples as the full
+dataset. This has two consequences. First, using a small dataset makes the
+training–testing loop fast, so we can experiment quickly.</p>
+<p>From this smaller subset, we split the dataset into three partitions: one for
+training, one for validation, and one for testing.</p>
+</section>
+<section id="creating-training-validation-and-testing-splits">
+<h2>Creating training, validation, and testing splits<a class="headerlink" href="#creating-training-validation-and-testing-splits" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the subset by rating to create new train, val, and test splits</span>
+<span class="n">by_rating</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">review_subset</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">by_rating</span><span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">rating</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="c1"># Create split data</span>
+<span class="n">final_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">item_list</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">by_rating</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">item_libst</span><span class="p">)</span>
+    <span class="n">n_total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">item_list</span><span class="p">)</span>
+    <span class="n">n_train</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">train_proportion</span> <span class="o">*</span> <span class="n">n_total</span><span class="p">)</span>
+    <span class="n">n_val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">val_proportion</span> <span class="o">*</span> <span class="n">n_total</span><span class="p">)</span>
+    <span class="n">n_test</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">test_proportion</span> <span class="o">*</span> <span class="n">n_total</span><span class="p">)</span>
+    <span class="c1"># Give data point a split attribute</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">item_list</span><span class="p">[:</span><span class="n">n_train</span><span class="p">]:</span>
+    <span class="n">item</span><span class="p">[</span><span class="s1">&#39;split&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;train&#39;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">item_list</span><span class="p">[</span><span class="n">n_train</span><span class="p">:</span><span class="n">n_train</span><span class="o">+</span><span class="n">n_val</span><span class="p">]:</span>
+    <span class="n">item</span><span class="p">[</span><span class="s1">&#39;split&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;val&#39;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">item_list</span><span class="p">[</span><span class="n">n_train</span><span class="o">+</span><span class="n">n_val</span><span class="p">:</span><span class="n">n_train</span><span class="o">+</span><span class="n">n_val</span><span class="o">+</span><span class="n">n_test</span><span class="p">]:</span>
+    <span class="n">item</span><span class="p">[</span><span class="s1">&#39;split&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
+    <span class="c1"># Add to final list</span>
+    <span class="n">final_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">item_list</span><span class="p">)</span>
+    <span class="n">final_reviews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">final_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="minimally-cleaning-the-data">
+<h2>Minimally cleaning the data<a class="headerlink" href="#minimally-cleaning-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="c1"># adding whitespace around punctuation symbols: &#39;a!b&#39; =&gt; &#39;a ! b&#39;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([.,!?])&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot; \1 &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="c1"># removing extraneous symbols that aren’t punctuation for all the splits</span>
+    <span class="c1"># E.g. @ will be removed</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^a-zA-Z.,!?]+&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">text</span>
+<span class="n">final_reviews</span><span class="o">.</span><span class="n">review</span> <span class="o">=</span> <span class="n">final_reviews</span><span class="o">.</span><span class="n">review</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">preprocess_text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-pytorch-dataset-class">
+<h2>A PyTorch Dataset class<a class="headerlink" href="#a-pytorch-dataset-class" title="Permalink to this headline">¶</a></h2>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="more">
@@ -1992,7 +2445,7 @@ in the cross-entropy computations in order to be more numerically <strong>stable
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Placeholder</p>
+            <p class="prev-next-title">Reading</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../ds-courses/unsw/9417/9417-intro.html" title="next page">

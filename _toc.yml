@@ -18,6 +18,7 @@ parts:
     - file: ml/p1-crypto-prediction
   - file: ml/classification/classification
   - file: ml/time-series/time-series
+  - file: ml/ml
 
 - caption: Computer Vision
   chapters:

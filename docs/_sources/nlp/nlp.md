@@ -1,5 +1,3 @@
-# Placeholder
-
 # Reading
 
 Feature engineering
@@ -27,3 +25,21 @@ Machine Learning: Principles and Techniques for Data Scientists.
 
 misc:
 - “Diving Deep into Supervised Training”.
+
+# Paper Example
+
+- Yelp Review dataset
+  - Zhang, Zhao, and Lecun (2015) 
+
+# Coding workflow
+
+## Set seed
+
+```py
+seed = 23
+
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+np.random.seed(seed)
+```
+

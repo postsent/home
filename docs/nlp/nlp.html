@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Placeholder &#8212; My Jupter Notebook on data science.</title>
+    <title>Reading &#8212; My Jupter Notebook on data science.</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,7 +52,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Acknowledgement" href="nlp-code.html" />
+    <link rel="next" title="Set seed" href="nlp-code.html" />
     <link rel="prev" title="Mini self-driving - turtlebot" href="../cv/3431_project/project.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -135,6 +135,11 @@
    Time Series
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/ml.html">
+   General
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -161,12 +166,12 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Placeholder
+   Reading
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="nlp-code.html">
-   Acknowledgement
+   Set seed
   </a>
  </li>
 </ul>
@@ -411,13 +416,25 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Placeholder
+   Reading
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading">
-   Reading
+  <a class="reference internal nav-link" href="#paper-example">
+   Paper Example
   </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coding-workflow">
+   Coding workflow
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-seed">
+     Set seed
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -429,7 +446,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Placeholder</h1>
+                <h1>Reading</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -441,13 +458,25 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Placeholder
+   Reading
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading">
-   Reading
+  <a class="reference internal nav-link" href="#paper-example">
+   Paper Example
   </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coding-workflow">
+   Coding workflow
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-seed">
+     Set seed
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -458,10 +487,7 @@
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="placeholder">
-<h1>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this headline">¶</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="reading">
+  <section class="tex2jax_ignore mathjax_ignore" id="reading">
 <h1>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h1>
 <p>Feature engineering</p>
 <ul class="simple">
@@ -493,6 +519,29 @@ Machine Learning: Principles and Techniques for Data Scientists.</p></li>
 <ul class="simple">
 <li><p>“Diving Deep into Supervised Training”.</p></li>
 </ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="paper-example">
+<h1>Paper Example<a class="headerlink" href="#paper-example" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Yelp Review dataset</p>
+<ul>
+<li><p>Zhang, Zhao, and Lecun (2015)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="coding-workflow">
+<h1>Coding workflow<a class="headerlink" href="#coding-workflow" title="Permalink to this headline">¶</a></h1>
+<section id="set-seed">
+<h2>Set seed<a class="headerlink" href="#set-seed" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="mi">23</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -530,7 +579,7 @@ Machine Learning: Principles and Techniques for Data Scientists.</p></li>
     <a class='right-next' id="next-link" href="nlp-code.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Acknowledgement</p>
+        <p class="prev-next-title">Set seed</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -1,5 +1,13 @@
 # Math
 
+# Key Formula
+
+## Entropy
+
+\#todo
+
+# Common Distribution
+
 ![](imgs/dist.png)
 source from: [Types of Continuous Probability Distribution?](https://analyticsbuddhu.wordpress.com/2017/02/26/how-many-types-of-continuous-probability-distribution/)
 

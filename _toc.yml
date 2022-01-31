@@ -28,7 +28,10 @@ parts:
 - caption: NLP
   chapters:
   - file: nlp/nlp
-  - file: nlp/nlp-code
+  - file: nlp/nlp-pytorch-bk/bk
+    sections:
+    - file: nlp/nlp-pytorch-bk/intro
+    - file: nlp/nlp-pytorch-bk/nn
   
 
 - caption: Data Science Courses

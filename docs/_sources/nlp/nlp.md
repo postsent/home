@@ -24,7 +24,7 @@ Modern Approach. Pearson.
 Machine Learning: Principles and Techniques for Data Scientists.
 
 misc:
-- “Diving Deep into Supervised Training”.
+- 
 
 # Paper Example
 

@@ -590,28 +590,28 @@
   </thead>
   <tbody>
     <tr>
-      <th>123634</th>
-      <td>The BCS selections will be officially announce...</td>
+      <th>14795</th>
+      <td>Queens of the stone age \nHere's just a big th...</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>65343</th>
-      <td>The article itself is all for global warming w...</td>
+      <th>95894</th>
+      <td>MySpace?\nIs the MySpace page that is linked a...</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>108386</th>
-      <td>"\nOMG fun. SO I edited a sandbox that I could...</td>
+      <th>58770</th>
+      <td>I would defer to KateFan's judgement on this m...</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>100234</th>
-      <td>I wanted to know how to make h(x) to protect m...</td>
-      <td>0</td>
+      <th>131779</th>
+      <td>== prospider is a fag</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>65679</th>
-      <td>Francis T. edit\nAnswer in talk.</td>
+      <th>141119</th>
+      <td>"\n\nAnd you did that in 8 lines !!! Anyway, "...</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -646,8 +646,9 @@
         <span class="n">list_of_dataframes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subsample</span><span class="p">)</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">list_of_dataframes</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">res</span>
-<span class="n">df_mini</span> <span class="o">=</span> <span class="n">random_balance_subset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">df_mini</span> <span class="o">=</span> <span class="n">random_balance_subset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">df_mini</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">df_mini</span> <span class="o">=</span> <span class="n">df_mini</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;label&#39;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># new method</span>
 <span class="n">df_mini</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="n">df_mini</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df_mini</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -655,8 +656,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    500
-1    500
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    2000
+1    2000
 Name: y, dtype: int64
 </pre></div>
 </div>
@@ -679,7 +680,7 @@ Name: y, dtype: int64
     <tr style="text-align: right;">
       <th></th>
       <th>text</th>
-      <th>y</th>
+      <th>label</th>
     </tr>
   </thead>
   <tbody>
@@ -729,7 +730,7 @@ Name: y, dtype: int64
     <tr style="text-align: right;">
       <th></th>
       <th>text</th>
-      <th>y</th>
+      <th>label</th>
     </tr>
   </thead>
   <tbody>
@@ -764,7 +765,109 @@ Name: y, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mini</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;vad_mini.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mini</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Oppose For the sake of this decision, I don't ...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>REDIRECT Talk:Shabab Al-Bireh Institute</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Rutherford was a supporter of the Haultain gov...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>I didn't do it \n\nI didn't add improperly cit...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>"Hang on a minute, scobey. I'm Irish. I'd just...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3995</th>
+      <td>, 26 April 2015 (UTC)\nnote restored stop fuck...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3996</th>
+      <td>Hello, you turd. \n\nFirśt, I aṃ ģoinģ ţo ţie ...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3997</th>
+      <td>You stupid nigger \n\nYou stupid nigger You st...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3998</th>
+      <td>fuckbook \n\nit sucks hairy balls</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3999</th>
+      <td>"  Also note that the comment about ""tenaciou...</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>4000 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mini</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;train_mini.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>

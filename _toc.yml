@@ -31,14 +31,10 @@ parts:
     sections:
     - file: nlp/nlp-pytorch-bk/intro
     - file: nlp/nlp-pytorch-bk/nn
-<<<<<<< HEAD
   - file: kaggle/jiagsaw-toxic-comment-serverity-rate/README
     sections:
     - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/simple
     - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/helper
-=======
-
->>>>>>> cb20c7757ad6d8d367bc40a6c415d9b8505f804c
 - caption: Computer Vision
   chapters:
   - file: cv/cv

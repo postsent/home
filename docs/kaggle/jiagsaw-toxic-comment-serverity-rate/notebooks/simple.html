@@ -595,6 +595,15 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline 
+<span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
+<span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">23</span>
 <span class="p">}</span>
@@ -629,21 +638,9 @@
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="vocabulary">
-<h1>vocabulary<a class="headerlink" href="#vocabulary" title="Permalink to this headline">¶</a></h1>
-<p>a look up table where every unique word in your data set has a corresponding index (an integer).</p>
-<p><img alt="" src="../../../_images/one-hot.png" /></p>
-<p>There are two ways effectively cut down our vocabulary, we can either only take the top  n  most common words or ignore words that appear less than  m  times. We’ll do the former, only keeping the top 25,000 words.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="unk-pad-token">
-<h1>unk &amp; pad token<a class="headerlink" href="#unk-pad-token" title="Permalink to this headline">¶</a></h1>
-<p>What do we do with words that appear in examples but we have cut from the vocabulary? We replace them with a special <em>unknown</em> or <code class="docutils literal notranslate"><span class="pre">&lt;unk&gt;</span></code> token. For example, if the sentence was “This film is great and I love it” but the word “love” was not in the vocabulary, it would become “This film is great and I <code class="docutils literal notranslate"><span class="pre">&lt;unk&gt;</span></code> it”.</p>
-<p>Why is the vocab size 25002 and not 25000? One of the addition tokens is the <unk> token and the other is a <pad> token.</p>
-<p>When we feed sentences into our model, we feed a batch of them at a time, i.e. more than one at a time, and all sentences in the batch need to be the same size. Thus, to ensure each sentence in the batch is the same size, any shorter than the longest within the batch are padded.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_val</span>
 </pre></div>
 </div>
 </div>
@@ -667,7 +664,109 @@
     <tr style="text-align: right;">
       <th></th>
       <th>text</th>
-      <th>y</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Oppose For the sake of this decision, I don't ...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>REDIRECT Talk:Shabab Al-Bireh Institute</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Rutherford was a supporter of the Haultain gov...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>I didn't do it \n\nI didn't add improperly cit...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>"Hang on a minute, scobey. I'm Irish. I'd just...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>995</th>
+      <td>YOU ARE AN ASSHOLE</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>996</th>
+      <td>Ooooh, you blocked me, don't you feel all toug...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>997</th>
+      <td>When did I mention GameSpot? IGN AND AMAZON WO...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>998</th>
+      <td>Question? \n\nWhot u gonna die of? Cos ur like...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>999</th>
+      <td>"\n\n ""yes, I'm involved paaerduag; get over ...</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1000 rows × 2 columns</p>
+</div></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="vocabulary">
+<h1>vocabulary<a class="headerlink" href="#vocabulary" title="Permalink to this headline">¶</a></h1>
+<p>a look up table where every unique word in your data set has a corresponding index (an integer).</p>
+<p><img alt="" src="../../../_images/one-hot.png" /></p>
+<p>There are two ways effectively cut down our vocabulary, we can either only take the top  n  most common words or ignore words that appear less than  m  times. We’ll do the former, only keeping the top 25,000 words.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="unk-pad-token">
+<h1>unk &amp; pad token<a class="headerlink" href="#unk-pad-token" title="Permalink to this headline">¶</a></h1>
+<p>What do we do with words that appear in examples but we have cut from the vocabulary? We replace them with a special <em>unknown</em> or <code class="docutils literal notranslate"><span class="pre">&lt;unk&gt;</span></code> token. For example, if the sentence was “This film is great and I love it” but the word “love” was not in the vocabulary, it would become “This film is great and I <code class="docutils literal notranslate"><span class="pre">&lt;unk&gt;</span></code> it”.</p>
+<p>Why is the vocab size 25002 and not 25000? One of the addition tokens is the <unk> token and the other is a <pad> token.</p>
+<p>When we feed sentences into our model, we feed a batch of them at a time, i.e. more than one at a time, and all sentences in the batch need to be the same size. Thus, to ensure each sentence in the batch is the same size, any shorter than the longest within the batch are padded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text</th>
+      <th>label</th>
     </tr>
   </thead>
   <tbody>
@@ -702,15 +801,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">update</span><span class="p">)</span>
-<span class="n">n_words</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-<span class="n">n_words</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32285
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unique_token</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">update</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="n">len_train</span> <span class="o">=</span> <span class="n">unique_token</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
+<span class="n">len_val</span> <span class="o">=</span> <span class="n">unique_token</span><span class="p">(</span><span class="n">df_val</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -778,30 +874,35 @@
                     <span class="n">tokenizer_language</span> <span class="o">=</span> <span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">)</span>
     <span class="n">LABEL</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">LabelField</span><span class="p">(</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
 
-    <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;y&#39;</span> <span class="p">:</span> <span class="n">LABEL</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span> <span class="p">:</span> <span class="n">TEXT</span> <span class="p">}</span>
-    <span class="n">train_ds</span> <span class="o">=</span> <span class="n">DataFrameDataset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;label&#39;</span> <span class="p">:</span> <span class="n">LABEL</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span> <span class="p">:</span> <span class="n">TEXT</span> <span class="p">}</span>
+    <span class="n">data_transformed</span> <span class="o">=</span> <span class="n">DataFrameDataset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
 
     <span class="n">MAX_VOCAB_SIZE</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">n_words</span>
-    <span class="n">train_data</span> <span class="o">=</span> <span class="n">train_ds</span>
-    <span class="n">TEXT</span><span class="o">.</span><span class="n">build_vocab</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">max_size</span> <span class="o">=</span> <span class="n">MAX_VOCAB_SIZE</span><span class="p">)</span>
-    <span class="n">LABEL</span><span class="o">.</span><span class="n">build_vocab</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">LABEL</span>
-<span class="n">TEXT_train</span><span class="p">,</span> <span class="n">LABEL_train</span> <span class="o">=</span> <span class="n">build_vocab</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="mi">32285</span><span class="p">)</span>
-<span class="n">TEXT_val</span><span class="p">,</span> <span class="n">LABEL_val</span><span class="o">=</span> <span class="n">build_vocab</span><span class="p">(</span><span class="n">df_val</span><span class="p">,</span> <span class="mi">32285</span><span class="p">)</span>
+    <span class="n">TEXT</span><span class="o">.</span><span class="n">build_vocab</span><span class="p">(</span><span class="n">data_transformed</span><span class="p">,</span> <span class="n">max_size</span> <span class="o">=</span> <span class="n">MAX_VOCAB_SIZE</span><span class="p">)</span>
+    <span class="n">LABEL</span><span class="o">.</span><span class="n">build_vocab</span><span class="p">(</span><span class="n">data_transformed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">TEXT</span><span class="p">,</span> <span class="n">LABEL</span><span class="p">,</span> <span class="n">data_transformed</span>
+
+<span class="n">TEXT_train</span><span class="p">,</span> <span class="n">LABEL_train</span><span class="p">,</span> <span class="n">data_train</span> <span class="o">=</span> <span class="n">build_vocab</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">len_train</span><span class="p">)</span>
+<span class="n">TEXT_val</span><span class="p">,</span> <span class="n">LABEL_val</span><span class="p">,</span> <span class="n">data_val</span> <span class="o">=</span> <span class="n">build_vocab</span><span class="p">(</span><span class="n">df_val</span><span class="p">,</span> <span class="n">len_val</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unique tokens in TEXT vocabulary: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">TEXT</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unique tokens in LABEL vocabulary: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">LABEL</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="c1"># view most common words in the vocab</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">TEXT</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">freqs</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-<span class="c1">#  see the vocabulary directly using either the stoi (string to int) or itos (int to string) method.</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">TEXT</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">itos</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-<span class="c1"># check label</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">LABEL</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">stoi</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_vocab_info</span><span class="p">(</span><span class="n">TEXT</span><span class="p">,</span> <span class="n">LABEL</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unique tokens in TEXT vocabulary: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">TEXT</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unique tokens in LABEL vocabulary: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">LABEL</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># view most common words in the vocab</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">TEXT</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">freqs</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+    <span class="c1">#  see the vocabulary directly using either the stoi (string to int) or itos (int to string) method.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">TEXT</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">itos</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+    <span class="c1"># check label</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">LABEL</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">stoi</span><span class="p">)</span>
+    
+<span class="n">print_vocab_info</span><span class="p">(</span><span class="n">TEXT_train</span><span class="p">,</span> <span class="n">LABEL_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">print_vocab_info</span><span class="p">(</span><span class="n">TEXT_val</span><span class="p">,</span> <span class="n">LABEL_val</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -810,6 +911,12 @@
 Unique tokens in LABEL vocabulary: 2
 [(&#39;.&#39;, 12066), (&#39;,&#39;, 10226), (&#39;!&#39;, 8772), (&#39;the&#39;, 8475), (&#39;&quot;&#39;, 7465), (&#39;I&#39;, 6282), (&#39;to&#39;, 6028), (&#39;you&#39;, 5227), (&#39;and&#39;, 4958), (&#39;a&#39;, 4885), (&#39;of&#39;, 4557), (&#39;is&#39;, 3794), (&#39;that&#39;, 3130), (&#39;\n\n&#39;, 2936), (&#39; &#39;, 2719), (&#39;\n&#39;, 2705), (&#39;in&#39;, 2620), (&#39;it&#39;, 2553), (&#39;?&#39;, 2178), (&#39;for&#39;, 1930)]
 [&#39;&lt;unk&gt;&#39;, &#39;&lt;pad&gt;&#39;, &#39;.&#39;, &#39;,&#39;, &#39;!&#39;, &#39;the&#39;, &#39;&quot;&#39;, &#39;I&#39;, &#39;to&#39;, &#39;you&#39;]
+defaultdict(None, {0: 0, 1: 1})
+
+Unique tokens in TEXT vocabulary: 9556
+Unique tokens in LABEL vocabulary: 2
+[(&#39;.&#39;, 2747), (&#39;,&#39;, 2466), (&#39;the&#39;, 2015), (&#39;&quot;&#39;, 1831), (&#39;to&#39;, 1477), (&#39;I&#39;, 1316), (&#39;you&#39;, 1267), (&#39;a&#39;, 1241), (&#39;and&#39;, 1159), (&#39;of&#39;, 1035), (&#39;!&#39;, 992), (&#39;is&#39;, 907), (&#39;DIE&#39;, 723), (&#39;WANKER&#39;, 714), (&#39;that&#39;, 706), (&#39;\n\n&#39;, 702), (&#39; &#39;, 696), (&#39;\n&#39;, 690), (&#39;in&#39;, 614), (&#39;it&#39;, 605)]
+[&#39;&lt;unk&gt;&#39;, &#39;&lt;pad&gt;&#39;, &#39;.&#39;, &#39;,&#39;, &#39;the&#39;, &#39;&quot;&#39;, &#39;to&#39;, &#39;I&#39;, &#39;you&#39;, &#39;a&#39;]
 defaultdict(None, {0: 0, 1: 1})
 </pre></div>
 </div>
@@ -826,9 +933,10 @@ defaultdict(None, {0: 0, 1: 1})
 <span class="c1">#     batch_size = BATCH_SIZE,</span>
 <span class="c1">#     device = device)</span>
 
-<span class="n">train_iterator</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">BucketIterator</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">train_data</span><span class="p">),</span> 
+<span class="n">train_iterator</span><span class="p">,</span> <span class="n">valid_iterator</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">BucketIterator</span><span class="o">.</span><span class="n">splits</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">data_val</span><span class="p">),</span> 
     <span class="n">batch_size</span> <span class="o">=</span> <span class="n">BATCH_SIZE</span><span class="p">,</span>
+    <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># https://github.com/pytorch/text/issues/474</span>
     <span class="n">device</span> <span class="o">=</span> <span class="n">device</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -871,7 +979,7 @@ defaultdict(None, {0: 0, 1: 1})
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT_DIM</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">TEXT</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT_DIM</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">TEXT_train</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
 <span class="n">EMBEDDING_DIM</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">HIDDEN_DIM</span> <span class="o">=</span> <span class="mi">256</span>
 <span class="n">OUTPUT_DIM</span> <span class="o">=</span> <span class="mi">1</span>
@@ -923,7 +1031,7 @@ defaultdict(None, {0: 0, 1: 1})
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">iterator</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">criterion</span><span class="p">):</span>
-    
+      
     <span class="n">epoch_loss</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">epoch_acc</span> <span class="o">=</span> <span class="mi">0</span>
     
@@ -942,6 +1050,12 @@ defaultdict(None, {0: 0, 1: 1})
         <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
         
         <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        
+        <span class="n">epoch_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">epoch_acc</span> <span class="o">+=</span> <span class="n">acc</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        
+    <span class="k">return</span> <span class="n">epoch_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">iterator</span><span class="p">),</span> <span class="n">epoch_acc</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+        
 <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">iterator</span><span class="p">,</span> <span class="n">criterion</span><span class="p">):</span>
     
     <span class="n">epoch_loss</span> <span class="o">=</span> <span class="mi">0</span>
@@ -982,7 +1096,7 @@ defaultdict(None, {0: 0, 1: 1})
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_EPOCHS</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_EPOCHS</span> <span class="o">=</span> <span class="mi">20</span>
 
 <span class="n">best_valid_loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
 
@@ -992,7 +1106,7 @@ defaultdict(None, {0: 0, 1: 1})
     
     <span class="n">train_loss</span><span class="p">,</span> <span class="n">train_acc</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_iterator</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">criterion</span><span class="p">)</span>
     <span class="n">valid_loss</span><span class="p">,</span> <span class="n">valid_acc</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">valid_iterator</span><span class="p">,</span> <span class="n">criterion</span><span class="p">)</span>
-    
+ 
     <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
     <span class="n">epoch_mins</span><span class="p">,</span> <span class="n">epoch_secs</span> <span class="o">=</span> <span class="n">epoch_time</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)</span>
@@ -1004,6 +1118,70 @@ defaultdict(None, {0: 0, 1: 1})
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s1">02</span><span class="si">}</span><span class="s1"> | Epoch Time: </span><span class="si">{</span><span class="n">epoch_mins</span><span class="si">}</span><span class="s1">m </span><span class="si">{</span><span class="n">epoch_secs</span><span class="si">}</span><span class="s1">s&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Train Loss: </span><span class="si">{</span><span class="n">train_loss</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> | Train Acc: </span><span class="si">{</span><span class="n">train_acc</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> Val. Loss: </span><span class="si">{</span><span class="n">valid_loss</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> |  Val. Acc: </span><span class="si">{</span><span class="n">valid_acc</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 01 | Epoch Time: 0m 9s
+	Train Loss: 0.693 | Train Acc: 49.95%
+	 Val. Loss: 0.693 |  Val. Acc: 51.07%
+Epoch: 02 | Epoch Time: 0m 8s
+	Train Loss: 0.693 | Train Acc: 48.49%
+	 Val. Loss: 0.693 |  Val. Acc: 48.79%
+Epoch: 03 | Epoch Time: 0m 7s
+	Train Loss: 0.693 | Train Acc: 48.04%
+	 Val. Loss: 0.693 |  Val. Acc: 48.79%
+Epoch: 04 | Epoch Time: 0m 8s
+	Train Loss: 0.693 | Train Acc: 49.88%
+	 Val. Loss: 0.694 |  Val. Acc: 48.79%
+Epoch: 05 | Epoch Time: 0m 8s
+	Train Loss: 0.693 | Train Acc: 48.64%
+	 Val. Loss: 0.694 |  Val. Acc: 48.79%
+Epoch: 06 | Epoch Time: 0m 8s
+	Train Loss: 0.693 | Train Acc: 49.11%
+	 Val. Loss: 0.694 |  Val. Acc: 48.79%
+Epoch: 07 | Epoch Time: 0m 8s
+	Train Loss: 0.693 | Train Acc: 49.28%
+	 Val. Loss: 0.694 |  Val. Acc: 48.79%
+Epoch: 08 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 49.53%
+	 Val. Loss: 0.693 |  Val. Acc: 48.79%
+Epoch: 09 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 50.15%
+	 Val. Loss: 0.693 |  Val. Acc: 51.07%
+Epoch: 10 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 49.26%
+	 Val. Loss: 0.693 |  Val. Acc: 51.07%
+Epoch: 11 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 50.07%
+	 Val. Loss: 0.694 |  Val. Acc: 48.79%
+Epoch: 12 | Epoch Time: 0m 2s
+	Train Loss: 0.693 | Train Acc: 49.98%
+	 Val. Loss: 0.693 |  Val. Acc: 51.07%
+Epoch: 13 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 50.55%
+	 Val. Loss: 0.694 |  Val. Acc: 48.79%
+Epoch: 14 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 48.54%
+	 Val. Loss: 0.694 |  Val. Acc: 48.79%
+Epoch: 15 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 50.27%
+	 Val. Loss: 0.693 |  Val. Acc: 51.07%
+Epoch: 16 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 49.40%
+	 Val. Loss: 0.693 |  Val. Acc: 51.07%
+Epoch: 17 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 50.57%
+	 Val. Loss: 0.694 |  Val. Acc: 48.79%
+Epoch: 18 | Epoch Time: 0m 2s
+	Train Loss: 0.693 | Train Acc: 48.78%
+	 Val. Loss: 0.694 |  Val. Acc: 48.79%
+Epoch: 19 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 50.00%
+	 Val. Loss: 0.693 |  Val. Acc: 51.07%
+Epoch: 20 | Epoch Time: 0m 3s
+	Train Loss: 0.693 | Train Acc: 48.98%
+	 Val. Loss: 0.693 |  Val. Acc: 51.07%
 </pre></div>
 </div>
 </div>

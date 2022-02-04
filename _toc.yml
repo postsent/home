@@ -20,10 +20,9 @@ parts:
   - file: ml/time-series/time-series
   - file: ml/ml
 
-- caption: Computer Vision
+- caption: Deep Learning
   chapters:
-  - file: cv/cv
-  - file: cv/3431_project/project.md
+  - file: dl/dl
 
 - caption: NLP
   chapters:
@@ -32,7 +31,11 @@ parts:
     sections:
     - file: nlp/nlp-pytorch-bk/intro
     - file: nlp/nlp-pytorch-bk/nn
-  
+
+- caption: Computer Vision
+  chapters:
+  - file: cv/cv
+  - file: cv/3431_project/project.md
 
 - caption: Data Science Courses
   chapters:
@@ -63,11 +66,11 @@ parts:
 
 - caption: Coding Basic
   chapters:
-  - file: basic/basic-intro
+  - file: python/basic-intro
     sections:
-    - file: basic/numpy
-    - file: basic/pandas
-    - file: basic/leetcode
+    - file: python/numpy
+    - file: python/pandas
+    - file: python/leetcode
 
     
     # sections:

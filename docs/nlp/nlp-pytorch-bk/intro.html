@@ -54,7 +54,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Feed-Forward Networks for Natural Language Processing" href="nn.html" />
+    <link rel="next" title="Feed-Forward Networks for NLP" href="nn.html" />
     <link rel="prev" title="NLP with Pytorch book" href="bk.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -145,18 +145,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Computer Vision
+  Deep Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../cv/cv.html">
-   Placeholder
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../cv/3431_project/project.html">
-   Mini self-driving - turtlebot
+  <a class="reference internal" href="../../dl/dl.html">
+   General
   </a>
  </li>
 </ul>
@@ -188,10 +183,27 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="nn.html">
-     Feed-Forward Networks for Natural Language Processing
+     Feed-Forward Networks for NLP
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../cv/cv.html">
+   Placeholder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../cv/3431_project/project.html">
+   Mini self-driving - turtlebot
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -323,7 +335,7 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../basic/basic-intro.html">
+  <a class="reference internal" href="../../python/basic-intro.html">
    Numpy, Pandas, Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -333,17 +345,17 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basic/numpy.html">
+    <a class="reference internal" href="../../python/numpy.html">
      Numpy
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basic/pandas.html">
+    <a class="reference internal" href="../../python/pandas.html">
      Pandas
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basic/leetcode.html">
+    <a class="reference internal" href="../../python/leetcode.html">
      Leetcode
     </a>
    </li>
@@ -785,8 +797,8 @@
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vectorizer">
-     Vectorizer
+    <a class="reference internal nav-link" href="#vectorizer-one-hot">
+     Vectorizer - One hot
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
@@ -1231,8 +1243,8 @@
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vectorizer">
-     Vectorizer
+    <a class="reference internal nav-link" href="#vectorizer-one-hot">
+     Vectorizer - One hot
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
@@ -1375,6 +1387,7 @@ Perface &gt; using code example: “”</p>
 <blockquote>
 <div><p>“ Natural Language Processing with PyTorch by Delip Rao and Brian McMahan (O’Reilly). Copyright 2019, Delip Rao and Brian McMahan, 978-1-491-97823-8.”</p>
 </div></blockquote>
+<p><a class="reference external" href="https://github.com/joosthub/PyTorchNLPBook/blob/master/chapters/chapter_3/3_5_Classifying_Yelp_Review_Sentiment.ipynb">Yelp related notebook</a></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="one-bot-binary-encoding">
 <h1>One bot / Binary encoding<a class="headerlink" href="#one-bot-binary-encoding" title="Permalink to this headline">¶</a></h1>
@@ -2771,8 +2784,8 @@ for the rest of the machine learning pipeline</p>
 </div>
 </section>
 </section>
-<section id="vectorizer">
-<h2>Vectorizer<a class="headerlink" href="#vectorizer" title="Permalink to this headline">¶</a></h2>
+<section id="vectorizer-one-hot">
+<h2>Vectorizer - One hot<a class="headerlink" href="#vectorizer-one-hot" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>second stage of going from a <strong>text</strong> dataset to a <strong>vectorized</strong> minibatch is to <strong>iterate</strong> through the tokens of an input data point and convert each token to its integer form</p></li>
 <li><p>utilizes Python’s &#64;classmethod decorator for the method <strong>from_dataframe()</strong> to <strong>indicate</strong> an <strong>entry</strong> point to <strong>instantiating</strong> the Vectorizer</p></li>
@@ -2892,6 +2905,10 @@ Vectorizer.</p>
 <p>final stage of the text-to-vectorized-minibatch pipeline is to actually <strong>group</strong> the vectorized data points</p>
 <ul class="simple">
 <li><p>we wrap the DataLoader in a <strong>generate_batches</strong>() function, which is a generator to conveniently <strong>switch</strong> the data between the CPU and the GPU.</p></li>
+</ul>
+<p>Function</p>
+<ul class="simple">
+<li><p><strong>getitem</strong>()</p></li>
 </ul>
 <section id="id2">
 <h3>Class code<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
@@ -3384,7 +3401,7 @@ In the inner loop, <strong>losses</strong> are computed for each <strong>minibat
     <a class='right-next' id="next-link" href="nn.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Feed-Forward Networks for Natural Language Processing</p>
+        <p class="prev-next-title">Feed-Forward Networks for NLP</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

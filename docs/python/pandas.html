@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Placeholder &#8212; My Jupter Notebook on data science.</title>
+    <title>Pandas &#8212; My Jupter Notebook on data science.</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mini self-driving - turtlebot" href="3431_project/project.html" />
-    <link rel="prev" title="Feed-Forward Networks for NLP" href="../nlp/nlp-pytorch-bk/nn.html" />
+    <link rel="next" title="Leetcode" href="leetcode.html" />
+    <link rel="prev" title="Numpy" href="numpy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -192,14 +192,14 @@
   Computer Vision
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cv/cv.html">
    Placeholder
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="3431_project/project.html">
+  <a class="reference internal" href="../cv/3431_project/project.html">
    Mini self-driving - turtlebot
   </a>
  </li>
@@ -331,29 +331,29 @@
   Coding Basic
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../python/basic-intro.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="basic-intro.html">
    Numpy, Pandas, Python
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/numpy.html">
+    <a class="reference internal" href="numpy.html">
      Numpy
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python/pandas.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Pandas
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/leetcode.html">
+    <a class="reference internal" href="leetcode.html">
      Leetcode
     </a>
    </li>
@@ -400,9 +400,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/cv/cv.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python/pandas.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -438,6 +438,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-sample-for-each-class">
+   Random sample for each class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convert-dataframe-to-csv">
+   convert dataframe to csv
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#index-reset">
+   index reset
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -445,19 +468,88 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Placeholder</h1>
+                <h1>Pandas</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-sample-for-each-class">
+   Random sample for each class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convert-dataframe-to-csv">
+   convert dataframe to csv
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#index-reset">
+   index reset
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="placeholder">
-<h1>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas">
+<h1>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h1>
+<section id="random-sample-for-each-class">
+<h2>Random sample for each class<a class="headerlink" href="#random-sample-for-each-class" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_balance_subset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;select random n sample for each class</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (df): with y label as e.g. [0, 1]</span>
+<span class="sd">        n (int): num</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">list_of_dataframes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ys</span><span class="p">:</span>
+        <span class="n">subsample</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">])</span>
+        <span class="n">list_of_dataframes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subsample</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">list_of_dataframes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+<span class="n">df_mini</span> <span class="o">=</span> <span class="n">random_balance_subset</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df_mini</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-dataframe-to-csv">
+<h2>convert dataframe to csv<a class="headerlink" href="#convert-dataframe-to-csv" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;train_mini.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="index-reset">
+<h2>index reset<a class="headerlink" href="#index-reset" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -473,7 +565,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./cv"
+            path: "./python"
         },
         predefinedOutput: true
     }
@@ -485,17 +577,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../nlp/nlp-pytorch-bk/nn.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="numpy.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Feed-Forward Networks for NLP</p>
+            <p class="prev-next-title">Numpy</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="3431_project/project.html" title="next page">
+    <a class='right-next' id="next-link" href="leetcode.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mini self-driving - turtlebot</p>
+        <p class="prev-next-title">Leetcode</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

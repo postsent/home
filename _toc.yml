@@ -33,8 +33,10 @@ parts:
     - file: nlp/nlp-pytorch-bk/nn
   - file: kaggle/jiagsaw-toxic-comment-serverity-rate/README
     sections:
-    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/simple
+    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn
+    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm
     - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/helper
+    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/make_dataset
 - caption: Computer Vision
   chapters:
   - file: cv/cv

@@ -27,16 +27,18 @@ parts:
 - caption: NLP
   chapters:
   - file: nlp/nlp
-  - file: nlp/nlp-pytorch-bk/bk
+  - file: misc/tmp
     sections:
-    - file: nlp/nlp-pytorch-bk/intro
-    - file: nlp/nlp-pytorch-bk/nn
-  - file: kaggle/jiagsaw-toxic-comment-serverity-rate/README
+    - file: nlp/pytorch-nlp-bk/intro
+    - file: nlp/pytorch-nlp-bk/nn
+    - file: nlp/pytorch-nlp-bk/prac-ch3
+  - file: misc/tmp2
     sections:
+    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/README
     - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn
     - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm
     - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/helper
-    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/make_dataset
+  
 - caption: Computer Vision
   chapters:
   - file: cv/cv
@@ -64,10 +66,16 @@ parts:
     sections:
     - file: ds-courses/unsw/9444/9444-project
     - file: ds-courses/unsw/9444/assignment1/assignment1.md
-
+  - file: ds-courses/unsw/3900/3900-intro
+    sections:
+    - file: ds-courses/unsw/3900/project/3900-project
+    
 - caption: Misc
   chapters:
   - file: misc/math
+  - file: misc/misc
+  - file: misc/term
+  - file: misc/todo
 
 - caption: Coding Basic
   chapters:

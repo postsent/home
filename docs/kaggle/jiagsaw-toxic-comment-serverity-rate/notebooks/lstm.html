@@ -43,12 +43,11 @@
     <script src="../../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -161,12 +160,12 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../../nlp/nlp.html">
-   Reading
+   Book Reading
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../nlp/nlp-pytorch-bk/bk.html">
-   NLP with Pytorch book
+  <a class="reference internal" href="../../../misc/tmp.html">
+   NLP Book
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -175,20 +174,25 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../../nlp/nlp-pytorch-bk/intro.html">
+    <a class="reference internal" href="../../../nlp/pytorch-nlp-bk/intro.html">
      Intro
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../../nlp/nlp-pytorch-bk/nn.html">
+    <a class="reference internal" href="../../../nlp/pytorch-nlp-bk/nn.html">
      Feed-Forward Networks for NLP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../nlp/pytorch-nlp-bk/prac-ch3.html">
+     Chapter 3
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../README.html">
-   Folder Structure
+  <a class="reference internal" href="../../../misc/tmp2.html">
+   Jigsaw
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -196,6 +200,11 @@
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../README.html">
+     Sentiment analysis
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="simple-rnn.html">
      Simple
@@ -340,6 +349,25 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../ds-courses/unsw/3900/3900-intro.html">
+   Capstone (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../ds-courses/unsw/3900/project/3900-project.html">
+     <strong>
+      COMP3900 – Computer Science Project: Chatbot
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -350,6 +378,21 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../../misc/math.html">
    Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/misc.html">
+   Misc
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/term.html">
+   Terminology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/todo.html">
+   TODO
   </a>
  </li>
 </ul>
@@ -363,8 +406,8 @@
   <a class="reference internal" href="../../../python/basic-intro.html">
    Numpy, Pandas, Python
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -585,7 +628,6 @@
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-
 <span class="kn">from</span> <span class="nn">make_dataset</span> <span class="kn">import</span> \
     <span class="n">set_seed</span><span class="p">,</span> <span class="n">declare_var</span><span class="p">,</span> <span class="n">DataFrameDataset</span>
 <span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">LSTM</span>
@@ -801,6 +843,42 @@ Epoch: 04 | Epoch Time: 0m 14s
 Epoch: 05 | Epoch Time: 0m 14s
 	Train Loss: 0.308 | Train Acc: 87.23%
 	 Val. Loss: 0.208 |  Val. Acc: 92.01%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spacy</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">predict_sentiment</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">sentence</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">tokenized</span> <span class="o">=</span> <span class="p">[</span><span class="n">tok</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">(</span><span class="n">sentence</span><span class="p">)]</span>
+    <span class="n">indexed</span> <span class="o">=</span> <span class="p">[</span><span class="n">TEXT</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">stoi</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tokenized</span><span class="p">]</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">indexed</span><span class="p">)]</span>
+    <span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">indexed</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">tensor</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">length_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">length_tensor</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">prediction</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predict_sentiment</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;This film is terrible&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">predict_sentiment</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;This film is terrible&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;model&#39; is not defined
 </pre></div>
 </div>
 </div>

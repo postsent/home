@@ -42,6 +42,12 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -151,12 +157,12 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="nlp/nlp.html">
-   Reading
+   Book Reading
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="nlp/nlp-pytorch-bk/bk.html">
-   NLP with Pytorch book
+  <a class="reference internal" href="misc/tmp.html">
+   NLP Book
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -165,20 +171,25 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="nlp/nlp-pytorch-bk/intro.html">
+    <a class="reference internal" href="nlp/pytorch-nlp-bk/intro.html">
      Intro
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nlp/nlp-pytorch-bk/nn.html">
+    <a class="reference internal" href="nlp/pytorch-nlp-bk/nn.html">
      Feed-Forward Networks for NLP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlp/pytorch-nlp-bk/prac-ch3.html">
+     Chapter 3
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="kaggle/jiagsaw-toxic-comment-serverity-rate/README.html">
-   Folder Structure
+  <a class="reference internal" href="misc/tmp2.html">
+   Jigsaw
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -186,6 +197,11 @@
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="kaggle/jiagsaw-toxic-comment-serverity-rate/README.html">
+     Sentiment analysis
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">
      Simple
@@ -330,6 +346,25 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ds-courses/unsw/3900/3900-intro.html">
+   Capstone (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ds-courses/unsw/3900/project/3900-project.html">
+     <strong>
+      COMP3900 – Computer Science Project: Chatbot
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -340,6 +375,21 @@
  <li class="toctree-l1">
   <a class="reference internal" href="misc/math.html">
    Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="misc/misc.html">
+   Misc
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="misc/term.html">
+   Terminology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="misc/todo.html">
+   TODO
   </a>
  </li>
 </ul>
@@ -353,8 +403,8 @@
   <a class="reference internal" href="python/basic-intro.html">
    Numpy, Pandas, Python
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>

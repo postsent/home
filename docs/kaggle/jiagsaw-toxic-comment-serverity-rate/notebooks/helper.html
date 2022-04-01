@@ -43,12 +43,11 @@
     <script src="../../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -161,12 +160,12 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../../nlp/nlp.html">
-   Reading
+   Book Reading
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../nlp/nlp-pytorch-bk/bk.html">
-   NLP with Pytorch book
+  <a class="reference internal" href="../../../misc/tmp.html">
+   NLP Book
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -175,20 +174,25 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../../nlp/nlp-pytorch-bk/intro.html">
+    <a class="reference internal" href="../../../nlp/pytorch-nlp-bk/intro.html">
      Intro
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../../nlp/nlp-pytorch-bk/nn.html">
+    <a class="reference internal" href="../../../nlp/pytorch-nlp-bk/nn.html">
      Feed-Forward Networks for NLP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../nlp/pytorch-nlp-bk/prac-ch3.html">
+     Chapter 3
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../README.html">
-   Folder Structure
+  <a class="reference internal" href="../../../misc/tmp2.html">
+   Jigsaw
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -196,6 +200,11 @@
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../README.html">
+     Sentiment analysis
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="simple-rnn.html">
      Simple
@@ -340,6 +349,25 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../ds-courses/unsw/3900/3900-intro.html">
+   Capstone (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../ds-courses/unsw/3900/project/3900-project.html">
+     <strong>
+      COMP3900 – Computer Science Project: Chatbot
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -350,6 +378,21 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../../misc/math.html">
    Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/misc.html">
+   Misc
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/term.html">
+   Terminology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/todo.html">
+   TODO
   </a>
  </li>
 </ul>
@@ -363,8 +406,8 @@
   <a class="reference internal" href="../../../python/basic-intro.html">
    Numpy, Pandas, Python
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -487,14 +530,26 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#make-mini-trainnig-data">
-   Make mini trainnig data
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Common
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-mini-trainnig-data">
+     Make mini trainnig data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-data">
+     READ data
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-data">
-   READ data
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submit">
+   submit
   </a>
  </li>
 </ul>
@@ -517,14 +572,26 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#make-mini-trainnig-data">
-   Make mini trainnig data
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Common
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-mini-trainnig-data">
+     Make mini trainnig data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-data">
+     READ data
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-data">
-   READ data
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submit">
+   submit
   </a>
  </li>
 </ul>
@@ -914,6 +981,19 @@ Name: y, dtype: int64
 </div>
 </div>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="submit">
+<h1>submit<a class="headerlink" href="#submit" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_submission.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">=</span> 
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

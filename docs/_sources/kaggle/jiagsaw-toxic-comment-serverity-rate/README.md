@@ -1,3 +1,5 @@
+# Sentiment analysis
+
 # Folder Structure
 
 Based on [here](https://neptune.ai/blog/how-to-structure-and-manage-nlp-projects-templates)

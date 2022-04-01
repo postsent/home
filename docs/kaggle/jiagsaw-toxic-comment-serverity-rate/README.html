@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Folder Structure &#8212; My Jupter Notebook on data science.</title>
+    <title>Sentiment analysis &#8212; My Jupter Notebook on data science.</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -43,17 +43,16 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Simple" href="notebooks/simple-rnn.html" />
-    <link rel="prev" title="Feed-Forward Networks for NLP" href="../../nlp/nlp-pytorch-bk/nn.html" />
+    <link rel="prev" title="Jigsaw" href="../../misc/tmp2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -161,12 +160,12 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../nlp/nlp.html">
-   Reading
+   Book Reading
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../nlp/nlp-pytorch-bk/bk.html">
-   NLP with Pytorch book
+  <a class="reference internal" href="../../misc/tmp.html">
+   NLP Book
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -175,27 +174,37 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../nlp/nlp-pytorch-bk/intro.html">
+    <a class="reference internal" href="../../nlp/pytorch-nlp-bk/intro.html">
      Intro
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../nlp/nlp-pytorch-bk/nn.html">
+    <a class="reference internal" href="../../nlp/pytorch-nlp-bk/nn.html">
      Feed-Forward Networks for NLP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../nlp/pytorch-nlp-bk/prac-ch3.html">
+     Chapter 3
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   Folder Structure
+  <a class="reference internal" href="../../misc/tmp2.html">
+   Jigsaw
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Sentiment analysis
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="notebooks/simple-rnn.html">
      Simple
@@ -340,6 +349,25 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../ds-courses/unsw/3900/3900-intro.html">
+   Capstone (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../ds-courses/unsw/3900/project/3900-project.html">
+     <strong>
+      COMP3900 – Computer Science Project: Chatbot
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -350,6 +378,21 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../misc/math.html">
    Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../misc/misc.html">
+   Misc
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../misc/term.html">
+   Terminology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../misc/todo.html">
+   TODO
   </a>
  </li>
 </ul>
@@ -363,8 +406,8 @@
   <a class="reference internal" href="../../python/basic-intro.html">
    Numpy, Pandas, Python
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -465,6 +508,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Sentiment analysis
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#folder-structure">
+   Folder Structure
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -472,18 +533,39 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Folder Structure</h1>
+                <h1>Sentiment analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Sentiment analysis
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#folder-structure">
+   Folder Structure
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="folder-structure">
+  <section class="tex2jax_ignore mathjax_ignore" id="sentiment-analysis">
+<h1>Sentiment analysis<a class="headerlink" href="#sentiment-analysis" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="folder-structure">
 <h1>Folder Structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">¶</a></h1>
 <p>Based on <a class="reference external" href="https://neptune.ai/blog/how-to-structure-and-manage-nlp-projects-templates">here</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── LICENSE
@@ -532,8 +614,6 @@
 └── tox.ini            &lt;- tox file with settings for running tox; see tox.testrun.org
 </pre></div>
 </div>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -561,11 +641,11 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../../nlp/nlp-pytorch-bk/nn.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../../misc/tmp2.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Feed-Forward Networks for NLP</p>
+            <p class="prev-next-title">Jigsaw</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="notebooks/simple-rnn.html" title="next page">

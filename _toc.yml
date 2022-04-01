@@ -15,7 +15,7 @@ parts:
   chapters:
   - file: ml/regression/regression
     sections:
-    - file: ml/p1-crypto-prediction
+    - file: ml/regression/p1-crypto-prediction
   - file: ml/classification/classification
   - file: ml/time-series/time-series
   - file: ml/ml
@@ -27,17 +27,6 @@ parts:
 - caption: NLP
   chapters:
   - file: nlp/nlp
-  - file: misc/tmp
-    sections:
-    - file: nlp/pytorch-nlp-bk/intro
-    - file: nlp/pytorch-nlp-bk/nn
-    - file: nlp/pytorch-nlp-bk/prac-ch3
-  - file: misc/tmp2
-    sections:
-    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/README
-    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn
-    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm
-    - file: kaggle/jiagsaw-toxic-comment-serverity-rate/notebooks/helper
   
 - caption: Computer Vision
   chapters:
@@ -85,7 +74,20 @@ parts:
     - file: python/pandas
     - file: python/leetcode
 
-    
+- caption: Unfinished
+  chapters:
+  - file:  unfinished/pytorch-nlp-bk/nlp-book
+    sections:
+    - file:  unfinished/pytorch-nlp-bk/intro
+    - file:  unfinished/pytorch-nlp-bk/nn
+    - file:  unfinished/pytorch-nlp-bk/prac-ch3
+  - file: unfinished/jigsaw-intro
+    sections:
+    - file: unfinished/jiagsaw-toxic-comment-serverity-rate/README
+    - file: unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn
+    - file: unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm
+    - file: unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper
+  - file: unfinished/nlp-reading
     # sections:
 #     - file: start/overview
 #     - file: start/create

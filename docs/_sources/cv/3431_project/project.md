@@ -1,4 +1,4 @@
-﻿# ROS: Cute mini self-driving (UNSW)
+﻿# ROS: mini self-driving (UNSW)
 
 with turtlebot   
 

@@ -1,5 +1,6 @@
-﻿# **COMP3900 – Computer Science Project: Chatbot**
+﻿# **Chatbot**
 
+COMP3900 – Computer Science Project
 
 **Project Report**
 

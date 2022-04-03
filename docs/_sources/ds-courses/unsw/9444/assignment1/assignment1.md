@@ -1,4 +1,4 @@
-﻿# Characters, Spirals and Hidden Unit Dynamics (Assignment 1)
+﻿# Characters, Spirals and Hidden Unit Dynamics 
 
 [Question](https://www.cse.unsw.edu.au/~cs9444/21T2/hw1/)
 

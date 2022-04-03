@@ -78,6 +78,9 @@ parts:
     - file: python/numpy
     - file: python/pandas
     - file: python/leetcode
+- caption: Side Projects
+  chapters:
+  - file: side-project/web-scrapter
 
 - caption: Unfinished
   chapters:

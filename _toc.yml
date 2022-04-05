@@ -7,7 +7,7 @@ parts:
 
 - caption: About   
   chapters:
-  - url: https://postsent.github.io/
+  - url: https://postsent.github.io/categories/
     title: Back to Blog
   - file: reference
 

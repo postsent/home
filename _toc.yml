@@ -41,8 +41,20 @@ parts:
   - file: ds-courses/unsw/3431/3431-intro
     sections:
     - file: ds-courses/unsw/3431/project/project.md
-  
-  
+
+  - file: ds-courses/usyd/5046/5046-intro
+    sections:
+    - file: ds-courses/usyd/5046/a2/a2.md
+    - file: ds-courses/usyd/5046/a2
+    - file: ds-courses/usyd/5046/a1
+
+  - file: ds-courses/usyd/5349/5349-intro
+    sections:
+    - file: ds-courses/usyd/5349/a2/a2.md
+    - file: ds-courses/usyd/5349/a2
+    - file: ds-courses/usyd/5349/a1
+    - file: ds-courses/usyd/5349/a1-report
+
 - caption: Machine Learning
   chapters:
   - file: ml/regression/regression

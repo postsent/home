@@ -1,0 +1,1573 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Preprocessing and Performance Tuning with Spark &#8212; My Jupter Notebook on data science.</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Text Analysis with Spark RDD API" href="a1.html" />
+    <link rel="prev" title="Data Preprocessing and Performance Tuning with Spark" href="a2/a2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupter Notebook on data science.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://postsent.github.io/categories/">
+   Back to Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reference.html">
+   Acknowledgement
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Science Related Courses
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../unsw/9417/9417-intro.html">
+   Machine Learning (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9417/9417-basic.html">
+     Basic with examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9417/9417-project.html">
+     Project - Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9417/9417-report/report.html">
+     Project - report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../unsw/9418/9418-intro.html">
+   PGM (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9418/9418-EDA.html">
+     EDA on Times Series Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9418/9418-project.html">
+     Time series project code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9418/9418-project/report.html">
+     Time series report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../unsw/9517/9517-intro.html">
+   Computer Vision (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9517/9517-a1-code.html">
+     Basic image processing, thresholding, count cells
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9517/9517-a1/report.html">
+     Report on Basic image processing, etc
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9517/9517-lane_detection.html">
+     Lane detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9517/9517-vehicle-detection.html">
+     Vehicle detection (by teammate)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../unsw/9444/9444-intro.html">
+   Deep Learning (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9444/9444-project.html">
+     Image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/9444/assignment1/assignment1.html">
+     Characters, Spirals and Hidden Unit Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../unsw/3900/3900-intro.html">
+   Capstone (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/3900/project/3900-project.html">
+     <strong>
+      Chatbot
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../unsw/3431/3431-intro.html">
+   ROS &amp; CV (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../unsw/3431/project/project.html">
+     Mini self-driving
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5046/5046-intro.html">
+   NLP (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5046/a2/a2.html">
+     Report - In-game Toxicity Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5046/a2.html">
+     In Game Toxicity seq2seq classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5046/a1.html">
+     Binary text classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="5349-intro.html">
+   Cloud Computing (USYD)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="a2/a2.html">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="a1.html">
+     Text Analysis with Spark RDD API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="a1-report.html">
+     Report – Text Analysis with Spark RDD API
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../ml/regression/regression.html">
+   Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../ml/regression/p1-crypto-prediction.html">
+     Crypto Prediction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../ml/classification/classification.html">
+   Classification (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../ml/time-series/time-series.html">
+   Time Series (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../ml/ml.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../dl/dl.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NLP
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../nlp/nlp.html">
+   placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../cv/cv.html">
+   Placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Misc
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/math.html">
+   Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/misc.html">
+   Misc
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/term.html">
+   Terminology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../misc/todo.html">
+   TODO
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Coding Basic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../python/basic-intro.html">
+   Numpy, Pandas, Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../python/numpy.html">
+     Numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../python/pandas.html">
+     Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../python/leetcode.html">
+     Leetcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Side Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../side-project/web-scrapter.html">
+   Course Enrolment Scrapter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Unfinished
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nlp-book.html">
+   NLP Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nn.html">
+     Feed-Forward Networks for NLP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/prac-ch3.html">
+     Chapter 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../unfinished/jigsaw-intro.html">
+   Jigsaw
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/README.html">
+     Folder Structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">
+     Simple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm.html">
+     Upgrade RNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper.html">
+     Common
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../unfinished/nlp-reading.html">
+   Book Reading
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/ds-courses/usyd/5349/a2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/postsent/nb"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/postsent/nb/main?urlpath=tree/docs/ds-courses/usyd/5349/a2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Preprocessing and Performance Tuning with Spark</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="data-preprocessing-and-performance-tuning-with-spark">
+<h1>Data Preprocessing and Performance Tuning with Spark<a class="headerlink" href="#data-preprocessing-and-performance-tuning-with-spark" title="Permalink to this headline">¶</a></h1>
+<p>A2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install pyspark
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting pyspark
+  Downloading pyspark-3.3.0.tar.gz (281.3 MB)
+     |████████████████████████████████| 281.3 MB 48 kB/s 
+?25hCollecting py4j==0.10.9.5
+  Downloading py4j-0.10.9.5-py2.py3-none-any.whl (199 kB)
+     |████████████████████████████████| 199 kB 65.4 MB/s 
+?25hBuilding wheels for collected packages: pyspark
+  Building wheel for pyspark (setup.py) ... ?25l?25hdone
+  Created wheel for pyspark: filename=pyspark-3.3.0-py2.py3-none-any.whl size=281764026 sha256=8cdf71980cfd86c40db93f3f91dba659e7a5be15e959cdc25008ab2b6fee7737
+  Stored in directory: /root/.cache/pip/wheels/7a/8e/1b/f73a52650d2e5f337708d9f6a1750d451a7349a867f928b885
+Successfully built pyspark
+Installing collected packages: py4j, pyspark
+Successfully installed py4j-0.10.9.5 pyspark-3.3.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># chmod 700 submit_client.sh
+# ./submit_client.sh test.json output.json
+spark-submit \
+    --master yarn \
+    --deploy-mode client \
+    --executor-cores 4 \
+    --conf spark.checkpoint.compress=True \
+    --conf spark.rdd.compress=True \
+    --driver-memory 2g \
+    --conf spark.shuffle.file.buffer=96k \
+    preprocess.py \
+    --input $1 \
+    --output $
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StructType</span><span class="p">,</span> <span class="n">StructField</span><span class="p">,</span> <span class="n">StringType</span><span class="p">,</span><span class="n">IntegerType</span><span class="p">,</span> <span class="n">ArrayType</span><span class="p">,</span> <span class="n">BooleanType</span>
+<span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">explode</span><span class="p">,</span> <span class="n">udf</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">monotonically_increasing_id</span><span class="p">,</span> <span class="n">countDistinct</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">create_map</span><span class="p">,</span> <span class="n">collect_list</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="sd">&quot;&quot;&quot; Documentation for the below code</span>
+
+<span class="sd">The code follows the Table of content in the report.</span>
+
+<span class="sd">1. Get segments</span>
+<span class="sd">2. Get samples based on segments and answers</span>
+<span class="sd">3. Assign various ids column</span>
+<span class="sd">4. Count for impossible negative samples needed</span>
+<span class="sd">5. Count for possible negative samples needed</span>
+<span class="sd">6. Select impossible based on count and positive sample for uniqueness</span>
+<span class="sd">7. Select possible based on count and positive and impossible sample for uniqueness</span>
+<span class="sd">8. Union all selected sampels</span>
+<span class="sd">9. Output to Json given the filename </span>
+
+<span class="sd">Variable name:</span>
+<span class="sd">    _imp - impossible sample</span>
+<span class="sd">    _possi / _pneg - possible negative sample</span>
+<span class="sd">    _pos - positive sample</span>
+
+<span class="sd">Dataframe column name added:</span>
+<span class="sd">    sampleID - unique ID for each sample</span>
+<span class="sd">    cID - ID for each contract</span>
+<span class="sd">    seqID - ID for each split seqence within a context (source of ans)</span>
+<span class="sd">    qID - ID for each question 0 ~ 40 (41 in total)</span>
+<span class="sd">    contract_title - as name</span>
+<span class="sd">    negativity - 0 for positive, 1 for possible negative, 2 for impossible</span>
+
+<span class="sd">References:</span>
+<span class="sd">    [1] https://stackoverflow.com/questions/46584460/how-can-i-add-continuous-ident-column-to-a-dataframe-in-pyspark-not-as-monoto</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">plen</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># each value represents a type of sample, three in total</span>
+
+<span class="n">negativity_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;positive&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;possible_negative&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;impossible&#39;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="c1"># test_data = &#39;CUADv1.json&#39;</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="s1">&#39;test.json&#39;</span> 
+<span class="n">output_path</span> <span class="o">=</span> <span class="s2">&quot;output.json&quot;</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;COMP5349 A2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">setLogLevel</span><span class="p">(</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+
+<span class="c1"># # use the small dataset as default input</span>
+<span class="c1"># parser = argparse.ArgumentParser()</span>
+<span class="c1"># parser.add_argument(&quot;--input&quot;, help=&quot;the input path&quot;, type=str, default=&#39;test.json&#39;) </span>
+<span class="c1"># parser.add_argument(&quot;--output&quot;, help=&quot;the output path&quot;, type=str, default=&#39;output.json&#39;)</span>
+<span class="c1"># try:</span>
+<span class="c1">#     args = parser.parse_args()</span>
+<span class="c1"># except Exception as e:</span>
+<span class="c1">#     print(e)</span>
+<span class="c1">#     raise(&#39;Insufficient argument provided, please provide the input file name and output filename&#39;)</span>
+
+<span class="c1"># if args.input:</span>
+<span class="c1">#     test_data = args.input</span>
+
+<span class="c1"># if args.output:</span>
+<span class="c1">#     output_path = args.output</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;💎 Read in filename is: </span><span class="si">{</span><span class="n">test_data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;💎 Output filename is: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="n">test_data_df</span><span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">select</span><span class="p">((</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)))</span>
+<span class="n">test_paragraph_df</span> <span class="o">=</span> <span class="n">test_data_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;data.paragraphs&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;paragraph&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 The initial input dataframe 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">test_paragraph_df</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">test_paragraph_df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">########################################################## Convert to sequences ############################################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="n">seq_schema</span> <span class="o">=</span> <span class="n">ArrayType</span><span class="p">(</span>
+    <span class="n">StructType</span><span class="p">([</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;contract_title&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;seqID&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">()),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;seq&#39;</span><span class="p">,</span> <span class="n">StructType</span><span class="p">([</span>
+                <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;sent&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()),</span>
+                <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">()),</span>
+                <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>      
+            <span class="p">])</span>          
+        <span class="p">),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;qas&#39;</span><span class="p">,</span> <span class="n">ArrayType</span><span class="p">(</span>
+                <span class="n">StructType</span><span class="p">([</span>
+                    <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;answers&#39;</span><span class="p">,</span> <span class="n">ArrayType</span><span class="p">(</span>
+                        <span class="n">StructType</span><span class="p">([</span>
+                            <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;answer_start&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()),</span>
+                            <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">())</span>                              
+                        <span class="p">])</span>
+                    <span class="p">)</span>           
+                    <span class="p">),</span>
+                    <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">()),</span>
+                    <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;is_impossible&#39;</span><span class="p">,</span> <span class="n">BooleanType</span><span class="p">()),</span>
+                    <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;question&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">())</span>      
+                <span class="p">])</span>    
+            <span class="p">)</span> 
+        <span class="p">)</span>
+    <span class="p">])</span>   
+<span class="p">)</span>     
+<span class="k">def</span> <span class="nf">get_default_seq</span><span class="p">(</span><span class="n">title_</span><span class="p">,</span> <span class="n">seqID_</span><span class="p">,</span> <span class="n">seq_</span><span class="p">,</span> <span class="n">qas_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    {</span>
+<span class="sd">        &#39;seq&#39;: (),</span>
+<span class="sd">        &#39;qas&#39;: [{</span>
+<span class="sd">            &#39;answers&#39;: [{</span>
+<span class="sd">                &#39;answer_start&#39;:0,</span>
+<span class="sd">                &#39;text&#39;: &#39;&#39;</span>
+<span class="sd">            }],</span>
+<span class="sd">            &#39;id&#39;: 0,</span>
+<span class="sd">            &#39;is_impossible&#39;:True,</span>
+<span class="sd">            &#39;question&#39;: &#39;&#39;</span>
+<span class="sd">        }]</span>
+<span class="sd">    }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">title_</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;get_default_seq: type(title_)&#39;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">seqID_</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;get_default_seq: type(seqID_)&#39;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">seq_</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">,</span> <span class="s1">&#39;get_default_seq: type(seq_)&#39;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">qas_list</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">,</span> <span class="s1">&#39;get_default_seq: type(qas_list) &#39;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;contract_title&#39;</span><span class="p">:</span> <span class="n">title_</span><span class="p">,</span> <span class="c1"># contract title</span>
+        <span class="s1">&#39;seqID&#39;</span><span class="p">:</span> <span class="n">seqID_</span><span class="p">,</span> <span class="c1"># sequence id for each contract</span>
+        <span class="s1">&#39;seq&#39;</span><span class="p">:</span> <span class="n">seq_</span><span class="p">,</span> <span class="c1"># actual seq</span>
+        <span class="s1">&#39;qas&#39;</span><span class="p">:</span> <span class="n">qas_list</span> <span class="c1"># list of qas</span>
+    <span class="p">}</span>
+
+<span class="c1"># convert to widnow seq with each assigned with a qas list</span>
+<span class="nd">@udf</span><span class="p">(</span><span class="n">returnType</span><span class="o">=</span><span class="n">seq_schema</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_seq_list</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">win_size</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span><span class="n">stride</span><span class="o">=</span><span class="mi">2048</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    | contract title | seq | qas |</span>
+
+<span class="sd">    each row is for a contract, contains a list of sliding window</span>
+<span class="sd">    only the text in the context fields are to be segmented</span>
+<span class="sd">    format: (window, start_idx, end_idx)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;context&#39;</span><span class="p">]</span>
+    <span class="n">contract_title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;qas&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">contract_title</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">)</span> <span class="c1"># last occurrence of a substring in a string</span>
+    <span class="n">contract_title</span> <span class="o">=</span> <span class="n">contract_title</span><span class="p">[:</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="n">sliding_window</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">seqID</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="n">stride</span><span class="p">):</span>
+        <span class="n">seq</span> <span class="o">=</span> <span class="p">(</span><span class="n">context</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">win_size</span><span class="p">],</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span><span class="o">+</span><span class="n">win_size</span><span class="p">)</span>
+        <span class="n">seq_dict</span> <span class="o">=</span> <span class="n">get_default_seq</span><span class="p">(</span><span class="n">contract_title</span><span class="p">,</span> <span class="n">seqID</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;qas&#39;</span><span class="p">])</span>
+
+        <span class="n">sliding_window</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_dict</span><span class="p">)</span>
+        <span class="n">seqID</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">sliding_window</span>
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">################################################################# END ######################################################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="c1"># |seq| - convert full context to different sequences of at most 4096 length</span>
+<span class="n">seq_df_raw</span> <span class="o">=</span> <span class="n">test_paragraph_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">explode</span><span class="p">(</span><span class="n">get_seq_list</span><span class="p">(</span><span class="s1">&#39;paragraph&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;seq&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 Segments for all contract dataframe (Context to sequences) 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">seq_df_raw</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">seq_df_raw</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># |cID|contract_title| - [1] create id column for each unique contract for later add contract id to samples, since compare integer is much faster than string contract title</span>
+<span class="n">contract_df</span> <span class="o">=</span> <span class="n">seq_df_raw</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;seq.contract_title&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+<span class="n">contract_df</span> <span class="o">=</span> <span class="n">contract_df</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">zipWithIndex</span><span class="p">()</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">toDF</span><span class="p">([</span><span class="s1">&#39;cID&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">contract_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">contract_df</span> <span class="o">=</span> <span class="n">contract_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;contract_title&#39;</span><span class="p">)</span>
+
+
+
+<span class="c1"># |contract_title|seqID|seq| qas| - expand dict to multi cols - extract windows</span>
+<span class="n">seq_df</span> <span class="o">=</span> <span class="n">seq_df_raw</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;seq.contract_title&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;contract_title&quot;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;seq.seqID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;seqID&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;seq.seq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;seq&quot;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;seq.qas&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;qas&quot;</span><span class="p">))</span>
+
+
+
+
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">############################################### get different samples - assign sequences with each questions ###############################</span>
+<span class="c1">############################################################################################################################################</span>
+<span class="n">sample_schema</span> <span class="o">=</span> <span class="n">ArrayType</span><span class="p">(</span>
+    <span class="n">StructType</span><span class="p">([</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;seqID&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">()),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;qID&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">()),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;contract_title&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;negativity&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">()),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;question&#39;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;answer_start&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">()),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;answer_end&#39;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>         
+    <span class="p">])</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_default_sample</span><span class="p">(</span><span class="n">seqID</span><span class="p">,</span> <span class="n">qID</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    relation:</span>
+<span class="sd">    answer : seq -&gt; 1 : 1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">c</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;get_default_sample()&quot;</span>
+    <span class="k">assert</span> <span class="n">s</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;get_default_sample()&quot;</span>
+    <span class="k">assert</span> <span class="n">q</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;get_default_sample()&quot;</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;seqID&#39;</span><span class="p">:</span> <span class="n">seqID</span><span class="p">,</span>
+        <span class="s1">&#39;qID&#39;</span><span class="p">:</span><span class="n">qID</span><span class="p">,</span>
+        <span class="s1">&#39;contract_title&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span>
+        <span class="s1">&#39;negativity&#39;</span><span class="p">:</span> <span class="n">negativity_dict</span><span class="p">[</span><span class="s1">&#39;possible_negative&#39;</span><span class="p">],</span> 
+        <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span>
+        <span class="s1">&#39;question&#39;</span><span class="p">:</span> <span class="n">q</span><span class="p">,</span>
+        <span class="s1">&#39;answer_start&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;answer_end&#39;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+
+<span class="nd">@udf</span><span class="p">(</span><span class="n">returnType</span><span class="o">=</span><span class="n">sample_schema</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_sample_list</span><span class="p">(</span><span class="n">seqID</span><span class="p">,</span> <span class="n">contract_title</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">qas_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    | contract_title | source | negativity |</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#contract_title, window, qas_list = row[&#39;cID&#39;], row[&#39;seq&#39;], row[&#39;qas&#39;]</span>
+    
+    <span class="n">sample_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">window_context</span><span class="p">,</span> <span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span> <span class="o">=</span> <span class="n">window</span><span class="p">[</span><span class="s1">&#39;sent&#39;</span><span class="p">],</span> <span class="n">window</span><span class="p">[</span><span class="s1">&#39;s&#39;</span><span class="p">],</span> <span class="n">window</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span>
+    <span class="n">start_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">start_idx</span><span class="p">)</span>
+
+    <span class="c1"># 41 questions of differen categories</span>
+    <span class="n">qID</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">qas_pair</span> <span class="ow">in</span> <span class="n">qas_list</span><span class="p">:</span>
+        <span class="n">ans_list</span> <span class="o">=</span> <span class="n">qas_pair</span><span class="p">[</span><span class="s1">&#39;answers&#39;</span><span class="p">]</span>
+        <span class="n">question</span> <span class="o">=</span> <span class="n">qas_pair</span><span class="p">[</span><span class="s1">&#39;question&#39;</span><span class="p">]</span>
+
+        <span class="c1"># get default sample</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">get_default_sample</span><span class="p">(</span><span class="n">seqID</span><span class="p">,</span> <span class="n">qID</span><span class="p">,</span> <span class="n">contract_title</span><span class="p">,</span> <span class="n">window_context</span><span class="p">,</span> <span class="n">question</span><span class="p">)</span>
+        
+        <span class="c1"># no answer in seq -&gt; 0 for index</span>
+        
+        <span class="k">if</span> <span class="n">qas_pair</span><span class="p">[</span><span class="s1">&#39;is_impossible&#39;</span><span class="p">]:</span>
+            <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;negativity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">negativity_dict</span><span class="p">[</span><span class="s1">&#39;impossible&#39;</span><span class="p">]</span>
+            <span class="n">sample_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># If is_impossible is False, then the question has an answer. </span>
+        <span class="c1"># change answer start and end if the widnow is a part of the answer</span>
+        <span class="n">has_positive</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">ans</span> <span class="ow">in</span> <span class="n">ans_list</span><span class="p">:</span>
+            <span class="n">answer_start</span><span class="p">,</span> <span class="n">answer_text</span> <span class="o">=</span> <span class="n">ans</span>
+            <span class="n">answer_start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">answer_start</span><span class="p">)</span>
+            
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            In a JSON output object, answer_end = answer_start + length of segment that includes answer </span>
+<span class="sd">            if and only if the object&#39;s source field contains part of the answer. Otherwise, answer_end = answer_start = 0.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="c1"># answer_end = len(answer_text) + answer_start </span>
+            <span class="c1"># answer_range_start = start_idx &gt;= answer_start and start_idx &lt;= answer_end</span>
+            <span class="c1"># answer_range_end = end_idx &gt;= answer_start and end_idx &lt;= answer_end</span>
+
+            <span class="n">answer_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">answer_text</span><span class="p">)</span> <span class="o">+</span> <span class="n">answer_start</span> 
+            <span class="n">answer_range_start</span> <span class="o">=</span> <span class="n">answer_start</span> <span class="o">&gt;=</span> <span class="n">start_idx</span> <span class="ow">and</span> <span class="n">answer_start</span> <span class="o">&lt;=</span> <span class="n">end_idx</span>
+            <span class="n">answer_range_end</span> <span class="o">=</span> <span class="n">answer_end</span> <span class="o">&gt;=</span> <span class="n">start_idx</span> <span class="ow">and</span> <span class="n">answer_end</span> <span class="o">&lt;=</span> <span class="n">end_idx</span>
+
+            <span class="c1"># positive sample - the widnow context is part of the answer </span>
+            <span class="k">if</span> <span class="n">answer_range_start</span> <span class="ow">or</span> <span class="n">answer_range_end</span><span class="p">:</span>
+                <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                In a JSON output object, answer_start refers to a location in the source field of the same output object; </span>
+<span class="sd">                it does not refer to a location in the context field of the original contract object.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;negativity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">negativity_dict</span><span class="p">[</span><span class="s1">&#39;positive&#39;</span><span class="p">]</span> <span class="c1"># positive</span>
+                <span class="c1"># relative to the source not the original context position</span>
+                <span class="c1"># max() - aovid negative idx</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">answer_start</span> <span class="k">if</span> <span class="n">answer_start</span> <span class="o">&gt;</span> <span class="n">start_idx</span> <span class="k">else</span> <span class="n">start_idx</span> 
+                <span class="n">source_start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">-</span> <span class="n">start_idx</span>
+                <span class="n">source_end</span> <span class="o">=</span> <span class="n">answer_end</span> <span class="o">-</span> <span class="n">start_idx</span>
+                <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;answer_start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">source_start</span>
+                <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;answer_end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">source_end</span>
+                <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                If a particular sequence contains more than one answer for a particular question, </span>
+<span class="sd">                then there must be one extra sample for each additional answer.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="n">sample_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+                <span class="n">has_positive</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># possible negative - seq that has is_impossible = False but does not contains any answer</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_positive</span><span class="p">:</span>
+            <span class="n">sample_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+        <span class="n">qID</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">sample_list</span>
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">####################################################################### end ################################################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="n">sample_df_raw</span> <span class="o">=</span> <span class="n">seq_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">explode</span><span class="p">(</span><span class="n">get_sample_list</span><span class="p">(</span><span class="s1">&#39;seqID&#39;</span><span class="p">,</span><span class="s1">&#39;contract_title&#39;</span><span class="p">,</span> <span class="s1">&#39;seq&#39;</span><span class="p">,</span> <span class="s1">&#39;qas&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">))</span>
+
+
+<span class="c1"># unzip dictionary row and map each key to columns - dataframe contains all samples</span>
+<span class="n">sample_df_extracted</span> <span class="o">=</span> <span class="n">sample_df_raw</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">monotonically_increasing_id</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;sample.seqID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;seqID&#39;</span><span class="p">),</span> \
+                                           <span class="n">col</span><span class="p">(</span><span class="s2">&quot;sample.qID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;qID&quot;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;sample.contract_title&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;contract_title&quot;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;sample.negativity&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;negativity&quot;</span><span class="p">),</span> \
+                                           <span class="n">col</span><span class="p">(</span><span class="s2">&quot;sample.source&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;sample.question&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;question&quot;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;sample.answer_start&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;answer_start&quot;</span><span class="p">),</span> \
+                                           <span class="n">col</span><span class="p">(</span><span class="s2">&quot;sample.answer_end&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;answer_end&quot;</span><span class="p">))</span>
+
+
+<span class="c1"># add contract ID</span>
+<span class="n">sample_df</span> <span class="o">=</span> <span class="n">contract_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sample_df_extracted</span><span class="p">,</span> <span class="n">contract_df</span><span class="o">.</span><span class="n">contract_title</span> <span class="o">==</span> <span class="n">sample_df_extracted</span><span class="o">.</span><span class="n">contract_title</span><span class="p">)</span>
+<span class="n">sample_df</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">,</span> <span class="s1">&#39;seqID&#39;</span><span class="p">,</span> <span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;negativity&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;question&#39;</span><span class="p">,</span> <span class="s1">&#39;answer_start&#39;</span><span class="p">,</span> <span class="s1">&#39;answer_end&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 all types of samples dataframe 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">sample_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">############################################################# show intermeidate result #####################################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="c1"># show  positive samples for all questions with possible answers in all contracts</span>
+<span class="n">pos_tmp</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 positive samples dataframe 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">pos_tmp</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">pos_tmp</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># show possible negative samples</span>
+<span class="n">possi_tmp</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;possible_negative&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 possible negative samples dataframe 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">possi_tmp</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">possi_tmp</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># show impossible negative samples</span>
+<span class="n">imp_tmp</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;impossible&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 impossible negative samples dataframe 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">imp_tmp</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">imp_tmp</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">######################################################################### END ##############################################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">############################################################### 2.1: START for count impossible ############################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="c1"># get impossible</span>
+<span class="n">q_imp_df</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;cID_imp&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;qID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;qID_imp&#39;</span><span class="p">))</span><span class="o">.</span>\
+    <span class="nb">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;impossible&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># get possible</span>
+<span class="n">q_pos_df</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;cID_pos&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;qID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;qID_pos&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sampleID_pos&#39;</span><span class="p">))</span><span class="o">.</span>\
+    <span class="nb">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># join condition: for every impossible questions in a contract, filter out those positive samples that is not in the same contract</span>
+<span class="n">imp_pos_filtered_df</span> <span class="o">=</span> <span class="n">q_imp_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_pos_df</span><span class="p">,</span> <span class="p">(</span><span class="n">q_imp_df</span><span class="o">.</span><span class="n">qID_imp</span><span class="o">==</span><span class="n">q_pos_df</span><span class="o">.</span><span class="n">qID_pos</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">q_imp_df</span><span class="o">.</span><span class="n">cID_imp</span> <span class="o">!=</span> <span class="n">q_pos_df</span><span class="o">.</span><span class="n">cID_pos</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span><span class="o">.</span>\
+    <span class="n">select</span><span class="p">(</span><span class="n">q_imp_df</span><span class="o">.</span><span class="n">cID_imp</span><span class="p">,</span> <span class="s1">&#39;qID_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;sampleID_pos&#39;</span><span class="p">,</span> <span class="s1">&#39;cID_pos&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># sampleID_pos - count distinct contracts for positive sample</span>
+<span class="n">pos_contract_sum_df</span> <span class="o">=</span> <span class="n">imp_pos_filtered_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;qID_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;sampleID_pos&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;cID_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;qID_imp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">countDistinct</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;count_contract&#39;</span><span class="p">))</span>
+
+
+<span class="c1"># cID_pos - count distinct sample </span>
+<span class="n">imp_count_df</span> <span class="o">=</span> <span class="n">imp_pos_filtered_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;qID_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;cID_pos&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;cID_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;qID_imp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">countDistinct</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;count_pos&#39;</span><span class="p">))</span>
+<span class="n">imp_count_df</span> <span class="o">=</span> <span class="n">imp_count_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;cID_imp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;cID_imp2&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;qID_imp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;qID_imp2&#39;</span><span class="p">),</span> <span class="s1">&#39;count_pos&#39;</span><span class="p">)</span>
+
+<span class="c1">########################################################## AVERAGE positive samples count result #############################################################</span>
+<span class="n">tmp_df</span> <span class="o">=</span> <span class="n">pos_contract_sum_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">imp_count_df</span><span class="p">,</span> <span class="p">(</span><span class="n">pos_contract_sum_df</span><span class="o">.</span><span class="n">cID_imp</span> <span class="o">==</span> <span class="n">imp_count_df</span><span class="o">.</span><span class="n">cID_imp2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pos_contract_sum_df</span><span class="o">.</span><span class="n">qID_imp</span> <span class="o">==</span> <span class="n">imp_count_df</span><span class="o">.</span><span class="n">qID_imp2</span><span class="p">))</span>
+<span class="n">avg_df</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;qID_imp&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">tmp_df</span><span class="o">.</span><span class="n">count_pos</span> <span class="o">/</span> <span class="n">tmp_df</span><span class="o">.</span><span class="n">count_contract</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;avg_pos_sample&#39;</span><span class="p">))</span>
+
+
+<span class="c1"># count</span>
+<span class="n">avg_count_df</span> <span class="o">=</span> <span class="n">avg_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;qID_imp&#39;</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">avg_df</span><span class="p">[</span><span class="s2">&quot;avg_pos_sample&quot;</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">())</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;count_imp&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 count number to balanced for impossible samples dataframe 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">avg_count_df</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">avg_count_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">############################################################## 2.2: START for count possible ###############################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="c1"># data</span>
+<span class="n">q_possi_df</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;cID_possi&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;qID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;qID_possi&#39;</span><span class="p">))</span><span class="o">.</span>\
+    <span class="nb">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;possible_negative&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="n">q_pos_df</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;cID_pos&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;qID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;qID_pos&#39;</span><span class="p">),</span> 
+                            <span class="n">col</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sampleID_pos&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># filter(): for every impossible questions in a contract, filter out those positive samples that is not in the same contract</span>
+<span class="c1"># join condition: same contract, same question</span>
+<span class="n">possi_pos_filtered_df</span> <span class="o">=</span> <span class="n">q_possi_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q_pos_df</span><span class="p">,</span> <span class="p">(</span><span class="n">q_possi_df</span><span class="o">.</span><span class="n">qID_possi</span><span class="o">==</span><span class="n">q_pos_df</span><span class="o">.</span><span class="n">qID_pos</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">q_possi_df</span><span class="o">.</span><span class="n">cID_possi</span> <span class="o">==</span> <span class="n">q_pos_df</span><span class="o">.</span><span class="n">cID_pos</span><span class="p">),</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span> <span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="n">q_possi_df</span><span class="o">.</span><span class="n">cID_possi</span><span class="p">,</span> <span class="s1">&#39;qID_possi&#39;</span><span class="p">,</span> <span class="s1">&#39;sampleID_pos&#39;</span><span class="p">)</span>
+
+<span class="c1">###################################### count result ###########################################</span>
+<span class="c1"># count distinct sample</span>
+<span class="n">possi_count_df</span> <span class="o">=</span> <span class="n">possi_pos_filtered_df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;cID_possi&#39;</span><span class="p">,</span> <span class="s1">&#39;qID_possi&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">countDistinct</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;count_pneg&#39;</span><span class="p">))</span>
+<span class="n">possi_count_df</span> <span class="o">=</span> <span class="n">possi_count_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;cID_possi&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;cID_possi&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;qID_possi&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;qID_possi&#39;</span><span class="p">),</span> <span class="s1">&#39;count_pneg&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 count number to balanced for possible negative samples dataframe 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">possi_count_df</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">possi_count_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">############################################################## STEP 2: select based on count ###############################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="c1">################################# Prepare possible ################################# </span>
+<span class="c1"># | cID | qID | [possible_negative ids] </span>
+<span class="n">possible_samples</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;possible_negative&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">,</span> <span class="s1">&#39;seqID&#39;</span><span class="p">,</span> <span class="s1">&#39;sampleID&#39;</span><span class="p">)</span>
+
+
+<span class="n">possible_samples_df</span> <span class="o">=</span> <span class="n">possible_samples</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">collect_list</span><span class="p">(</span> 
+    <span class="n">create_map</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="s2">&quot;seqID&quot;</span><span class="p">),</span><span class="s2">&quot;seqID&quot;</span><span class="p">,</span><span class="n">lit</span><span class="p">(</span><span class="s2">&quot;sampleID&quot;</span><span class="p">),</span><span class="s2">&quot;sampleID&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;possi&quot;</span><span class="p">))</span>
+
+
+<span class="c1">################################# Prepare impossible ################################# </span>
+
+<span class="c1"># | cID | qID | [impossible ids] </span>
+<span class="n">impossible_samples</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;impossible&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">,</span> <span class="s1">&#39;seqID&#39;</span><span class="p">,</span> <span class="s1">&#39;sampleID&#39;</span><span class="p">)</span>
+
+
+<span class="n">impossible_samples_df</span> <span class="o">=</span> <span class="n">impossible_samples</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">collect_list</span><span class="p">(</span> 
+    <span class="n">create_map</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="s2">&quot;seqID&quot;</span><span class="p">),</span><span class="s2">&quot;seqID&quot;</span><span class="p">,</span><span class="n">lit</span><span class="p">(</span><span class="s2">&quot;sampleID&quot;</span><span class="p">),</span><span class="s2">&quot;sampleID&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;imp&quot;</span><span class="p">))</span>
+
+
+<span class="c1">################################# Prepare positive ################################# </span>
+<span class="c1"># | cID | qID | [pos ids] </span>
+<span class="n">positive_samples</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">,</span> <span class="s1">&#39;seqID&#39;</span><span class="p">)</span>
+
+
+<span class="n">positive_samples_df</span> <span class="o">=</span> <span class="n">positive_samples</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">collect_list</span><span class="p">(</span><span class="s1">&#39;seqID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;pos&quot;</span><span class="p">))</span>
+
+<span class="c1">#### join with count</span>
+<span class="n">imp_df_1</span> <span class="o">=</span> <span class="n">impossible_samples_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">avg_count_df</span><span class="p">,</span> 
+                        <span class="p">(</span><span class="n">impossible_samples_df</span><span class="o">.</span><span class="n">cID</span><span class="o">==</span><span class="n">avg_count_df</span><span class="o">.</span><span class="n">cID_imp</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">impossible_samples_df</span><span class="o">.</span><span class="n">qID</span><span class="o">==</span><span class="n">avg_count_df</span><span class="o">.</span><span class="n">qID_imp</span><span class="p">))</span><span class="o">.</span> \
+                        <span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">,</span> <span class="s1">&#39;count_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;imp&#39;</span><span class="p">)</span>
+
+
+<span class="c1">#### join with positive</span>
+<span class="c1"># same col name can ues []</span>
+<span class="n">imp_df</span> <span class="o">=</span> <span class="n">imp_df_1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">positive_samples_df</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 input dataframe to the UDF of balancing the impossible samples 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">imp_df</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">imp_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">imp_schema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">([</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;imp_keep&#39;</span><span class="p">,</span> <span class="n">ArrayType</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">())),</span>
+        <span class="n">StructField</span><span class="p">(</span><span class="s1">&#39;seqID&#39;</span><span class="p">,</span> <span class="n">ArrayType</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">()))</span> <span class="c1"># for compare so that the possible negative sample to not be the same</span>
+<span class="p">])</span>
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">################################################# based on the count, balance impossible first  ############################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="nd">@udf</span><span class="p">(</span><span class="n">returnType</span><span class="o">=</span><span class="n">imp_schema</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">balance_imp</span><span class="p">(</span><span class="n">count_imp</span><span class="p">,</span> <span class="n">imp</span><span class="p">,</span> <span class="n">pos_seqIDs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    balance the impossible samples and make unique based on the positive samples</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;imp_keep&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;seqID&#39;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+    <span class="c1"># not such count so no negative sample</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">count_imp</span> <span class="ow">or</span> <span class="n">count_imp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="c1"># no such positive sample</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">pos_seqIDs</span><span class="p">:</span>
+        <span class="n">pos_seqIDs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">remain</span> <span class="o">=</span> <span class="n">count_imp</span>  
+    <span class="k">for</span> <span class="n">cur</span> <span class="ow">in</span> <span class="n">imp</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">remain</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="c1"># not in the positive sampels</span>
+        <span class="k">if</span> <span class="n">cur</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">pos_seqIDs</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="c1"># unique with itself</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cur</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]:</span>
+            <span class="n">res</span><span class="p">[</span><span class="s1">&#39;imp_keep&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="p">[</span><span class="s1">&#39;sampleID&#39;</span><span class="p">])</span>
+            <span class="n">res</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">])</span>
+
+        <span class="n">remain</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="c1"># if the unique ones is not enough, then append non unique ones</span>
+    <span class="k">if</span> <span class="n">remain</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+        <span class="n">sampleIDs</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;sampleID&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">imp</span><span class="p">]</span>
+        <span class="n">seqIDs</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">imp</span><span class="p">]</span>
+
+        <span class="n">imp_remain</span> <span class="o">=</span> <span class="p">[</span><span class="nb">id</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">sampleIDs</span> <span class="k">if</span> <span class="nb">id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;imp_keep&#39;</span><span class="p">]]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;imp_keep&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">imp_remain</span><span class="p">[:</span><span class="n">remain</span><span class="p">]</span>
+
+        <span class="n">seq_remain</span> <span class="o">=</span> <span class="p">[</span><span class="nb">id</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">seqIDs</span> <span class="k">if</span> <span class="nb">id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">seq_remain</span><span class="p">[:</span><span class="n">remain</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+<span class="c1">################################################################################################################################</span>
+
+<span class="c1"># get what impossible sample id to keep for each question in a contract</span>
+<span class="n">imp_keep_df</span> <span class="o">=</span> <span class="n">imp_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">,</span><span class="n">balance_imp</span><span class="p">(</span><span class="s1">&#39;count_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;imp&#39;</span><span class="p">,</span> <span class="s1">&#39;pos&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;res&#39;</span><span class="p">))</span><span class="o">.</span>\
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span><span class="s1">&#39;qID&#39;</span><span class="p">,</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;res.imp_keep&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;imp_id_keep&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;res.seqID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;seqID_imp&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 output dataframe to the UDF of balancing the impossible samples 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">imp_keep_df</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">imp_keep_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># unflatten list to rows</span>
+<span class="n">imp_keep_res</span> <span class="o">=</span> <span class="n">imp_keep_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">explode</span><span class="p">(</span><span class="n">imp_keep_df</span><span class="p">[</span><span class="s1">&#39;imp_id_keep&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;imp_id_keep&#39;</span><span class="p">))</span>
+
+
+<span class="n">possi_df_1</span> <span class="o">=</span> <span class="n">possible_samples_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">possi_count_df</span><span class="p">,</span> 
+                        <span class="p">(</span><span class="n">possible_samples_df</span><span class="o">.</span><span class="n">cID</span><span class="o">==</span><span class="n">possi_count_df</span><span class="o">.</span><span class="n">cID_possi</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">possible_samples_df</span><span class="o">.</span><span class="n">qID</span><span class="o">==</span><span class="n">possi_count_df</span><span class="o">.</span><span class="n">qID_possi</span><span class="p">))</span><span class="o">.</span> \
+                        <span class="n">select</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">,</span> <span class="s1">&#39;count_pneg&#39;</span><span class="p">,</span> <span class="s1">&#39;possi&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># same col name can ues []</span>
+<span class="n">possi_df</span> <span class="o">=</span> <span class="n">possi_df_1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">positive_samples_df</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+
+<span class="n">possible_samples_tmp</span> <span class="o">=</span> <span class="n">possi_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">imp_keep_df</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">],</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;imp_id_keep&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 input dataframe to the UDF of balancing the possible negative samples 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">possible_samples_tmp</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">possible_samples_tmp</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">################################################# based on the count, balance possible samples second  #####################################</span>
+<span class="c1">############################################################################################################################################</span>
+<span class="n">possi_schema</span> <span class="o">=</span> <span class="n">ArrayType</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">())</span>
+
+<span class="nd">@udf</span><span class="p">(</span><span class="n">returnType</span><span class="o">=</span><span class="n">possi_schema</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">balance_possi</span><span class="p">(</span><span class="n">count_pneg</span><span class="p">,</span> <span class="n">possi</span><span class="p">,</span> <span class="n">seqID_pos</span><span class="p">,</span> <span class="n">seqID_imp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;balance the possible negative samples and make unique based on the positive and imposible samples&quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">seq_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># not such count so no negative sample</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">count_pneg</span> <span class="ow">or</span> <span class="n">count_pneg</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="c1"># no such positive sample</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">seqID_pos</span><span class="p">:</span>
+        <span class="n">seqID_pos</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># no such impossible sample</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">seqID_imp</span><span class="p">:</span>
+        <span class="n">seqID_imp</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">remain</span> <span class="o">=</span> <span class="n">count_pneg</span>  
+    <span class="k">for</span> <span class="n">cur</span> <span class="ow">in</span> <span class="n">possi</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">remain</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="c1"># not in the positive sampels &amp; impossible sample</span>
+        <span class="k">if</span> <span class="n">cur</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">seqID_pos</span> <span class="ow">or</span> <span class="n">cur</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">seqID_imp</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="c1"># unique with itself</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cur</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">seq_list</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="p">[</span><span class="s1">&#39;sampleID&#39;</span><span class="p">])</span>
+            <span class="n">seq_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="p">[</span><span class="s1">&#39;seqID&#39;</span><span class="p">])</span>
+
+        <span class="n">remain</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="c1"># if the unique ones is not enough, then append non unique ones</span>
+    <span class="k">if</span> <span class="n">remain</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+        <span class="n">sampleIDs</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;sampleID&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">possi</span><span class="p">]</span>
+
+        <span class="n">possi_remain</span> <span class="o">=</span> <span class="p">[</span><span class="nb">id</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">sampleIDs</span> <span class="k">if</span> <span class="nb">id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">]</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">possi_remain</span><span class="p">[:</span><span class="n">remain</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">################################################################### Union ##################################################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="n">possi_keep_df</span> <span class="o">=</span> <span class="n">possible_samples_tmp</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">balance_possi</span><span class="p">(</span><span class="s1">&#39;count_pneg&#39;</span><span class="p">,</span><span class="s1">&#39;possi&#39;</span><span class="p">,</span> <span class="s1">&#39;pos&#39;</span><span class="p">,</span><span class="s1">&#39;seqID_imp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;res&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 output dataframe to the UDF of balancing the possible negative samples 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">possi_keep_df</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">possi_keep_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># unflatten list to rows</span>
+<span class="n">possi_keep_res</span> <span class="o">=</span> <span class="n">possi_keep_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">explode</span><span class="p">(</span><span class="n">possi_keep_df</span><span class="p">[</span><span class="s1">&#39;res&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;possi_id_keep&#39;</span><span class="p">))</span>
+
+
+
+<span class="c1">################## union all the selected positive, possible and impossible sampels as the final result #################################</span>
+
+
+<span class="n">possib_selected</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;possible_negative&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span>\
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;question&#39;</span><span class="p">,</span><span class="s1">&#39;answer_start&#39;</span><span class="p">,</span><span class="s1">&#39;answer_end&#39;</span><span class="p">)</span>
+
+
+<span class="n">possib_selected</span> <span class="o">=</span> <span class="n">possi_keep_res</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">possib_selected</span><span class="p">,</span> <span class="n">possi_keep_res</span><span class="o">.</span><span class="n">possi_id_keep</span><span class="o">==</span><span class="n">possib_selected</span><span class="o">.</span><span class="n">sampleID</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;possi_id_keep&#39;</span><span class="p">)</span>
+
+
+<span class="n">imp_selected</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;impossible&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span>\
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;question&#39;</span><span class="p">,</span><span class="s1">&#39;answer_start&#39;</span><span class="p">,</span><span class="s1">&#39;answer_end&#39;</span><span class="p">)</span>
+<span class="n">imp_selected</span> <span class="o">=</span> <span class="n">imp_keep_res</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">imp_selected</span><span class="p">,</span> <span class="n">imp_keep_res</span><span class="o">.</span><span class="n">imp_id_keep</span><span class="o">==</span><span class="n">imp_selected</span><span class="o">.</span><span class="n">sampleID</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;imp_id_keep&#39;</span><span class="p">)</span>
+
+
+<span class="n">pos_selected</span> <span class="o">=</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;negativity == </span><span class="si">{</span><span class="n">negativity_dict</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span>\
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;question&#39;</span><span class="p">,</span><span class="s1">&#39;answer_start&#39;</span><span class="p">,</span><span class="s1">&#39;answer_end&#39;</span><span class="p">)</span>
+
+
+<span class="n">sample_selected</span> <span class="o">=</span> <span class="n">pos_selected</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">imp_selected</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">possib_selected</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 All selected samples for output 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;len: &#39;</span><span class="p">,</span> <span class="n">sample_selected</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">sample_selected</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">############################################### union ###############################################################</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;💎 All selected samples with full details 💎&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">pneg_tmp</span> <span class="o">=</span> <span class="n">possi_count_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;cID_possi&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;qID_possi&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;qID&#39;</span><span class="p">),</span> <span class="s1">&#39;count_pneg&#39;</span><span class="p">)</span>
+<span class="n">imp_tmp</span> <span class="o">=</span> <span class="n">avg_count_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;cID_imp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;cID&#39;</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;qID_imp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;qID&#39;</span><span class="p">),</span> <span class="s1">&#39;count_imp&#39;</span><span class="p">)</span>
+<span class="n">pos_selected</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">imp_selected</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">possib_selected</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">)</span><span class="o">.</span>\
+    <span class="n">join</span><span class="p">(</span><span class="n">sample_df</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;sampleID&#39;</span><span class="p">])</span><span class="o">.</span>\
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;sampleID&#39;</span><span class="p">,</span> <span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">,</span> <span class="s1">&#39;seqID&#39;</span><span class="p">,</span> <span class="s1">&#39;negativity&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;question&#39;</span><span class="p">,</span> <span class="s1">&#39;answer_start&#39;</span><span class="p">,</span> <span class="s1">&#39;answer_end&#39;</span><span class="p">)</span><span class="o">.</span>\
+    <span class="n">join</span><span class="p">(</span><span class="n">pneg_tmp</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">],</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">imp_tmp</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;cID&#39;</span><span class="p">,</span> <span class="s1">&#39;qID&#39;</span><span class="p">],</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span><span class="o">.</span>\
+    <span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1">############################################################################################################################################</span>
+<span class="c1">####################################### Output final selected result to json format with given filename ####################################</span>
+<span class="c1">############################################################################################################################################</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">collect_list</span><span class="p">,</span> <span class="n">create_map</span><span class="p">,</span> <span class="n">lit</span>
+<span class="k">def</span> <span class="nf">datafame_to_json</span><span class="p">(</span><span class="n">sample_to_json</span><span class="p">,</span> <span class="n">path_</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;dataframe to list of dictionaries</span>
+<span class="sd">    https://stackoverflow.com/questions/61278038/how-to-convert-pyspark-dataframe-to-json</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cols_extracted</span> <span class="o">=</span> <span class="n">create_map</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">),</span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="n">lit</span><span class="p">(</span><span class="s2">&quot;question&quot;</span><span class="p">),</span><span class="s2">&quot;question&quot;</span><span class="p">,</span> <span class="n">lit</span><span class="p">(</span><span class="s2">&quot;answer_start&quot;</span><span class="p">),</span><span class="s2">&quot;answer_start&quot;</span><span class="p">,</span> <span class="n">lit</span><span class="p">(</span><span class="s2">&quot;answer_end&quot;</span><span class="p">),</span><span class="s2">&quot;answer_end&quot;</span><span class="p">)</span>
+
+    <span class="kn">import</span> <span class="nn">json</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">sample_to_json</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">collect_list</span><span class="p">(</span><span class="n">cols_extracted</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;stru&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">first</span><span class="p">()[</span><span class="s1">&#39;stru&#39;</span><span class="p">]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="n">datafame_to_json</span><span class="p">(</span><span class="n">sample_selected</span><span class="p">,</span> <span class="n">output_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💎 Read in filename is: test.json
+💎 Output filename is: output.json
+
+
+ 💎 The initial input dataframe 💎 len:  102 
+
+root
+ |-- paragraph: struct (nullable = true)
+ |    |-- context: string (nullable = true)
+ |    |-- qas: array (nullable = true)
+ |    |    |-- element: struct (containsNull = true)
+ |    |    |    |-- answers: array (nullable = true)
+ |    |    |    |    |-- element: struct (containsNull = true)
+ |    |    |    |    |    |-- answer_start: long (nullable = true)
+ |    |    |    |    |    |-- text: string (nullable = true)
+ |    |    |    |-- id: string (nullable = true)
+ |    |    |    |-- is_impossible: boolean (nullable = true)
+ |    |    |    |-- question: string (nullable = true)
+
+
+ 💎 Segments for all contract dataframe (Context to sequences) 💎 len:  2380 
+
++--------------------+
+|                 seq|
++--------------------+
+|{LohaCompanyltd_2...|
+|{LohaCompanyltd_2...|
++--------------------+
+only showing top 2 rows
+
+
+ 💎 all types of samples dataframe 💎 len:  99392 
+
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+|sampleID|qID|seqID|cID|negativity|              source|            question|answer_start|answer_end|
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+|   10532|  0|    0|  0|         0|EXHIBIT 10.2   EN...|Highlight the par...|          15|        47|
+|   10533|  1|    0|  0|         0|EXHIBIT 10.2   EN...|Highlight the par...|         221|       232|
+|   10534|  1|    0|  0|         0|EXHIBIT 10.2   EN...|Highlight the par...|         221|       232|
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+only showing top 3 rows
+
+
+ 💎 positive samples dataframe 💎 len:  4889 
+
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+|sampleID|qID|seqID|cID|negativity|              source|            question|answer_start|answer_end|
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+|   10532|  0|    0|  0|         0|EXHIBIT 10.2   EN...|Highlight the par...|          15|        47|
+|   10533|  1|    0|  0|         0|EXHIBIT 10.2   EN...|Highlight the par...|         221|       232|
+|   10534|  1|    0|  0|         0|EXHIBIT 10.2   EN...|Highlight the par...|         221|       232|
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+only showing top 3 rows
+
+
+ 💎 possible negative samples dataframe 💎 len:  37839 
+
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+|sampleID|qID|seqID|cID|negativity|              source|            question|answer_start|answer_end|
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+|   10580|  0|    1|  0|         1|e to the **NFL Al...|Highlight the par...|           0|         0|
+|   10581|  1|    1|  0|         1|e to the **NFL Al...|Highlight the par...|           0|         0|
+|   10582|  2|    1|  0|         1|e to the **NFL Al...|Highlight the par...|           0|         0|
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+only showing top 3 rows
+
+
+ 💎 impossible negative samples dataframe 💎 len:  56664 
+
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+|sampleID|qID|seqID|cID|negativity|              source|            question|answer_start|answer_end|
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+|   10542|  4|    0|  0|         2|EXHIBIT 10.2   EN...|Highlight the par...|           0|         0|
+|   10543|  4|    0|  0|         2|EXHIBIT 10.2   EN...|Highlight the par...|           0|         0|
+|   10544|  4|    0|  0|         2|EXHIBIT 10.2   EN...|Highlight the par...|           0|         0|
++--------+---+-----+---+----------+--------------------+--------------------+------------+----------+
+only showing top 3 rows
+
+
+ 💎 count number to balanced for impossible samples dataframe 💎 len:  628 
+
++-------+-------+---------+
+|cID_imp|qID_imp|count_imp|
++-------+-------+---------+
+|      6|     13|        0|
+|     28|     12|        0|
++-------+-------+---------+
+only showing top 2 rows
+
+
+ 💎 count number to balanced for possible negative samples dataframe 💎 len:  1224 
+
++---------+---------+----------+
+|cID_possi|qID_possi|count_pneg|
++---------+---------+----------+
+|        0|        1|         7|
+|        0|        0|         1|
++---------+---------+----------+
+only showing top 2 rows
+
+
+ 💎 input dataframe to the UDF of balancing the impossible samples 💎 len:  628 
+
++---+---+---------+--------------------+------+
+|cID|qID|count_imp|                 imp|   pos|
++---+---+---------+--------------------+------+
+|  6| 13|        0|[{seqID -&gt; 0, sam...|  null|
+| 28| 12|        0|[{seqID -&gt; 0, sam...|[5, 6]|
++---+---+---------+--------------------+------+
+only showing top 2 rows
+
+
+ 💎 output dataframe to the UDF of balancing the impossible samples 💎 len:  628 
+
++---+---+-----------+---------+
+|cID|qID|imp_id_keep|seqID_imp|
++---+---+-----------+---------+
+|  6| 13|         []|       []|
+| 28| 12|         []|       []|
++---+---+-----------+---------+
+only showing top 2 rows
+
+
+ 💎 input dataframe to the UDF of balancing the possible negative samples 💎 len:  1224 
+
++---+---+----------+--------------------+--------------------+---------+
+|cID|qID|count_pneg|               possi|                 pos|seqID_imp|
++---+---+----------+--------------------+--------------------+---------+
+|  0|  1|         7|[{seqID -&gt; 1, sam...|[0, 0, 0, 0, 0, 0...|     null|
+|  0|  0|         1|[{seqID -&gt; 1, sam...|                 [0]|     null|
++---+---+----------+--------------------+--------------------+---------+
+only showing top 2 rows
+
+
+ 💎 output dataframe to the UDF of balancing the possible negative samples 💎 len:  1224 
+
++-------+
+|    res|
++-------+
+|[10581]|
+|[10580]|
++-------+
+only showing top 2 rows
+
+
+ 💎 All selected samples for output 💎 len:  9595 
+
++--------------------+--------------------+------------+----------+
+|              source|            question|answer_start|answer_end|
++--------------------+--------------------+------------+----------+
+|EXHIBIT 10.2   EN...|Highlight the par...|          15|        47|
+|EXHIBIT 10.2   EN...|Highlight the par...|         221|       232|
++--------------------+--------------------+------------+----------+
+only showing top 2 rows
+
+
+ 💎 All selected samples with full details 💎 
+
++---+---+--------+-----+----------+--------------------+--------------------+------------+----------+----------+---------+
+|cID|qID|sampleID|seqID|negativity|              source|            question|answer_start|answer_end|count_pneg|count_imp|
++---+---+--------+-----+----------+--------------------+--------------------+------------+----------+----------+---------+
+|  0|  1|   10534|    0|         0|EXHIBIT 10.2   EN...|Highlight the par...|         221|       232|         7|     null|
+|  0|  1|   10538|    0|         0|EXHIBIT 10.2   EN...|Highlight the par...|         221|       232|         7|     null|
+|  0|  1|   10539|    0|         0|EXHIBIT 10.2   EN...|Highlight the par...|         221|       232|         7|     null|
++---+---+--------+-----+----------+--------------------+--------------------+------------+----------+----------+---------+
+only showing top 3 rows
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ds-courses/usyd/5349"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="a2/a2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data Preprocessing and Performance Tuning with Spark</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="a1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Text Analysis with Spark RDD API</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jerry<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -8,8 +8,9 @@
 
     <title>Chatbot &#8212; My Jupter Notebook on data science.</title>
     
-  <link href="../../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
@@ -41,8 +38,9 @@
     <script src="../../../../_static/togglebutton.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -62,7 +60,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +83,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../../index.html">
       
       
@@ -534,87 +547,148 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/ds-courses/unsw/3900/project/3900-project.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/postsent/nb"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/ds-courses/unsw/3900/project/3900-project.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    <strong>
@@ -831,12 +905,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Chatbot</h1>
@@ -1069,11 +1142,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="chatbot">
-<h1><strong>Chatbot</strong><a class="headerlink" href="#chatbot" title="Permalink to this headline">¶</a></h1>
+<h1><strong>Chatbot</strong><a class="headerlink" href="#chatbot" title="Permalink to this headline">#</a></h1>
 <p>COMP3900 – Computer Science Project</p>
 <p><strong>Project Report</strong></p>
 <p>Team Name: StarPlatinum</p>
@@ -1121,17 +1195,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p><a class="reference external" href="#_Toc88155417">Bibliography	23</a></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
 <p>This project implements a chatbot that provides the service of general query answering with a focus on the medical system and COVID19 support.</p>
 <section id="architecture-and-design-of-software">
-<h2>Architecture and Design of software<a class="headerlink" href="#architecture-and-design-of-software" title="Permalink to this headline">¶</a></h2>
+<h2>Architecture and Design of software<a class="headerlink" href="#architecture-and-design-of-software" title="Permalink to this headline">#</a></h2>
 <p>The software is mainly split into 2 modules – frontend and backend. Frontend is the user interface for our service whereas backend implements the business logics and persists user data.</p>
 <p>As the diagram shown below, the frontend will only interact with the server layer for providing services like user authentication and registration, symptom diagnosis and chat history. The conversation with the chatbot begins with the chat endpoint. Frontend data such as user information and chat history will be stored in the MongoDB. After that, the chat messages and context are passed to the Dialogflow gateway to extract keywords and infer the intent of that message. If the intent has a registered handler implemented in our backend, the handler will be called with extracted parameters by Dialogflow and the context by frontend. The handlers are typically requests to third-party APIs or web scrapers for acquiring the necessary data so that we can provide appropriate respond to the users. Finally, the Facebook Messenger and Discord third-party platforms are used for chatbot integration will communicate with Dialogflow Gateway directly for efficiency and it makes the chatbot generic and modular.</p>
 <p><img alt="" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.001.png" /></p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="software-functionalities">
-<h1>Software Functionalities<a class="headerlink" href="#software-functionalities" title="Permalink to this headline">¶</a></h1>
+<h1>Software Functionalities<a class="headerlink" href="#software-functionalities" title="Permalink to this headline">#</a></h1>
 <p>This project aims to create a natural language understanding chatbot that can address the health enquiries of our users. The general usage of this software is to have users ask questions of any concerns they have in the scope of medicine and health. By incorporating Natural Language Understanding, we allow the users to converse with our chatbot non-restrictively, using normal everyday language. Then, our chatbot will process the user’s enquiries and provide an informative response. Frequent users of the chatbot can also have the choice to create an account, allowing the chatbot to hold more useful information about the user so it can give personalised health recommendations. Additionally, our project will include doctors and medical professionals who can provide additional support for the users of our chatbot.</p>
 <p>The main features of our software include: (Detailed instruction with images see User manual)</p>
 <ul class="simple">
@@ -1180,7 +1254,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>See Jira board for how user stories links to the objective.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="third-party-functionalities">
-<h1>Third-party functionalities<a class="headerlink" href="#third-party-functionalities" title="Permalink to this headline">¶</a></h1>
+<h1>Third-party functionalities<a class="headerlink" href="#third-party-functionalities" title="Permalink to this headline">#</a></h1>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Licence</p></th>
@@ -1295,16 +1369,16 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="implementation-challenges">
-<h1>Implementation challenges<a class="headerlink" href="#implementation-challenges" title="Permalink to this headline">¶</a></h1>
+<h1>Implementation challenges<a class="headerlink" href="#implementation-challenges" title="Permalink to this headline">#</a></h1>
 <p>Covid prediction model</p>
 <p>It is hard to find any available model for the covid-19 prediction online. So, I must find out the data to train the custom model by myself. For any machine learning project, the training data is the key for model. I need search through Internet to find out the data which contain the large amount record data, and its parameters are restricted to the common symptoms. Finally find the appropriate the database in the Kaggle competition website, which contains 3 million recorded patient’s covid diagnosis result and symptoms. The information of the recording data isn’t quite complete. I need to do the feature cleaning and extraction to remove the deficient record, transfer the style for machining learning use. Model choosing is another challenge task, with such large amount of data, I need to balance the training time between accuracy, especially I don’t have especial server to do the training. The model like XGBoost, Navies Bayes are not accessible, even though they might reach good performance. The final decision for the model is the Decision Tree, it takes fair amount of training time and reach 93% accuracy in the test dataset, which is highly acceptable.</p>
 <section id="chat-history-rendering">
-<h2>Chat History Rendering<a class="headerlink" href="#chat-history-rendering" title="Permalink to this headline">¶</a></h2>
+<h2>Chat History Rendering<a class="headerlink" href="#chat-history-rendering" title="Permalink to this headline">#</a></h2>
 <p>When I was implementing the user interface for chatting with the bot, I realised the issue that as the user chats with the bot, the number of nodes for chat history that are held in DOM will increase and the child nodes of these chat history can sometimes be complicated (e.g.  when rendering a list of items COVID-19). At some point, there would be performance issue. My solution is to render the chat history in a virtualised list implemented by third-party where only the components in the user’s view will be rendered. This method is more memory efficient, and performance can be guaranteed.</p>
 <p>However, all the UI updates are done asynchronously and cannot be access outside the component, which requires other updates, in this case, the auto scroll to bottom feature, to use setTimeout to wait for it. And to avoid memory leak a React useEffect hook will be called to clean up the timeout object.</p>
 </section>
 <section id="web-scraping">
-<h2>Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this headline">¶</a></h2>
+<h2>Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this headline">#</a></h2>
 <p>Website – hard to scrape</p>
 <p>Web scraping is the primary method we used to obtain different types of data with no API available. However, some websites are built to prevent such scraping. For example, the website (Coronavirus (COVID-19) case numbers and statistics, 2021) which contains Australia national COVID-19 statistics, has no right click option to view page source. Besides, the table rendered uses JavaScript and fetch it at real time. In some other websites encountered, some purposely uses unstructured page source to prevent user from scraping. Selenium Python library is tried to get over such problem. However, it fails just like BeautifulSoup python library, and it also requires extra setup which is to install 300MB Chrome or Firefox core that enables headless (without GUI) browsing.</p>
 <p>After comparing different methods, we decide that, for those that could not be scraped, we will use non-official websites such as <a class="reference external" href="https://covidlive.com.au/">https://covidlive.com.au/</a> that provides the same information to get over this challenge. Another problem on where to find the website that is appropriate to scrape from. We then find out that different state websites contain links to other state weblink. On top of this, some popular non-official websites provide links to where the resource is based on which allow us to quickly identify the key websites to crawl.</p>
@@ -1313,14 +1387,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Session object is also initialised for requests to allow cookie for future requests which make the scraping more efficient.</p>
 </section>
 <section id="dialogflow-intention-handler">
-<h2>Dialogflow Intention Handler<a class="headerlink" href="#dialogflow-intention-handler" title="Permalink to this headline">¶</a></h2>
+<h2>Dialogflow Intention Handler<a class="headerlink" href="#dialogflow-intention-handler" title="Permalink to this headline">#</a></h2>
 <p>Since most of our features uses Dialogflow to interpret intentions, we come up with an architecture for backend that uses Dialogflow as a gateway so it can interpret user text input and dispatch the request according to the intention. Each request contains a context that includes information such as location, user ID. Such context will be pass to the registered intention handler.</p>
 <p>For the response, it always contains 3 parts. The “type” field acts as a discriminator. The frontend will render the message according to the type. The “message” field contains the response from the bot.  Whereas the “data” field contains extra information such as recipe information that will be rendered alongside the message.</p>
 <p>Such architecture follows the Open-Close Principle, which allows us to simply add new feature by writing and registering a new handler. However, Dialogflow cannot handle the symptom descriptions properly due to the complexity of human language, which means we cannot directly add handler to it.</p>
 <p>The workaround we used is that users can initiate diagnosis through Dialogflow. Then it will send a response to frontend and the frontend will set a flag in the internal redux store (namely, “chat.diagnosis”) which will then send following requests directly to the backend without Dialogflow. And once the diagnosis is completed, the backend will send back a response with a specific type (namely, “diagnosis/result”) to indicate frontend to unset the flag.</p>
 </section>
 <section id="others">
-<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h2>
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">#</a></h2>
 <p>Flask</p>
 <p>We initially consider using Flask. Then we come across Flask-RESTPlus which has full Swagger support and a more modern class implementation for the REST API. Then we find out that it is not maintained anymore but Flask-RESTX, which is a fork version of RESTPlus is currently being maintained by the community and is used in the project.</p>
 <p>Integration</p>
@@ -1330,15 +1404,15 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="user-documentation-manual">
-<h1>User Documentation / Manual<a class="headerlink" href="#user-documentation-manual" title="Permalink to this headline">¶</a></h1>
+<h1>User Documentation / Manual<a class="headerlink" href="#user-documentation-manual" title="Permalink to this headline">#</a></h1>
 <section id="project-setup">
-<h2>Project Setup<a class="headerlink" href="#project-setup" title="Permalink to this headline">¶</a></h2>
+<h2>Project Setup<a class="headerlink" href="#project-setup" title="Permalink to this headline">#</a></h2>
 <p>The section contains instructions to setup and run the project.</p>
 <p>The chosen system is <strong>Lubuntu.</strong></p>
 <p>It assumes you have the project source code ready in the path project.</p>
 </section>
 <section id="dialogflow-account">
-<h2>Dialogflow account:<a class="headerlink" href="#dialogflow-account" title="Permalink to this headline">¶</a></h2>
+<h2>Dialogflow account:<a class="headerlink" href="#dialogflow-account" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Account: xxx</p></li>
 <li><p>Password: xxx</p></li>
@@ -1346,19 +1420,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><img alt="Graphical user interface, text, application, chat or text message Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.002.png" /></p></li>
 </ul>
 <section id="prerequisite">
-<h3>Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">¶</a></h3>
+<h3>Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Nodejs == 14.17.16 # <a class="reference external" href="https://github.com/nvm-sh/nvm#installing-and-updating">https://github.com/nvm-sh/nvm#installing-and-updating</a></p></li>
 <li><p>Python == 3.8.10</p></li>
 </ul>
 </section>
 <section id="folder-structure">
-<h3>Folder structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">¶</a></h3>
+<h3>Folder structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">#</a></h3>
 <p>|<p>project</p><p>├── README.md</p><p>├── backend			# Source code for backend</p><p>├── docker-compose.yml</p><p>├── frontend			# Source code for frontend</p><p>└── workDiaries</p>|</p>
 <!-- | :- | -->
 </section>
 <section id="frontend-web-interface">
-<h3>Frontend – Web Interface<a class="headerlink" href="#frontend-web-interface" title="Permalink to this headline">¶</a></h3>
+<h3>Frontend – Web Interface<a class="headerlink" href="#frontend-web-interface" title="Permalink to this headline">#</a></h3>
 <p><strong>[Prerequisite] Install yarn if you did not have it</strong></p>
 <p>You can install yarn with the following command</p>
 <p>|<p><span class="math notranslate nohighlight">\( npm i -g yarn&lt;/p&gt;&lt;p&gt;\)</span> yarn –-version #Check installation </p>|</p>
@@ -1377,7 +1451,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.003.png" /></p>
 </section>
 <section id="backend-main-server">
-<h3>Backend - Main server<a class="headerlink" href="#backend-main-server" title="Permalink to this headline">¶</a></h3>
+<h3>Backend - Main server<a class="headerlink" href="#backend-main-server" title="Permalink to this headline">#</a></h3>
 <p><strong>Step 1 – Create virtual environment</strong></p>
 <p>Please make you are at the project root. If you don’t, please do</p>
 <p>|$ cd project/|</p>
@@ -1393,13 +1467,13 @@ const thebe_selector_output = ".output, .cell_output"
 <!-- | :- | -->
 </section>
 <section id="ml-model-training">
-<h3>ML Model Training<a class="headerlink" href="#ml-model-training" title="Permalink to this headline">¶</a></h3>
+<h3>ML Model Training<a class="headerlink" href="#ml-model-training" title="Permalink to this headline">#</a></h3>
 <p>|<p><span class="math notranslate nohighlight">\( cd backend/covidChecker &lt;/p&gt;&lt;p&gt;\)</span> bash train.bash</p>|</p>
 <!-- | :- | -->
 <p>*Notice the database contain 3 million record data, make sure have enough space and time to train. The existing model is put on the model folder.</p>
 </section>
 <section id="messenger">
-<h3>Messenger<a class="headerlink" href="#messenger" title="Permalink to this headline">¶</a></h3>
+<h3>Messenger<a class="headerlink" href="#messenger" title="Permalink to this headline">#</a></h3>
 <p><strong>Step 1 – run webhook</strong></p>
 <p>Open a new terminal</p>
 <p>|<p><span class="math notranslate nohighlight">\( cd backend&lt;/p&gt;&lt;p&gt;\)</span> source ./venv/bin/activate<br>(venv) $ python3 <a class="reference external" href="http://messenger.py">messenger.py</a> # default port 8000</p>|</p>
@@ -1415,7 +1489,7 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section id="and-login">
-<h2>and login:<a class="headerlink" href="#and-login" title="Permalink to this headline">¶</a></h2>
+<h2>and login:<a class="headerlink" href="#and-login" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Account: xxx</p></li>
 <li><p>Password: xxx</p></li>
@@ -1428,7 +1502,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Now, you can test out the same features described below except for the general symptom check functionality.</p>
 <p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.006.png" /></p>
 <section id="discord">
-<h3>Discord<a class="headerlink" href="#discord" title="Permalink to this headline">¶</a></h3>
+<h3>Discord<a class="headerlink" href="#discord" title="Permalink to this headline">#</a></h3>
 <p><strong>[Prerequisite] A Discord account is required to chat with our chatbot.</strong></p>
 <p><strong>Step 1 – Join chatbot server</strong></p>
 <p>Use the link provided to join the Discord channel: <a class="reference external" href="https://discord.gg/BNJKVJ6q5U">https://discord.gg/BNJKVJ6q5U</a></p>
@@ -1455,9 +1529,9 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section id="how-to-use-the-chatbot">
-<h2>How to use the chatbot<a class="headerlink" href="#how-to-use-the-chatbot" title="Permalink to this headline">¶</a></h2>
+<h2>How to use the chatbot<a class="headerlink" href="#how-to-use-the-chatbot" title="Permalink to this headline">#</a></h2>
 <section id="user-sign-up">
-<h3>User Sign up<a class="headerlink" href="#user-sign-up" title="Permalink to this headline">¶</a></h3>
+<h3>User Sign up<a class="headerlink" href="#user-sign-up" title="Permalink to this headline">#</a></h3>
 <p>A guest user can sign up by clicking the “Register” button in the top right corner to sign into their account.</p>
 <p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.010.png" /></p>
 <p>Once the button is clicked, they will be redirected to the sign-up page. They need to fill in their personal details to proceed. If the information is incorrect, the border of corresponding text field will turn into red, and an error message will be shown below. Please note, the password requires at least one digit, at least one capital letter, at least one lower case letter, and at least eight characters long. If the user ticks the box of “I’m doctor”, they will be assigned to the role of ‘doctor’, otherwise, the account will be ‘patient’.  Once they have filled the form, they will be directed to the next page to create health profile.</p>
@@ -1467,7 +1541,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.013.png" /></p>
 </section>
 <section id="user-sign-in">
-<h3>User Sign In<a class="headerlink" href="#user-sign-in" title="Permalink to this headline">¶</a></h3>
+<h3>User Sign In<a class="headerlink" href="#user-sign-in" title="Permalink to this headline">#</a></h3>
 <p>Users can sign into their account by using the button in the top-right corner.</p>
 <p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.014.png" /></p>
 <p>Once they are on login page, they can type in their username and password. If they are invalid (wrong email format or does not match the records in the database), the input field will turn red, and an error message will be shown underneath. Once the users signed in successfully, they will be redirected to the home page.</p>
@@ -1475,20 +1549,20 @@ const thebe_selector_output = ".output, .cell_output"
 <img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.017.png" /></p>
 </section>
 <section id="modify-profile">
-<h3>Modify Profile<a class="headerlink" href="#modify-profile" title="Permalink to this headline">¶</a></h3>
+<h3>Modify Profile<a class="headerlink" href="#modify-profile" title="Permalink to this headline">#</a></h3>
 <p>Users can modify their profile to update their current health conditions, by clicking the gears button on top right corner and select profile from the dropdown menu.</p>
 <p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.018.png" /></p>
 <p>This page works in the same way as the profile creation step for signing up. Users can use radio buttons to choose their answer and click finish to update their profile.</p>
 </section>
 <section id="view-chat-history">
-<h3>View Chat History<a class="headerlink" href="#view-chat-history" title="Permalink to this headline">¶</a></h3>
+<h3>View Chat History<a class="headerlink" href="#view-chat-history" title="Permalink to this headline">#</a></h3>
 <p>Logged in users can view history by clicking the gears button on top right corner and select profile from the dropdown menu.</p>
 <p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.019.png" /></p>
 <p>At History page, they can view all the chat history that is stored on the server, and the history is split into multiple pages.</p>
 <p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.020.png" /></p>
 </section>
 <section id="requesting-real-doctor-to-diagnose">
-<h3>Requesting Real doctor to diagnose<a class="headerlink" href="#requesting-real-doctor-to-diagnose" title="Permalink to this headline">¶</a></h3>
+<h3>Requesting Real doctor to diagnose<a class="headerlink" href="#requesting-real-doctor-to-diagnose" title="Permalink to this headline">#</a></h3>
 <p>Registered users can send support tickets describing their health concerns to a real doctor for help by clicking the gear button on the top-right corner and select “New Request” from the menu.</p>
 <p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.021.png" /></p>
 <p>They can type in their message and click submit to send. However, if they have an active ticket, they cannot send any request until the current ticket is dismissed.</p>
@@ -1497,7 +1571,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.024.png" /></p>
 </section>
 <section id="view-reply-support-tickets-from-users">
-<h3>View &amp; Reply Support Tickets from Users<a class="headerlink" href="#view-reply-support-tickets-from-users" title="Permalink to this headline">¶</a></h3>
+<h3>View &amp; Reply Support Tickets from Users<a class="headerlink" href="#view-reply-support-tickets-from-users" title="Permalink to this headline">#</a></h3>
 <p>Doctors can view support tickets assigned to them by clicking the gears button and choose “Ticket” from the menu.</p>
 <p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.025.png" /></p>
 <p>The table shows a list of tickets assigned to them. Doctors can view and reply to the ticket by clicking the “view” button in each row.</p>
@@ -1506,17 +1580,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="Graphical user interface, text, application, email Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.027.png" /></p>
 </section>
 <section id="shortcut">
-<h3>Shortcut<a class="headerlink" href="#shortcut" title="Permalink to this headline">¶</a></h3>
+<h3>Shortcut<a class="headerlink" href="#shortcut" title="Permalink to this headline">#</a></h3>
 <p>Click below bubble to directly make query without typing.</p>
 <p><img alt="Graphical user interface, text, application, chat or text message Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.028.png" /></p>
 </section>
 <section id="readme-standard-response-template">
-<h3>README - Standard Response template<a class="headerlink" href="#readme-standard-response-template" title="Permalink to this headline">¶</a></h3>
+<h3>README - Standard Response template<a class="headerlink" href="#readme-standard-response-template" title="Permalink to this headline">#</a></h3>
 <p><img alt="Graphical user interface, application, Word Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.029.png" />
 All responses use a standard UI component, which contains heading, content, source link of the data. In most situation, they are clickable link that redirects the user to the source of that information.</p>
 </section>
 <section id="covid-statistic-aus">
-<h3>COVID Statistic (Aus)<a class="headerlink" href="#covid-statistic-aus" title="Permalink to this headline">¶</a></h3>
+<h3>COVID Statistic (Aus)<a class="headerlink" href="#covid-statistic-aus" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
@@ -1537,7 +1611,7 @@ All responses use a standard UI component, which contains heading, content, sour
 </table>
 </section>
 <section id="hotspot">
-<h3>Hotspot<a class="headerlink" href="#hotspot" title="Permalink to this headline">¶</a></h3>
+<h3>Hotspot<a class="headerlink" href="#hotspot" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
@@ -1561,7 +1635,7 @@ All responses use a standard UI component, which contains heading, content, sour
 </table>
 </section>
 <section id="isolation">
-<h3>Isolation<a class="headerlink" href="#isolation" title="Permalink to this headline">¶</a></h3>
+<h3>Isolation<a class="headerlink" href="#isolation" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
@@ -1594,7 +1668,7 @@ All responses use a standard UI component, which contains heading, content, sour
 </table>
 </section>
 <section id="travel-advice">
-<h3>Travel advice<a class="headerlink" href="#travel-advice" title="Permalink to this headline">¶</a></h3>
+<h3>Travel advice<a class="headerlink" href="#travel-advice" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
@@ -1615,7 +1689,7 @@ All responses use a standard UI component, which contains heading, content, sour
 </table>
 </section>
 <section id="covid-symptom-check">
-<h3>COVID symptom check<a class="headerlink" href="#covid-symptom-check" title="Permalink to this headline">¶</a></h3>
+<h3>COVID symptom check<a class="headerlink" href="#covid-symptom-check" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
@@ -1632,7 +1706,7 @@ All responses use a standard UI component, which contains heading, content, sour
 <p><img alt="" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.036.png" /></p>
 </section>
 <section id="general-symptom-check">
-<h3>General symptom check<a class="headerlink" href="#general-symptom-check" title="Permalink to this headline">¶</a></h3>
+<h3>General symptom check<a class="headerlink" href="#general-symptom-check" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
@@ -1648,7 +1722,7 @@ All responses use a standard UI component, which contains heading, content, sour
 <p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.037.png" /></p>
 </section>
 <section id="receipt-suggestion">
-<h3>Receipt suggestion<a class="headerlink" href="#receipt-suggestion" title="Permalink to this headline">¶</a></h3>
+<h3>Receipt suggestion<a class="headerlink" href="#receipt-suggestion" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
@@ -1666,7 +1740,7 @@ All responses use a standard UI component, which contains heading, content, sour
 </table>
 </section>
 <section id="health-news">
-<h3>Health news<a class="headerlink" href="#health-news" title="Permalink to this headline">¶</a></h3>
+<h3>Health news<a class="headerlink" href="#health-news" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
@@ -1684,7 +1758,7 @@ All responses use a standard UI component, which contains heading, content, sour
 </table>
 </section>
 <section id="nearby-clinic">
-<h3>Nearby clinic<a class="headerlink" href="#nearby-clinic" title="Permalink to this headline">¶</a></h3>
+<h3>Nearby clinic<a class="headerlink" href="#nearby-clinic" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
@@ -1704,7 +1778,7 @@ All responses use a standard UI component, which contains heading, content, sour
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="bibliography">
-<h1>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h1>
+<h1>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h1>
 <p>Axios. (2021). <em>Promise based HTTP client for the browser and node.js</em>. Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/axios/axios">https://github.com/axios/axios</a></p>
 <p><em>Beautiful Soup Documentation</em>. (2021). Retrieved from Beautiful Soup: <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/#improving-performance">https://beautiful-soup-4.readthedocs.io/en/latest/#improving-performance</a></p>
 <p><em>Coronavirus (COVID-19) case numbers and statistics</em>. (2021, November). Retrieved from Australian Govenment Department of Health: <a class="reference external" href="https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-case-numbers-and-statistics">https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-case-numbers-and-statistics</a></p>
@@ -1743,9 +1817,11 @@ All responses use a standard UI component, which contains heading, content, sour
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../3900-intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1761,24 +1837,28 @@ All responses use a standard UI component, which contains heading, content, sour
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jerry<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -8,8 +8,9 @@
 
     <title>Crypto Prediction &#8212; My Jupter Notebook on data science.</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -41,8 +38,9 @@
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -60,7 +58,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,9 +81,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
       
@@ -532,104 +545,177 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/ml/regression/p1-crypto-prediction.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/postsent/nb"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/postsent/nb/main?urlpath=tree/docs/ml/regression/p1-crypto-prediction.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/postsent/nb/main?urlpath=tree/docs/ml/regression/p1-crypto-prediction.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/ml/regression/p1-crypto-prediction.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Crypto Prediction
@@ -827,12 +913,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Crypto Prediction</h1>
@@ -1046,18 +1131,19 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="crypto-prediction">
-<h1>Crypto Prediction<a class="headerlink" href="#crypto-prediction" title="Permalink to this headline">¶</a></h1>
+<h1>Crypto Prediction<a class="headerlink" href="#crypto-prediction" title="Permalink to this headline">#</a></h1>
 <p>Question</p>
 <ol class="simple">
 <li><p>how to handle missing value?</p></li>
 </ol>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="todo">
-<h1>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h1>
+<h1>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># impute non zero y</span>
@@ -2287,7 +2373,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="final">
-<h1>Final<a class="headerlink" href="#final" title="Permalink to this headline">¶</a></h1>
+<h1>Final<a class="headerlink" href="#final" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RepeatedKFold</span>
@@ -2506,10 +2592,10 @@ percentage of outliers removed:  0.010028149190710767
 </div>
 </div>
 <section id="pre-processing">
-<h2>Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this headline">¶</a></h2>
+<h2>Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="delete">
-<h2>delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<h2>delete<a class="headerlink" href="#delete" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
@@ -2532,9 +2618,9 @@ percentage of outliers removed:  0.010028149190710767
 </div>
 </section>
 <section id="isoforest">
-<h2>isoforest<a class="headerlink" href="#isoforest" title="Permalink to this headline">¶</a></h2>
+<h2>isoforest<a class="headerlink" href="#isoforest" title="Permalink to this headline">#</a></h2>
 <section id="x-delete">
-<h3>x_delete<a class="headerlink" href="#x-delete" title="Permalink to this headline">¶</a></h3>
+<h3>x_delete<a class="headerlink" href="#x-delete" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # used on X_train instead of X_delete as above</span>
@@ -2576,7 +2662,7 @@ percentage of outliers removed:  0.010028149190710767
 </div>
 </section>
 <section id="x-train">
-<h3>x_train<a class="headerlink" href="#x-train" title="Permalink to this headline">¶</a></h3>
+<h3>x_train<a class="headerlink" href="#x-train" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># used on X_train instead of X_delete as above</span>
@@ -2612,7 +2698,7 @@ percentage of outliers removed:  0.05005277973258269
 </section>
 </section>
 <section id="standardised-bad">
-<h2>standardised (bad)<a class="headerlink" href="#standardised-bad" title="Permalink to this headline">¶</a></h2>
+<h2>standardised (bad)<a class="headerlink" href="#standardised-bad" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
@@ -2633,7 +2719,7 @@ percentage of outliers removed:  0.05005277973258269
 </div>
 </section>
 <section id="robust-scaler-bad-result">
-<h2>robust scaler (bad result)<a class="headerlink" href="#robust-scaler-bad-result" title="Permalink to this headline">¶</a></h2>
+<h2>robust scaler (bad result)<a class="headerlink" href="#robust-scaler-bad-result" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">RobustScaler</span>
@@ -2648,7 +2734,7 @@ percentage of outliers removed:  0.05005277973258269
 </div>
 </section>
 <section id="remove-nans-zeros-trial">
-<h2>remove nans,zeros trial<a class="headerlink" href="#remove-nans-zeros-trial" title="Permalink to this headline">¶</a></h2>
+<h2>remove nans,zeros trial<a class="headerlink" href="#remove-nans-zeros-trial" title="Permalink to this headline">#</a></h2>
 <p>remove rows contain half nan</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3067,7 +3153,7 @@ dtype: int64
 </div>
 </section>
 <section id="remove-half-zeros">
-<h2>remove half zeros<a class="headerlink" href="#remove-half-zeros" title="Permalink to this headline">¶</a></h2>
+<h2>remove half zeros<a class="headerlink" href="#remove-half-zeros" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(len(X_train))</span>
@@ -3090,7 +3176,7 @@ dtype: int64
 </div>
 </section>
 <section id="iso-forest-on-x-delete">
-<h2>iso forest on X_delete<a class="headerlink" href="#iso-forest-on-x-delete" title="Permalink to this headline">¶</a></h2>
+<h2>iso forest on X_delete<a class="headerlink" href="#iso-forest-on-x-delete" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">IsolationForest</span>
@@ -3179,9 +3265,9 @@ percentage of outliers removed:  0.10004948045522019
 </div>
 </section>
 <section id="imputation">
-<h2>imputation<a class="headerlink" href="#imputation" title="Permalink to this headline">¶</a></h2>
+<h2>imputation<a class="headerlink" href="#imputation" title="Permalink to this headline">#</a></h2>
 <section id="univariate-bad-result">
-<h3>univariate (bad result)<a class="headerlink" href="#univariate-bad-result" title="Permalink to this headline">¶</a></h3>
+<h3>univariate (bad result)<a class="headerlink" href="#univariate-bad-result" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
@@ -3463,9 +3549,9 @@ dtype: float64
 </div>
 </section>
 <section id="multivariate">
-<h3>multivariate<a class="headerlink" href="#multivariate" title="Permalink to this headline">¶</a></h3>
+<h3>multivariate<a class="headerlink" href="#multivariate" title="Permalink to this headline">#</a></h3>
 <section id="convert-numpy-to-pandas">
-<h4>convert numpy to pandas<a class="headerlink" href="#convert-numpy-to-pandas" title="Permalink to this headline">¶</a></h4>
+<h4>convert numpy to pandas<a class="headerlink" href="#convert-numpy-to-pandas" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># no zeros</span>
@@ -4547,7 +4633,7 @@ dtype: float64
 </section>
 </section>
 <section id="knn-imputer-bad-result">
-<h3>Knn imputer (bad result)<a class="headerlink" href="#knn-imputer-bad-result" title="Permalink to this headline">¶</a></h3>
+<h3>Knn imputer (bad result)<a class="headerlink" href="#knn-imputer-bad-result" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">KNNImputer</span>
@@ -4561,7 +4647,7 @@ dtype: float64
 </section>
 </section>
 <section id="log-transform">
-<h2>Log transform<a class="headerlink" href="#log-transform" title="Permalink to this headline">¶</a></h2>
+<h2>Log transform<a class="headerlink" href="#log-transform" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert all 0 to 1</span>
@@ -5064,9 +5150,9 @@ dtype: float64
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="feature-selection">
-<h1>feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h1>
+<h1>feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">#</a></h1>
 <section id="featureagglomeration">
-<h2>FeatureAgglomeration<a class="headerlink" href="#featureagglomeration" title="Permalink to this headline">¶</a></h2>
+<h2>FeatureAgglomeration<a class="headerlink" href="#featureagglomeration" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -6203,7 +6289,7 @@ epoch 641| loss: 572.92239| val_0_rmse: 699.32591|  0:03:29s
 </div>
 <p>##<em>ExtraTreeRegressor</em></p>
 <section id="iso">
-<h3>iso<a class="headerlink" href="#iso" title="Permalink to this headline">¶</a></h3>
+<h3>iso<a class="headerlink" href="#iso" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># used on X_train instead of X_delete as above</span>
@@ -6263,7 +6349,7 @@ percentage of outliers removed:  0.10004948045522019
 </div>
 </section>
 <section id="evaluate-the-model">
-<h3>evaluate the model<a class="headerlink" href="#evaluate-the-model" title="Permalink to this headline">¶</a></h3>
+<h3>evaluate the model<a class="headerlink" href="#evaluate-the-model" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ext_rg</span><span class="p">(</span><span class="n">X_given</span><span class="p">,</span><span class="n">y_given</span><span class="o">=</span><span class="n">y_train</span><span class="p">):</span>
@@ -6299,7 +6385,7 @@ percentage of outliers removed:  0.10004948045522019
 </section>
 </section>
 <section id="submission">
-<h2>submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h2>
+<h2>submission<a class="headerlink" href="#submission" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#submission</span>
@@ -6393,7 +6479,7 @@ percentage of outliers removed:  0.10004948045522019
 </div>
 </section>
 <section id="bayeisan-regressor">
-<h2>bayeisan regressor<a class="headerlink" href="#bayeisan-regressor" title="Permalink to this headline">¶</a></h2>
+<h2>bayeisan regressor<a class="headerlink" href="#bayeisan-regressor" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
@@ -6431,7 +6517,7 @@ percentage of outliers removed:  0.10004948045522019
 </div>
 </section>
 <section id="add-features">
-<h2>add features<a class="headerlink" href="#add-features" title="Permalink to this headline">¶</a></h2>
+<h2>add features<a class="headerlink" href="#add-features" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SEED</span> <span class="o">=</span> <span class="mi">23</span>
@@ -6970,7 +7056,7 @@ dtype: float64
 </div>
 </div>
 <section id="importance">
-<h3>importance<a class="headerlink" href="#importance" title="Permalink to this headline">¶</a></h3>
+<h3>importance<a class="headerlink" href="#importance" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">plot_importance</span>
@@ -6991,7 +7077,7 @@ dtype: float64
 </section>
 </section>
 <section id="submit">
-<h2>submit<a class="headerlink" href="#submit" title="Permalink to this headline">¶</a></h2>
+<h2>submit<a class="headerlink" href="#submit" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">FastICA</span>
@@ -7412,7 +7498,7 @@ Test shape: (6222, 80)
 </div>
 <p>##ridge</p>
 <section id="test">
-<h3>test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h3>
+<h3>test<a class="headerlink" href="#test" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ridge_rg = make_pipeline(StandardScaler(), Ridge(alpha=1.0))</span>
@@ -7672,7 +7758,7 @@ Test shape: (6222, 80)
 </div>
 </section>
 <section id="formal">
-<h3>formal<a class="headerlink" href="#formal" title="Permalink to this headline">¶</a></h3>
+<h3>formal<a class="headerlink" href="#formal" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#submission</span>
@@ -7713,7 +7799,7 @@ Test shape: (6222, 80)
 </section>
 </section>
 <section id="used-on-x-train-instead-of-x-delete-as-above">
-<h2>used on X_train instead of X_delete as above<a class="headerlink" href="#used-on-x-train-instead-of-x-delete-as-above" title="Permalink to this headline">¶</a></h2>
+<h2>used on X_train instead of X_delete as above<a class="headerlink" href="#used-on-x-train-instead-of-x-delete-as-above" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># used on X_train instead of X_delete as above</span>
@@ -7747,7 +7833,7 @@ percentage of outliers removed:  0.05007422068283028
 </div>
 </div>
 <section id="param-tuning">
-<h3>param tuning<a class="headerlink" href="#param-tuning" title="Permalink to this headline">¶</a></h3>
+<h3>param tuning<a class="headerlink" href="#param-tuning" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ridge_rg</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
@@ -7900,7 +7986,7 @@ Config: {&#39;alpha&#39;: 3.95}
 </section>
 </section>
 <section id="linear-regression">
-<h2>linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
+<h2>linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate model</span>
@@ -7922,7 +8008,7 @@ Config: {&#39;alpha&#39;: 3.95}
 </div>
 </section>
 <section id="autosklearn">
-<h2>autosklearn<a class="headerlink" href="#autosklearn" title="Permalink to this headline">¶</a></h2>
+<h2>autosklearn<a class="headerlink" href="#autosklearn" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install auto-sklearn</span>
@@ -8374,7 +8460,7 @@ dataset_properties={
 </div>
 </div>
 <section id="save-result">
-<h3>save result<a class="headerlink" href="#save-result" title="Permalink to this headline">¶</a></h3>
+<h3>save result<a class="headerlink" href="#save-result" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
@@ -8483,9 +8569,11 @@ dataset_properties={
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -8501,24 +8589,28 @@ dataset_properties={
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jerry<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

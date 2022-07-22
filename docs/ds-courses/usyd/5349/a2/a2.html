@@ -8,8 +8,9 @@
 
     <title>Data Preprocessing and Performance Tuning with Spark &#8212; My Jupter Notebook on data science.</title>
     
-  <link href="../../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
@@ -41,8 +38,9 @@
     <script src="../../../../_static/togglebutton.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -60,7 +58,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,9 +81,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../../index.html">
       
       
@@ -532,87 +545,148 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/ds-courses/usyd/5349/a2/a2.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/postsent/nb"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/ds-courses/usyd/5349/a2/a2.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Data Preprocessing and Performance Tuning with Spark
@@ -844,12 +918,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Data Preprocessing and Performance Tuning with Spark</h1>
@@ -1097,26 +1170,27 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <p>COMP5349 Cloud Computing - Assignment 2</p>
 <section class="tex2jax_ignore mathjax_ignore" id="data-preprocessing-and-performance-tuning-with-spark">
-<h1>Data Preprocessing and Performance Tuning with Spark<a class="headerlink" href="#data-preprocessing-and-performance-tuning-with-spark" title="Permalink to this headline">¶</a></h1>
+<h1>Data Preprocessing and Performance Tuning with Spark<a class="headerlink" href="#data-preprocessing-and-performance-tuning-with-spark" title="Permalink to this headline">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="table-of-contents">
-<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
+<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">#</a></h1>
 <p><img alt="" src="../../../../_images/toc1.png" />
 <img alt="" src="../../../../_images/toc2.png" /></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1><strong>Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h1><strong>Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <section id="goal">
-<h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
+<h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">#</a></h2>
 <p>The goal of this assignment is to design and implement a Pyspark program that can be run on a multi-node cluster to preprocess a dataset called CUDA in parallel. Specifically, the implementation needs to efficiently create three types of samples based on the answers and also ensure they are balanced.</p>
 </section>
 <section id="dataset">
-<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">#</a></h2>
 <p>Figure 1 shows the dataset and the desired output data structure which are both in json format. The context field is treated as the whole contract which contains 41 questions and answers pairs each.</p>
 <p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.001.png" />
 <img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.002.png" /></p>
@@ -1145,20 +1219,20 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="design">
-<h1><strong>Design</strong><a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h1>
+<h1><strong>Design</strong><a class="headerlink" href="#design" title="Permalink to this headline">#</a></h1>
 <p>This section contains descriptions of the key dataframe design, operation used and the data flow of the implementation.</p>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <section id="naming-convention-impossible-possible-positive-sample">
-<h3>2.1.1 Naming convention: Impossible, possible &amp; positive sample<a class="headerlink" href="#naming-convention-impossible-possible-positive-sample" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.1 Naming convention: Impossible, possible &amp; positive sample<a class="headerlink" href="#naming-convention-impossible-possible-positive-sample" title="Permalink to this headline">#</a></h3>
 <p>In the below description, an impossible sample refers to an answer that belongs to an impossible question in a contract, similarly, possible and positive samples belong to possible negative and positive answers, respectively.</p>
 </section>
 <section id="id-column-tuning">
-<h3>2.1.2 ID Column - tuning<a class="headerlink" href="#id-column-tuning" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.2 ID Column - tuning<a class="headerlink" href="#id-column-tuning" title="Permalink to this headline">#</a></h3>
 <p>An integer type id column is made for a faster execution [1] when join with a different table. There are four such id columns made. 1) sampleID refers to the unique id for each sample 2) cID is for each unique contract 3) seqID is given to each partitioned sequence within a contract 4) qID is for each question in a contract. Besides, a negativity column is made where the values 0,1,2  refers to positive, possible and impossible samples respectively.</p>
 </section>
 <section id="general-optimisation-consideration">
-<h3>2.1.3 General optimisation consideration<a class="headerlink" href="#general-optimisation-consideration" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.3 General optimisation consideration<a class="headerlink" href="#general-optimisation-consideration" title="Permalink to this headline">#</a></h3>
 <p>Dataframe SQL APIs will be prefered over the user-defined function (UDF) when possible to take advantage of the optimisation engine. Thus, 4 UDFs are used in total, they are for 1) split data input sequences and assign sequence id 2) convert sequence to samples based on question and assign question id 3) select impossible question samples 4) select positive negative samples.</p>
 <p>Cache() used for key dataframes to improve time performance.</p>
 <p>Join operation will always join the small dataframe to the larger one to improve the speed. though the optimisation engine may do it under the hood automatically.</p>
@@ -1166,48 +1240,48 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Since the dataframe is used, the design also follows some principles in relational database management systems (RDMS).</p>
 </section>
 <section id="maximum-coverage-and-heuristic">
-<h3>2.1.4 Maximum coverage and heuristic<a class="headerlink" href="#maximum-coverage-and-heuristic" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.4 Maximum coverage and heuristic<a class="headerlink" href="#maximum-coverage-and-heuristic" title="Permalink to this headline">#</a></h3>
 <p>To ensure the samples will cover the contract maximally, each type of sample is made unique within a contract if applicable. The heuristic of uniqueness is done with two user-defined functions 1) select the impossible negative samples that have different sequence id from the positive samples given the same contract 2) select the possible negative samples based on the sequence ids of both the positive and negative samples.</p>
 </section>
 </section>
 <section id="proof-of-correctness-algorithm-implementation">
-<h2>Proof of correctness – algorithm implementation<a class="headerlink" href="#proof-of-correctness-algorithm-implementation" title="Permalink to this headline">¶</a></h2>
+<h2>Proof of correctness – algorithm implementation<a class="headerlink" href="#proof-of-correctness-algorithm-implementation" title="Permalink to this headline">#</a></h2>
 <section id="uniqueness-of-negative-sample">
-<h3>2.2.1 Uniqueness of negative sample<a class="headerlink" href="#uniqueness-of-negative-sample" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.1 Uniqueness of negative sample<a class="headerlink" href="#uniqueness-of-negative-sample" title="Permalink to this headline">#</a></h3>
 <p>Figure 2 demonstrates the correctness of the heuristic when selecting the unique negative samples. The bottom circled rows prove that the selected samples are all unique sequences i.e. seqID: 0, 1, 5. The top circled rows prove that there could be a non-unique negative sample being used if the uniqueness cannot be guaranteed i.e. seqID: 0, 0, 1. Note that the null value for the last two count columns means such a sample is not selected as the final choice.</p>
 <p><img alt="" src="../../../../_images/figure2.png" /></p>
 <p><em>Figure 2 – samples with all attributes</em></p>
 </section>
 <section id="answer-index">
-<h3>2.2.2 Answer index<a class="headerlink" href="#answer-index" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.2 Answer index<a class="headerlink" href="#answer-index" title="Permalink to this headline">#</a></h3>
 <p>The blue circled section in Figure 2 shows the correctness of the answer index where the negative samples have 0 for both answer_start and answer_end columns and the positive ones have at least one non-zero value for the two columns. The indexes above demonstrated they are relative to the sequence instead of the original context field.</p>
 </section>
 <section id="balanced-dataset">
-<h3>2.2.3 Balanced dataset<a class="headerlink" href="#balanced-dataset" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.3 Balanced dataset<a class="headerlink" href="#balanced-dataset" title="Permalink to this headline">#</a></h3>
 <p>Figure 3 shows the correctness of the balancing dataset implementation. The first output is the total size of all samples, the second is the number of the final selection of the samples and the third is the number of all positive samples. Since the selected sample size is about three to four times the positive ones, it demonstrates the dataset, that contains positive, possible negative and impossible samples, is relatively balanced.</p>
 <p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.011.png" /></p>
 <p><em>Figure 3 – different sample sizes</em></p>
 </section>
 </section>
 <section id="data-flow-step-1-get-all-samples-positive-possible-and-impossible">
-<h2>Data flow – step 1: Get all samples – positive, possible and impossible<a class="headerlink" href="#data-flow-step-1-get-all-samples-positive-possible-and-impossible" title="Permalink to this headline">¶</a></h2>
+<h2>Data flow – step 1: Get all samples – positive, possible and impossible<a class="headerlink" href="#data-flow-step-1-get-all-samples-positive-possible-and-impossible" title="Permalink to this headline">#</a></h2>
 <p>The data flow contains 2 main steps which are explained below.</p>
 <section id="initial-input-dataframe">
-<h3>2.3.1 Initial input dataframe<a class="headerlink" href="#initial-input-dataframe" title="Permalink to this headline">¶</a></h3>
+<h3>2.3.1 Initial input dataframe<a class="headerlink" href="#initial-input-dataframe" title="Permalink to this headline">#</a></h3>
 <p>Figure 4 is the beginning input dataframe. It contains the context field which is the content of the contract and qas which has 41 questions with 0 or more answers.</p>
 <p>The operation involves 1) using explode transformation on the paragraph field of the original dataframe.</p>
 <p><img alt="Text, letter Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.012.png" /></p>
 <p><em>Figure 4 – Initial input dataframe</em></p>
 </section>
 <section id="convert-full-context-to-different-sequences">
-<h3>2.3.2 Convert full context to different sequences<a class="headerlink" href="#convert-full-context-to-different-sequences" title="Permalink to this headline">¶</a></h3>
+<h3>2.3.2 Convert full context to different sequences<a class="headerlink" href="#convert-full-context-to-different-sequences" title="Permalink to this headline">#</a></h3>
 <p>Figure 5 The dataframe has the same column value as Figure 4, with additional columns of seq (split from the context field in the previous table) seqID and contract title. The seqID uniquely identifies different sequences within a contract and the contract title is also added which will be converted to contract ID in a later step.</p>
 <p>The operation is about using a UDF to select the sequences based on window size and stride. It involves 1) a UDF that takes the input column from Figure 4 and returns sequences of the context with other column values remaining.</p>
 <p><img alt="Text, letter Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.013.png" /></p>
 <p><em>Figure 5 – convert context to sequence dataframe</em></p>
 </section>
 <section id="extract-samples-based-on-each-question-in-a-contract">
-<h3>2.3.3 Extract samples based on each question in a contract<a class="headerlink" href="#extract-samples-based-on-each-question-in-a-contract" title="Permalink to this headline">¶</a></h3>
+<h3>2.3.3 Extract samples based on each question in a contract<a class="headerlink" href="#extract-samples-based-on-each-question-in-a-contract" title="Permalink to this headline">#</a></h3>
 <p>Figure 6 is the dataframe that creates different samples from the sequences based on answers and questions.  It contains a unique sample id for each sample. These three types of samples – positive, possible and impossible samples, which related to 0, 1, and 2 in the negativity column. The answer_start and answer_end columns are the start and end index of a whole or partial answer contained in the sequence.</p>
 <p>The operation involves 1) applying a UDF to create samples based on questions in a contract 2) using the monotonically_increasing_id function to assign sampleID 3) Join with a contract table which contains a title with contract ID to obtain cID. Note that the contract table is made with the zipWithIndex function to ensure continuous consecutive ids.</p>
 <p><img alt="Table Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.014.png" /></p>
@@ -1215,9 +1289,9 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section id="data-flow-step-2-balance-positive-and-negative-samples">
-<h2>Data flow – step 2: Balance positive and negative samples<a class="headerlink" href="#data-flow-step-2-balance-positive-and-negative-samples" title="Permalink to this headline">¶</a></h2>
+<h2>Data flow – step 2: Balance positive and negative samples<a class="headerlink" href="#data-flow-step-2-balance-positive-and-negative-samples" title="Permalink to this headline">#</a></h2>
 <section id="count-the-positive-samples-for-impossible-questions-and-possible-negative">
-<h3>2.4.1 Count the positive samples for impossible questions and possible negative*<a class="headerlink" href="#count-the-positive-samples-for-impossible-questions-and-possible-negative" title="Permalink to this headline">¶</a></h3>
+<h3>2.4.1 Count the positive samples for impossible questions and possible negative*<a class="headerlink" href="#count-the-positive-samples-for-impossible-questions-and-possible-negative" title="Permalink to this headline">#</a></h3>
 <p>Figure 7 are two dataframes that count the number of impossible and possible negative samples that needed to be kept which is shown in the third column the two dataframe.</p>
 <p>The operation involved are: 1) select the relevant fields from Figure 6 for the impossible, possible and positive samples based on the negativity column 2) left join operation on the impossible/possible dataframe with the positive sample based on cID and qID 3) groupBy cID and qID 4)  countDistinct operation on positive samples. For the calculation that requires an average, we will 5) count the contract that contains the positive sample 6) select the dataframe and divide the positive sample count by the contract count 7) round operation on the result column to the nearest integer. Note the default behaviour of counting null in spark is treating it as 0.</p>
 <p><img alt="A picture containing table Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.015.png" />,
@@ -1225,7 +1299,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em>Figure 7 – count for different samples in a contract for each question dataframe</em></p>
 </section>
 <section id="heuristic-for-selection">
-<h3>2.4.2 Heuristic for selection<a class="headerlink" href="#heuristic-for-selection" title="Permalink to this headline">¶</a></h3>
+<h3>2.4.2 Heuristic for selection<a class="headerlink" href="#heuristic-for-selection" title="Permalink to this headline">#</a></h3>
 <p>Figure 8 shows three dataframes for possible, impossible negative samples and positive samples. In the first two dataframes, the third column contains a list of dictionaries with two keys, the sequence id and the sample id.</p>
 <p>Operations for the first two dataframes are 1) Group by contract and question 2) create_map operation to save the sequence id and sample id as map type 3) collect_list operation to turn it into a list under the third column in Figure 8.</p>
 <p>The third column for the third dataframe contains the sequence id for the positive sample which is used later to satisfy the heuristic of non-overlapping sequence between positive and negative samples.</p>
@@ -1236,7 +1310,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em>Figure 8 – heuristic condition dataframe</em></p>
 </section>
 <section id="st-selection-with-udf-the-impossible-samples">
-<h3>2.4.3 1st Selection with UDF - the impossible samples*<a class="headerlink" href="#st-selection-with-udf-the-impossible-samples" title="Permalink to this headline">¶</a></h3>
+<h3>2.4.3 1st Selection with UDF - the impossible samples*<a class="headerlink" href="#st-selection-with-udf-the-impossible-samples" title="Permalink to this headline">#</a></h3>
 <p>The dataframe in Figure 9 has an additional pos column with contains a list of sequence id in the positive samples in which the cID and qID matched with the impossible question. In the case where no such positive sample, it appears as null value.</p>
 <p>Operation is: 1) left join the tables in Figure 8 so that every impossible sample in a contract is assigned with a positive sample list.</p>
 <p><img alt="A picture containing shape Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.020.png" /></p>
@@ -1247,14 +1321,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em>Figure 10 – sample ids to be kept for the impossible dataframe</em></p>
 </section>
 <section id="nd-selection-with-udf-the-possible-samples">
-<h3>2.4.4 2nd selection with UDF – the possible samples*<a class="headerlink" href="#nd-selection-with-udf-the-possible-samples" title="Permalink to this headline">¶</a></h3>
+<h3>2.4.4 2nd selection with UDF – the possible samples*<a class="headerlink" href="#nd-selection-with-udf-the-possible-samples" title="Permalink to this headline">#</a></h3>
 <p>The below table contains the number of possible samples to keep i.e the count_pneg column. It also contains pos and seqiD_imp columns which are used to satisfy the heuristic when selecting a unique negative sample. The heuristic is that the negative sequence is unique and that does not exist in the positive ones.</p>
 <p>Operations: 1) left join the possible sample with the impossible samples (Figure 10)  and the positive sample (Figure 8) based on cID and qID.</p>
 <p><img alt="Shape Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.022.png" /></p>
 <p><em>Figure 11 – joined dataframe where the samples in possi column are ready to be selected based on the heuristic – the pos and seqID_imp column</em></p>
 </section>
 <section id="selection-result-sample-id-dataframe">
-<h3>2.4.5 Selection result - sample id dataframe<a class="headerlink" href="#selection-result-sample-id-dataframe" title="Permalink to this headline">¶</a></h3>
+<h3>2.4.5 Selection result - sample id dataframe<a class="headerlink" href="#selection-result-sample-id-dataframe" title="Permalink to this headline">#</a></h3>
 <p>The column of the first table below contains a list of final sample ids for each question in a contract. The two tables on the right are the flattened version for such results for both the possible and impossible samples whose id value will be used to select the final samples. The leftmost image below is the intermediate dataframe for the two resultant tables on the right.</p>
 <p>Operations are: 1) explode res column 2) select an alias to rename the table column</p>
 <p><img alt="Shape Description automatically generated with medium confidence" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.023.png" /></p>
@@ -1263,7 +1337,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em>Figure 12 – dataframe that contains the final sample ids to select from the negative samples</em></p>
 </section>
 <section id="final-result-and-save-as-json">
-<h3>2.4.6 Final result and save as json<a class="headerlink" href="#final-result-and-save-as-json" title="Permalink to this headline">¶</a></h3>
+<h3>2.4.6 Final result and save as json<a class="headerlink" href="#final-result-and-save-as-json" title="Permalink to this headline">#</a></h3>
 <p>The table below is the desired output format where the source field contains the segments that contain the answer to a question in the question field. The answer start and end are the indexes of that answer relative to the source field. The below table is then converted into a json file with a key matched with the column name.</p>
 <p>Operations are: 1) join the two right tables (Figure 12) with the sample dataframe (Figure 6) of the same negativity 2) union the impossible, possible and positive samples 3) select the relevant columns as below 4) create_map to convert columns into dictionary 4) collect_list to convert all columns into a small dataframe with one column and one row in which the value is a list of dictionaries. 5) save the final result as a json file.</p>
 <p><img alt="Table Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.026.png" /></p>
@@ -1272,9 +1346,9 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="execution">
-<h1><strong>Execution</strong><a class="headerlink" href="#execution" title="Permalink to this headline">¶</a></h1>
+<h1><strong>Execution</strong><a class="headerlink" href="#execution" title="Permalink to this headline">#</a></h1>
 <section id="overview-and-physical-operator-involved">
-<h2>Overview and physical operator involved<a class="headerlink" href="#overview-and-physical-operator-involved" title="Permalink to this headline">¶</a></h2>
+<h2>Overview and physical operator involved<a class="headerlink" href="#overview-and-physical-operator-involved" title="Permalink to this headline">#</a></h2>
 <p>This section contains descriptions of the execution plan of key jobs and some screenshots output from the Spark history server are used.</p>
 <p>There are 40 completed stages and 55 skipped stages.</p>
 <p>Note that the below screenshot is taken from the Direct Acyclic Graph (DAG) from the last job execution in Figure 16. A grey box means the dataframe used is cached, otherwise, it is displayed as blue.</p>
@@ -1331,7 +1405,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section id="physical-execution-plan-and-explanation">
-<h2>Physical Execution Plan and explanation<a class="headerlink" href="#physical-execution-plan-and-explanation" title="Permalink to this headline">¶</a></h2>
+<h2>Physical Execution Plan and explanation<a class="headerlink" href="#physical-execution-plan-and-explanation" title="Permalink to this headline">#</a></h2>
 <p>Stage 47 image below shows the job of reading in the given json file dataset to a pyspark dataframe (Scan json) with spark internal optimisation (WholeStageCodegen).</p>
 <p>Stage 93 image shows the job of the union operation that output the final selected two types of negative samples and the positive samples to form a new resultant dataframe. It is demonstrated by three WholeStageCodegen blocks pointing to the union block.</p>
 <p>The right image in Figure 15** refers to the job where the different samples are generated. The plan has an operation called shuffleQueryStage whose output is used by many other operations (based on the number of links). Thus, it is recognised as the UDF of getting different samples (Figure 6) because the sample dataframe is the one being cached and reused the most.</p>
@@ -1350,10 +1424,10 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="performance-observation-and-tuning">
-<h1><strong>Performance Observation and Tuning</strong><a class="headerlink" href="#performance-observation-and-tuning" title="Permalink to this headline">¶</a></h1>
+<h1><strong>Performance Observation and Tuning</strong><a class="headerlink" href="#performance-observation-and-tuning" title="Permalink to this headline">#</a></h1>
 <p>The following section tests the implemented python spark script in a multi-node cluster. We will investigate resource consumption, especially memory usage. Various spark configurations will be examined and the optimal one will be chosen.</p>
 <section id="aws-emr-cluster-set-up">
-<h2>AWS EMR Cluster set up<a class="headerlink" href="#aws-emr-cluster-set-up" title="Permalink to this headline">¶</a></h2>
+<h2>AWS EMR Cluster set up<a class="headerlink" href="#aws-emr-cluster-set-up" title="Permalink to this headline">#</a></h2>
 <p>The below table shows the configurations used when setting up the experiment for this section.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1390,7 +1464,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section id="experiment-result">
-<h2>Experiment result<a class="headerlink" href="#experiment-result" title="Permalink to this headline">¶</a></h2>
+<h2>Experiment result<a class="headerlink" href="#experiment-result" title="Permalink to this headline">#</a></h2>
 <p>Table 3 shows different experiment trials with different spark-submit configurations which can be found in [2]. The experiment follows the control and treatment group design. The cells that contain the same colour belongs to the same group where different values will be tested while other non-highlight columns’ value remains the same. The yellow highlighted number is the optimal value within the group.</p>
 <p>The column aggregate resource allocation has two values,  the MB-seconds refers to the aggregated amount of memory the application has allocated multiplied by the application running time, similarly, the vcore-seconds value refers to the CPU consumption.</p>
 <p>Trial 15 configuration is the optimal choice for least memory consumption while trial 5 is optimal in terms of time usage and trial 13 is optimal for CPU consumption.</p>
@@ -1402,7 +1476,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em>Table 3 – C: client or cluster, cores – core per executor. conf: 1 – “spark.checkpoint.compress=True”,     2 – “spark.eventLog.enabled=True”, 3  “spark.rdd.compress=True”, (default) means the default value is used.</em></p>
 </section>
 <section id="findings-performance-and-optimal-configuration">
-<h2>3.3 Findings - Performance and Optimal Configuration<a class="headerlink" href="#findings-performance-and-optimal-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>3.3 Findings - Performance and Optimal Configuration<a class="headerlink" href="#findings-performance-and-optimal-configuration" title="Permalink to this headline">#</a></h2>
 <p>The below table concludes the different trial groups as displayed in Table 3. The values in the trial comparison column match the trial number in Table 3.</p>
 <p>The patterns observed via the above different trials are:</p>
 <ol class="simple">
@@ -1455,10 +1529,10 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="scalability">
-<h1><strong>Scalability</strong><a class="headerlink" href="#scalability" title="Permalink to this headline">¶</a></h1>
+<h1><strong>Scalability</strong><a class="headerlink" href="#scalability" title="Permalink to this headline">#</a></h1>
 <p>This section aims to compare the execution time performance of spark script on two different sized datasets –   CUADv1.json (large, 40MB) and test.json(small, 7MB). We will also discuss the scalability of the program.</p>
 <section id="out-of-memory-problem-oov-and-code-modification">
-<h2>Out of memory problem (OOV) and code modification<a class="headerlink" href="#out-of-memory-problem-oov-and-code-modification" title="Permalink to this headline">¶</a></h2>
+<h2>Out of memory problem (OOV) and code modification<a class="headerlink" href="#out-of-memory-problem-oov-and-code-modification" title="Permalink to this headline">#</a></h2>
 <p>Below is tested on the colab environment with the CUADv1.json for the sanity check. After the last successful run, it is realised that colab will cache the variables which is another main reason why out of memory problem occurs. Note that all dataframe value under the cache function mans that all dataframes are cached, similarly, for the show function column, it means all dataframe is shown.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1516,7 +1590,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section id="experiment-scalability-and-observation">
-<h2>Experiment, scalability and observation<a class="headerlink" href="#experiment-scalability-and-observation" title="Permalink to this headline">¶</a></h2>
+<h2>Experiment, scalability and observation<a class="headerlink" href="#experiment-scalability-and-observation" title="Permalink to this headline">#</a></h2>
 <p>Table 6 shows the time required by the larger dataset CUADv1 and the small dataset.</p>
 <p>The configuration number below refers to the trial number in Table 3. And the actual configuration is the same as that trial number in Table 3.</p>
 <p>Configuration 15 and 2 comparison shows a significant impact on the buffer file size. A larger value i.e. 96k as seen in 15 would reduce the time by nearly 1 min compared to configuration 2 with 32k. Configuration 16 is thus tried which has a 384k buffer size. It did not show an improvement in execution time compared with the 96k buffer size. Thus, a medium level of such value is considered optimal. Configuration 7 uses compression on the RDD, which does not improve the time performance. This may be caused by the implementation difference between RDD and the chosen dataframe.</p>
@@ -1560,11 +1634,11 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="summary">
-<h1><strong>Summary</strong><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<h1><strong>Summary</strong><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
 <p>In this report, a spark program for preprocessing a dataset in json format is designed and implemented. It is tuned and evaluated via different spark configurations until an optimal solution is found. The data flow and the scalability of the program are also discussed in the report to explore different potentials in spark application performance tuning.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1><strong>References</strong><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<h1><strong>References</strong><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>[1]</p></th>
@@ -1582,7 +1656,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="appendix">
-<h1><strong>Appendix</strong><a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
+<h1><strong>Appendix</strong><a class="headerlink" href="#appendix" title="Permalink to this headline">#</a></h1>
 <p><strong>AWS EMR workflow</strong></p>
 <table class="colwidths-auto table">
 <thead>
@@ -1701,9 +1775,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../5349-intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1719,24 +1795,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jerry<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

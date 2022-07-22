@@ -8,8 +8,9 @@
 
     <title>Project - report &#8212; My Jupter Notebook on data science.</title>
     
-  <link href="../../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
@@ -41,8 +38,9 @@
     <script src="../../../../_static/togglebutton.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -60,7 +58,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,9 +81,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../../index.html">
       
       
@@ -532,87 +545,148 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/ds-courses/unsw/9417/9417-report/report.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/postsent/nb"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/ds-courses/unsw/9417/9417-report/report.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Project - report
@@ -731,12 +805,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Project - report</h1>
@@ -871,11 +944,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="project-report">
-<h1>Project - report<a class="headerlink" href="#project-report" title="Permalink to this headline">¶</a></h1>
+<h1>Project - report<a class="headerlink" href="#project-report" title="Permalink to this headline">#</a></h1>
 <p>Machine Learning in the Unknown</p>
 <p>Group Name: Boston Static</p>
 <p>Group Members:</p>
@@ -884,15 +958,15 @@ const thebe_selector_output = ".output, .cell_output"
 <p>This is a group project report for the course COMP9417 in 21T1</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <p>This project aims to create a machine learning model that makes the best prediction on the test set based on class-weighted F1 scores. The machine learning pipeline applied involves pre-processing, feature engineering, removing outliers, parameter tuning and selecting the final model by comparing the weighted F1-score on the validation set.</p>
 <p>Based on the project specification, datasets that contain no domain knowledge of the features are given. CSV files are provided for training, validation and testing set, in which the test set contains only instances with no class label. The datasets consist of 8346 training and 2782 validation instances with 128 real-valued features. No headers are provided, and the target variable is composed of 6 possible values, with all features and the target variable being numerical. The test set contains 2782 data with features values only. We were required to build a model using this dataset, which is expected to accurately predict the results for the testing set.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis">
-<h1>exploratory data analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">¶</a></h1>
+<h1>exploratory data analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
 <p>This section explains the nature of the dataset such as class distribution and feature importance by graph demonstration. Given the nature of the unknown feature name, the data category is first identified via a box plot. Then value range of each column is visually evaluated to extract the underlying meaning of that feature, which helps to determine how to apply the most appropriate method.</p>
 <section id="a-data-distribution-and-feature-correlation">
-<h2><em>A. Data distribution and feature correlation</em><a class="headerlink" href="#a-data-distribution-and-feature-correlation" title="Permalink to this headline">¶</a></h2>
+<h2><em>A. Data distribution and feature correlation</em><a class="headerlink" href="#a-data-distribution-and-feature-correlation" title="Permalink to this headline">#</a></h2>
 <p>Based on the first diagram in Figure 1, the distribution between different classes in the target variable of the training set is not balanced. Class label 6 contains the smallest percentage of data (11.9%) and class label 2 contains the largest (21.4%). No missing values were found in the dataset, and all data was structured i.e., numerical data (Figure 2).</p>
 <p>The second diagram in Figure 1 illustrates the top 10 most important features determined by the Extra Trees classifier<a class="footnote-reference brackets" href="#id4" id="id1">1</a>. The significance of these features is computed based on the Gini importance, which is a measure of the mean impurity over all splits that includes that feature.  It shows that column 8 has the highest relative importance and all 10 features selected are above 60% relative significance. The fourth diagram illustrates the tuning for the principal component analysis, in which the maximum variance regarding the number of features converges around 10 features.  This is similar to the default value for the parameter max_features in the tree model where the number is determined by the square root of the total number of features, which is 11.</p>
 <p><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.001.png" /> <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.002.png" /> <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.003.png" /><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.004.png" /></p>
@@ -902,16 +976,16 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="methodology">
-<h1>methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h1>
+<h1>methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">#</a></h1>
 <p>The details of methods and pipeline are described below. The pipeline involves pre-processing the data, feature selection, outlier removal, parameter tuning and voting ensemble. Dimensionality reduction is applied before outlier removal. It is because if the order is shifted, additional rows would be removed due to the outliers in the redundant feature. 10 folds stratified cross-validation is applied for analysis of the variance for different models and the validation set is used as the final testing (see result section). The models are compared before and after for each processing to achieve the maximum outcome.</p>
 <section id="a-select-classification-models">
-<h2><em>A) Select classification models</em><a class="headerlink" href="#a-select-classification-models" title="Permalink to this headline">¶</a></h2>
+<h2><em>A) Select classification models</em><a class="headerlink" href="#a-select-classification-models" title="Permalink to this headline">#</a></h2>
 <p>Figure 3 illustrates the comparison of the performance for different classification models on the standardized zero-mean data. The classification models used include Logistic Regression, Linear Discriminant Analysis, K-Nearest Neighbours, Decision Tree, Naive Bayes, Support Vector Machine, Decision Tree Regressor, Random Forest, Extra Trees Classifier, and Multi-layer Perceptron. This process filters the models based on the scores and variance. Results are shown in the table below, and the models selected for the next phase are KNN, Logistic Regression, Random Forest, and Extra Trees Classifier.</p>
 <p><code class="docutils literal notranslate">&#160;  </code><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.006.png" />    <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.007.png" /><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.008.png" /></p>
 <p>Figure 3: model comparison between unstandardised and standardised data, variance and time comparison, Boxplot for models on standardised data</p>
 </section>
 <section id="b-feature-selection">
-<h2><em>B. Feature selection</em><a class="headerlink" href="#b-feature-selection" title="Permalink to this headline">¶</a></h2>
+<h2><em>B. Feature selection</em><a class="headerlink" href="#b-feature-selection" title="Permalink to this headline">#</a></h2>
 <p>This section discusses some feature selection techniques regarding numerical input and categorical output.</p>
 <p>As seen in Figure 1, the ANOVA f-test is used to select the top 10 most important features. And the result is compared with the Extra Trees classifier selection. ANOVA stands for “analysis of variance” and is a parametric statistical hypothesis that decides if the means of two or more data samples belongs to the same distribution. Such method calculates the maximum relevance between a feature and a class label, and the correlation is measured to minimise redundancy [1].</p>
 <p>Besides, a correlation matrix of 128 columns is plotted below. It can be seen that feature No. 107 is highly correlated with the output variable y. Hence, we assigned this as a key feature for predicting the value of y. Since only one feature is found to have an absolute correlation value greater than 0.5 with y, no further step is taken to filter features during this process.</p>
@@ -925,7 +999,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Figure 6: 10 folds cross-validation results on dimensionality reduction data by PCA, result from component = 20</p>
 </section>
 <section id="c-outlier-removal">
-<h2><em>C. Outlier removal</em><a class="headerlink" href="#c-outlier-removal" title="Permalink to this headline">¶</a></h2>
+<h2><em>C. Outlier removal</em><a class="headerlink" href="#c-outlier-removal" title="Permalink to this headline">#</a></h2>
 <p>As mentioned above, only numerical data is concerned in this dataset. Pre-processing for numerical features applies differently to the tree and non-tree models. In general, tree-based models do not depend on scaling for which a non-tree classifier could rely heavily on [2]. Outliers are often considered as a negative factor that skews the tendency of the data which results in poor model scoring. As a result, the outlier removal technique could lead to a more accurate model. Removing outliers involves deletion or replacement by the median value of the data points. Minimum Covariance Determinant is not considered as the data does not follow the pattern of gaussian distribution. Local Outlier Factors is not chosen due to the high dimensionality of the data. Three approaches are evaluated in this section and the results are summarised in the table below.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -954,24 +1028,24 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <section id="interquartile-range">
-<h3><em>1) Interquartile range</em><a class="headerlink" href="#interquartile-range" title="Permalink to this headline">¶</a></h3>
+<h3><em>1) Interquartile range</em><a class="headerlink" href="#interquartile-range" title="Permalink to this headline">#</a></h3>
 <p>The interquartile range is a statistical-based approach that could be applied when the data cannot be normalized by Gaussian distribution [3]. It describes the middle 50% of the data, ordering the data from smallest to largest. The first (25%) and third (75%) quartile is defined by the median value of the lower and upper half of the data. According to [4], such method often assumes that the high probability regions of a stochastic model contain the normal data, whereas the outliers stay in the low probability domain. The threshold for identifying an outlier is set to be 1.5 times the data range away from the middle quartile. As seen below box plot, the y-scale changed from 700000 to 140000 which is 5 times smaller than the original scale.</p>
 <p><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.018.png" /> <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.019.png" /></p>
 <p>Figure 8: box plot of data after interquartile range, after isolation forest</p>
 </section>
 <section id="isolation-forest">
-<h3><em>2) Isolation forest</em><a class="headerlink" href="#isolation-forest" title="Permalink to this headline">¶</a></h3>
+<h3><em>2) Isolation forest</em><a class="headerlink" href="#isolation-forest" title="Permalink to this headline">#</a></h3>
 <p>According to [5], anomaly detection could be achieved by an unsupervised learning algorithm named isolation forest. While most model-based methods detect outliers via separating those that do not conform to the profile of normal instances, this approach explicitly isolates anomalies and is considered as a fast and low memory demand method. Based on the third graph from Figure 8, the y scale of the data reduced from 700000 to 250000 (around 3 times smaller). Compared to the interquartile range, this approach is less aggressive and preserves more pattern of the original data.</p>
 </section>
 <section id="density-based-spatial-clustering-of-application-with-noise">
-<h3><em>3) Density-based Spatial Clustering of Application with Noise</em><a class="headerlink" href="#density-based-spatial-clustering-of-application-with-noise" title="Permalink to this headline">¶</a></h3>
+<h3><em>3) Density-based Spatial Clustering of Application with Noise</em><a class="headerlink" href="#density-based-spatial-clustering-of-application-with-noise" title="Permalink to this headline">#</a></h3>
 <p>Another potential method for outlier removal would be Density-based Spatial Clustering of Application with Noise or DBSCAN. DBSCAN is an unsupervised, density-based algorithm, which takes features within the data set, and clusters them based on parameters. Any data points that are not within these clusters and are not ‘<em>density reachable</em>’ from any other point would be considered outliers and can be removed from the data set. By selecting features that have the largest impact on the class feature, we would then be able to find outliers within the data set concerning these selected features. Based on the graph, the y scale of the data gets reduced from 700000 to 300000, acting less aggressive than both Interquartile Range and Isolation Forest, preserving more of the original data</p>
 <p><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.020.png" /></p>
 <p>Figure 9：box plot for data filtered by DBSCAN</p>
 </section>
 </section>
 <section id="d-parameter-tuning">
-<h2><em>D. Parameter tuning</em><a class="headerlink" href="#d-parameter-tuning" title="Permalink to this headline">¶</a></h2>
+<h2><em>D. Parameter tuning</em><a class="headerlink" href="#d-parameter-tuning" title="Permalink to this headline">#</a></h2>
 <p>10 folds cross-validation was applied for parameter tuning as it provides an unbiased estimation for the final result. Grid search and random search are two commonly used parameter tuning techniques. According to [6], a Grid search evaluates all combination of hyperparameter values and is considered as an exhaustive search among the parameters. This approach gives high accuracy result but is often time inefficient. The random search examines random combinations of the hyperparameters, which allows the users to reduce the search space. Grid search is applied to the candidate models includes the Extra Trees classifier, Random Forest, KNN, Logistic Regression. Based on the below table, the optimal nearest neighbour for KNN is 1, which is led by the high dimensionality of the data.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1016,7 +1090,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section id="e-voting-ensemble">
-<h2><em>E. Voting ensemble</em><a class="headerlink" href="#e-voting-ensemble" title="Permalink to this headline">¶</a></h2>
+<h2><em>E. Voting ensemble</em><a class="headerlink" href="#e-voting-ensemble" title="Permalink to this headline">#</a></h2>
 <p>To improve the performance of a single model and lower the variance, the machine learning model voting ensemble that combines the predictions from multiple other models is often considered.</p>
 <p>A soft voting ensemble that predicts the class label based on the probability of all models, is then applied for the classification problem. The hard voting ensemble was not considered as it anticipates the result based on the most popular vote among the models, which ignores the strength and weakness of each model.</p>
 <table class="colwidths-auto table">
@@ -1043,12 +1117,12 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section id="f-final-model">
-<h2><em>F. Final model</em><a class="headerlink" href="#f-final-model" title="Permalink to this headline">¶</a></h2>
+<h2><em>F. Final model</em><a class="headerlink" href="#f-final-model" title="Permalink to this headline">#</a></h2>
 <p>Based on the final performance on the validation set, the voting ensemble (Extra Trees classifier + Random Forest + MLP + KNN) was chosen for the prediction for its low variance (the lowest among all candidate models,  Figure 3) and high F1-score. The hyperparameters of each model are listed above in the parameter tuning section with the unlisted ones as default. The result only differs by 3 compared with the one gained from the extra tree classifier.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="result">
-<h1>result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h1>
+<h1>result<a class="headerlink" href="#result" title="Permalink to this headline">#</a></h1>
 <p>The weighted F1-score is then used as the evaluation metric, and the final testing is performed on the validation set (as no testing set was provided), which is unseen to the model. All models except for MLP and tree model are trained based on standardised data via z-score.</p>
 <p>Based on <em>Figure 12</em>, the voting ensemble can be considered the most suitable model to apply for this dataset as it gives a balanced trade-off between the variance (overfitting issue is minimised) and the F1-score. The problem of the curse of dimensionality and outliers is minimised as the voting ensemble includes two tree models, so it is considered flexible and reliable to apply for this numerical dataset.</p>
 <table class="colwidths-auto table">
@@ -1091,16 +1165,16 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="discussion">
-<h1>discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h1>
+<h1>discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h1>
 <p>It was observed that the optimal parameters for the extra tree classifier and the random forest are the same (Figure <em>10</em>), and both have a similar F1-score. This is predictable as both ensemble methods are composed of many subtrees, where the random forest applies bootstrap and the extra tree uses the whole sample space. Besides, during the runtime, the random forest chooses the optimal split whereas the extra tree does it randomly, both choosing the best subset of features after the final split point. Thus, it allows the extra tree to run faster than the random forest [7]. Given the high dimension of the data, it is understandable to observe that the tree and MLP model performs better than logistic regression and KNN. And simple model such as Naïve Bayes and linear discriminative analysis performs poorly for this dataset.</p>
 <p>The feature importance selected by ANVOA and tree classifier is both similar. The reason for this could be the nature of feature selection primarily focus on the variance and correlation of the data. In addition, it was observed that dimensionality reduction could substantially reduce the training time for the model. However, during the testing, both outlier removal and feature selection did not improve the F1-score for the model selected. It was concluded that the chosen tree model, KNN and multi-layer perceptron deploy sufficient mechanism within its own implementation that pre-processing of the data have minimal impact on them compared to the parameter tuning effect.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
-<h1>conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<h1>conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h1>
 <p>In conclusion, this report discusses various approaches in the standard machine learning pipeline for classification problems concerning numerical data. This pipeline includes data pre-processing, such as visualising the nature of the data, feature selection, outlier removal using various methods such as Isolation Forest and Interquartile Range, parameter tuning, and comparison between the tree and non-tree models. Based on the final results gained from the validation set, the voting ensemble was determined to be the best of use in the final prediction because of its low variance and high F1 score. Some future improvements include comparing more pre-processing approaches and exploring different open-source libraries that are summarised in [8] or in many great review papers and journal articles. Additionally, more research could have been made into better methods for feature selection and outlier removal, to help tune the model to better predict test data.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="reference">
-<h1>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+<h1>reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h1>
 <p>The idea of pipeline and code for comparing model baseline score comes from [2].</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1174,9 +1248,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../9417-project.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1192,24 +1268,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jerry<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

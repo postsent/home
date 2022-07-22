@@ -8,8 +8,9 @@
 
     <title>Mini self-driving &#8212; My Jupter Notebook on data science.</title>
     
-  <link href="../../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
@@ -41,8 +38,9 @@
     <script src="../../../../_static/togglebutton.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -60,7 +58,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,9 +81,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../../index.html">
       
       
@@ -532,87 +545,148 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/ds-courses/unsw/3431/project/project.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/postsent/nb"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/ds-courses/unsw/3431/project/project.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Mini self-driving
@@ -709,12 +783,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Mini self-driving</h1>
@@ -827,11 +900,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="mini-self-driving">
-<h1>Mini self-driving<a class="headerlink" href="#mini-self-driving" title="Permalink to this headline">¶</a></h1>
+<h1>Mini self-driving<a class="headerlink" href="#mini-self-driving" title="Permalink to this headline">#</a></h1>
 <p>with turtlebot</p>
 <p><a class="reference external" href="https://postsent.github.io/2021/12/11/courses/#comp3431-robotic-software-architecture">Demo here</a></p>
 <p><strong>COMP3431</strong></p>
@@ -843,11 +917,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p>This is an individual project report for the assessment in COMP3431 by Jerry</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="abstract">
-<h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h1>
+<h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">#</a></h1>
 <p>This project examines the application of autonomous driving on TurtleBot (Waffle Pi). The goal is to achieve lane following of a road map, path planning and object detection such as intersection, robots, pedestrian, traffic sign and traffic light. The methods used include Hough transformation in lane detection and breadth-first search in path planning. Besides, blob detection, morphological transformations and other image processing techniques from OpenCV are implemented for object identification.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <p>The TurtleBot is used in the ROS Autorace competition to achieve autonomous driving under various road condition without any external interference.</p>
 <p>This project primarily focuses on five tasks described as following:</p>
 <ul class="simple">
@@ -864,17 +938,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The following section introduces the details of the theory and implementation on path planning, object identification and lane following.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="background-and-related-research">
-<h1>2. Background and Related Research<a class="headerlink" href="#background-and-related-research" title="Permalink to this headline">¶</a></h1>
+<h1>2. Background and Related Research<a class="headerlink" href="#background-and-related-research" title="Permalink to this headline">#</a></h1>
 <section id="lane-following">
-<h2>2.1 Lane following<a class="headerlink" href="#lane-following" title="Permalink to this headline">¶</a></h2>
+<h2>2.1 Lane following<a class="headerlink" href="#lane-following" title="Permalink to this headline">#</a></h2>
 <p>It is found that the wall around the map creates noise in data since the edges of the wall are also included by Canny from OpenCV (See Appendix C). My attempt to solve it is to set up HSV threshold to differentiate between the wall and the lane. However, issues occur as the left side of the map is darker than the right side due to the position of the light, which results in lane undetected. Contrast Limited Adaptive Histogram Equalization (CLAHE) combined with calculating the contour area is used. Then, the wall is identified by its area which is the larger than lane. Histogram equalisation adjusts the image intensities with high contrast (Gonzalez &amp; Woods, 2008). Contrast Limited AHE is a variant of adaptive histogram equalization in which the contrast amplification is limited and noise amplification is reduced. (Pizer, et al., 1987)</p>
 </section>
 <section id="camera">
-<h2>2.2 Camera<a class="headerlink" href="#camera" title="Permalink to this headline">¶</a></h2>
+<h2>2.2 Camera<a class="headerlink" href="#camera" title="Permalink to this headline">#</a></h2>
 <p>As for detecting if the camera is blocked by an object such as a hand, the background subtraction technique is found suitable for generating a foreground mask (Srivastava, 2020). Then the differences between the older frames and recent frames are compared to conclude the result. However, it is realised that if the turtlebot experience a glitch and suddenly rotate with large angle, then it will be treated as if the camera is blocked. Thus, this approach is not used.</p>
 </section>
 <section id="laser-scan">
-<h2>2.3 Laser Scan<a class="headerlink" href="#laser-scan" title="Permalink to this headline">¶</a></h2>
+<h2>2.3 Laser Scan<a class="headerlink" href="#laser-scan" title="Permalink to this headline">#</a></h2>
 <p>Laser scan is first thought to be used in detecting TurtleBot. It is because the area of black pixels in the camera image between a Turtlebot driving towards or away is almost identical. Moreover, the camera image can hardly determine the distance.</p>
 <p>The LIDAR starts anti-clockwise from the wheel side of the robot with an interval of 1 degree. (Robotis, 2020)</p>
 <p>It is found that the LiDAR is configured with a minimum distance of 0.1199 metres and a maximum of 3.5 metres (Castillo &amp; Zhang, 2018), which both appear as 0.0 metres if it goes outside the range and it is hard to differentiate whether it is below or above the range. Another issue is that the TurtleBot may treat the wall as another robot when it gets close to the wall during turning.</p>
@@ -882,19 +956,19 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Eventually, the masked camera image is used to hide the Turtlebot on the opposite road. Laser scan is planned to be used in the T intersection to detect the robot where the camera cannot capture. It is effective because a wall is placed at T intersection due to the glass reflection, which eliminates the case where detection occurs over 3.5m and so only close detection occurs.</p>
 </section>
 <section id="localisation">
-<h2>2.4 Localisation<a class="headerlink" href="#localisation" title="Permalink to this headline">¶</a></h2>
+<h2>2.4 Localisation<a class="headerlink" href="#localisation" title="Permalink to this headline">#</a></h2>
 <p>Simultaneous Localisation and Mapping (SLAM) is used for mapping (from ROS Gmapping package). It is the process by which a mobile robot can build a map of an environment and at the same time use this map to compute its location** (Durrant-Whyte &amp; Bailey, 2006)<strong>.</strong> Gmapping is favoured over other ROS mapping packages due to its simplicity.</p>
 <p>Adaptive Monte Carlo Localization (AMCL) is utilised to localise the robot in a given map. It is a probabilistic localization system for a robot moving in 2D. This system uses a particle filter to track the pose of a robot against a known map (Gerkey, 2020).</p>
 </section>
 <section id="breadth-first-search">
-<h2>2.5 Breadth-First Search<a class="headerlink" href="#breadth-first-search" title="Permalink to this headline">¶</a></h2>
+<h2>2.5 Breadth-First Search<a class="headerlink" href="#breadth-first-search" title="Permalink to this headline">#</a></h2>
 <p>Breadth-First Search algorithm traverses a graph in a centre expanding way and uses a queue to remember to get the next vertex to start a search, where the queue is a data structure follows first in fist out rule. The search starts with a single source vertex, then, in phases, finds and labels its neighbours, then the neighbours of its neighbours and it repeats the same step until the destination node is found (Bader, et al., 2011). Depth-first search is not implemented as the number of nodes in the graph is relatively large and A* search is not considered since the lane position is hard to calculate, which then cannot be transformed to the grid A* search relies on.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="theory">
-<h1>3. Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h1>
+<h1>3. Theory<a class="headerlink" href="#theory" title="Permalink to this headline">#</a></h1>
 <section id="object-identification">
-<h2>3.1 Object identification.<a class="headerlink" href="#object-identification" title="Permalink to this headline">¶</a></h2>
+<h2>3.1 Object identification.<a class="headerlink" href="#object-identification" title="Permalink to this headline">#</a></h2>
 <p><img alt="A screenshot of a video game Description automatically generated" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.001.png" /></p>
 <p><img alt="" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.002.png" /><img alt="" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.003.png" />  <img alt="" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.004.png" /></p>
 <p><em>Figure 1 - poles and stop sign detection</em></p>
@@ -904,7 +978,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.005.png" /></p>
 </section>
 <section id="path-planning">
-<h2>3.2 Path Planning<a class="headerlink" href="#path-planning" title="Permalink to this headline">¶</a></h2>
+<h2>3.2 Path Planning<a class="headerlink" href="#path-planning" title="Permalink to this headline">#</a></h2>
 <p><img alt="" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.006.png" /></p>
 <p><em>Figure 2 - pseudo-code for determining U-turn and if in the right lane, second image contains code decides which turning direction at the intersection</em></p>
 <p><em>Figure 3 – original points recorded, path with turning point, connect intersection</em></p>
@@ -923,7 +997,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>As seen the Figure 3, RDP helps find different segments of line and thus turning point (Marquez &amp; Wu, 2003), which originally is planned to be used for changing the motion of robot at the corner.</p>
 </section>
 <section id="map">
-<h2>3.3 Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h2>
+<h2>3.3 Map<a class="headerlink" href="#map" title="Permalink to this headline">#</a></h2>
 <p><em>Figure 4 - creating road on the map</em></p>
 <p><img alt="Diagram, engineering drawing Description automatically generated" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.011.png" /><img alt="" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.012.png" /><img alt="Diagram, engineering drawing Description automatically generated" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.013.png" /><img alt="A picture containing chart Description automatically generated" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.014.jpeg" /></p>
 <p>As seen in Figure 4, the white line in image 1 represents the path TurtleBot took and the black lines are the left and right lane. The two black lines are created by shifting the white line to left around 10 cm and to right 60 cm. The white dashed line shown in the second image shifts the path recorded to right by 20 cm and is published with different marker ID, a gap of 4 points and each dashed line corresponds to a length of 8 points (around 40 cm).</p>
@@ -944,7 +1018,7 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="implementation">
-<h1>4. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h1>
+<h1>4. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h1>
 <p>The following section introduces all the major steps involved in the system. (ROS nodes used illustrated in Appendix B)</p>
 <p>Firstly, a map is created with Gmapping and is saved with the map server. Points subscribed from Odometry are stored into a file in the meantime.</p>
 <p>Secondly, the map server is run to send the map to Rviz and AMCL is used to localise the TurtleBot based on the map saved.</p>
@@ -961,7 +1035,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>In summary, all five required tasks are achieved. A launch file, which contains nodes such as bringup, camera and those relative to object detection, is made to ensure a straightforward execution. Map server and Rviz is launched separately on a different terminal to avoid overload on one machine. Nodes that use camera image are launched on the robot for a faster receiving rate.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="evaluation">
-<h1>5. Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h1>
+<h1>5. Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h1>
 <p>During the demonstration, the above five tasks described achieved reasonably well.</p>
 <p>The following section describes the cases where the implementation of TurtleBot could fail.</p>
 <p>Turtlebot detection is not implemented during the U-turn, which means that it will turn regardless if another TurtleBot is in its way. Besides, if the TurtleBot is at the turning corner, then U-turn may not be accurate as it is hardcoded based on the width of the road.</p>
@@ -970,13 +1044,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Facial recognition process on the image with full size. This means that if people are standing outside the road, then their face could be accidentally detected.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="conclusion-and-future-work">
-<h1>6. Conclusion and Future Work<a class="headerlink" href="#conclusion-and-future-work" title="Permalink to this headline">¶</a></h1>
+<h1>6. Conclusion and Future Work<a class="headerlink" href="#conclusion-and-future-work" title="Permalink to this headline">#</a></h1>
 <p>In conclusion, the report addresses four main aspects of self-driving vehicle which includes lane following, object detection such as the robot, pedestrian, traffic light, stop sign and intersection, mapping as well as the path planning. It also describes the essential algorithms for solving the four aspects and has summarised the key demonstrations and implementations of the approach.</p>
 <p>A possible improvement to the project includes letting the robot automatically calibrated its angular and linear velocity during lane following based on the road environment.</p>
 <p>The path planning could be enhanced by changing the current graph to a weighted graph where weight cost such as traffic congestion and traffic light can be considered. Extra features such as auto parking and sounding the horn when in emergency condition could be added to build up a robust and reliable autonomous driving system.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="bibliography">
-<h1>7. Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h1>
+<h1>7. Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h1>
 <p>Bader, D. A., Berry, J., Kahan, S., Murphy, R., Riedy, E. J., &amp; Willcock, J. (2011, September). <em>Graph 500 Benchmark 1 (“Search”)</em>. Retrieved from Graph 500: <a class="reference external" href="https://web.archive.org/web/20150326055019/http://www.graph500.org/specifications#sec-5#sec-5">https://web.archive.org/web/20150326055019/http://www.graph500.org/specifications#sec-5#sec-5</a></p>
 <p>Castillo, G., &amp; Zhang, W. (2018). <em>ECE 5463 Introduction to Robotics</em>. Retrieved from <a class="reference external" href="http://www2.ece.ohio-state.edu/~zhang/RoboticsClass/docs/ECE5463_ROSTutorialLecture3.pdf">http://www2.ece.ohio-state.edu/~zhang/RoboticsClass/docs/ECE5463_ROSTutorialLecture3.pdf</a></p>
 <p>Durrant-Whyte, H., &amp; Bailey, T. (2006). Simultaneous localization and mapping: part I. In H. Durrant-Whyte, &amp; T. Bailey, <em>Simultaneous Localisation and Mapping (SLAM): Part I The Essential Algorithms</em> (Vol. 13, pp. 99-110). IEEE. doi:10.1109/MRA.2006.1638022</p>
@@ -989,7 +1063,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Srivastava, S. (2020, January 24). <em>Detecting Camera Tampering using OpenCV and Python</em>. Retrieved from medium: <a class="reference external" href="https://medium.com/&#64;simranjenny84/camera-tampering-detection-81b25f0d7383">https://medium.com/&#64;simranjenny84/camera-tampering-detection-81b25f0d7383</a></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="appendices">
-<h1>8. Appendices<a class="headerlink" href="#appendices" title="Permalink to this headline">¶</a></h1>
+<h1>8. Appendices<a class="headerlink" href="#appendices" title="Permalink to this headline">#</a></h1>
 <p><img alt="" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.023.png" />Appendix A: Turtlebot, T intersection</p>
 <p><img alt="" src="../../../../_images/Aspose.Words.98518097-67c8-4094-9d2f-cd096ee4a1ef.024.png" /></p>
 <p>Appendix B: ROS rqt graph</p>
@@ -1030,9 +1104,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../3431-intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1048,24 +1124,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jerry<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -8,8 +8,9 @@
 
     <title>Binary text classification &#8212; My Jupter Notebook on data science.</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -41,8 +38,9 @@
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -60,7 +58,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,9 +81,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../index.html">
       
       
@@ -532,104 +545,177 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/ds-courses/usyd/5046/a1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/postsent/nb"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/postsent/nb/main?urlpath=tree/docs/ds-courses/usyd/5046/a1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/postsent/nb/main?urlpath=tree/docs/ds-courses/usyd/5046/a1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/ds-courses/usyd/5046/a1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Binary text classification
@@ -809,12 +895,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Binary text classification</h1>
@@ -1010,16 +1095,17 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="binary-text-classification">
-<h1>Binary text classification<a class="headerlink" href="#binary-text-classification" title="Permalink to this headline">¶</a></h1>
+<h1>Binary text classification<a class="headerlink" href="#binary-text-classification" title="Permalink to this headline">#</a></h1>
 <p>2022 COMP5046 Assignment 1 -
 <em>Make sure you change the file name with your unikey.</em></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="readme">
-<h1>Readme<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
+<h1>Readme<a class="headerlink" href="#readme" title="Permalink to this headline">#</a></h1>
 <p>💎 Please <strong>run all OOP section first</strong> and then main section.💎<br />
 💎 U can do it by click run after for the first cell in OOP:) 💎</p>
 <ul class="simple">
@@ -1030,9 +1116,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em><strong>Visualising the comparison of different results is a good way to justify your decision.</strong></em></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="data-preprocessing">
-<h1>1 - Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h1>
+<h1>1 - Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">#</a></h1>
 <section id="data-collection-do-not-modify-this">
-<h2>1.0. Data Collection [DO NOT MODIFY THIS]<a class="headerlink" href="#data-collection-do-not-modify-this" title="Permalink to this headline">¶</a></h2>
+<h2>1.0. Data Collection [DO NOT MODIFY THIS]<a class="headerlink" href="#data-collection-do-not-modify-this" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Code to download file into Colaboratory:
@@ -1243,7 +1329,7 @@ LABEL: F / SENTENCE: &#39;Half of it is going straight to charity, another quart
 </div>
 </section>
 <section id="url-removal">
-<h2>1.1. URL Removal<a class="headerlink" href="#url-removal" title="Permalink to this headline">¶</a></h2>
+<h2>1.1. URL Removal<a class="headerlink" href="#url-removal" title="Permalink to this headline">#</a></h2>
 <p><em>related to the section 4.2</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1262,7 +1348,7 @@ LABEL: F / SENTENCE: &#39;Half of it is going straight to charity, another quart
 </div>
 </section>
 <section id="preprocess-data-e-g-stop-words-stemming">
-<h2>1.2. Preprocess data (e.g. Stop words, Stemming)<a class="headerlink" href="#preprocess-data-e-g-stop-words-stemming" title="Permalink to this headline">¶</a></h2>
+<h2>1.2. Preprocess data (e.g. Stop words, Stemming)<a class="headerlink" href="#preprocess-data-e-g-stop-words-stemming" title="Permalink to this headline">#</a></h2>
 <p><em>related to the section 4.2</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1289,9 +1375,9 @@ LABEL: F / SENTENCE: &#39;Half of it is going straight to charity, another quart
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="input-representation">
-<h1>2 - Input Representation<a class="headerlink" href="#input-representation" title="Permalink to this headline">¶</a></h1>
+<h1>2 - Input Representation<a class="headerlink" href="#input-representation" title="Permalink to this headline">#</a></h1>
 <section id="word-embedding-construction">
-<h2>2.1. Word Embedding Construction<a class="headerlink" href="#word-embedding-construction" title="Permalink to this headline">¶</a></h2>
+<h2>2.1. Word Embedding Construction<a class="headerlink" href="#word-embedding-construction" title="Permalink to this headline">#</a></h2>
 <p><em>related to the section 4.1 and 4.3</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1310,7 +1396,7 @@ LABEL: F / SENTENCE: &#39;Half of it is going straight to charity, another quart
 </div>
 </section>
 <section id="pretrained-word-embedding">
-<h2>2.2. Pretrained Word Embedding<a class="headerlink" href="#pretrained-word-embedding" title="Permalink to this headline">¶</a></h2>
+<h2>2.2. Pretrained Word Embedding<a class="headerlink" href="#pretrained-word-embedding" title="Permalink to this headline">#</a></h2>
 <p><em>related to the section 4.3</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1339,7 +1425,7 @@ LABEL: F / SENTENCE: &#39;Half of it is going straight to charity, another quart
 </div>
 </section>
 <section id="input-concatenation">
-<h2>2.3. Input Concatenation<a class="headerlink" href="#input-concatenation" title="Permalink to this headline">¶</a></h2>
+<h2>2.3. Input Concatenation<a class="headerlink" href="#input-concatenation" title="Permalink to this headline">#</a></h2>
 <p><em>related to the section 4.3</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1358,9 +1444,9 @@ LABEL: F / SENTENCE: &#39;Half of it is going straight to charity, another quart
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="model-implementation">
-<h1>3 - Model Implementation<a class="headerlink" href="#model-implementation" title="Permalink to this headline">¶</a></h1>
+<h1>3 - Model Implementation<a class="headerlink" href="#model-implementation" title="Permalink to this headline">#</a></h1>
 <section id="build-sequence-model-bi-directional-model">
-<h2>3.1. Build Sequence Model (Bi-directional model)<a class="headerlink" href="#build-sequence-model-bi-directional-model" title="Permalink to this headline">¶</a></h2>
+<h2>3.1. Build Sequence Model (Bi-directional model)<a class="headerlink" href="#build-sequence-model-bi-directional-model" title="Permalink to this headline">#</a></h2>
 <p><em>related to the section 4.4</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1396,7 +1482,7 @@ LABEL: F / SENTENCE: &#39;Half of it is going straight to charity, another quart
 </div>
 </section>
 <section id="train-sequence-model-bi-directional-model">
-<h2>3.2. Train Sequence Model (Bi-directional model)<a class="headerlink" href="#train-sequence-model-bi-directional-model" title="Permalink to this headline">¶</a></h2>
+<h2>3.2. Train Sequence Model (Bi-directional model)<a class="headerlink" href="#train-sequence-model-bi-directional-model" title="Permalink to this headline">#</a></h2>
 <p><em>related to the section 4.4</em></p>
 <p>Note that it will not be marked if you do not display the Training Loss and the Number of Epochs in the Assignment 1 ipynb.</p>
 <div class="cell docutils container">
@@ -1673,9 +1759,9 @@ Epoch: 250, loss: 0.65668, train_acc: 0.64
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="evaluation">
-<h1>4 - Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h1>
+<h1>4 - Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h1>
 <section id="word-embedding-evaluation">
-<h2>4.1. Word Embedding Evaluation<a class="headerlink" href="#word-embedding-evaluation" title="Permalink to this headline">¶</a></h2>
+<h2>4.1. Word Embedding Evaluation<a class="headerlink" href="#word-embedding-evaluation" title="Permalink to this headline">#</a></h2>
 <p>You are to apply Semantic-Syntactic word relationship tests for the trained word embeddings and visualise the result of Semantic-Syntactic word relationship tests.
 Note that it will not be marked if you do not display it in the ipynb file.</p>
 <p>(<em>Please show your empirical evidence and justification</em>)</p>
@@ -1864,7 +1950,7 @@ Total accuracy: 57.40%  (4571/7964)
 </div>
 </section>
 <section id="performance-evaluation-with-data-processing-techiques">
-<h2>4.2. Performance Evaluation with Data Processing Techiques<a class="headerlink" href="#performance-evaluation-with-data-processing-techiques" title="Permalink to this headline">¶</a></h2>
+<h2>4.2. Performance Evaluation with Data Processing Techiques<a class="headerlink" href="#performance-evaluation-with-data-processing-techiques" title="Permalink to this headline">#</a></h2>
 <p>You are required to evaluate with the testing dataset and provide the table with f1 of test set.
 Note that it will not be marked if you do not display it in the ipynb file.</p>
 <p>(<em>Please show your empirical evidence and justification</em>)</p>
@@ -1981,7 +2067,7 @@ f1 score:  0.3966393075271114
 </div>
 </section>
 <section id="performance-evaluation-with-different-input">
-<h2>4.3. Performance Evaluation with Different Input<a class="headerlink" href="#performance-evaluation-with-different-input" title="Permalink to this headline">¶</a></h2>
+<h2>4.3. Performance Evaluation with Different Input<a class="headerlink" href="#performance-evaluation-with-different-input" title="Permalink to this headline">#</a></h2>
 <p>You are required to evaluate with the testing dataset and provide the table with f1 of test set.
 Note that it will not be marked if you do not display it in the ipynb file.</p>
 <p>(<em>Please show your empirical evidence and justification</em>)</p>
@@ -2095,7 +2181,7 @@ f1 score:  0.3940615472208672
 </div>
 </section>
 <section id="performance-evaluation-with-different-sequence-models">
-<h2>4.4. Performance Evaluation with Different Sequence Models<a class="headerlink" href="#performance-evaluation-with-different-sequence-models" title="Permalink to this headline">¶</a></h2>
+<h2>4.4. Performance Evaluation with Different Sequence Models<a class="headerlink" href="#performance-evaluation-with-different-sequence-models" title="Permalink to this headline">#</a></h2>
 <p>You are required to evaluate with the testing dataset and provide the table with f1 of test set.
 Note that it will not be marked if you do not display it in the ipynb file.</p>
 <p>(<em>Please show your empirical evidence and justification</em>)</p>
@@ -2191,7 +2277,7 @@ best f1 score:  0.5559555298167024
 </div>
 </section>
 <section id="hyperparameter-testing">
-<h2>4.5. HyperParameter Testing<a class="headerlink" href="#hyperparameter-testing" title="Permalink to this headline">¶</a></h2>
+<h2>4.5. HyperParameter Testing<a class="headerlink" href="#hyperparameter-testing" title="Permalink to this headline">#</a></h2>
 <p><em>You are required to draw a graph(y-axis: f1, x-axis: epoch) for test set and explain the optimal number of epochs based on the learning rate you have already chosen.</em> Note that it will not be marked if you do not display it in the ipynb file.</p>
 <p>(<em>Please show your empirical evidence and justification</em>)</p>
 <p><strong>README</strong>:</p>
@@ -2801,10 +2887,10 @@ print(&quot;Predicted Personality Type: &quot;, res2) # transform back from inte
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="object-oriented-programming-codes-here">
-<h1>Object Oriented Programming codes here<a class="headerlink" href="#object-oriented-programming-codes-here" title="Permalink to this headline">¶</a></h1>
+<h1>Object Oriented Programming codes here<a class="headerlink" href="#object-oriented-programming-codes-here" title="Permalink to this headline">#</a></h1>
 <p><em>You can use multiple code snippets. Just add more if needed</em></p>
 <section id="import-set-seed">
-<h2>Import &amp; Set seed<a class="headerlink" href="#import-set-seed" title="Permalink to this headline">¶</a></h2>
+<h2>Import &amp; Set seed<a class="headerlink" href="#import-set-seed" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import re
@@ -2881,7 +2967,7 @@ sww = set(sw.words(&#39;english&#39;)) # 179 vs 7110 if without specify english
 </div>
 </section>
 <section id="class-sequence-model">
-<h2>class - sequence model<a class="headerlink" href="#class-sequence-model" title="Permalink to this headline">¶</a></h2>
+<h2>class - sequence model<a class="headerlink" href="#class-sequence-model" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">############################################### 3.1 Build Sequence Model (Bi-directional model) ##################################################</span>
@@ -2940,7 +3026,7 @@ sww = set(sw.words(&#39;english&#39;)) # 179 vs 7110 if without specify english
 </div>
 </section>
 <section id="class-preprocessing">
-<h2>class - Preprocessing<a class="headerlink" href="#class-preprocessing" title="Permalink to this headline">¶</a></h2>
+<h2>class - Preprocessing<a class="headerlink" href="#class-preprocessing" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Preprocessing</span><span class="p">:</span>
@@ -3094,7 +3180,7 @@ sww = set(sw.words(&#39;english&#39;)) # 179 vs 7110 if without specify english
 </div>
 </section>
 <section id="class-word-embedding">
-<h2>class - Word_embedding<a class="headerlink" href="#class-word-embedding" title="Permalink to this headline">¶</a></h2>
+<h2>class - Word_embedding<a class="headerlink" href="#class-word-embedding" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Word_embedding</span><span class="p">:</span>
@@ -3209,7 +3295,7 @@ sww = set(sw.words(&#39;english&#39;)) # 179 vs 7110 if without specify english
 </div>
 </section>
 <section id="class-train">
-<h2>class - Train<a class="headerlink" href="#class-train" title="Permalink to this headline">¶</a></h2>
+<h2>class - Train<a class="headerlink" href="#class-train" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">############################################### 3.2. Train Sequence Model (Bi-directional model) ###############################################</span>
@@ -3292,7 +3378,7 @@ sww = set(sw.words(&#39;english&#39;)) # 179 vs 7110 if without specify english
 </div>
 </section>
 <section id="class-instrinsic-eval">
-<h2>class - instrinsic eval<a class="headerlink" href="#class-instrinsic-eval" title="Permalink to this headline">¶</a></h2>
+<h2>class - instrinsic eval<a class="headerlink" href="#class-instrinsic-eval" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="k">class</span> <span class="nc">Instrinsic_eval</span><span class="p">:</span>
@@ -3467,7 +3553,7 @@ sww = set(sw.words(&#39;english&#39;)) # 179 vs 7110 if without specify english
 </div>
 </section>
 <section id="preprocess-combo-compare">
-<h2>4.1 preprocess combo compare<a class="headerlink" href="#preprocess-combo-compare" title="Permalink to this headline">¶</a></h2>
+<h2>4.1 preprocess combo compare<a class="headerlink" href="#preprocess-combo-compare" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -3511,7 +3597,7 @@ sww = set(sw.words(&#39;english&#39;)) # 179 vs 7110 if without specify english
 </div>
 </section>
 <section id="hyperparams-tuning-data">
-<h2>4.5 hyperparams tuning &amp; data<a class="headerlink" href="#hyperparams-tuning-data" title="Permalink to this headline">¶</a></h2>
+<h2>4.5 hyperparams tuning &amp; data<a class="headerlink" href="#hyperparams-tuning-data" title="Permalink to this headline">#</a></h2>
 <p>Contain manually save data, and plot function</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3896,7 +3982,7 @@ sww = set(sw.words(&#39;english&#39;)) # 179 vs 7110 if without specify english
 </div>
 </section>
 <section id="customdataset">
-<h2>CustomDataSet<a class="headerlink" href="#customdataset" title="Permalink to this headline">¶</a></h2>
+<h2>CustomDataSet<a class="headerlink" href="#customdataset" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create custom dataset class</span>
@@ -3926,7 +4012,7 @@ sww = set(sw.words(&#39;english&#39;)) # 179 vs 7110 if without specify english
 </div>
 </section>
 <section id="helper">
-<h2>Helper<a class="headerlink" href="#helper" title="Permalink to this headline">¶</a></h2>
+<h2>Helper<a class="headerlink" href="#helper" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>from google.colab import drive
@@ -4101,7 +4187,7 @@ h = Helper()
 </div>
 </section>
 <section id="side-note">
-<h2>Side note<a class="headerlink" href="#side-note" title="Permalink to this headline">¶</a></h2>
+<h2>Side note<a class="headerlink" href="#side-note" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># from transformers import BertTokenizer, BertModel</span>
@@ -4124,12 +4210,12 @@ h = Helper()
 <a class="reference external" href="https://www.kaggle.com/code/amackcrane/python-version-of-glove-twitter-preprocess-script/script">https://www.kaggle.com/code/amackcrane/python-version-of-glove-twitter-preprocess-script/script</a></p>
 <p>Timing</p>
 <section id="eda">
-<h3>EDA<a class="headerlink" href="#eda" title="Permalink to this headline">¶</a></h3>
+<h3>EDA<a class="headerlink" href="#eda" title="Permalink to this headline">#</a></h3>
 <p>training min file len = 57
 testing set min len &gt; 1000</p>
 </section>
 <section id="profiling">
-<h3>profiling<a class="headerlink" href="#profiling" title="Permalink to this headline">¶</a></h3>
+<h3>profiling<a class="headerlink" href="#profiling" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -4278,9 +4364,11 @@ testing set min len &gt; 1000</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="a2.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -4296,24 +4384,28 @@ testing set min len &gt; 1000</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jerry<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

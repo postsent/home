@@ -8,8 +8,9 @@
 
     <title>Report - In-game Toxicity Detection &#8212; My Jupter Notebook on data science.</title>
     
-  <link href="../../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
@@ -41,8 +38,9 @@
     <script src="../../../../_static/togglebutton.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -60,7 +58,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,9 +81,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../../index.html">
       
       
@@ -532,87 +545,148 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/ds-courses/usyd/5046/a2/a2.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/postsent/nb"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/ds-courses/usyd/5046/a2/a2.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Report - In-game Toxicity Detection
@@ -747,12 +821,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Report - In-game Toxicity Detection</h1>
@@ -903,22 +976,23 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="report-in-game-toxicity-detection">
-<h1>Report - In-game Toxicity Detection<a class="headerlink" href="#report-in-game-toxicity-detection" title="Permalink to this headline">¶</a></h1>
+<h1>Report - In-game Toxicity Detection<a class="headerlink" href="#report-in-game-toxicity-detection" title="Permalink to this headline">#</a></h1>
 <p>COMP5046 Assignment 2</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="data-preprocessing">
-<h1>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h1>
+<h1>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">#</a></h1>
 <p>No content.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="input-embedding">
-<h1>Input Embedding<a class="headerlink" href="#input-embedding" title="Permalink to this headline">¶</a></h1>
+<h1>Input Embedding<a class="headerlink" href="#input-embedding" title="Permalink to this headline">#</a></h1>
 <p>Input embeddings are created to represent words in a manner readable by machine learning models. We focus on three aspects, syntactic, semantic and domain-specific feature embeddings. These embeddings are concatenated to form different combinations of combined embeddings. If an embedding does not have weights for a given word, then such embedding is treated as zero while other embeddings in the combination will still be used.</p>
 <section id="syntactic">
-<h2>Syntactic<a class="headerlink" href="#syntactic" title="Permalink to this headline">¶</a></h2>
+<h2>Syntactic<a class="headerlink" href="#syntactic" title="Permalink to this headline">#</a></h2>
 <p>We consider four syntactic embedding methods.</p>
 <p>POS tagging categories words in a sentence into parts of speeches, such as nouns, verbs and adjectives. This may help identify target tags, for example, assume Dota-specific words such as hero or item names are always nouns, thus being able to identify a word as a noun may be a good indicator that it is also a Dota-specific word. Though in reality, there would also be non-nouns such as ‘feed’ and ‘gank’, so it is just an example. The tag embedding can be constructed by first passing the sentences from the CONDA dataset into the POS tagging model pretrained by the Spacy library, then recording the tag for each unique word. For each unique word, the most frequent tag will be its word embedding.</p>
 <p>Dependency parsing assigns relationships between words within a sentence, such as in the sentence “She gave me a raise”, raise is the child of gave, with a dependency relationship of the direct object (dobj). Like POS tagging, these relations may be hints to the actual tag. The dependency embedding can be constructed by passing the sentences from the CONDA dataset into the dependency parsing model pretrained by the Spacy library, then recording the dependency for each unique word. For each unique word, the most frequent dependency will be its dependency embedding.</p>
@@ -927,32 +1001,32 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The Word length feature is plainly the word length itself. It is chosen since some words are repeatedly long which the feature may give insight into the model.</p>
 </section>
 <section id="semantic">
-<h2>Semantic<a class="headerlink" href="#semantic" title="Permalink to this headline">¶</a></h2>
+<h2>Semantic<a class="headerlink" href="#semantic" title="Permalink to this headline">#</a></h2>
 <p>We train prediction-based word models to generate features that represent the semantic relationship of words. Prediction-based models include Word2Vec, FastText, GloVe etc. These models in general can represent words in vectors that show semantic relationships such as in the form of “France - Paris equals to German - Berlin” [2].</p>
 <p>Here we construct a FastText model trained on the given CONDA dataset. We select FastText because of its capability to deal with out-of-vocabulary issues. Intuitively, word spelling in-game chats are very flexible in the sense that players use a lot of nicknames/abbreviations, and also, they do not care much about typos, such as “pudg” as in the hero “pudge”. FastText constructs the word vector of each word with character n-grams, so the vector of “pudg”, if it is not in the dictionary, can be constructed by using part of the n-gram vectors of “pudge”.</p>
 </section>
 <section id="domain">
-<h2>Domain<a class="headerlink" href="#domain" title="Permalink to this headline">¶</a></h2>
+<h2>Domain<a class="headerlink" href="#domain" title="Permalink to this headline">#</a></h2>
 <p>We construct two domain-specific input embeddings to provide more task-related information to the machine learning model i.e. for the toxicity and Dota label tags. We train two FastText-based embeddings with different domain-specific datasets.</p>
 <p>The Dota Embedding is trained on texts that we extracted from the subtitles of Dota 2 documentaries and game guides in YouTube, using the online scraping tool “<a class="reference external" href="https://downsub.com/%E2%80%9D">https://downsub.com/”</a>. We chose these materials in order to increase input’s relatedness to Dota specific words, such as hero, ability, and item names, and also words used frequently in-game such as “jungler”, “gank”, “carry”. Due to the different structures of the texts between the Dota dataset and the original CONDA dataset, we have different preprocessing methods. The texts are to be pre-processed with lower-casing, retaining only alphabetical words, removing single-charactered tokens (such as left out ‘s’ when removing the apostrophe), and removing over short sentences as we observed that they are usually not useful such as “(crowd cheers)”. After pre-processing, the data is trained by the FastText model.</p>
 <p><code class="docutils literal notranslate">&#160;  </code>The Jigsaw Embedding is trained on toxic comments from the Jigsaw Comment Classification Challenge from Kaggle (<a class="reference external" href="https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge">https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge</a>). In this case, we try to increase input’s relatedness to toxic language. To acquire the embedding, the texts are to be first pre-processed with lower-casing, and retaining only alphabetical words. Also, only non-toxic comments are filtered out because we only want to know more about toxic language. After pre-processing, the data is trained by FastText model.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="slot-filling-tagging-model">
-<h1>Slot Filling/Tagging model<a class="headerlink" href="#slot-filling-tagging-model" title="Permalink to this headline">¶</a></h1>
+<h1>Slot Filling/Tagging model<a class="headerlink" href="#slot-filling-tagging-model" title="Permalink to this headline">#</a></h1>
 <p>The model we propose consists of three main components - the stacked seq2seq model, attention layer and CRF attachment.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="stacked-seq2seq-model">
-<h1>Stacked Seq2Seq model<a class="headerlink" href="#stacked-seq2seq-model" title="Permalink to this headline">¶</a></h1>
+<h1>Stacked Seq2Seq model<a class="headerlink" href="#stacked-seq2seq-model" title="Permalink to this headline">#</a></h1>
 <p>We are using an RNN-based model. Specifically, we are using a multi-stack bi-directional LSTM model. Figure 1 shows the architecture of a sample of a 2-stack bi-direction LSTM model. At the bottom, we will have inputs of word embeddings of BOS/EOS tokens, SEPA tokens and words of the sentence. Then we have multiple layers of bi-LSTM, each represented by a forward LSTM and backward LSTM component. At the end of each layer, the output of the forward and backward components is concatenated (two directions are not treated separately) and passed as the input for the next layer. For our proposed model we have multiple stacks of layers. At the final layer, each output of the final layer will be passed to the attention layer.</p>
 <p><img alt="" src="../../../../_images/Aspose.Words.30b9eb51-e7a1-4b08-a7d4-e7b6b4ac9260.001.png" /></p>
 <p>Figure 1: Stacked LSTM architecture, adapted from [3]</p>
 <p>RNN-based model is selected as the foundation of the model because of its capability of handling sequential data (sequences to sequences). They are also a few of the most common deep learning algorithms for tackling POS tagging tasks [4], which bear some similarities to our tagging task. Compared with RNN, LSTM models have less tendency to gradient explosion or vanishing through gating; meanwhile having bi-directional model trains the sequence data from both directions in order to achieve better results [5]. Finally, stacking multiple layers is also found to be the method to improve the performance of an LSTM model [6].</p>
 <p>The optimal number of stacked layers is 1 based on the experiment section.</p>
 <section id="attention">
-<h2>Attention<a class="headerlink" href="#attention" title="Permalink to this headline">¶</a></h2>
+<h2>Attention<a class="headerlink" href="#attention" title="Permalink to this headline">#</a></h2>
 <section id="attention-score-functions">
-<h3>Attention score functions<a class="headerlink" href="#attention-score-functions" title="Permalink to this headline">¶</a></h3>
+<h3>Attention score functions<a class="headerlink" href="#attention-score-functions" title="Permalink to this headline">#</a></h3>
 <p>Four attention scoring functions are investigated in the experiment section – scaled dot product, dot product, location-based and additive. The general format of the attention calculation is shown in Figure 2 where the function contains three main vectors – query (Q), key (K) and value (V). The idea (similar to how query works in the database system) is to map the query with a set of key-value pairs to an output, whose value is calculated with a suitable function such as softmax in Figure2. Note that the attention used is at sentence level instead of document level i.e. the sentences are fed into the model since the given dataset is in the form of sentences.</p>
 <p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.30b9eb51-e7a1-4b08-a7d4-e7b6b4ac9260.002.png" /></p>
 <p>Figure 2: attention calculation [7, Sec. 3.2.1]</p>
@@ -964,14 +1038,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Figure 3: four attention score functions</p>
 </section>
 <section id="self-attention-and-positioning">
-<h3>Self-Attention and positioning<a class="headerlink" href="#self-attention-and-positioning" title="Permalink to this headline">¶</a></h3>
+<h3>Self-Attention and positioning<a class="headerlink" href="#self-attention-and-positioning" title="Permalink to this headline">#</a></h3>
 <p>There are three types of attention mechanisms - global, local and self-attention. In this report, self-attention is considered along with the Bi-LSTM model. This is because the other two mechanisms rely more on encoder and decoder architecture where the connection between the decoder hidden states and encoder states are explored. For example, they are often used in the machine translation field where the knowledge of the contextual understanding of the long sequences is important.</p>
 <p>The self-attention mechanism, on the other hand, considers the relationship between different positions of a single sequence [7, Sec. 2]. In the given dataset, the longest sequence length is 72 indicating that a comprehensive contextual understanding may not be required and thus self-attention is chosen. The short sequence length also means that the issue of self-attention operation scaling quadratically with the sequence length is not impactful [7, Sec. 3.5]<strong>.</strong> The flexibility of the self-attention implementation where any attention score functions can be used after replacing the target sequence with the input sequence is also a key factor why such a mechanism is chosen [8].</p>
 <p>Three attention positions – after the first, second and third LSTM stack layers are examined as a result of the chosen self-attention. Note that the implementation involves multi-head attention, which is thought to give more flexibility when scaling the model complexity to improve performance. However, by the experiment below, it is shown that the dataset is relatively simple for the model to learn and thus only one head is chosen for the</p>
 </section>
 </section>
 <section id="crf-attachment">
-<h2>CRF Attachment<a class="headerlink" href="#crf-attachment" title="Permalink to this headline">¶</a></h2>
+<h2>CRF Attachment<a class="headerlink" href="#crf-attachment" title="Permalink to this headline">#</a></h2>
 <p>The input of the concatenated last hidden states from the forward and backward direction is passed into conditional random field (CRF) layer as its emission probabilities.</p>
 <p>The CRF is a probabilistic model for labelling sequence data. Similar probabilistic models include hidden Markov Models (HMM) and maximum entropy Markov models (MEMM). HMM and MEMM predicts a distribution of tags at each time step, and chains them to the next; on the other hand, CRF focuses on a global level as shown in Figure 4. It was shown that CRF performs better than the other two models in POS tagging tasks [9, Sec. 5.3].</p>
 <p><img alt="" src="../../../../_images/Aspose.Words.30b9eb51-e7a1-4b08-a7d4-e7b6b4ac9260.007.png" />Figure 4 - chain structure between time-steps of HMM, MEMM and CRF [9, Fig. 2]</p>
@@ -981,9 +1055,9 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="evaluation">
-<h1>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h1>
+<h1>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h1>
 <section id="general">
-<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">#</a></h2>
 <p>Below is the default configuration applying to the experiment result for the ablation studies.  All the experiments are run on Tesla P100-PCIE-16GB GPU and CUDA 11.1. To maximize the chance of reproducibility, a seed is set wherever is possible (e.g. on the torch random generated tensor). T-F1 evaluation ignores “O”, “SEPA” tags and [PAD] tags if applicable.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1032,7 +1106,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section id="performance-comparison">
-<h2>Performance Comparison<a class="headerlink" href="#performance-comparison" title="Permalink to this headline">¶</a></h2>
+<h2>Performance Comparison<a class="headerlink" href="#performance-comparison" title="Permalink to this headline">#</a></h2>
 <p>Our best model is a Bi-LSTM model. The configurations are described in Table 2. Note that gradient clipping, ReLU, freezing all embedding layers and adding training data from the validation set are also the keys to making such best model.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1083,7 +1157,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We set the embedding window size to 4 in order to capture a more accurate context. From the Dota Embedding, we can see that there are many heroes or items with compound worded names, such as “Black King Bar” and “Eye of Skadi”. Having a window size that is too small may turn out capturing the proper noun but not the proper noun and its surrounding contexts. Secondly, the hidden dimension for the LSTM layer and input embedding sizes have been tuned down to reduce complexity. Thirdly, we combined the input embeddings proposed in Section 2 except word length, as the input of our best model. The word length embedding is left out because we are dubious of its effects.</p>
 </section>
 <section id="ablation-studies">
-<h2>Ablation Studies<a class="headerlink" href="#ablation-studies" title="Permalink to this headline">¶</a></h2>
+<h2>Ablation Studies<a class="headerlink" href="#ablation-studies" title="Permalink to this headline">#</a></h2>
 <p>In the ablation studies, we will investigate how each part of the component of the system affects the overall performance. We focus on four major components, the embedding model, the attention strategy, the number of stacked layers and the usage of CRF.</p>
 <p>For the embedding model, we will first test one additional embedding together with the baseline embedding (FastText trained on given CONDA dataset). The top three additional embedding methods are then chosen as a combination of 2 additional embeddings together with the baseline embedding. Note that the pretrained word embedding is frozen during the training.</p>
 <p>For the attention strategy, we will test different attention scoring functions and also different attention positions separately.</p>
@@ -1091,13 +1165,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The general configurations already described in 4.1.1 and specific configurations will be different in sections that examine the impact of such configurations.</p>
 </section>
 <section id="evaluation-result">
-<h2>Evaluation result<a class="headerlink" href="#evaluation-result" title="Permalink to this headline">¶</a></h2>
+<h2>Evaluation result<a class="headerlink" href="#evaluation-result" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="experiment">
-<h1>Experiment<a class="headerlink" href="#experiment" title="Permalink to this headline">¶</a></h1>
+<h1>Experiment<a class="headerlink" href="#experiment" title="Permalink to this headline">#</a></h1>
 <section id="id1">
-<h2>Performance Comparison<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>Performance Comparison<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>Table 3 shows that the Bi-LSTM model performed significantly well compared to the baseline model (Bi-LSTM CRF) which scored 0.85726 on the T-F1 according to the Kaggle benchmark. To view the details of the baseline score, we implemented the baseline model offline, which has better performance than the Kaggle benchmark but our best model still outperformed it.</p>
 <p>For the baseline model, the trend in Table 3 shows that the model generally predicted better on the tags O, P, and S while the scores on T, C, and D tags are relatively lower, especially for tag D which is around 20% less accurate. This trend, in general, follows the pattern of the size of each tag distribution which is O &gt; P &gt; S &gt; C &gt; T &gt; D. It is because machine learning models would tend to choose majority classes in order to seek lower losses [12].</p>
 <p>Our best model bettered the baseline model in all sub-scores. The improvement in detecting toxic tags and Dota-related tags is especially significant. It could be due to our inclusion of the Dota Embedding and the Jigsaw Embedding where they are specifically used to improve performance on the Toxic and Dota tags. The class with lowest score for the best model is the Character tag and is also the least performant class in the baseline model result. This may indicate that the characters may have a lot of nicknames or antonomasia (Gordon ➜ the great chef), which could not be captured by the Dota Embedding as the dataset was extracted from Dota game commentaries and guides, in which their choice of words tends to be more formal than actual in-game.</p>
@@ -1123,9 +1197,9 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="ablation-study">
-<h1>Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this headline">¶</a></h1>
+<h1>Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this headline">#</a></h1>
 <section id="different-input-embedding-model">
-<h2>different input embedding model<a class="headerlink" href="#different-input-embedding-model" title="Permalink to this headline">¶</a></h2>
+<h2>different input embedding model<a class="headerlink" href="#different-input-embedding-model" title="Permalink to this headline">#</a></h2>
 <p>Table 4 shows that using the combination of the FastText embedding trained on the given CONDA dataset and the capital letter probability embedding gives us the highest score. Initially, the frequency of the word being full capital was thought to be a helpful feature, but it turns out to be a poor decision which makes the model less accurate. Then, the probability of such a word being full capital is used instead. The probabilistic information of it may have given it the edge in providing insightful information to the machine learning model, as compared to embeddings values that are constructed by majority counts like in POS tag feature and dependency path.</p>
 <p>Some other combinations also give us comparable scores (less than 0.2% difference from the highest score), notably C+P, C+CP+DW and C+DW, which are combinations including the capital letter probability, the POS embedding and/or the Dota Embedding. We believe that the reason for the good performance with POS embedding is exactly the reason why we selected it as the embedding, that POS tags may have relations with our target tags. However, as we have explained that the POS embedding for each word is only the majority vote of it across the corpus, the word might not be having a correct POS tag, which may limit its performance. The Dota embedding, also as we have explained, aimed to provide Dota-specific contexts to the word. The embedding did not produce the best combination results, possibly because of its lack of informal Dota knowledge as mentioned in Section 4.2.1.</p>
 <p>The remaining embedding methods seem to fall off in performance. Part of them are embeddings that were trained with the task-unrelated data, such as the pretrained Gensim model pretrained on tweets, which the performance was somehow expected as tweets have a fairly different nature to in-game chats. Nonetheless, we are pleased to see that all our proposed embeddings do improve the performance except the length embedding, which was also not surprising as words belonging to the same tag would have different lengths, such as a Dota character can be short as ‘Axe’ and long as ‘Bristleback’.</p>
@@ -1176,7 +1250,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section id="different-attention-strategy">
-<h2>different attention strategy<a class="headerlink" href="#different-attention-strategy" title="Permalink to this headline">¶</a></h2>
+<h2>different attention strategy<a class="headerlink" href="#different-attention-strategy" title="Permalink to this headline">#</a></h2>
 <p>Table 5 shows that the dot product yields the best score while the location-based is the least accurate. However, the performance range between the four attention strategies only differs by 0.05.</p>
 <p>The reason why the dot product performance is better than the scaled one could be due to the existing configuration of the model on minimizing the overfitting issues e.g. gradient clipping. These configurations reduce the impact of the scaling in the attention calculation and meanwhile the unscaled dot product can speed up the learning speed of the model given the limitation of 2 epochs.</p>
 <p>Therefore, the dot product can be seen as the optimal choice as it gives the best performance.</p>
@@ -1228,7 +1302,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section id="different-stacked-layer">
-<h2>different Stacked layer*<a class="headerlink" href="#different-stacked-layer" title="Permalink to this headline">¶</a></h2>
+<h2>different Stacked layer*<a class="headerlink" href="#different-stacked-layer" title="Permalink to this headline">#</a></h2>
 <p>Table 7 shows that, in general, the fewer stacked layers the LSTM model has, the better the performance. The reason could be that the dataset is simple relative to the complexity of the model. Although the higher stack layers give the model more capability to project data on higher dimension space to draw the decision boundary between different classes, the complexity of such hidden dynamic is unhealthy for the model to learn the simple dataset, causing issues such as overfitting [14]. Thus, optimal number is 1.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1256,7 +1330,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </section>
 <section id="with-without-crf">
-<h2>with/without CRF<a class="headerlink" href="#with-without-crf" title="Permalink to this headline">¶</a></h2>
+<h2>with/without CRF<a class="headerlink" href="#with-without-crf" title="Permalink to this headline">#</a></h2>
 <p>We have already mentioned that CRF can solve the dependent tag issue of an LSTM model and the study result seems to agree with the statement. Table 8 shows that the CRF attachment improved the performance of the Bi-LSTM model significantly. However, this comparison was not conducted under the optimal configuration from our best model. With hyperparameters fine-tuning, our best model achieved 99.085% f1 in validation score without CRF attachment, thus we decided to keep the model from further increasing complexity which may lead to overfitting issue.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1318,9 +1392,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../5046-intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1336,24 +1412,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jerry<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

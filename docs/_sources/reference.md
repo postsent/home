@@ -4,7 +4,6 @@
 
 2. [Coursera Natural Language Specialisation](https://www.coursera.org/specializations/natural-language-processing)
 
-# Others
-[Some memories in UNSW](https://postsent.github.io/2021/12/11/courses/)
+3. [Some memories in UNSW](https://postsent.github.io/2021/12/11/courses/)
 
-
+4. Similarly, those under "USYD" are my work in sydney uni, thanks all the great teaching usyd :)

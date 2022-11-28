@@ -55,6 +55,15 @@ parts:
     - file: ds-courses/usyd/5349/a1
     - file: ds-courses/usyd/5349/a1-report
 
+  - file: ds-courses/usyd/5338/5338-intro
+    sections:
+    - file: ds-courses/usyd/5338/a1.md
+    - file: ds-courses/usyd/5338/a2.md
+    - file: ds-courses/usyd/5338/a2-report/report.md
+    - file: ds-courses/usyd/5338/a3.md
+    - file: ds-courses/usyd/5338/a4.md
+  
+    
 - caption: Machine Learning
   chapters:
   - file: ml/regression/regression

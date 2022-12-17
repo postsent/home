@@ -62,7 +62,11 @@ parts:
     - file: ds-courses/usyd/5338/a2-report/report.md
     - file: ds-courses/usyd/5338/a3.md
     - file: ds-courses/usyd/5338/a4.md
-  
+
+  - file: ds-courses/usyd/5048/5048-intro
+    sections:
+    - file: ds-courses/usyd/5048/individual
+    - file: ds-courses/usyd/5048/group
     
 - caption: Machine Learning
   chapters:

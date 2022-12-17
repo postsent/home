@@ -67,7 +67,12 @@ parts:
     sections:
     - file: ds-courses/usyd/5048/individual
     - file: ds-courses/usyd/5048/group
-    
+
+  - file: ds-courses/usyd/5328/5328-intro
+    sections:
+    - file: ds-courses/usyd/5328/a1.md
+    - file: ds-courses/usyd/5328/a2.md
+
 - caption: Machine Learning
   chapters:
   - file: ml/regression/regression

@@ -1,2 +1,2 @@
-# NoSQL&Graph Data Model(USYD)
+# NoSQL & Neo4j (USYD)
 

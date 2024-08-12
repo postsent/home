@@ -1,5 +1,0 @@
-# Terminology
-
-# Vectorisation
-
-\#TODO

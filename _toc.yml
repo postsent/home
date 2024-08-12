@@ -7,8 +7,8 @@ parts:
 
 - caption: About   
   chapters:
-  - url: https://postsent.github.io/categories/
-    title: Back to Blog
+  - url: https://postsent.github.io/home/
+    title: Home
   - file: reference
 
 - caption: Data Science Related Courses

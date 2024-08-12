@@ -22,7 +22,7 @@ Feel free to click the drop down button to see more ~
 :height: 100
 ```
 
-The textbook used by UC Berkeley's popular Data 8 class.
+Deep learning algorithms to filter / optimize data by heruistics / distillation
 +++
 Read {fas}`arrow-right`
 :::
@@ -56,7 +56,7 @@ Read {fas}`arrow-right`
 :height: 100
 ```
 
-A guidebook for best-practices in reproducible and community-driven science.
+
 +++
 Read {fas}`arrow-right`
 :::

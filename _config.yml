@@ -90,4 +90,5 @@ sphinx:
   config                    :   # key-value pairs to directly over-ride the Sphinx configuration
 #######################################################################################
 
-
+collapse_inactive_chapters: true  # Whether to collapse the inactive chapters in the sidebar
+collapse_inactive_sections: true  # Whether to collapse the sub-sections within a non-active section in the sidebar

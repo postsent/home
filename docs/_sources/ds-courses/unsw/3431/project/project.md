@@ -1,8 +1,12 @@
 ﻿# Mini self-driving 
 
-with turtlebot   
+![](3431-human.png)
+![](3431-robot.png)
+![](3431-stop.png)
 
-[Demo here](https://postsent.github.io/2021/12/11/courses/#comp3431-robotic-software-architecture)
+[More](https://postsent.github.io/2021/12/11/courses/#comp3431-robotic-software-architecture)
+
+with turtlebot   
 
 **COMP3431**
 
@@ -10,7 +14,7 @@ with turtlebot
 
 **Autonomous driving using TurtleBot in a simulated road environment**
 
-`					`**November 2020**
+``**November 2020**
 
 Team name: Boston Static
 

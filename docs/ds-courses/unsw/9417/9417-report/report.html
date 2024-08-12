@@ -1,0 +1,1378 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Project - report &#8212; My Jupter Notebook on data science.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="PGM (UNSW)" href="../../9418/9418-intro.html" />
+    <link rel="prev" title="Project - Classification" href="../9417-project.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupter Notebook on data science.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://postsent.github.io/categories/">
+   Back to Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../reference.html">
+   Acknowledgement
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Science Related Courses
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../9417-intro.html">
+   Machine Learning (UNSW)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../9417-basic.html">
+     Basic with examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../9417-project.html">
+     Project - Classification
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Project - report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9418/9418-intro.html">
+   PGM (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9418/9418-EDA.html">
+     EDA on Times Series Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9418/9418-project.html">
+     Time series project code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9418/9418-project/report.html">
+     Time series report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9517/9517-intro.html">
+   Computer Vision (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-a1-code.html">
+     Basic image processing, thresholding, count cells
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-a1/report.html">
+     Report on Basic image processing, etc
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-lane_detection.html">
+     Lane detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-vehicle-detection.html">
+     Vehicle detection (by teammate)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9444/9444-intro.html">
+   Deep Learning (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9444/9444-project.html">
+     Image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9444/assignment1/assignment1.html">
+     Characters, Spirals and Hidden Unit Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../3900/3900-intro.html">
+   Capstone (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../3900/project/3900-project.html">
+     <strong>
+      Chatbot
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../3431/3431-intro.html">
+   ROS &amp; CV (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../3431/project/project.html">
+     Mini self-driving
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5046/5046-intro.html">
+   NLP (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5046/a2/a2.html">
+     Report - In-game Toxicity Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5046/a2.html">
+     In Game Toxicity seq2seq classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5046/a1.html">
+     Binary text classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5349/5349-intro.html">
+   Cloud Computing (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a2/a2.html">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a2.html">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a1.html">
+     Text Analysis with Spark RDD API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a1-report.html">
+     Report – Text Analysis with Spark RDD API
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5338/5338-intro.html">
+   NoSQL&amp;Graph Data Model(USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a1.html">
+     NoSQL basic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a2.html">
+     NoSQL Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a2-report/report.html">
+     <strong>
+      Performance Observation Task
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a3.html">
+     Neo4j Basic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a4.html">
+     Neo4j Query
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5048/5048-intro.html">
+   Visual Analytics Tableau (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5048/individual.html">
+     Individual Report
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5048/group.html">
+     Group Report (My part)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5328/5328-intro.html">
+   Advance ML
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5328/a1.html">
+     NMF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5328/a2.html">
+     Label Noise Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../ml/regression/regression.html">
+   Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../ml/regression/p1-crypto-prediction.html">
+     Crypto Prediction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/classification/classification.html">
+   Classification (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/time-series/time-series.html">
+   Time Series (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/ml.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../dl/dl.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NLP
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../nlp/nlp.html">
+   placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../cv/cv.html">
+   Placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Misc
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/math.html">
+   Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/misc.html">
+   Misc
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/term.html">
+   Terminology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/todo.html">
+   TODO
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Coding Basic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../python/basic-intro.html">
+   Numpy, Pandas, Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/numpy.html">
+     Numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/pandas.html">
+     Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/leetcode.html">
+     Leetcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Side Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../side-project/web-scrapter.html">
+   Course Enrolment Scrapter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Unfinished
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/nlp-book.html">
+   NLP Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/nn.html">
+     Feed-Forward Networks for NLP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/prac-ch3.html">
+     Chapter 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../unfinished/jigsaw-intro.html">
+   Jigsaw
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/README.html">
+     Folder Structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">
+     Simple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm.html">
+     Upgrade RNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper.html">
+     Common
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../unfinished/nlp-reading.html">
+   Book Reading
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/ds-courses/unsw/9417/9417-report/report.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Project - report
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploratory-data-analysis">
+   exploratory data analysis
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-data-distribution-and-feature-correlation">
+     <em>
+      A. Data distribution and feature correlation
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methodology">
+   methodology
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-select-classification-models">
+     <em>
+      A) Select classification models
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-feature-selection">
+     <em>
+      B. Feature selection
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-outlier-removal">
+     <em>
+      C. Outlier removal
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interquartile-range">
+       <em>
+        1) Interquartile range
+       </em>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#isolation-forest">
+       <em>
+        2) Isolation forest
+       </em>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#density-based-spatial-clustering-of-application-with-noise">
+       <em>
+        3) Density-based Spatial Clustering of Application with Noise
+       </em>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-parameter-tuning">
+     <em>
+      D. Parameter tuning
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-voting-ensemble">
+     <em>
+      E. Voting ensemble
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-final-model">
+     <em>
+      F. Final model
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#result">
+   result
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   conclusion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   reference
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Project - report</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Project - report
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploratory-data-analysis">
+   exploratory data analysis
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-data-distribution-and-feature-correlation">
+     <em>
+      A. Data distribution and feature correlation
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methodology">
+   methodology
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-select-classification-models">
+     <em>
+      A) Select classification models
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-feature-selection">
+     <em>
+      B. Feature selection
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-outlier-removal">
+     <em>
+      C. Outlier removal
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interquartile-range">
+       <em>
+        1) Interquartile range
+       </em>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#isolation-forest">
+       <em>
+        2) Isolation forest
+       </em>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#density-based-spatial-clustering-of-application-with-noise">
+       <em>
+        3) Density-based Spatial Clustering of Application with Noise
+       </em>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-parameter-tuning">
+     <em>
+      D. Parameter tuning
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-voting-ensemble">
+     <em>
+      E. Voting ensemble
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-final-model">
+     <em>
+      F. Final model
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#result">
+   result
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   conclusion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   reference
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="project-report">
+<h1>Project - report<a class="headerlink" href="#project-report" title="Permalink to this headline">#</a></h1>
+<p>Machine Learning in the Unknown</p>
+<p>Group Name: Boston Static</p>
+<p>Group Members:</p>
+<p>University of New South Wales</p>
+<p>Author Note</p>
+<p>This is a group project report for the course COMP9417 in 21T1</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<p>This project aims to create a machine learning model that makes the best prediction on the test set based on class-weighted F1 scores. The machine learning pipeline applied involves pre-processing, feature engineering, removing outliers, parameter tuning and selecting the final model by comparing the weighted F1-score on the validation set.</p>
+<p>Based on the project specification, datasets that contain no domain knowledge of the features are given. CSV files are provided for training, validation and testing set, in which the test set contains only instances with no class label. The datasets consist of 8346 training and 2782 validation instances with 128 real-valued features. No headers are provided, and the target variable is composed of 6 possible values, with all features and the target variable being numerical. The test set contains 2782 data with features values only. We were required to build a model using this dataset, which is expected to accurately predict the results for the testing set.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis">
+<h1>exploratory data analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
+<p>This section explains the nature of the dataset such as class distribution and feature importance by graph demonstration. Given the nature of the unknown feature name, the data category is first identified via a box plot. Then value range of each column is visually evaluated to extract the underlying meaning of that feature, which helps to determine how to apply the most appropriate method.</p>
+<section id="a-data-distribution-and-feature-correlation">
+<h2><em>A. Data distribution and feature correlation</em><a class="headerlink" href="#a-data-distribution-and-feature-correlation" title="Permalink to this headline">#</a></h2>
+<p>Based on the first diagram in Figure 1, the distribution between different classes in the target variable of the training set is not balanced. Class label 6 contains the smallest percentage of data (11.9%) and class label 2 contains the largest (21.4%). No missing values were found in the dataset, and all data was structured i.e., numerical data (Figure 2).</p>
+<p>The second diagram in Figure 1 illustrates the top 10 most important features determined by the Extra Trees classifier<a class="footnote-reference brackets" href="#id4" id="id1">1</a>. The significance of these features is computed based on the Gini importance, which is a measure of the mean impurity over all splits that includes that feature.  It shows that column 8 has the highest relative importance and all 10 features selected are above 60% relative significance. The fourth diagram illustrates the tuning for the principal component analysis, in which the maximum variance regarding the number of features converges around 10 features.  This is similar to the default value for the parameter max_features in the tree model where the number is determined by the square root of the total number of features, which is 11.</p>
+<p><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.001.png" /> <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.002.png" /> <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.003.png" /><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.004.png" /></p>
+<p>Figure 1: target variable distribution in training set, top 10 most important features selected by extra tree classifier,  10 features by ANOVA, PCA <a class="footnote-reference brackets" href="#id5" id="id2">2</a>comparison in the number of component vs variance<a class="footnote-reference brackets" href="#id6" id="id3">3</a></p>
+<p><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.005.png" /></p>
+<p>Figure 2: boxplot  for original data</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="methodology">
+<h1>methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">#</a></h1>
+<p>The details of methods and pipeline are described below. The pipeline involves pre-processing the data, feature selection, outlier removal, parameter tuning and voting ensemble. Dimensionality reduction is applied before outlier removal. It is because if the order is shifted, additional rows would be removed due to the outliers in the redundant feature. 10 folds stratified cross-validation is applied for analysis of the variance for different models and the validation set is used as the final testing (see result section). The models are compared before and after for each processing to achieve the maximum outcome.</p>
+<section id="a-select-classification-models">
+<h2><em>A) Select classification models</em><a class="headerlink" href="#a-select-classification-models" title="Permalink to this headline">#</a></h2>
+<p>Figure 3 illustrates the comparison of the performance for different classification models on the standardized zero-mean data. The classification models used include Logistic Regression, Linear Discriminant Analysis, K-Nearest Neighbours, Decision Tree, Naive Bayes, Support Vector Machine, Decision Tree Regressor, Random Forest, Extra Trees Classifier, and Multi-layer Perceptron. This process filters the models based on the scores and variance. Results are shown in the table below, and the models selected for the next phase are KNN, Logistic Regression, Random Forest, and Extra Trees Classifier.</p>
+<p><code class="docutils literal notranslate">&#160;  </code><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.006.png" />    <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.007.png" /><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.008.png" /></p>
+<p>Figure 3: model comparison between unstandardised and standardised data, variance and time comparison, Boxplot for models on standardised data</p>
+</section>
+<section id="b-feature-selection">
+<h2><em>B. Feature selection</em><a class="headerlink" href="#b-feature-selection" title="Permalink to this headline">#</a></h2>
+<p>This section discusses some feature selection techniques regarding numerical input and categorical output.</p>
+<p>As seen in Figure 1, the ANOVA f-test is used to select the top 10 most important features. And the result is compared with the Extra Trees classifier selection. ANOVA stands for “analysis of variance” and is a parametric statistical hypothesis that decides if the means of two or more data samples belongs to the same distribution. Such method calculates the maximum relevance between a feature and a class label, and the correlation is measured to minimise redundancy [1].</p>
+<p>Besides, a correlation matrix of 128 columns is plotted below. It can be seen that feature No. 107 is highly correlated with the output variable y. Hence, we assigned this as a key feature for predicting the value of y. Since only one feature is found to have an absolute correlation value greater than 0.5 with y, no further step is taken to filter features during this process.</p>
+<p><code class="docutils literal notranslate">&#160;  </code><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.009.png" /> <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.010.png" /><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.011.png" /></p>
+<p>Figure 4: Correlation Matrix, feature importance by Extra Trees classifier</p>
+<p>In this process, tree-based feature selection was used instead of L1-based and PCA selection, as Lasso Regression does not evaluate whether the correct form of the relationship has been chosen between the independent and dependent variables. Furthermore, PCA is not chosen as the measurements from all the original variables are used in the projection to the lower-dimensional space, only linear relationships are considered, and PCA or SVD-based methods, as well as univariate screening methods, do not consider the potential multivariate nature of the data structure.</p>
+<p>As seen in Figure 5, zero mean standardised data gives more accurate model performance than min-max normalisation. Based on Figure 6, PCA dimensionality reduction performs better than tree and linear SVM model selection. In general, the optimal number of the component in PCA is around 20. The scoring of the best model - Extra Trees classifier is improved to 0.9965 from 0.9955 (before the changes). (PCA is not applied in the following section due to time constraint)</p>
+<p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160; </code><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.012.png" /> <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.013.png" /><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.014.png" /><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.015.png" /></p>
+<p>Figure 5: 10 folds cross-validation results on dimensionality reduction data by Extra Tress classifier, linear SVM (data is normalized min-max and min-max)</p>
+<p><code class="docutils literal notranslate">&#160; </code><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.016.png" /><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.017.png" /></p>
+<p>Figure 6: 10 folds cross-validation results on dimensionality reduction data by PCA, result from component = 20</p>
+</section>
+<section id="c-outlier-removal">
+<h2><em>C. Outlier removal</em><a class="headerlink" href="#c-outlier-removal" title="Permalink to this headline">#</a></h2>
+<p>As mentioned above, only numerical data is concerned in this dataset. Pre-processing for numerical features applies differently to the tree and non-tree models. In general, tree-based models do not depend on scaling for which a non-tree classifier could rely heavily on [2]. Outliers are often considered as a negative factor that skews the tendency of the data which results in poor model scoring. As a result, the outlier removal technique could lead to a more accurate model. Removing outliers involves deletion or replacement by the median value of the data points. Minimum Covariance Determinant is not considered as the data does not follow the pattern of gaussian distribution. Local Outlier Factors is not chosen due to the high dimensionality of the data. Three approaches are evaluated in this section and the results are summarised in the table below.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Outlier method</p></th>
+<th class="text-align:left head"><p>Number of rows removed</p></th>
+<th class="text-align:left head"><p>Percentage of rows removed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Interquartile range</p></td>
+<td class="text-align:left"><p>2949</p></td>
+<td class="text-align:left"><p>0.3533</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Isolation forest</p></td>
+<td class="text-align:left"><p>1029</p></td>
+<td class="text-align:left"><p>0.1233</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><h3>Density-based spatial clustering</h3></p></td>
+<td class="text-align:left"><p>1316</p></td>
+<td class="text-align:left"><p>0.1577</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Figure 7: comparison between different outlier removal methods</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<section id="interquartile-range">
+<h3><em>1) Interquartile range</em><a class="headerlink" href="#interquartile-range" title="Permalink to this headline">#</a></h3>
+<p>The interquartile range is a statistical-based approach that could be applied when the data cannot be normalized by Gaussian distribution [3]. It describes the middle 50% of the data, ordering the data from smallest to largest. The first (25%) and third (75%) quartile is defined by the median value of the lower and upper half of the data. According to [4], such method often assumes that the high probability regions of a stochastic model contain the normal data, whereas the outliers stay in the low probability domain. The threshold for identifying an outlier is set to be 1.5 times the data range away from the middle quartile. As seen below box plot, the y-scale changed from 700000 to 140000 which is 5 times smaller than the original scale.</p>
+<p><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.018.png" /> <img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.019.png" /></p>
+<p>Figure 8: box plot of data after interquartile range, after isolation forest</p>
+</section>
+<section id="isolation-forest">
+<h3><em>2) Isolation forest</em><a class="headerlink" href="#isolation-forest" title="Permalink to this headline">#</a></h3>
+<p>According to [5], anomaly detection could be achieved by an unsupervised learning algorithm named isolation forest. While most model-based methods detect outliers via separating those that do not conform to the profile of normal instances, this approach explicitly isolates anomalies and is considered as a fast and low memory demand method. Based on the third graph from Figure 8, the y scale of the data reduced from 700000 to 250000 (around 3 times smaller). Compared to the interquartile range, this approach is less aggressive and preserves more pattern of the original data.</p>
+</section>
+<section id="density-based-spatial-clustering-of-application-with-noise">
+<h3><em>3) Density-based Spatial Clustering of Application with Noise</em><a class="headerlink" href="#density-based-spatial-clustering-of-application-with-noise" title="Permalink to this headline">#</a></h3>
+<p>Another potential method for outlier removal would be Density-based Spatial Clustering of Application with Noise or DBSCAN. DBSCAN is an unsupervised, density-based algorithm, which takes features within the data set, and clusters them based on parameters. Any data points that are not within these clusters and are not ‘<em>density reachable</em>’ from any other point would be considered outliers and can be removed from the data set. By selecting features that have the largest impact on the class feature, we would then be able to find outliers within the data set concerning these selected features. Based on the graph, the y scale of the data gets reduced from 700000 to 300000, acting less aggressive than both Interquartile Range and Isolation Forest, preserving more of the original data</p>
+<p><img alt="" src="../../../../_images/Aspose.Words.b67f9915-5a2e-4272-8f87-a899219b12ca.020.png" /></p>
+<p>Figure 9：box plot for data filtered by DBSCAN</p>
+</section>
+</section>
+<section id="d-parameter-tuning">
+<h2><em>D. Parameter tuning</em><a class="headerlink" href="#d-parameter-tuning" title="Permalink to this headline">#</a></h2>
+<p>10 folds cross-validation was applied for parameter tuning as it provides an unbiased estimation for the final result. Grid search and random search are two commonly used parameter tuning techniques. According to [6], a Grid search evaluates all combination of hyperparameter values and is considered as an exhaustive search among the parameters. This approach gives high accuracy result but is often time inefficient. The random search examines random combinations of the hyperparameters, which allows the users to reduce the search space. Grid search is applied to the candidate models includes the Extra Trees classifier, Random Forest, KNN, Logistic Regression. Based on the below table, the optimal nearest neighbour for KNN is 1, which is led by the high dimensionality of the data.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Classifier</p></th>
+<th class="text-align:center head"><p>Hyperparameter s</p></th>
+<th class="text-align:center head"><p>Weighted F1 scores by 10 folds cross-validation on the training set</p></th>
+<th class="text-align:center head"><p>time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>KNN</p></td>
+<td class="text-align:center"><p>n_neighbors=1</p></td>
+<td class="text-align:center"><p>0.9943</p></td>
+<td class="text-align:center"><p>10s</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Logistic regression</p></td>
+<td class="text-align:center"><p>C=1, max_iter=200</p></td>
+<td class="text-align:center"><p>0.9915</p></td>
+<td class="text-align:center"><p>10 minutes+</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Extra  Trees classifier</p></td>
+<td class="text-align:center"><p>max_features=11, min_samples_leaf=1, min_samples_split=2, n_estimators=200, random_state=23</p></td>
+<td class="text-align:center"><p>0.9956</p></td>
+<td class="text-align:center"><p>1 hour +</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Random forest</p></td>
+<td class="text-align:center"><p>max_features=11, min_samples_leaf=1, min_samples_split=2, n_estimators=200, random_state=23</p></td>
+<td class="text-align:center"><p>0.9951</p></td>
+<td class="text-align:center"><p>1 hour +</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>MLP</p></td>
+<td class="text-align:center"><p>activation=’relu’, hidden_layer_sizes=(50, 100, 50), learning_rate=’adaptive’, alpha=0.0001, solver=’adam’</p></td>
+<td class="text-align:center"><p>0.9932</p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Figure 10: comparison in score after parameter tuning</p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="e-voting-ensemble">
+<h2><em>E. Voting ensemble</em><a class="headerlink" href="#e-voting-ensemble" title="Permalink to this headline">#</a></h2>
+<p>To improve the performance of a single model and lower the variance, the machine learning model voting ensemble that combines the predictions from multiple other models is often considered.</p>
+<p>A soft voting ensemble that predicts the class label based on the probability of all models, is then applied for the classification problem. The hard voting ensemble was not considered as it anticipates the result based on the most popular vote among the models, which ignores the strength and weakness of each model.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Classifier</p></th>
+<th class="text-align:left head"><p>10 folds cross-validation on the training set</p></th>
+<th class="text-align:left head"><p>Predication on the validation set</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>ExtraTrees classifier + random forest + MLP</p></td>
+<td class="text-align:left"><p>0.9957</p></td>
+<td class="text-align:left"><p>0.9931691</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>ExtraTrees classifier + random forest + MLP + KNN</p></td>
+<td class="text-align:left"><p>0.9952 (variance = 0.001517)</p></td>
+<td class="text-align:left"><p><p>0.9931707</p><p></p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Figure 11: result from the voting ensemble</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="f-final-model">
+<h2><em>F. Final model</em><a class="headerlink" href="#f-final-model" title="Permalink to this headline">#</a></h2>
+<p>Based on the final performance on the validation set, the voting ensemble (Extra Trees classifier + Random Forest + MLP + KNN) was chosen for the prediction for its low variance (the lowest among all candidate models,  Figure 3) and high F1-score. The hyperparameters of each model are listed above in the parameter tuning section with the unlisted ones as default. The result only differs by 3 compared with the one gained from the extra tree classifier.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="result">
+<h1>result<a class="headerlink" href="#result" title="Permalink to this headline">#</a></h1>
+<p>The weighted F1-score is then used as the evaluation metric, and the final testing is performed on the validation set (as no testing set was provided), which is unseen to the model. All models except for MLP and tree model are trained based on standardised data via z-score.</p>
+<p>Based on <em>Figure 12</em>, the voting ensemble can be considered the most suitable model to apply for this dataset as it gives a balanced trade-off between the variance (overfitting issue is minimised) and the F1-score. The problem of the curse of dimensionality and outliers is minimised as the voting ensemble includes two tree models, so it is considered flexible and reliable to apply for this numerical dataset.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tuned Classifier</p></th>
+<th class="head"><p>Score on the validation set (4 D.C.)</p></th>
+<th class="head"><p>Variance of 10 folds cross-validation on the training set</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Extra Tree classifier</p></td>
+<td><p>0.9932</p></td>
+<td><p>0.001721</p></td>
+</tr>
+<tr class="row-odd"><td><p>Random Forest</p></td>
+<td><p>0.9910</p></td>
+<td><p>0.002135</p></td>
+</tr>
+<tr class="row-even"><td><p>KNN</p></td>
+<td><p>0.9928</p></td>
+<td><p>0.004484</p></td>
+</tr>
+<tr class="row-odd"><td><p>Logistic Regression</p></td>
+<td><p>0.9871</p></td>
+<td><p>0.001836</p></td>
+</tr>
+<tr class="row-even"><td><p>Multi-layer Percetron</p></td>
+<td><p>0.9932</p></td>
+<td><p>0.002563</p></td>
+</tr>
+<tr class="row-odd"><td><p>Voting Ensemble (Extra Trees classifier + Random Forest + MLP)</p></td>
+<td><p>0.9932</p></td>
+<td><p>0.001517</p></td>
+</tr>
+<tr class="row-even"><td><p>Figure 12: Model comparison in the validation set</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="discussion">
+<h1>discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h1>
+<p>It was observed that the optimal parameters for the extra tree classifier and the random forest are the same (Figure <em>10</em>), and both have a similar F1-score. This is predictable as both ensemble methods are composed of many subtrees, where the random forest applies bootstrap and the extra tree uses the whole sample space. Besides, during the runtime, the random forest chooses the optimal split whereas the extra tree does it randomly, both choosing the best subset of features after the final split point. Thus, it allows the extra tree to run faster than the random forest [7]. Given the high dimension of the data, it is understandable to observe that the tree and MLP model performs better than logistic regression and KNN. And simple model such as Naïve Bayes and linear discriminative analysis performs poorly for this dataset.</p>
+<p>The feature importance selected by ANVOA and tree classifier is both similar. The reason for this could be the nature of feature selection primarily focus on the variance and correlation of the data. In addition, it was observed that dimensionality reduction could substantially reduce the training time for the model. However, during the testing, both outlier removal and feature selection did not improve the F1-score for the model selected. It was concluded that the chosen tree model, KNN and multi-layer perceptron deploy sufficient mechanism within its own implementation that pre-processing of the data have minimal impact on them compared to the parameter tuning effect.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h1>
+<p>In conclusion, this report discusses various approaches in the standard machine learning pipeline for classification problems concerning numerical data. This pipeline includes data pre-processing, such as visualising the nature of the data, feature selection, outlier removal using various methods such as Isolation Forest and Interquartile Range, parameter tuning, and comparison between the tree and non-tree models. Based on the final results gained from the validation set, the voting ensemble was determined to be the best of use in the final prediction because of its low variance and high F1 score. Some future improvements include comparing more pre-processing approaches and exploring different open-source libraries that are summarised in [8] or in many great review papers and journal articles. Additionally, more research could have been made into better methods for feature selection and outlier removal, to help tune the model to better predict test data.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reference">
+<h1>reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h1>
+<p>The idea of pipeline and code for comparing model baseline score comes from [2].</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>[1]</p></th>
+<th class="text-align:left head"><p>D. F. G. Zena M. Hira, “A Review of Feature Selection and Feature Extraction Methods Applied on Microarray Data,” <em>Adv Bioinformatics,</em> 2015.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>[2]</p></td>
+<td class="text-align:left"><p>“A Complete ML Pipeline Tutorial,” 2018. [Online]. Available: <a class="reference external" href="https://www.kaggle.com/pouryaayria/a-complete-ml-pipeline-tutorial-acu-86/notebook">https://www.kaggle.com/pouryaayria/a-complete-ml-pipeline-tutorial-acu-86/notebook</a>.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>[3]</p></td>
+<td class="text-align:left"><p>J. Brownlee, “How to Remove Outliers for Machine Learning,” 2018. [Online]. Available: <a class="reference external" href="https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/">https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/</a>.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>[4]</p></td>
+<td class="text-align:left"><p>I. F. Ilyas and X. Chu, in <em>Data Cleaning</em>, New York, 2019, p. 12.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>[5]</p></td>
+<td class="text-align:left"><p>F. T. Liu, K. M. Ting and Z. Zhou, “Isolation Forest,” <em>2008 Eighth IEEE International Conference on Data Mining,</em> pp. 413 - 422, 2008.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>[6]</p></td>
+<td class="text-align:left"><p>P. Worcester, “A Comparison of Grid Search and Randomized Search Using Scikit Learn,” Jun 2019. [Online]. Available: <a class="reference external" href="https://blog.usejournal.com/a-comparison-of-grid-search-and-randomized-search-using-scikit-learn-29823179bc85">https://blog.usejournal.com/a-comparison-of-grid-search-and-randomized-search-using-scikit-learn-29823179bc85</a>.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>[7]</p></td>
+<td class="text-align:left"><p>G. Pierre, D. Ernst and L. Wehenkel, “Extremely randomized trees,” pp. 3-42, 2006.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>[8]</p></td>
+<td class="text-align:left"><p>J. Misiti, “Machine learning frameworks, libraries and software,” 2016. [Online]. Available: <a class="reference external" href="https://github.com/josephmisiti/awesome-machine-learning">https://github.com/josephmisiti/awesome-machine-learning</a>.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>[9]</p></td>
+<td class="text-align:left"><p>A. Andrade and L. Golab, “DATA SCIENCE GUIDE,” 2016. [Online]. Available: <a class="reference external" href="https://datascienceguide.github.io/exploratory-data-analysis">https://datascienceguide.github.io/exploratory-data-analysis</a>.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>[10]</p></td>
+<td class="text-align:left"><p>M. Alam, “DBSCAN — a density-based unsupervised algorithm for fraud detection,” 2020. [Online]. Available: <a class="reference external" href="https://towardsdatascience.com/dbscan-a-density-based-unsupervised-algorithm-for-fraud-detection-887c0f1016e9">https://towardsdatascience.com/dbscan-a-density-based-unsupervised-algorithm-for-fraud-detection-887c0f1016e9</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Extra tree stands for extremely randomized trees</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>PCA stands for principal component analysis, a dimensionality-reduction method</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>How far the data spreads from its mean</p>
+</dd>
+</dl>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ds-courses/unsw/9417/9417-report"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../9417-project.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Project - Classification</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../9418/9418-intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">PGM (UNSW)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

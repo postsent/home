@@ -1,0 +1,2218 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Characters, Spirals and Hidden Unit Dynamics &#8212; My Jupter Notebook on data science.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Capstone (UNSW)" href="../../3900/3900-intro.html" />
+    <link rel="prev" title="Image classification" href="../9444-project.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupter Notebook on data science.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://postsent.github.io/categories/">
+   Back to Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../reference.html">
+   Acknowledgement
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Science Related Courses
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9417/9417-intro.html">
+   Machine Learning (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9417/9417-basic.html">
+     Basic with examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9417/9417-project.html">
+     Project - Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9417/9417-report/report.html">
+     Project - report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9418/9418-intro.html">
+   PGM (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9418/9418-EDA.html">
+     EDA on Times Series Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9418/9418-project.html">
+     Time series project code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9418/9418-project/report.html">
+     Time series report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9517/9517-intro.html">
+   Computer Vision (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-a1-code.html">
+     Basic image processing, thresholding, count cells
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-a1/report.html">
+     Report on Basic image processing, etc
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-lane_detection.html">
+     Lane detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-vehicle-detection.html">
+     Vehicle detection (by teammate)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../9444-intro.html">
+   Deep Learning (UNSW)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../9444-project.html">
+     Image classification
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Characters, Spirals and Hidden Unit Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../3900/3900-intro.html">
+   Capstone (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../3900/project/3900-project.html">
+     <strong>
+      Chatbot
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../3431/3431-intro.html">
+   ROS &amp; CV (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../3431/project/project.html">
+     Mini self-driving
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5046/5046-intro.html">
+   NLP (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5046/a2/a2.html">
+     Report - In-game Toxicity Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5046/a2.html">
+     In Game Toxicity seq2seq classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5046/a1.html">
+     Binary text classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5349/5349-intro.html">
+   Cloud Computing (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a2/a2.html">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a2.html">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a1.html">
+     Text Analysis with Spark RDD API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a1-report.html">
+     Report – Text Analysis with Spark RDD API
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5338/5338-intro.html">
+   NoSQL&amp;Graph Data Model(USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a1.html">
+     NoSQL basic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a2.html">
+     NoSQL Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a2-report/report.html">
+     <strong>
+      Performance Observation Task
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a3.html">
+     Neo4j Basic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a4.html">
+     Neo4j Query
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5048/5048-intro.html">
+   Visual Analytics Tableau (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5048/individual.html">
+     Individual Report
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5048/group.html">
+     Group Report (My part)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5328/5328-intro.html">
+   Advance ML
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5328/a1.html">
+     NMF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5328/a2.html">
+     Label Noise Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../ml/regression/regression.html">
+   Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../ml/regression/p1-crypto-prediction.html">
+     Crypto Prediction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/classification/classification.html">
+   Classification (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/time-series/time-series.html">
+   Time Series (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/ml.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../dl/dl.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NLP
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../nlp/nlp.html">
+   placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../cv/cv.html">
+   Placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Misc
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/math.html">
+   Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/misc.html">
+   Misc
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/term.html">
+   Terminology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/todo.html">
+   TODO
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Coding Basic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../python/basic-intro.html">
+   Numpy, Pandas, Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/numpy.html">
+     Numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/pandas.html">
+     Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/leetcode.html">
+     Leetcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Side Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../side-project/web-scrapter.html">
+   Course Enrolment Scrapter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Unfinished
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/nlp-book.html">
+   NLP Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/nn.html">
+     Feed-Forward Networks for NLP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/prac-ch3.html">
+     Chapter 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../unfinished/jigsaw-intro.html">
+   Jigsaw
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/README.html">
+     Folder Structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">
+     Simple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm.html">
+     Upgrade RNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper.html">
+     Common
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../unfinished/nlp-reading.html">
+   Book Reading
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/ds-courses/unsw/9444/assignment1/assignment1.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Characters, Spirals and Hidden Unit Dynamics
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-netlin">
+   Question 1 - NetLin
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-2-netfull">
+   Question 2 - NetFull
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-3-netconv">
+   Question 3 - NetConv
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-4-result-discussion">
+   Question 4 – result discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-rectangular-spirals-task">
+   <strong>
+    PART 2 - Rectangular Spirals Task
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-code">
+   Question 1 - code
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-2-code">
+   Question 2 - code
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-3-show-result-picture-1-hidden-layer">
+   Question 3 – show result picture (1 hidden layer)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-4-show-result-picture-2-hidden-layers">
+   Question 4 - show result picture (2 hidden layers)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-5-result-discussion">
+   Question 5 – result discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-encoder-networks">
+   <strong>
+    PART 3 - Encoder Networks
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-hidden-unit-dynamics-for-recurrent-networks">
+   <strong>
+    PART 4 - Hidden Unit Dynamics for Recurrent Networks
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-srn-illustrate-hidden-state">
+   Question 1 – SRN, illustrate hidden state
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-2-an-bn">
+   Question 2 - an bn
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-3-result-discussion">
+   Question 3 - result discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-4-an-bn-cn">
+   Question 4 - an bn cn
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Question 5 – result discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-6-lstm-analysis-behaviour-and-explain">
+   Question 6 – LSTM, analysis behaviour  and explain
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix">
+   APPENDIX
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Characters, Spirals and Hidden Unit Dynamics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Characters, Spirals and Hidden Unit Dynamics
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-netlin">
+   Question 1 - NetLin
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-2-netfull">
+   Question 2 - NetFull
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-3-netconv">
+   Question 3 - NetConv
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-4-result-discussion">
+   Question 4 – result discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-rectangular-spirals-task">
+   <strong>
+    PART 2 - Rectangular Spirals Task
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-code">
+   Question 1 - code
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-2-code">
+   Question 2 - code
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-3-show-result-picture-1-hidden-layer">
+   Question 3 – show result picture (1 hidden layer)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-4-show-result-picture-2-hidden-layers">
+   Question 4 - show result picture (2 hidden layers)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-5-result-discussion">
+   Question 5 – result discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-encoder-networks">
+   <strong>
+    PART 3 - Encoder Networks
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-hidden-unit-dynamics-for-recurrent-networks">
+   <strong>
+    PART 4 - Hidden Unit Dynamics for Recurrent Networks
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-1-srn-illustrate-hidden-state">
+   Question 1 – SRN, illustrate hidden state
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-2-an-bn">
+   Question 2 - an bn
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-3-result-discussion">
+   Question 3 - result discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-4-an-bn-cn">
+   Question 4 - an bn cn
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Question 5 – result discussion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-6-lstm-analysis-behaviour-and-explain">
+   Question 6 – LSTM, analysis behaviour  and explain
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix">
+   APPENDIX
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="characters-spirals-and-hidden-unit-dynamics">
+<h1>Characters, Spirals and Hidden Unit Dynamics<a class="headerlink" href="#characters-spirals-and-hidden-unit-dynamics" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://www.cse.unsw.edu.au/~cs9444/21T2/hw1/">Question</a></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="#_Toc76828508">Question 1 - NetLin	1</a></p>
+<p><a class="reference external" href="#_Toc76828509">Question 2 - NetFull	2</a></p>
+<p><a class="reference external" href="#_Toc76828510">Question 3 - NetConv	2</a></p>
+<p><a class="reference external" href="#_Toc76828511">Question 4 – result discussion	2</a></p>
+<p><a class="reference external" href="#_Toc76828512"><strong>PART 2 - Rectangular Spirals Task</strong>	4</a></p>
+<p><a class="reference external" href="#_Toc76828513">Question 1 - code	4</a></p>
+<p><a class="reference external" href="#_Toc76828514">Question 2 - code	4</a></p>
+<p><a class="reference external" href="#_Toc76828515">Question 3 – show result picture (1 hidden layer)	4</a></p>
+<p><a class="reference external" href="#_Toc76828516">Question 4 - show result picture (2 hidden layers)	5</a></p>
+<p><a class="reference external" href="#_Toc76828517">Question 5 – result discussion	6</a></p>
+<p><a class="reference external" href="#_Toc76828518"><strong>PART 3 - Encoder Networks</strong>	7</a></p>
+<p><a class="reference external" href="#_Toc76828519"><strong>PART 4 - Hidden Unit Dynamics for Recurrent Networks</strong>	9</a></p>
+<p><a class="reference external" href="#_Toc76828520">Question 1 – SRN, illustrate hidden state	9</a></p>
+<p><a class="reference external" href="#_Toc76828521">Question 2 - an bn	9</a></p>
+<p><a class="reference external" href="#_Toc76828522">Question 3 - result discussion	10</a></p>
+<p><a class="reference external" href="#_Toc76828523">Question 4 - an bn cn	11</a></p>
+<p><a class="reference external" href="#_Toc76828524">Question 5 – result discussion	11</a></p>
+<p><a class="reference external" href="#_Toc76828525">Question 6 – LSTM, analysis behaviour  and explain	12</a></p>
+<p><a class="reference external" href="#_Toc76828526">APPENDIX	15</a></p>
+<p><strong>PART 1- Japanese Character Recognition</strong></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-1-netlin">
+<h1>Question 1 - NetLin<a class="headerlink" href="#question-1-netlin" title="Permalink to this headline">#</a></h1>
+<p><strong>Confusion matrix and Final Accuracy</strong></p>
+<p><img alt="P25#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.001.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-2-netfull">
+<h1>Question 2 - NetFull<a class="headerlink" href="#question-2-netfull" title="Permalink to this headline">#</a></h1>
+<p>Process of tuning the hyperparameters see Appendix A.</p>
+<p><strong>Number of hidden nodes = 200</strong></p>
+<p><img alt="P30#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.002.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-3-netconv">
+<h1>Question 3 - NetConv<a class="headerlink" href="#question-3-netconv" title="Permalink to this headline">#</a></h1>
+<p>Process of tuning the hyperparameters see Appendix A.</p>
+<p><code class="docutils literal notranslate"> </code><strong>He weight initialisation + mom=0.9 + kernel size = 3, lr = 0.01</strong>, others as default</p>
+<p><img alt="P35#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.003.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-4-result-discussion">
+<h1>Question 4 – result discussion<a class="headerlink" href="#question-4-result-discussion" title="Permalink to this headline">#</a></h1>
+<p><em><strong>a) Relative accuracy analysis</strong></em></p>
+<p>It can be seen from the above result that the order of performance from highest to lowest is:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>order</p></th>
+<th class="head"><p>Model</p></th>
+<th class="head"><p>Test accuracy (Epoch 10)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2 convolution layers with one fully connected layer</p></td>
+<td><p>94%</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2 fully connected layers (using tanh at the hidden nodes and log softmax at the output)</p></td>
+<td><p>85%</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1 fully connected layer (log softmax)</p></td>
+<td><p>70%</p></td>
+</tr>
+</tbody>
+</table>
+<p>It can be observed that the deeper and more complex the network is, the higher the test accuracy.</p>
+<p>Firstly, a deeper network contains more parameters and can learn more intermediate features of the given image, which gives a better generalisation across data.</p>
+<p>Secondly, the character classification task here involves 70,000 images with many different writing styles which is hard for the model such as NetLin to classify. It is because it only contains one fully connected layer and so can only distinguish linearly separable features, which is not the case here.</p>
+<p>NetFull model, on the other hand, has a non-linear activation function tanh and two fully connected layers, which uses more parameters to learn more features than NetLin. Thus, it gives higher accuracy than NetLin.</p>
+<p>NetConv model has extra two convolution layers than NetFull and it uses the ReLU activation function.</p>
+<p>The convolution layer allows the layer to learn a subset of the images each time instead of the whole input compared to the fully connected layer. This can reduce the number of parameters used and allows the model to learn different local features faster. Thus, NetConv performs better than all other two models during the 10 epoch training.</p>
+<p><em><strong>b) Confusion matrix analysis</strong></em></p>
+<p>It can be seen that 60000 data are used for training and 10000 are used for testing, with 1000 test data for each class.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Model</p></th>
+<th class="text-align:center head"><p>Most mistaken character</p></th>
+<th class="text-align:center head"><p>Mistaken as</p></th>
+<th class="text-align:center head"><p>Number of times mistaken</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>1 fully connected layer</p></td>
+<td class="text-align:center"><p>4-“na”</p></td>
+<td class="text-align:center"><p>2-“su”</p></td>
+<td class="text-align:center"><p>76</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>2 fully connected layer</p></td>
+<td class="text-align:center"><p>8–“re”</p></td>
+<td class="text-align:center"><p>3-“tsu”</p></td>
+<td class="text-align:center"><p>62</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>2 convolution layers</p></td>
+<td class="text-align:center"><p>2-“su”</p></td>
+<td class="text-align:center"><p>3-“tsu”</p></td>
+<td class="text-align:center"><p>37</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Most likely mistaken letter is distinguished by seeing the smallest number in the diagonal of the confusion matrix.</p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>2-“su”</p></th>
+<th class="head"><p><img alt="P87C2T3#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.004.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3-“tsu”</p></td>
+<td><p><img alt="P90C4T3#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.005.png" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>4-“na”</p></td>
+<td><p><img alt="P93C6T3#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.006.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p>8–“re”</p></td>
+<td><p><img alt="P96C8T3#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.007.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>The reason why “na” being mistaken as “su” could be: features such as the tail of these two letters are quite alike, where they all make a curly turn at the bottom of the letter. The overall shape looks like curving towards one direction and looks quite straight.</p>
+<p>“re” being mistaken as “tsu” because they both have a shape of a half-closed circle at the tail of the letter, which seems to be a dominant feature for both.</p>
+<p>“su” being mistaken as “tsu” may because of the reason aforementioned, where the tail of the letter curve towards one direction.</p>
+<p>Overall, “su” and “tsu” are the most frequently mistaken and mistaken as letters due to the reason summarised above.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-2-rectangular-spirals-task">
+<h1><strong>PART 2 - Rectangular Spirals Task</strong><a class="headerlink" href="#part-2-rectangular-spirals-task" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-1-code">
+<h1>Question 1 - code<a class="headerlink" href="#question-1-code" title="Permalink to this headline">#</a></h1>
+<p>See code</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-2-code">
+<h1>Question 2 - code<a class="headerlink" href="#question-2-code" title="Permalink to this headline">#</a></h1>
+<p>See code</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-3-show-result-picture-1-hidden-layer">
+<h1>Question 3 – show result picture (1 hidden layer)<a class="headerlink" href="#question-3-show-result-picture-1-hidden-layer" title="Permalink to this headline">#</a></h1>
+<p>Appendix c has some tuning process</p>
+<p><img alt="P113#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.008.png" /></p>
+<p>Output:</p>
+<p><img alt="P115#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.009.png" /></p>
+<p>Process:</p>
+<p><img alt="P117#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.010.png" /><img alt="P117#yIS2" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.011.png" /><img alt="P117#yIS3" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.012.png" /><img alt="P117#yIS4" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.010.png" /><img alt="P117#yIS5" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.013.png" /><img alt="P117#yIS6" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.014.png" /><img alt="P117#yIS7" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.015.png" /><img alt="P117#yIS8" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.016.png" /><img alt="P117#yIS9" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.017.png" /><img alt="P117#yIS10" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.018.png" /><img alt="P117#yIS11" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.019.png" /><img alt="P117#yIS12" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.020.png" /><img alt="P117#yIS13" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.021.png" /><img alt="P117#yIS14" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.022.png" /><img alt="P117#yIS15" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.023.png" /><img alt="P117#yIS16" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.024.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-4-show-result-picture-2-hidden-layers">
+<h1>Question 4 - show result picture (2 hidden layers)<a class="headerlink" href="#question-4-show-result-picture-2-hidden-layers" title="Permalink to this headline">#</a></h1>
+<p>Layer6 –98.17 – local minimum</p>
+<p>Layer7 –98.17 – local minimum</p>
+<p>Layer8 –100 –global minimum</p>
+<p>Layer10 –100 –global minimum</p>
+<p>Output</p>
+<p><img alt="P125#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.025.png" /></p>
+<p>Process</p>
+<p><img alt="P127#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.026.png" /><img alt="P127#yIS2" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.027.png" /><img alt="P127#yIS3" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.028.png" /><img alt="P127#yIS4" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.029.png" /><img alt="P127#yIS5" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.030.png" /><img alt="P127#yIS6" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.031.png" /><img alt="P127#yIS7" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.032.png" /><img alt="P127#yIS8" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.027.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-5-result-discussion">
+<h1>Question 5 – result discussion<a class="headerlink" href="#question-5-result-discussion" title="Permalink to this headline">#</a></h1>
+<p>a)</p>
+<p>The functions computed by the 1-layer model are all linear functions and the decision boundary is simply a straight line. As for the 2-layer model, it forms a non-linear decision boundary. By looking over all functions made from the 1-layer model, each decision boundary is responsible for different depths (from the outermost data to those in the centre) of the squared spiral data. This also applies to the 2-layer model. It seems that each plot of the hidden nodes takes care of different regions of the data and the final output aggregate them together.</p>
+<p>b)</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>2 layers</p></th>
+<th class="head"><p>1 layer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="P136C3T4#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.033.png" /></p></td>
+<td><p><img alt="P137C4T4#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.034.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>From the above comparison, the qualitative difference between the overall function is that the 2 layers model forms a much smoother and accurate decision boundary which oscillates less around the data point, compared to the 1-layer model. For example, the central part of the decision boundary in 1 layer diagram is a lot closer to the opposite class data points and it is not the case for the 2-layer model.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-3-encoder-networks">
+<h1><strong>PART 3 - Encoder Networks</strong><a class="headerlink" href="#part-3-encoder-networks" title="Permalink to this headline">#</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>*</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>*</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>*</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Table 1</em></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="P279TB2#y1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.035.png" /><img alt="P279#y1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.036.png" /></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="P285#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.037.png" /></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+<th class="head"><p>7</p></th>
+<th class="head"><p>8</p></th>
+<th class="head"><p>9</p></th>
+<th class="head"><p>10</p></th>
+<th class="head"><p>11</p></th>
+<th class="head"><p>12</p></th>
+<th class="head"><p>13</p></th>
+<th class="head"><p>14</p></th>
+<th class="head"><p>15</p></th>
+<th class="head"><p>16</p></th>
+<th class="head"><p>17</p></th>
+<th class="head"><p>18</p></th>
+<th class="head"><p>19</p></th>
+<th class="head"><p>20</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>26</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Table 2</em>*</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>The approach is based on the geometric property of the autoencoder network. As a result of one-hot encoding, each decision boundary separates the current dot from all other dots. The original image is transformed to Table 1 based on the vertical and horizontal decision boundary.</p>
+<p>In <strong>table 1</strong>, 1 ~ 10 corresponds to the vertical decision boundary and 11~20 for the horizontal line.</p>
+<p>In <strong>table 2</strong>, each column 1~ 20 corresponds to the vertical and horizontal decision boundary line and each row 1 ~ 26 is relative to each data point shown in table 1.</p>
+<p><strong>Table 2</strong> is formed based on the <strong>rules</strong> below:</p>
+<p>The dot that is on the left side of the vertical or the top of a horizontal decision boundary is treated as 0. 1 otherwise.</p>
+<p>To speed up filling the number, we could do row by row and copy and paste for the same row.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-4-hidden-unit-dynamics-for-recurrent-networks">
+<h1><strong>PART 4 - Hidden Unit Dynamics for Recurrent Networks</strong><a class="headerlink" href="#part-4-hidden-unit-dynamics-for-recurrent-networks" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-1-srn-illustrate-hidden-state">
+<h1>Question 1 – SRN, illustrate hidden state<a class="headerlink" href="#question-1-srn-illustrate-hidden-state" title="Permalink to this headline">#</a></h1>
+<p>\1) SRN and mapping from hidden unit dynamic to finite state machine</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>1</p></th>
+<th class="text-align:center head"><p>[-0.9996,  0.9995]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>2</p></td>
+<td class="text-align:center"><p>[ 0.8845, -0.7489]</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>[ 0.1856, -0.9893]</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>4</p></td>
+<td class="text-align:center"><p>[ 0.9980,  0.4504]</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>5</p></td>
+<td class="text-align:center"><p>[ 0.1712,  0.9998]</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>[-0.6199, -0.3793]</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><em>Table 3 – obtain by printing out the “hidden” variable and “state” variable and match them</em></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="P924#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.038.png" /> <img alt="P924#yIS2" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.039.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-2-an-bn">
+<h1>Question 2 - an bn<a class="headerlink" href="#question-2-an-bn" title="Permalink to this headline">#</a></h1>
+<p>The first image below is as required</p>
+<p><img alt="P928#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.040.png" /> <img alt="P928#yIS2" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.041.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-3-result-discussion">
+<h1>Question 3 - result discussion<a class="headerlink" href="#question-3-result-discussion" title="Permalink to this headline">#</a></h1>
+<p><img alt="P937#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.042.png" /> <img alt="P937#yIS2" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.043.png" /></p>
+<p>The state trajectory is shown in the above figure. Each of the dots represents an input symbol (a1 ~ a8, b1 ~b8, a8b8) and the cross indicates the initial “a” in the input sequence.</p>
+<p>The left cluster (x &lt; 0.5) represents a’s and the right cluster indicates b’s.  A potential dividing line/decision boundary could be x=0.5.</p>
+<p>During each input letter of a’s and b’s, it can be observed from both images that:</p>
+<p>with the increase of input a’s, the hidden unit move to the left (-0.2119 &gt; -0.7495 &gt; …), and the increase in b’s causes it to move to the right (0.9829 &lt; 0.9985 &lt; …).</p>
+<p>The network “learns” by counting up the a’s and b’s and adjusting corresponding weight so that the input move towards the two fixed point – centroid of each cluster. This allows the network to learn the pattern/grammar of the sequence and so it can predict the following up sequence given a sequence.</p>
+<p>For <strong>how it predicts the last B</strong>, for example, if the a’s the network counts up to is 4, then after 3 consecutive b’s, the network would predict the next one to be b, after that, it finds the counting of B’s is same as A’s which is 4, and <strong>so predict the following A.</strong> (since the network learnt the pattern anbn)</p>
+<p>Hidden unit dynamic is also captured by the tensor image above, where the a’s and b’s can be distinguished by the first column sign, where positive is a and negative is b.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-4-an-bn-cn">
+<h1>Question 4 - an bn cn<a class="headerlink" href="#question-4-an-bn-cn" title="Permalink to this headline">#</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Front view</p></th>
+<th class="head"><p>Top</p></th>
+<th class="head"><p>Bottom</p></th>
+<th class="head"><p>Left</p></th>
+<th class="head"><p>Right</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="P955C6T8#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.044.png" /></p></td>
+<td><p><img alt="P956C7T8#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.045.png" /></p></td>
+<td><p><img alt="P957C8T8#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.046.png" /></p></td>
+<td><p><img alt="P958C9T8#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.047.png" /></p></td>
+<td><p><img alt="P959C10T8#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.048.png" /></p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="P961#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.049.png" /></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Question 5 – result discussion<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p><img alt="P963#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.050.png" /><img alt="P963#yIS2" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.051.png" /><img alt="P963#yIS3" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.052.png" /></p>
+<p><em>Figure 4 – image a) is from the  (Chalup, 2003), the second one is my output, the third is the hidden unit value</em></p>
+<p>The second image in the above figure is rotated so that its axis matches the first image.</p>
+<p>The third image in the above figure shows that A is distinguished by its weight of 1 in the first hidden unit (first column), B is the second and C is the third. This matches with the distribution in the first two images above, where A cluster is closer to the <strong>right side</strong> of the cube and  B is close to the <strong>left</strong> and C is close to the <strong>top</strong>.</p>
+<p>The network (here for anbncn) firstly counts the number of a’s as it converges to the right side of the cube, the same thing to b and c. And then it adjusts the weight such that each distinct letter in the high dimension space is closer to its corresponding hidden unit side. The network, with its three hidden units, successfully learn the anbncn Reber Grammar problem by projecting these input sequences into higher dimension space (here d = 3). Since they are linearly separable in the 3-dimension space, the following sequence can be predicted by each state transition (achieved by counting the a, b, c).</p>
+<p><strong>For example</strong>, if the network counts 4 A’s and 3 B’s, then it will predict the next symbol to be B. Then, it starts to predict C and continue until 4 C’s is counted. Next, it will then predict A since the network learns the pattern that the same number of A’s, B’s, C’s should appear consecutive in the sequence.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-6-lstm-analysis-behaviour-and-explain">
+<h1>Question 6 – LSTM, analysis behaviour  and explain<a class="headerlink" href="#question-6-lstm-analysis-behaviour-and-explain" title="Permalink to this headline">#</a></h1>
+<p><img alt="P971#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.053.png" /></p>
+<p><img alt="P972#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.054.png" /></p>
+<p><img alt="P973#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.055.png" /><img alt="P973#yIS2" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.056.png" /></p>
+<p>To predict the last symbol (<strong>T</strong> or <strong>P</strong>) in an ERG string, the LSTM needs to remember the second input symbol but not to confuse it with the same symbol in the Reber Grammar box (in the image above).</p>
+<p>The structure of LSTM solves the long-term dependency issue aforementioned. The cell state holds the long-term memory. The working memory is in a hidden state. The forget gate forgets the unimportant information. The input gate determines how much input to be used for the cell state.</p>
+<p><strong>In this context</strong>, the cell state could hold memory on the structure of embedded Reber Grammar, which is the second input symbol T or P, follow by some normal Reber grammar and then follow by another T or P. Once the normal Reber grammar pattern is learnt, the forget gate would probably forget the repetitive information for the next input and instead focus on changes such as the second T or P. The input gate will “consolidate” these memories and the updated information is merged into current cell state. This process is repeated until all pattern is learnt.</p>
+<p><img alt="P977#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.057.png" /></p>
+<p><em>Figure 12 from the paper “Knowledge extraction from the learning of sequences in a long-short term memory (LSTM) architecture”</em></p>
+<p>The above figure interprets how LSTM learns the ERG by extracting different states using k-means clustering in the hidden unit space with k = 10. This illustrates LSTM learns the pattern of the grammar by projecting the ERG sequence input to a higher dimensional space (each dimension relative to a letter in the pre-define grammar) and creating a linear combination of different dimensions such that different ERG instances can be <strong>separable</strong> and thus classified.</p>
+<p>Below is based on <a class="reference external" href="http://blog.echen.me/lstm-explorer/#/network?file=counter">LSTM Explorer (echen.me)</a>, an example of an X bn</p>
+<p>The hidden state of one neuron, as below image (dark red[-1] to dark blue[1] since tanh), illustrates how the weight is adjusted in LSTM. The symbol closer to the endpoint X is relatively more important (with a more negative weight - darker). The same pattern applies to cell state. <strong>The symbol X</strong> is given with a distinguishable weight in the cell, hidden and forget state. Besides, there also exist neurons that put more weight on the beginning sequence of each symbol. The aggregation of these neurons output allows the LSTM to “remember” the symbol that appears early in the input since the cell state could carry information about previous input and propagate along the learning process.</p>
+<p><img alt="P982#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.058.png" /><img alt="P982#yIS2" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.059.png" /><img alt="P982#yIS3" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.060.png" /></p>
+<p><img alt="P983#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.061.png" /><img alt="P983#yIS2" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.062.png" /><img alt="P983#yIS3" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.063.png" /></p>
+<p><em>Figure 2 – neuron 2 in the above demo link</em></p>
+<p>—————————————————————————————————————–</p>
+<p>Find these paper discusses what seems to be the question here:</p>
+<p>“Knowledge extraction from the learning of sequences in a long-short term memory (LSTM) architecture”</p>
+<p><a class="reference external" href="https://arxiv.org/abs/1711.09576">Extracting Automata from Recurrent Neural Networks Using Queries and Counterexamples</a>.</p>
+<p>Below is a demo that converts LSTM hidden state to finite-state machine</p>
+<p><a class="reference external" href="https://colab.research.google.com/drive/1tkJK1rJVEg9e-QcWOxErDb3cQq9UR-yR#scrollTo=b1OQw8PwS15S">https://colab.research.google.com/drive/1tkJK1rJVEg9e-QcWOxErDb3cQq9UR-yR#scrollTo=b1OQw8PwS15S</a></p>
+<p>Reference</p>
+<p>For part4 hidden unit dynamic explanation</p>
+<p>Blair, A. D., &amp; Pollack, J. B. (1997). <a class="reference external" href="https://www.mitpressjournals.org/doi/pdfplus/10.1162/neco.1997.9.5.1127">Analysis of dynamical recognizers</a>. <em>Neural Computation</em>, <em>9</em>(5), 1127–1142.</p>
+<p>Chalup, S. K., &amp; Blair, A. D. (2003). <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0893608003000546">Incremental training of first-order recurrent neural networks to predict a context-sensitive language</a>. <em>Neural Networks</em>, <em>16</em>(7), 955–972.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="appendix">
+<h1>APPENDIX<a class="headerlink" href="#appendix" title="Permalink to this headline">#</a></h1>
+<p><strong>A</strong></p>
+<p><strong>Number of hidden nodes = 50</strong></p>
+<p>Test set: Average loss: 0.6058, Accuracy: 8120/10000 (81%)</p>
+<p><strong>Number of hidden nodes = 100</strong></p>
+<p>Test set: Average loss: 0.5363, Accuracy: 8376/10000 (84%)</p>
+<p><strong>Number of hidden nodes = 200</strong></p>
+<p>Test set: Average loss: 0.4945, Accuracy: 8468/10000 (85%)</p>
+<p><strong>Number of hidden nodes = 500</strong></p>
+<p>Test set: Average loss: 0.5017, Accuracy: 8471/10000 (85%)</p>
+<p><strong>Number of hidden nodes = 784</strong></p>
+<p>Test set: Average loss: 0.5016, Accuracy: 8466/10000 (85%)</p>
+<p><strong>B</strong></p>
+<p>Below is the result without the fully connected layer (forget), no padding, kernel size for filter = 5, other as default</p>
+<p><strong>1 maxpool</strong> – 88%</p>
+<p><strong>No maxpool</strong> – 90%</p>
+<p><strong>No maxpool + He weight initialisation</strong> – 90% (converge earlier than No maxpool)</p>
+<p>Below all with He weight initialisation, other as default</p>
+<p><strong>lr = 0.001</strong> – 84%</p>
+<p><strong>lr = 0.01(default)</strong> – 88%</p>
+<p><strong>mom=0.3</strong> – 90%</p>
+<p><strong>mom=0.7</strong> – 90%</p>
+<p><strong>mom=0.8</strong> – 88%</p>
+<p><strong>mom=0.9</strong> – 90%</p>
+<p><strong>mom=0.95</strong> – 88%</p>
+<p>Below is the result with the fully connected layer, no padding, others as default</p>
+<p><strong>1 maxpool</strong> – 92%</p>
+<p><strong>He weight initialisation + mom=0.7</strong> – 94%</p>
+<p><strong>He weight initialisation + mom=0.9</strong> – 94%</p>
+<p><strong>C</strong></p>
+<p><img alt="P1036#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.064.png" /></p>
+<p><img alt="P1038#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.065.png" /></p>
+<p><img alt="P1039#yIS1" src="../../../../_images/Aspose.Words.fad72d1d-1554-42e7-a034-e14afdfc4c39.066.png" /></p>
+<p>And more not listed. The general trend is that if 100% accuracy does not at least once during the first 2000 epoch, then it is very likely that the model could not learn it.</p>
+<p>Increase the learning rate or decrease the initial weight seems to be the general solution to the local minimum.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ds-courses/unsw/9444/assignment1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../9444-project.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Image classification</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../3900/3900-intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Capstone (UNSW)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

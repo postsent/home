@@ -1,0 +1,1905 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Preprocessing and Performance Tuning with Spark &#8212; My Jupter Notebook on data science.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Data Preprocessing and Performance Tuning with Spark" href="../a2.html" />
+    <link rel="prev" title="Cloud Computing (USYD)" href="../5349-intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupter Notebook on data science.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://postsent.github.io/categories/">
+   Back to Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../reference.html">
+   Acknowledgement
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Science Related Courses
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../unsw/9417/9417-intro.html">
+   Machine Learning (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9417/9417-basic.html">
+     Basic with examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9417/9417-project.html">
+     Project - Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9417/9417-report/report.html">
+     Project - report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../unsw/9418/9418-intro.html">
+   PGM (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9418/9418-EDA.html">
+     EDA on Times Series Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9418/9418-project.html">
+     Time series project code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9418/9418-project/report.html">
+     Time series report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../unsw/9517/9517-intro.html">
+   Computer Vision (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9517/9517-a1-code.html">
+     Basic image processing, thresholding, count cells
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9517/9517-a1/report.html">
+     Report on Basic image processing, etc
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9517/9517-lane_detection.html">
+     Lane detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9517/9517-vehicle-detection.html">
+     Vehicle detection (by teammate)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../unsw/9444/9444-intro.html">
+   Deep Learning (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9444/9444-project.html">
+     Image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/9444/assignment1/assignment1.html">
+     Characters, Spirals and Hidden Unit Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../unsw/3900/3900-intro.html">
+   Capstone (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/3900/project/3900-project.html">
+     <strong>
+      Chatbot
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../unsw/3431/3431-intro.html">
+   ROS &amp; CV (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../unsw/3431/project/project.html">
+     Mini self-driving
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5046/5046-intro.html">
+   NLP (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5046/a2/a2.html">
+     Report - In-game Toxicity Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5046/a2.html">
+     In Game Toxicity seq2seq classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5046/a1.html">
+     Binary text classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../5349-intro.html">
+   Cloud Computing (USYD)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../a2.html">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../a1.html">
+     Text Analysis with Spark RDD API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../a1-report.html">
+     Report – Text Analysis with Spark RDD API
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5338/5338-intro.html">
+   NoSQL&amp;Graph Data Model(USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5338/a1.html">
+     NoSQL basic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5338/a2.html">
+     NoSQL Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5338/a2-report/report.html">
+     <strong>
+      Performance Observation Task
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5338/a3.html">
+     Neo4j Basic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5338/a4.html">
+     Neo4j Query
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5048/5048-intro.html">
+   Visual Analytics Tableau (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5048/individual.html">
+     Individual Report
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5048/group.html">
+     Group Report (My part)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5328/5328-intro.html">
+   Advance ML
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5328/a1.html">
+     NMF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5328/a2.html">
+     Label Noise Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../ml/regression/regression.html">
+   Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../ml/regression/p1-crypto-prediction.html">
+     Crypto Prediction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/classification/classification.html">
+   Classification (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/time-series/time-series.html">
+   Time Series (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/ml.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../dl/dl.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NLP
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../nlp/nlp.html">
+   placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../cv/cv.html">
+   Placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Misc
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/math.html">
+   Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/misc.html">
+   Misc
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/term.html">
+   Terminology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/todo.html">
+   TODO
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Coding Basic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../python/basic-intro.html">
+   Numpy, Pandas, Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/numpy.html">
+     Numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/pandas.html">
+     Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/leetcode.html">
+     Leetcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Side Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../side-project/web-scrapter.html">
+   Course Enrolment Scrapter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Unfinished
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/nlp-book.html">
+   NLP Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/nn.html">
+     Feed-Forward Networks for NLP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/prac-ch3.html">
+     Chapter 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../unfinished/jigsaw-intro.html">
+   Jigsaw
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/README.html">
+     Folder Structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">
+     Simple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm.html">
+     Upgrade RNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper.html">
+     Common
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../unfinished/nlp-reading.html">
+   Book Reading
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/ds-courses/usyd/5349/a2/a2.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Preprocessing and Performance Tuning with Spark
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   <strong>
+    Introduction
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goal">
+     Goal
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataset">
+     Dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design">
+   <strong>
+    Design
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview">
+     Overview
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#naming-convention-impossible-possible-positive-sample">
+       2.1.1 Naming convention: Impossible, possible &amp; positive sample
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id-column-tuning">
+       2.1.2 ID Column - tuning
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-optimisation-consideration">
+       2.1.3 General optimisation consideration
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#maximum-coverage-and-heuristic">
+       2.1.4 Maximum coverage and heuristic
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#proof-of-correctness-algorithm-implementation">
+     Proof of correctness – algorithm implementation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#uniqueness-of-negative-sample">
+       2.2.1 Uniqueness of negative sample
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#answer-index">
+       2.2.2 Answer index
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#balanced-dataset">
+       2.2.3 Balanced dataset
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-flow-step-1-get-all-samples-positive-possible-and-impossible">
+     Data flow – step 1: Get all samples – positive, possible and impossible
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initial-input-dataframe">
+       2.3.1 Initial input dataframe
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-full-context-to-different-sequences">
+       2.3.2 Convert full context to different sequences
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extract-samples-based-on-each-question-in-a-contract">
+       2.3.3 Extract samples based on each question in a contract
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-flow-step-2-balance-positive-and-negative-samples">
+     Data flow – step 2: Balance positive and negative samples
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#count-the-positive-samples-for-impossible-questions-and-possible-negative">
+       2.4.1 Count the positive samples for impossible questions and possible negative*
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#heuristic-for-selection">
+       2.4.2 Heuristic for selection
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#st-selection-with-udf-the-impossible-samples">
+       2.4.3 1st Selection with UDF - the impossible samples*
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nd-selection-with-udf-the-possible-samples">
+       2.4.4 2nd selection with UDF – the possible samples*
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#selection-result-sample-id-dataframe">
+       2.4.5 Selection result - sample id dataframe
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#final-result-and-save-as-json">
+       2.4.6 Final result and save as json
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#execution">
+   <strong>
+    Execution
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview-and-physical-operator-involved">
+     Overview and physical operator involved
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#physical-execution-plan-and-explanation">
+     Physical Execution Plan and explanation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-observation-and-tuning">
+   <strong>
+    Performance Observation and Tuning
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aws-emr-cluster-set-up">
+     AWS EMR Cluster set up
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#experiment-result">
+     Experiment result
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#findings-performance-and-optimal-configuration">
+     3.3 Findings - Performance and Optimal Configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scalability">
+   <strong>
+    Scalability
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#out-of-memory-problem-oov-and-code-modification">
+     Out of memory problem (OOV) and code modification
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#experiment-scalability-and-observation">
+     Experiment, scalability and observation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   <strong>
+    Summary
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   <strong>
+    References
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix">
+   <strong>
+    Appendix
+   </strong>
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Preprocessing and Performance Tuning with Spark</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Preprocessing and Performance Tuning with Spark
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   <strong>
+    Introduction
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goal">
+     Goal
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataset">
+     Dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design">
+   <strong>
+    Design
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview">
+     Overview
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#naming-convention-impossible-possible-positive-sample">
+       2.1.1 Naming convention: Impossible, possible &amp; positive sample
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id-column-tuning">
+       2.1.2 ID Column - tuning
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-optimisation-consideration">
+       2.1.3 General optimisation consideration
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#maximum-coverage-and-heuristic">
+       2.1.4 Maximum coverage and heuristic
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#proof-of-correctness-algorithm-implementation">
+     Proof of correctness – algorithm implementation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#uniqueness-of-negative-sample">
+       2.2.1 Uniqueness of negative sample
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#answer-index">
+       2.2.2 Answer index
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#balanced-dataset">
+       2.2.3 Balanced dataset
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-flow-step-1-get-all-samples-positive-possible-and-impossible">
+     Data flow – step 1: Get all samples – positive, possible and impossible
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initial-input-dataframe">
+       2.3.1 Initial input dataframe
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-full-context-to-different-sequences">
+       2.3.2 Convert full context to different sequences
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extract-samples-based-on-each-question-in-a-contract">
+       2.3.3 Extract samples based on each question in a contract
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-flow-step-2-balance-positive-and-negative-samples">
+     Data flow – step 2: Balance positive and negative samples
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#count-the-positive-samples-for-impossible-questions-and-possible-negative">
+       2.4.1 Count the positive samples for impossible questions and possible negative*
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#heuristic-for-selection">
+       2.4.2 Heuristic for selection
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#st-selection-with-udf-the-impossible-samples">
+       2.4.3 1st Selection with UDF - the impossible samples*
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nd-selection-with-udf-the-possible-samples">
+       2.4.4 2nd selection with UDF – the possible samples*
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#selection-result-sample-id-dataframe">
+       2.4.5 Selection result - sample id dataframe
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#final-result-and-save-as-json">
+       2.4.6 Final result and save as json
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#execution">
+   <strong>
+    Execution
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview-and-physical-operator-involved">
+     Overview and physical operator involved
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#physical-execution-plan-and-explanation">
+     Physical Execution Plan and explanation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-observation-and-tuning">
+   <strong>
+    Performance Observation and Tuning
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aws-emr-cluster-set-up">
+     AWS EMR Cluster set up
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#experiment-result">
+     Experiment result
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#findings-performance-and-optimal-configuration">
+     3.3 Findings - Performance and Optimal Configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scalability">
+   <strong>
+    Scalability
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#out-of-memory-problem-oov-and-code-modification">
+     Out of memory problem (OOV) and code modification
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#experiment-scalability-and-observation">
+     Experiment, scalability and observation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   <strong>
+    Summary
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   <strong>
+    References
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix">
+   <strong>
+    Appendix
+   </strong>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p>COMP5349 Cloud Computing - Assignment 2</p>
+<section class="tex2jax_ignore mathjax_ignore" id="data-preprocessing-and-performance-tuning-with-spark">
+<h1>Data Preprocessing and Performance Tuning with Spark<a class="headerlink" href="#data-preprocessing-and-performance-tuning-with-spark" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="table-of-contents">
+<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">#</a></h1>
+<p><img alt="" src="../../../../_images/toc1.png" />
+<img alt="" src="../../../../_images/toc2.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1><strong>Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<section id="goal">
+<h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">#</a></h2>
+<p>The goal of this assignment is to design and implement a Pyspark program that can be run on a multi-node cluster to preprocess a dataset called CUDA in parallel. Specifically, the implementation needs to efficiently create three types of samples based on the answers and also ensure they are balanced.</p>
+</section>
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">#</a></h2>
+<p>Figure 1 shows the dataset and the desired output data structure which are both in json format. The context field is treated as the whole contract which contains 41 questions and answers pairs each.</p>
+<p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.001.png" />
+<img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.002.png" /></p>
+<p><em>Figure 1 – dataset and desired output</em>
+3. ## Packages used and notes on setting for sections 2, 3, 4</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Import Packages</p></th>
+<th class="text-align:center head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>pyspark.sql</p></td>
+<td class="text-align:center"><p>Create SQL query</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>json</p></td>
+<td class="text-align:center"><p>Convert final output into a json object</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the submitted code implementation is different for sections 2, 3 and 4.</p>
+<p>Section 3 uses code that has cached most of the key dataframes.</p>
+<p>Section 2 and 4 have all show functions removed to highlight the key jobs.</p>
+<p>The submitted code has some show functions to highlight the key dataframes as illustrated in sections 2 and two caches on the input dataframe and extracted samples dataframe.</p>
+<p>Thus, the submitted code performance will be different unless all the show functions are removed.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="design">
+<h1><strong>Design</strong><a class="headerlink" href="#design" title="Permalink to this headline">#</a></h1>
+<p>This section contains descriptions of the key dataframe design, operation used and the data flow of the implementation.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
+<section id="naming-convention-impossible-possible-positive-sample">
+<h3>2.1.1 Naming convention: Impossible, possible &amp; positive sample<a class="headerlink" href="#naming-convention-impossible-possible-positive-sample" title="Permalink to this headline">#</a></h3>
+<p>In the below description, an impossible sample refers to an answer that belongs to an impossible question in a contract, similarly, possible and positive samples belong to possible negative and positive answers, respectively.</p>
+</section>
+<section id="id-column-tuning">
+<h3>2.1.2 ID Column - tuning<a class="headerlink" href="#id-column-tuning" title="Permalink to this headline">#</a></h3>
+<p>An integer type id column is made for a faster execution [1] when join with a different table. There are four such id columns made. 1) sampleID refers to the unique id for each sample 2) cID is for each unique contract 3) seqID is given to each partitioned sequence within a contract 4) qID is for each question in a contract. Besides, a negativity column is made where the values 0,1,2  refers to positive, possible and impossible samples respectively.</p>
+</section>
+<section id="general-optimisation-consideration">
+<h3>2.1.3 General optimisation consideration<a class="headerlink" href="#general-optimisation-consideration" title="Permalink to this headline">#</a></h3>
+<p>Dataframe SQL APIs will be prefered over the user-defined function (UDF) when possible to take advantage of the optimisation engine. Thus, 4 UDFs are used in total, they are for 1) split data input sequences and assign sequence id 2) convert sequence to samples based on question and assign question id 3) select impossible question samples 4) select positive negative samples.</p>
+<p>Cache() used for key dataframes to improve time performance.</p>
+<p>Join operation will always join the small dataframe to the larger one to improve the speed. though the optimisation engine may do it under the hood automatically.</p>
+<p>Since the goal is to improve the scalability of the program when more nodes are used to run applications in parallel, the data is decomposed as much as possible into smaller units so that the benefits from distributed running are maximised.</p>
+<p>Since the dataframe is used, the design also follows some principles in relational database management systems (RDMS).</p>
+</section>
+<section id="maximum-coverage-and-heuristic">
+<h3>2.1.4 Maximum coverage and heuristic<a class="headerlink" href="#maximum-coverage-and-heuristic" title="Permalink to this headline">#</a></h3>
+<p>To ensure the samples will cover the contract maximally, each type of sample is made unique within a contract if applicable. The heuristic of uniqueness is done with two user-defined functions 1) select the impossible negative samples that have different sequence id from the positive samples given the same contract 2) select the possible negative samples based on the sequence ids of both the positive and negative samples.</p>
+</section>
+</section>
+<section id="proof-of-correctness-algorithm-implementation">
+<h2>Proof of correctness – algorithm implementation<a class="headerlink" href="#proof-of-correctness-algorithm-implementation" title="Permalink to this headline">#</a></h2>
+<section id="uniqueness-of-negative-sample">
+<h3>2.2.1 Uniqueness of negative sample<a class="headerlink" href="#uniqueness-of-negative-sample" title="Permalink to this headline">#</a></h3>
+<p>Figure 2 demonstrates the correctness of the heuristic when selecting the unique negative samples. The bottom circled rows prove that the selected samples are all unique sequences i.e. seqID: 0, 1, 5. The top circled rows prove that there could be a non-unique negative sample being used if the uniqueness cannot be guaranteed i.e. seqID: 0, 0, 1. Note that the null value for the last two count columns means such a sample is not selected as the final choice.</p>
+<p><img alt="" src="../../../../_images/figure2.png" /></p>
+<p><em>Figure 2 – samples with all attributes</em></p>
+</section>
+<section id="answer-index">
+<h3>2.2.2 Answer index<a class="headerlink" href="#answer-index" title="Permalink to this headline">#</a></h3>
+<p>The blue circled section in Figure 2 shows the correctness of the answer index where the negative samples have 0 for both answer_start and answer_end columns and the positive ones have at least one non-zero value for the two columns. The indexes above demonstrated they are relative to the sequence instead of the original context field.</p>
+</section>
+<section id="balanced-dataset">
+<h3>2.2.3 Balanced dataset<a class="headerlink" href="#balanced-dataset" title="Permalink to this headline">#</a></h3>
+<p>Figure 3 shows the correctness of the balancing dataset implementation. The first output is the total size of all samples, the second is the number of the final selection of the samples and the third is the number of all positive samples. Since the selected sample size is about three to four times the positive ones, it demonstrates the dataset, that contains positive, possible negative and impossible samples, is relatively balanced.</p>
+<p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.011.png" /></p>
+<p><em>Figure 3 – different sample sizes</em></p>
+</section>
+</section>
+<section id="data-flow-step-1-get-all-samples-positive-possible-and-impossible">
+<h2>Data flow – step 1: Get all samples – positive, possible and impossible<a class="headerlink" href="#data-flow-step-1-get-all-samples-positive-possible-and-impossible" title="Permalink to this headline">#</a></h2>
+<p>The data flow contains 2 main steps which are explained below.</p>
+<section id="initial-input-dataframe">
+<h3>2.3.1 Initial input dataframe<a class="headerlink" href="#initial-input-dataframe" title="Permalink to this headline">#</a></h3>
+<p>Figure 4 is the beginning input dataframe. It contains the context field which is the content of the contract and qas which has 41 questions with 0 or more answers.</p>
+<p>The operation involves 1) using explode transformation on the paragraph field of the original dataframe.</p>
+<p><img alt="Text, letter Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.012.png" /></p>
+<p><em>Figure 4 – Initial input dataframe</em></p>
+</section>
+<section id="convert-full-context-to-different-sequences">
+<h3>2.3.2 Convert full context to different sequences<a class="headerlink" href="#convert-full-context-to-different-sequences" title="Permalink to this headline">#</a></h3>
+<p>Figure 5 The dataframe has the same column value as Figure 4, with additional columns of seq (split from the context field in the previous table) seqID and contract title. The seqID uniquely identifies different sequences within a contract and the contract title is also added which will be converted to contract ID in a later step.</p>
+<p>The operation is about using a UDF to select the sequences based on window size and stride. It involves 1) a UDF that takes the input column from Figure 4 and returns sequences of the context with other column values remaining.</p>
+<p><img alt="Text, letter Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.013.png" /></p>
+<p><em>Figure 5 – convert context to sequence dataframe</em></p>
+</section>
+<section id="extract-samples-based-on-each-question-in-a-contract">
+<h3>2.3.3 Extract samples based on each question in a contract<a class="headerlink" href="#extract-samples-based-on-each-question-in-a-contract" title="Permalink to this headline">#</a></h3>
+<p>Figure 6 is the dataframe that creates different samples from the sequences based on answers and questions.  It contains a unique sample id for each sample. These three types of samples – positive, possible and impossible samples, which related to 0, 1, and 2 in the negativity column. The answer_start and answer_end columns are the start and end index of a whole or partial answer contained in the sequence.</p>
+<p>The operation involves 1) applying a UDF to create samples based on questions in a contract 2) using the monotonically_increasing_id function to assign sampleID 3) Join with a contract table which contains a title with contract ID to obtain cID. Note that the contract table is made with the zipWithIndex function to ensure continuous consecutive ids.</p>
+<p><img alt="Table Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.014.png" /></p>
+<p><em>Figure 6 – sample dataframe</em></p>
+</section>
+</section>
+<section id="data-flow-step-2-balance-positive-and-negative-samples">
+<h2>Data flow – step 2: Balance positive and negative samples<a class="headerlink" href="#data-flow-step-2-balance-positive-and-negative-samples" title="Permalink to this headline">#</a></h2>
+<section id="count-the-positive-samples-for-impossible-questions-and-possible-negative">
+<h3>2.4.1 Count the positive samples for impossible questions and possible negative*<a class="headerlink" href="#count-the-positive-samples-for-impossible-questions-and-possible-negative" title="Permalink to this headline">#</a></h3>
+<p>Figure 7 are two dataframes that count the number of impossible and possible negative samples that needed to be kept which is shown in the third column the two dataframe.</p>
+<p>The operation involved are: 1) select the relevant fields from Figure 6 for the impossible, possible and positive samples based on the negativity column 2) left join operation on the impossible/possible dataframe with the positive sample based on cID and qID 3) groupBy cID and qID 4)  countDistinct operation on positive samples. For the calculation that requires an average, we will 5) count the contract that contains the positive sample 6) select the dataframe and divide the positive sample count by the contract count 7) round operation on the result column to the nearest integer. Note the default behaviour of counting null in spark is treating it as 0.</p>
+<p><img alt="A picture containing table Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.015.png" />,
+<img alt="A picture containing calendar Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.016.png" /></p>
+<p><em>Figure 7 – count for different samples in a contract for each question dataframe</em></p>
+</section>
+<section id="heuristic-for-selection">
+<h3>2.4.2 Heuristic for selection<a class="headerlink" href="#heuristic-for-selection" title="Permalink to this headline">#</a></h3>
+<p>Figure 8 shows three dataframes for possible, impossible negative samples and positive samples. In the first two dataframes, the third column contains a list of dictionaries with two keys, the sequence id and the sample id.</p>
+<p>Operations for the first two dataframes are 1) Group by contract and question 2) create_map operation to save the sequence id and sample id as map type 3) collect_list operation to turn it into a list under the third column in Figure 8.</p>
+<p>The third column for the third dataframe contains the sequence id for the positive sample which is used later to satisfy the heuristic of non-overlapping sequence between positive and negative samples.</p>
+<p>The operation used: 1) group by contract id 2) aggregate function 3) collect_list function to save each sequence id for each positive sample to satisfy the no overlap between positive and negative conditions when selecting the negative samples.</p>
+<p><img alt="Shape Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.017.png" />
+<img alt="Shape Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.018.png" />
+<img alt="Calendar Description automatically generated with medium confidence" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.019.png" /></p>
+<p><em>Figure 8 – heuristic condition dataframe</em></p>
+</section>
+<section id="st-selection-with-udf-the-impossible-samples">
+<h3>2.4.3 1st Selection with UDF - the impossible samples*<a class="headerlink" href="#st-selection-with-udf-the-impossible-samples" title="Permalink to this headline">#</a></h3>
+<p>The dataframe in Figure 9 has an additional pos column with contains a list of sequence id in the positive samples in which the cID and qID matched with the impossible question. In the case where no such positive sample, it appears as null value.</p>
+<p>Operation is: 1) left join the tables in Figure 8 so that every impossible sample in a contract is assigned with a positive sample list.</p>
+<p><img alt="A picture containing shape Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.020.png" /></p>
+<p><em>Figure 9 – joined datafarme where the impossible samples are ready to be selected via a UDF based on the heuristic – pos column</em></p>
+<p>Figure 10 is the returned dataframe after the impossible samples are selected. It has the additional imp_id_keep column containing all unique sample ids for selected impossible samples and the seqID_imp contains the sequences id for each impossible sample so that when selecting the possible negative samples, only the unique one will be chosen if possible.</p>
+<p>Operation is: 1) apply a UDF with input from Figure 9</p>
+<p><img alt="Table Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.021.png" /></p>
+<p><em>Figure 10 – sample ids to be kept for the impossible dataframe</em></p>
+</section>
+<section id="nd-selection-with-udf-the-possible-samples">
+<h3>2.4.4 2nd selection with UDF – the possible samples*<a class="headerlink" href="#nd-selection-with-udf-the-possible-samples" title="Permalink to this headline">#</a></h3>
+<p>The below table contains the number of possible samples to keep i.e the count_pneg column. It also contains pos and seqiD_imp columns which are used to satisfy the heuristic when selecting a unique negative sample. The heuristic is that the negative sequence is unique and that does not exist in the positive ones.</p>
+<p>Operations: 1) left join the possible sample with the impossible samples (Figure 10)  and the positive sample (Figure 8) based on cID and qID.</p>
+<p><img alt="Shape Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.022.png" /></p>
+<p><em>Figure 11 – joined dataframe where the samples in possi column are ready to be selected based on the heuristic – the pos and seqID_imp column</em></p>
+</section>
+<section id="selection-result-sample-id-dataframe">
+<h3>2.4.5 Selection result - sample id dataframe<a class="headerlink" href="#selection-result-sample-id-dataframe" title="Permalink to this headline">#</a></h3>
+<p>The column of the first table below contains a list of final sample ids for each question in a contract. The two tables on the right are the flattened version for such results for both the possible and impossible samples whose id value will be used to select the final samples. The leftmost image below is the intermediate dataframe for the two resultant tables on the right.</p>
+<p>Operations are: 1) explode res column 2) select an alias to rename the table column</p>
+<p><img alt="Shape Description automatically generated with medium confidence" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.023.png" /></p>
+<p><img alt="A picture containing tableDescription automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.024.png" /></p>
+<p><img alt="A picture containing text, antennaDescription automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.025.png" /></p>
+<p><em>Figure 12 – dataframe that contains the final sample ids to select from the negative samples</em></p>
+</section>
+<section id="final-result-and-save-as-json">
+<h3>2.4.6 Final result and save as json<a class="headerlink" href="#final-result-and-save-as-json" title="Permalink to this headline">#</a></h3>
+<p>The table below is the desired output format where the source field contains the segments that contain the answer to a question in the question field. The answer start and end are the indexes of that answer relative to the source field. The below table is then converted into a json file with a key matched with the column name.</p>
+<p>Operations are: 1) join the two right tables (Figure 12) with the sample dataframe (Figure 6) of the same negativity 2) union the impossible, possible and positive samples 3) select the relevant columns as below 4) create_map to convert columns into dictionary 4) collect_list to convert all columns into a small dataframe with one column and one row in which the value is a list of dictionaries. 5) save the final result as a json file.</p>
+<p><img alt="Table Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.026.png" /></p>
+<p><em>Figure 13 – dataframe in the desired the sample format</em></p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="execution">
+<h1><strong>Execution</strong><a class="headerlink" href="#execution" title="Permalink to this headline">#</a></h1>
+<section id="overview-and-physical-operator-involved">
+<h2>Overview and physical operator involved<a class="headerlink" href="#overview-and-physical-operator-involved" title="Permalink to this headline">#</a></h2>
+<p>This section contains descriptions of the execution plan of key jobs and some screenshots output from the Spark history server are used.</p>
+<p>There are 40 completed stages and 55 skipped stages.</p>
+<p>Note that the below screenshot is taken from the Direct Acyclic Graph (DAG) from the last job execution in Figure 16. A grey box means the dataframe used is cached, otherwise, it is displayed as blue.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><strong>Physical  Operator (dataframe)</strong></p></th>
+<th class="text-align:center head"><p><strong>Explanation</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Scan Json</p></td>
+<td class="text-align:center"><p>Read json file</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>InMemoryTableScan</p></td>
+<td class="text-align:center"><p>Retrieve cached dataframe</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>WholeStageCodegen</p></td>
+<td class="text-align:center"><p>Whole-Stage Code Generation  - Physical query optimization in Spark SQL. <br>“It improves the execution performance of a query by collapsing a query tree into a single optimized function that eliminates virtual function calls and leverages CPU registers for intermediate data”</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Generate</p></td>
+<td class="text-align:center"><p>Similar to flatMap in RDD</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>BatchEvalPython</p></td>
+<td class="text-align:center"><p>Apply Python UDF</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Map</p></td>
+<td class="text-align:center"><p>Apply a transformation to each element in the dataframe</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>CustomShuffleReader</p></td>
+<td class="text-align:center"><p>Optimisation applied to shuffle partitions</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>mapPartitions</p></td>
+<td class="text-align:center"><p>Similar to map but on partitions</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>BatchQueryStage</p></td>
+<td class="text-align:center"><p>Batch process the query - parallelism</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>ObjectHashAggregate</p></td>
+<td class="text-align:center"><p>Apply hash-based aggregation</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Union</p></td>
+<td class="text-align:center"><p>Union two dataframes of the same schema</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Exchange</p></td>
+<td class="text-align:center"><p>Shuffle Exchange between jobs, send data across the network</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>mapPartitionsInternal</p></td>
+<td class="text-align:center"><p>E.g. a filter operation is applied</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><em>Table 1 – physical operator and related explanation, referenced from the spark official website</em></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="physical-execution-plan-and-explanation">
+<h2>Physical Execution Plan and explanation<a class="headerlink" href="#physical-execution-plan-and-explanation" title="Permalink to this headline">#</a></h2>
+<p>Stage 47 image below shows the job of reading in the given json file dataset to a pyspark dataframe (Scan json) with spark internal optimisation (WholeStageCodegen).</p>
+<p>Stage 93 image shows the job of the union operation that output the final selected two types of negative samples and the positive samples to form a new resultant dataframe. It is demonstrated by three WholeStageCodegen blocks pointing to the union block.</p>
+<p>The right image in Figure 15** refers to the job where the different samples are generated. The plan has an operation called shuffleQueryStage whose output is used by many other operations (based on the number of links). Thus, it is recognised as the UDF of getting different samples (Figure 6) because the sample dataframe is the one being cached and reused the most.</p>
+<p>The left image in Figure 15 is a representative illustration showing when a UDF is applied e.g. the one to balance the possible negative sample. The name BatchEvalPython also indicates so where the python UDF is batch processed in parallel by multiple cores.</p>
+<p>Stage 91** image** below is a representative job where a join operation is applied between two dataframes. For example, joining a positive and possible negative samples would use such execution plan. CustomShuffleReader block indicates the dataframe is read from different partitions that are re-distributed by the shuffle operation. The two WholeStageCodegen blocks are joined into a new WholeStageCodegen block.</p>
+<p>Stage 94 image below is the last stage where the whole dataframe is converted into a new dataframe with one column and one cell which contains a list of dictionaries with each key matching with the old dataframe columns so that it will be outputted as a json file. The exchange block means data are exchanged from multiple processes,  ObjectHashAggregate block shows that the data is then aggregated and the mapPartitionsInternal indicates the final results are mapped and transformed to the desired output format.</p>
+<p><img alt="Chart, application, box and whisker chart Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.027.png" />
+<img alt="Diagram Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.028.png" />
+<img alt="Diagram, engineering drawing Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.029.png" />
+<img alt="Diagram Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.030.png" /></p>
+<p><em>Figure 14 - union between three types of samples</em></p>
+<p><img alt="Diagram Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.033.png" /></p>
+<p><em>Figure 15 – UDF and most connected operator block</em></p>
+<p><img alt="Diagram Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.034.png" /></p>
+<p><em>Figure 16 – Overview of the all the jobs, from the last job’s DAG</em></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="performance-observation-and-tuning">
+<h1><strong>Performance Observation and Tuning</strong><a class="headerlink" href="#performance-observation-and-tuning" title="Permalink to this headline">#</a></h1>
+<p>The following section tests the implemented python spark script in a multi-node cluster. We will investigate resource consumption, especially memory usage. Various spark configurations will be examined and the optimal one will be chosen.</p>
+<section id="aws-emr-cluster-set-up">
+<h2>AWS EMR Cluster set up<a class="headerlink" href="#aws-emr-cluster-set-up" title="Permalink to this headline">#</a></h2>
+<p>The below table shows the configurations used when setting up the experiment for this section.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Release label</p></th>
+<th class="head"><p>emr-6.5.0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Tick options</p></td>
+<td><p>Hadoop + Spark</p></td>
+</tr>
+<tr class="row-odd"><td><p>Instance Types</p></td>
+<td><p>c4.xlarge</p></td>
+</tr>
+<tr class="row-even"><td><p>vCores</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Memory (GB)</p></td>
+<td><p>7.5</p></td>
+</tr>
+<tr class="row-even"><td><p>Storgae</p></td>
+<td><p>EBS only</p></td>
+</tr>
+<tr class="row-odd"><td><p>Instance count</p></td>
+<td><p>1 Master, 3 Cores</p></td>
+</tr>
+<tr class="row-even"><td><p>Other settings</p></td>
+<td><p>Default value</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Table 2 – AWS EMR Cluster Configuration</em></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="experiment-result">
+<h2>Experiment result<a class="headerlink" href="#experiment-result" title="Permalink to this headline">#</a></h2>
+<p>Table 3 shows different experiment trials with different spark-submit configurations which can be found in [2]. The experiment follows the control and treatment group design. The cells that contain the same colour belongs to the same group where different values will be tested while other non-highlight columns’ value remains the same. The yellow highlighted number is the optimal value within the group.</p>
+<p>The column aggregate resource allocation has two values,  the MB-seconds refers to the aggregated amount of memory the application has allocated multiplied by the application running time, similarly, the vcore-seconds value refers to the CPU consumption.</p>
+<p>Trial 15 configuration is the optimal choice for least memory consumption while trial 5 is optimal in terms of time usage and trial 13 is optimal for CPU consumption.</p>
+<p>Note that trial 11 is unfinished as most memory is allocated to the driver but not the executor. The maximum threshold for driver and executor memory is 5632 MB.</p>
+<p>Trial 17 and 18 uses the submitted code where intermediate output is needed and so it contains a few show function with less cache to avoid the memory problem when meet the large dataset. Other trial is only tested on the small dataset called test.json.</p>
+<p>Note that almost all key dataframes are cached in the below experiment, which is different from section 4 where only one dataframe is cached to avoid out of memory problems.</p>
+<p>The reason why such a difference in performance between the client and cluster mode is that the cluster mode let the driver runs in the application master which reduces the network latency between the drivers and the executors.</p>
+<p><img alt="" src="../../../../_images/table3.png" /></p>
+<p><em>Table 3 – C: client or cluster, cores – core per executor. conf: 1 – “spark.checkpoint.compress=True”,     2 – “spark.eventLog.enabled=True”, 3  “spark.rdd.compress=True”, (default) means the default value is used.</em></p>
+</section>
+<section id="findings-performance-and-optimal-configuration">
+<h2>3.3 Findings - Performance and Optimal Configuration<a class="headerlink" href="#findings-performance-and-optimal-configuration" title="Permalink to this headline">#</a></h2>
+<p>The below table concludes the different trial groups as displayed in Table 3. The values in the trial comparison column match the trial number in Table 3.</p>
+<p>The patterns observed via the above different trials are:</p>
+<ol class="simple">
+<li><p>The more executor cores used, the less total memory usage.</p></li>
+<li><p>The driver’s memory can impact the performance heavily.</p></li>
+<li><p>Increasing the executor’s memory is not likely to have a big impact on improving the performance.</p></li>
+<li><p>The shuffle buffer size can affect the performance to some extent.</p></li>
+<li><p>The optimal number of executors is crucial to improving the performance.</p></li>
+<li><p>Different types of compression configuration can reduce memory usage to some extent.</p></li>
+</ol>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><strong>Trial Comparison</strong></p></th>
+<th class="text-align:center head"><p><strong>Conclusion</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>1, 2</p></td>
+<td class="text-align:center"><p>cluster mode uses less memory resource.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>2, 3</p></td>
+<td class="text-align:center"><p>4 executor cores are better than 1.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>2,3,4</p></td>
+<td class="text-align:center"><p>The more executor cores the more memory optimal.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>5</p></td>
+<td class="text-align:center"><p>“spark.checkpoint.compress=True” helps reduce memory usage.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>5.7.8</p></td>
+<td class="text-align:center"><p>num-executors = 2 is the optimal.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>9, 10,11</p></td>
+<td class="text-align:center"><p>executor-memory = 1g (default) is optimal.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>12,13</p></td>
+<td class="text-align:center"><p>driver-memory = 2g is optimal.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>14,15,16</p></td>
+<td class="text-align:center"><p>spark.shuffle.file.buffer = 96k is optimal.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><em>Table 4 – a conclusion based on different trials from Table 3</em>*</p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Below is the final optimal choice after memory tuning.</p>
+<p><img alt="Text, letter Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.035.png" /></p>
+<p><em>Figure 17 - optimal</em></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="scalability">
+<h1><strong>Scalability</strong><a class="headerlink" href="#scalability" title="Permalink to this headline">#</a></h1>
+<p>This section aims to compare the execution time performance of spark script on two different sized datasets –   CUADv1.json (large, 40MB) and test.json(small, 7MB). We will also discuss the scalability of the program.</p>
+<section id="out-of-memory-problem-oov-and-code-modification">
+<h2>Out of memory problem (OOV) and code modification<a class="headerlink" href="#out-of-memory-problem-oov-and-code-modification" title="Permalink to this headline">#</a></h2>
+<p>Below is tested on the colab environment with the CUADv1.json for the sanity check. After the last successful run, it is realised that colab will cache the variables which is another main reason why out of memory problem occurs. Note that all dataframe value under the cache function mans that all dataframes are cached, similarly, for the show function column, it means all dataframe is shown.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><strong>Trial</strong></p></th>
+<th class="text-align:center head"><p><strong>Ram (GB)</strong></p></th>
+<th class="text-align:center head"><p><strong>Cache function</strong></p></th>
+<th class="text-align:center head"><p><strong>Show function</strong></p></th>
+<th class="text-align:center head"><p><strong>sucess</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>12</p></td>
+<td class="text-align:center"><p>All dataframe</p></td>
+<td class="text-align:center"><p>All dataframe</p></td>
+<td class="text-align:center"><p>Failed</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>2</p></td>
+<td class="text-align:center"><p>12</p></td>
+<td class="text-align:center"><p>All dataframe</p></td>
+<td class="text-align:center"><p>None</p></td>
+<td class="text-align:center"><p>Failed</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>12</p></td>
+<td class="text-align:center"><p>Initial input dataframe</p></td>
+<td class="text-align:center"><p>All dataframe</p></td>
+<td class="text-align:center"><p>Failed</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>4</p></td>
+<td class="text-align:center"><p>25</p></td>
+<td class="text-align:center"><p>Initial input dataframe</p></td>
+<td class="text-align:center"><p>All dataframe</p></td>
+<td class="text-align:center"><p>Failed</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>5</p></td>
+<td class="text-align:center"><p>25</p></td>
+<td class="text-align:center"><p>Initial input dataframe</p></td>
+<td class="text-align:center"><p>None</p></td>
+<td class="text-align:center"><p>Success<br>2~3mins</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>12</p></td>
+<td class="text-align:center"><p>Initial input dataframe</p></td>
+<td class="text-align:center"><p>None</p></td>
+<td class="text-align:center"><p>Unknown 15mins+</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><em>Table 5 – local colab environment OOV problem</em></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="experiment-scalability-and-observation">
+<h2>Experiment, scalability and observation<a class="headerlink" href="#experiment-scalability-and-observation" title="Permalink to this headline">#</a></h2>
+<p>Table 6 shows the time required by the larger dataset CUADv1 and the small dataset.</p>
+<p>The configuration number below refers to the trial number in Table 3. And the actual configuration is the same as that trial number in Table 3.</p>
+<p>Configuration 15 and 2 comparison shows a significant impact on the buffer file size. A larger value i.e. 96k as seen in 15 would reduce the time by nearly 1 min compared to configuration 2 with 32k. Configuration 16 is thus tried which has a 384k buffer size. It did not show an improvement in execution time compared with the 96k buffer size. Thus, a medium level of such value is considered optimal. Configuration 7 uses compression on the RDD, which does not improve the time performance. This may be caused by the implementation difference between RDD and the chosen dataframe.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Dataset / configuration</p></th>
+<th class="text-align:center head"><p>15</p></th>
+<th class="text-align:center head"><p>2</p></th>
+<th class="text-align:center head"><p>16</p></th>
+<th class="text-align:center head"><p>7</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>CUADv1</p></td>
+<td class="text-align:center"><p>2mins, 27sec</p></td>
+<td class="text-align:center"><p>3mins, 15sec</p></td>
+<td class="text-align:center"><p>2mins, 30sec</p></td>
+<td class="text-align:center"><p><p>2mins, 35sec</p><p></p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Test</p></td>
+<td class="text-align:center"><p>1mins, 4sec</p></td>
+<td class="text-align:center"><p>1mins, 8sec</p></td>
+<td class="text-align:center"><p>1mins, 5sec</p></td>
+<td class="text-align:center"><p><p>1mins, 6sec</p><p></p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><em>Table 6 - time comparison between the CUANv1 and test dataset on buffer file size and rdd compression</em></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>The general observation is:</p>
+<ol class="simple">
+<li><p>The size differs by a factor of 5.7 while the time taken differs by 2.3. Based on the trend drawn from the above table, an increase of six times in dataset size could cause the execution time to double.</p></li>
+<li><p>The above table shows that the optimal configuration drawn from the small dataset is also applied to the large dataset and that the time duration patterns with different configurations in a small dataset match those in the large dataset.  I.e. if a configuration in a small dataset takes 2% more time than the optimal one, such configuration will also take around 2% more time when applied to a large dataset.</p></li>
+<li><p>Different configurations have a noticeable higher impact on the execution time when the dataset is larger.</p></li>
+<li><p>Based on the results from the above table, the scalability of the program is reasonable. For example, in real life, a legal case could involve hundreds of documents. If 100 documents with an average size of the test.json needed to be preprocessed, the program may then takes more than 1.5 hours. This is a reasonable outcome in real life since a standard court case lasts for days.</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="summary">
+<h1><strong>Summary</strong><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
+<p>In this report, a spark program for preprocessing a dataset in json format is designed and implemented. It is tuned and evaluated via different spark configurations until an optimal solution is found. The data flow and the scalability of the program are also discussed in the report to explore different potentials in spark application performance tuning.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1><strong>References</strong><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>[1]</p></th>
+<th class="head"><p>“Tuning Spark,” 2022. [Online]. Available: <a class="reference external" href="https://spark.apache.org/docs/latest/tuning.html">https://spark.apache.org/docs/latest/tuning.html</a>.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[2]</p></td>
+<td><p>“Submitting Applications,” <a class="reference external" href="http://spark.apache.org">spark.apache.org</a>, 2022. [Online]. Available: <a class="reference external" href="https://spark.apache.org/docs/latest/submitting-applications.html">https://spark.apache.org/docs/latest/submitting-applications.html</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>[3]</p></td>
+<td><p>“Spark Configuration,” <a class="reference external" href="http://spark.apache.org">spark.apache.org</a>, 2022. [Online]. Available: <a class="reference external" href="https://spark.apache.org/docs/latest/configuration.html#compression-and-serialization">https://spark.apache.org/docs/latest/configuration.html#compression-and-serialization</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="appendix">
+<h1><strong>Appendix</strong><a class="headerlink" href="#appendix" title="Permalink to this headline">#</a></h1>
+<p><strong>AWS EMR workflow</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Tunnelling</p></th>
+<th class="text-align:left head"><p>SSH &gt; tunnel &gt; 8157 port then select auto, dynamic &gt; add</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Emr-socks-proxy using chrome extension switchyOmega</p></td>
+<td class="text-align:left"><p><p>Copy and apply change if used for the first time<br> </p><p>function FindProxyForURL(url, host) {</p><p><code class="docutils literal notranslate">&#160;&#160;&#160; </code>if (shExpMatch(url, “*ec2*.amazonaws.com*”)) return ‘SOCKS5 localhost:8157’;</p><p><code class="docutils literal notranslate">&#160;&#160;&#160; </code>if (shExpMatch(url, “*ec2*.compute*”)) return ‘SOCKS5 localhost:8157’;</p><p><code class="docutils literal notranslate">&#160;&#160;&#160; </code>if (shExpMatch(url, “<a class="reference external" href="http://10.*">http://10.*</a>”)) return ‘SOCKS5 localhost:8157’;</p><p><code class="docutils literal notranslate">&#160;&#160;&#160; </code>if (shExpMatch(url, “*10*.compute*”)) return ‘SOCKS5 localhost:8157’;</p><p><code class="docutils literal notranslate">&#160;&#160;&#160; </code>if (shExpMatch(url, “*10*.amazonaws.com*”)) return ‘SOCKS5 localhost:8157’;</p><p><code class="docutils literal notranslate">&#160;&#160;&#160; </code>if (shExpMatch(url, “*.compute.internal*”)) return ‘SOCKS5 localhost:8157’;</p><p><code class="docutils literal notranslate">&#160;&#160;&#160; </code>if (shExpMatch(url, “*ec2.internal*”)) return ‘SOCKS5 localhost:8157’;</p><p><code class="docutils literal notranslate">&#160;&#160;&#160; </code>return ‘DIRECT’;</p><p>}</p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Install git</p></td>
+<td class="text-align:left"><p>sudo yum install git</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Personal access token</p></td>
+<td class="text-align:left"><p>git clone <github personal repo token></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Move files</p></td>
+<td class="text-align:left"><p>Move the data file to the home directory</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Upload file to hdfs</p></td>
+<td class="text-align:left"><p>hdfs dfs -put test.json CUADv1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Check hdfs directory</p></td>
+<td class="text-align:left"><p><a class="reference external" href="http://ec2-35-175-237-164.compute-1.amazonaws.com:9870/">http://ec2-35-175-237-164.compute-1.amazonaws.com:9870/</a><br>use <a class="reference external" href="http://%3cmaster"><strong>Error! Hyperlink reference not valid.</strong></a> node dns&gt;:port e.g. 9870<br><code class="docutils literal notranslate"> </code>http not https</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Check app memory usage</p></td>
+<td class="text-align:left"><p><a class="reference external" href="http://ec2-35-175-237-164.compute-1.amazonaws.com:8088/cluster">http://ec2-35-175-237-164.compute-1.amazonaws.com:8088/cluster</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Check job history</p></td>
+<td class="text-align:left"><p><Master public DNS>:<Port>  e.g.19888</p></td>
+</tr>
+</tbody>
+</table>
+<p>Web UIs include HDFS Namenode, YARN Resource manager and Spark history server.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><strong>Web UI</strong></p></th>
+<th class="text-align:center head"><p><strong>Location</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Spark Job history</p></td>
+<td class="text-align:center"><p><master dns>:19888</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Yarn Resource</p></td>
+<td class="text-align:center"><p><master dns>:8088</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>HDFS file sytem</p></td>
+<td class="text-align:center"><p><master dns>:9870</p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.036.png" /></p>
+<p><img alt="A screenshot of a computer Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.037.png" /></p>
+<p>3 nodes * 4 vcores per node = 12 total cores, 5632 = 5.5GB memory per node * 3 = 16.5</p>
+<p><em>Figure 18 - port 8088 Yarn Resourced Manager</em></p>
+<p><img alt="A picture containing text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.038.png" />
+<img alt="A picture containing text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.039.png" /></p>
+<p><em>Figure 19 - configuration yml file – port 8088/conf</em></p>
+<p><img alt="Graphical user interface, text, application, table, email, Excel Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.040.png" /></p>
+<p><em>Figure 20 - HDFS home directory – upload test.json</em></p>
+<p><img alt="Graphical user interface, application, table, Excel Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.041.png" /></p>
+<p><em>Figure 21 - Spark application timeline</em></p>
+<p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.042.png" /></p>
+<p><em>Figure 22 - Example of terminal output</em></p>
+<p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.044.png" /></p>
+<p><em>Figure 23 - yarn application -status &lt;app_id&gt;</em></p>
+<p><strong>Join vs left join</strong></p>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" src="../../../../_images/Aspose.Words.1af08401-61e3-412a-84fd-d5b8b23bdfd0.045.png" /></p>
+<p><em>Figure 24</em>*</p>
+<p><strong>Translation</strong> between question text to dataframe operation.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><strong>Text</strong></p></th>
+<th class="text-align:center head"><p><strong>Dataframe operation</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>For each</p></td>
+<td class="text-align:center"><p>join,groupBy</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Other …</p></td>
+<td class="text-align:center"><p>filter</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Select n</p></td>
+<td class="text-align:center"><p>limit(n)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes</strong></p>
+<p>Design the pseudo-code first then design the dataframe. If requires any comparison between columns, then add an ID column if possible to avoid comparing long text e.g. compare the question id field over the question text field.</p>
+<p>In calculating this average, the denominator should only include contracts that have at least one positive sample for the question concerned. Round to integer.</p>
+<p>The CUAD dataset treats the entire <strong>contract</strong> as a <strong>single paragraph -</strong> The “contract” is the text as found in the <em>context</em> field (the contract text).</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ds-courses/usyd/5349/a2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../5349-intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Cloud Computing (USYD)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../a2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Preprocessing and Performance Tuning with Spark</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

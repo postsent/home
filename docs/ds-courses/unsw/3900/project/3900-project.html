@@ -1,0 +1,1947 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chatbot &#8212; My Jupter Notebook on data science.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="ROS &amp; CV (UNSW)" href="../../3431/3431-intro.html" />
+    <link rel="prev" title="Capstone (UNSW)" href="../3900-intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupter Notebook on data science.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://postsent.github.io/categories/">
+   Back to Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../reference.html">
+   Acknowledgement
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Science Related Courses
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9417/9417-intro.html">
+   Machine Learning (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9417/9417-basic.html">
+     Basic with examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9417/9417-project.html">
+     Project - Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9417/9417-report/report.html">
+     Project - report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9418/9418-intro.html">
+   PGM (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9418/9418-EDA.html">
+     EDA on Times Series Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9418/9418-project.html">
+     Time series project code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9418/9418-project/report.html">
+     Time series report
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9517/9517-intro.html">
+   Computer Vision (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-a1-code.html">
+     Basic image processing, thresholding, count cells
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-a1/report.html">
+     Report on Basic image processing, etc
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-lane_detection.html">
+     Lane detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9517/9517-vehicle-detection.html">
+     Vehicle detection (by teammate)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../9444/9444-intro.html">
+   Deep Learning (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9444/9444-project.html">
+     Image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../9444/assignment1/assignment1.html">
+     Characters, Spirals and Hidden Unit Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../3900-intro.html">
+   Capstone (UNSW)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     <strong>
+      Chatbot
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../3431/3431-intro.html">
+   ROS &amp; CV (UNSW)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../3431/project/project.html">
+     Mini self-driving
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5046/5046-intro.html">
+   NLP (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5046/a2/a2.html">
+     Report - In-game Toxicity Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5046/a2.html">
+     In Game Toxicity seq2seq classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5046/a1.html">
+     Binary text classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5349/5349-intro.html">
+   Cloud Computing (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a2/a2.html">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a2.html">
+     Data Preprocessing and Performance Tuning with Spark
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a1.html">
+     Text Analysis with Spark RDD API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5349/a1-report.html">
+     Report – Text Analysis with Spark RDD API
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5338/5338-intro.html">
+   NoSQL&amp;Graph Data Model(USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a1.html">
+     NoSQL basic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a2.html">
+     NoSQL Aggregation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a2-report/report.html">
+     <strong>
+      Performance Observation Task
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a3.html">
+     Neo4j Basic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5338/a4.html">
+     Neo4j Query
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5048/5048-intro.html">
+   Visual Analytics Tableau (USYD)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5048/individual.html">
+     Individual Report
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5048/group.html">
+     Group Report (My part)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../usyd/5328/5328-intro.html">
+   Advance ML
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5328/a1.html">
+     NMF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../usyd/5328/a2.html">
+     Label Noise Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../ml/regression/regression.html">
+   Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../ml/regression/p1-crypto-prediction.html">
+     Crypto Prediction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/classification/classification.html">
+   Classification (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/time-series/time-series.html">
+   Time Series (placeholder)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../ml/ml.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../dl/dl.html">
+   General
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NLP
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../nlp/nlp.html">
+   placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../cv/cv.html">
+   Placeholder
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Misc
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/math.html">
+   Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/misc.html">
+   Misc
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/term.html">
+   Terminology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../misc/todo.html">
+   TODO
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Coding Basic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../python/basic-intro.html">
+   Numpy, Pandas, Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/numpy.html">
+     Numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/pandas.html">
+     Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../python/leetcode.html">
+     Leetcode
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Side Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../side-project/web-scrapter.html">
+   Course Enrolment Scrapter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Unfinished
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/nlp-book.html">
+   NLP Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/nn.html">
+     Feed-Forward Networks for NLP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/pytorch-nlp-bk/prac-ch3.html">
+     Chapter 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../unfinished/jigsaw-intro.html">
+   Jigsaw
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/README.html">
+     Folder Structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">
+     Simple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm.html">
+     Upgrade RNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper.html">
+     Common
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../unfinished/nlp-reading.html">
+   Book Reading
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/postsent/nb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/ds-courses/unsw/3900/project/3900-project.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    Chatbot
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#architecture-and-design-of-software">
+     Architecture and Design of software
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#software-functionalities">
+   Software Functionalities
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#third-party-functionalities">
+   Third-party functionalities
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-challenges">
+   Implementation challenges
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chat-history-rendering">
+     Chat History Rendering
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#web-scraping">
+     Web Scraping
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dialogflow-intention-handler">
+     Dialogflow Intention Handler
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#others">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#user-documentation-manual">
+   User Documentation / Manual
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#project-setup">
+     Project Setup
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dialogflow-account">
+     Dialogflow account:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#prerequisite">
+       Prerequisite
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#folder-structure">
+       Folder structure
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#frontend-web-interface">
+       Frontend – Web Interface
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#backend-main-server">
+       Backend - Main server
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ml-model-training">
+       ML Model Training
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#messenger">
+       Messenger
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#and-login">
+     and login:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discord">
+       Discord
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-use-the-chatbot">
+     How to use the chatbot
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#user-sign-up">
+       User Sign up
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#user-sign-in">
+       User Sign In
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modify-profile">
+       Modify Profile
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#view-chat-history">
+       View Chat History
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#requesting-real-doctor-to-diagnose">
+       Requesting Real doctor to diagnose
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#view-reply-support-tickets-from-users">
+       View &amp; Reply Support Tickets from Users
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shortcut">
+       Shortcut
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#readme-standard-response-template">
+       README - Standard Response template
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#covid-statistic-aus">
+       COVID Statistic (Aus)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hotspot">
+       Hotspot
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#isolation">
+       Isolation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#travel-advice">
+       Travel advice
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#covid-symptom-check">
+       COVID symptom check
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-symptom-check">
+       General symptom check
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#receipt-suggestion">
+       Receipt suggestion
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#health-news">
+       Health news
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nearby-clinic">
+       Nearby clinic
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chatbot</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    Chatbot
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#architecture-and-design-of-software">
+     Architecture and Design of software
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#software-functionalities">
+   Software Functionalities
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#third-party-functionalities">
+   Third-party functionalities
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-challenges">
+   Implementation challenges
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chat-history-rendering">
+     Chat History Rendering
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#web-scraping">
+     Web Scraping
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dialogflow-intention-handler">
+     Dialogflow Intention Handler
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#others">
+     Others
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#user-documentation-manual">
+   User Documentation / Manual
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#project-setup">
+     Project Setup
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dialogflow-account">
+     Dialogflow account:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#prerequisite">
+       Prerequisite
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#folder-structure">
+       Folder structure
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#frontend-web-interface">
+       Frontend – Web Interface
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#backend-main-server">
+       Backend - Main server
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ml-model-training">
+       ML Model Training
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#messenger">
+       Messenger
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#and-login">
+     and login:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discord">
+       Discord
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-use-the-chatbot">
+     How to use the chatbot
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#user-sign-up">
+       User Sign up
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#user-sign-in">
+       User Sign In
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modify-profile">
+       Modify Profile
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#view-chat-history">
+       View Chat History
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#requesting-real-doctor-to-diagnose">
+       Requesting Real doctor to diagnose
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#view-reply-support-tickets-from-users">
+       View &amp; Reply Support Tickets from Users
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shortcut">
+       Shortcut
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#readme-standard-response-template">
+       README - Standard Response template
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#covid-statistic-aus">
+       COVID Statistic (Aus)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hotspot">
+       Hotspot
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#isolation">
+       Isolation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#travel-advice">
+       Travel advice
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#covid-symptom-check">
+       COVID symptom check
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-symptom-check">
+       General symptom check
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#receipt-suggestion">
+       Receipt suggestion
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#health-news">
+       Health news
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nearby-clinic">
+       Nearby clinic
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chatbot">
+<h1><strong>Chatbot</strong><a class="headerlink" href="#chatbot" title="Permalink to this headline">#</a></h1>
+<p>COMP3900 – Computer Science Project</p>
+<p><strong>Project Report</strong></p>
+<p>Team Name: StarPlatinum</p>
+<p>University of New South Wales</p>
+<p>This project report is submitted on 18.11.2021</p>
+<p>Group Members:</p>
+<p><strong>Table of contents</strong></p>
+<p><a class="reference external" href="#_Toc88155380">Overview	3</a></p>
+<p><a class="reference external" href="#_Toc88155381">Architecture and Design of software	3</a></p>
+<p><a class="reference external" href="#_Toc88155382">Software Functionalities	4</a></p>
+<p><a class="reference external" href="#_Toc88155383">Third-party functionalities	6</a></p>
+<p><a class="reference external" href="#_Toc88155384">Implementation challenges	8</a></p>
+<p><a class="reference external" href="#_Toc88155385">Covid prediction model	8</a></p>
+<p><a class="reference external" href="#_Toc88155386">Chat History Rendering	8</a></p>
+<p><a class="reference external" href="#_Toc88155387">Web Scraping	8</a></p>
+<p><a class="reference external" href="#_Toc88155388">Dialogflow Intention Handler	9</a></p>
+<p><a class="reference external" href="#_Toc88155389">Others	9</a></p>
+<p><a class="reference external" href="#_Toc88155390">User Documentation / Manual	10</a></p>
+<p><a class="reference external" href="#_Toc88155391">Project Setup	10</a></p>
+<p><a class="reference external" href="#_Toc88155392">Prerequisite	10</a></p>
+<p><a class="reference external" href="#_Toc88155393">Folder structure	10</a></p>
+<p><a class="reference external" href="#_Toc88155394">Frontend – Web Interface	10</a></p>
+<p><a class="reference external" href="#_Toc88155395">Backend - Main server	11</a></p>
+<p><a class="reference external" href="#_Toc88155396">ML Model Training	11</a></p>
+<p><a class="reference external" href="#_Toc88155397">Messenger	11</a></p>
+<p><a class="reference external" href="#_Toc88155398">Discord	13</a></p>
+<p><a class="reference external" href="#_Toc88155399">How to use the chatbot	14</a></p>
+<p><a class="reference external" href="#_Toc88155400">User Sign up	14</a></p>
+<p><a class="reference external" href="#_Toc88155401">User Sign In	15</a></p>
+<p><a class="reference external" href="#_Toc88155402">Modify Profile	16</a></p>
+<p><a class="reference external" href="#_Toc88155403">View Chat History	16</a></p>
+<p><a class="reference external" href="#_Toc88155404">Requesting Real doctor to diagnose	17</a></p>
+<p><a class="reference external" href="#_Toc88155405">View &amp; Reply Support Tickets from Users	18</a></p>
+<p><a class="reference external" href="#_Toc88155406">Shortcut	19</a></p>
+<p><a class="reference external" href="#_Toc88155407">README - Standard Response template	19</a></p>
+<p><a class="reference external" href="#_Toc88155408">COVID Statistic (Aus)	20</a></p>
+<p><a class="reference external" href="#_Toc88155409">Hotspot	20</a></p>
+<p><a class="reference external" href="#_Toc88155410">Isolation	20</a></p>
+<p><a class="reference external" href="#_Toc88155411">Travel advice	20</a></p>
+<p><a class="reference external" href="#_Toc88155412">COVID symptom check	21</a></p>
+<p><a class="reference external" href="#_Toc88155413">General symptom check	21</a></p>
+<p><a class="reference external" href="#_Toc88155414">Receipt suggestion	21</a></p>
+<p><a class="reference external" href="#_Toc88155415">Health news	22</a></p>
+<p><a class="reference external" href="#_Toc88155416">Nearby clinic	22</a></p>
+<p><a class="reference external" href="#_Toc88155417">Bibliography	23</a></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
+<p>This project implements a chatbot that provides the service of general query answering with a focus on the medical system and COVID19 support.</p>
+<section id="architecture-and-design-of-software">
+<h2>Architecture and Design of software<a class="headerlink" href="#architecture-and-design-of-software" title="Permalink to this headline">#</a></h2>
+<p>The software is mainly split into 2 modules – frontend and backend. Frontend is the user interface for our service whereas backend implements the business logics and persists user data.</p>
+<p>As the diagram shown below, the frontend will only interact with the server layer for providing services like user authentication and registration, symptom diagnosis and chat history. The conversation with the chatbot begins with the chat endpoint. Frontend data such as user information and chat history will be stored in the MongoDB. After that, the chat messages and context are passed to the Dialogflow gateway to extract keywords and infer the intent of that message. If the intent has a registered handler implemented in our backend, the handler will be called with extracted parameters by Dialogflow and the context by frontend. The handlers are typically requests to third-party APIs or web scrapers for acquiring the necessary data so that we can provide appropriate respond to the users. Finally, the Facebook Messenger and Discord third-party platforms are used for chatbot integration will communicate with Dialogflow Gateway directly for efficiency and it makes the chatbot generic and modular.</p>
+<p><img alt="" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.001.png" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="software-functionalities">
+<h1>Software Functionalities<a class="headerlink" href="#software-functionalities" title="Permalink to this headline">#</a></h1>
+<p>This project aims to create a natural language understanding chatbot that can address the health enquiries of our users. The general usage of this software is to have users ask questions of any concerns they have in the scope of medicine and health. By incorporating Natural Language Understanding, we allow the users to converse with our chatbot non-restrictively, using normal everyday language. Then, our chatbot will process the user’s enquiries and provide an informative response. Frequent users of the chatbot can also have the choice to create an account, allowing the chatbot to hold more useful information about the user so it can give personalised health recommendations. Additionally, our project will include doctors and medical professionals who can provide additional support for the users of our chatbot.</p>
+<p>The main features of our software include: (Detailed instruction with images see User manual)</p>
+<ul class="simple">
+<li><p>Customized profile</p></li>
+</ul>
+<p>The software is built with a user authentication system where users can create an account if they choose to do so.</p>
+<p>Users can use our chatbot in two different modes, guest mode or logged in mode. Guest Users may ask general questions and get a generic response. During the registration of an account, users will have to complete a short survey about their health conditions. This information is stored in our database and can be used by the chatbot to determine a suitable response for the user. Users can also access the Profile page anytime to update their profile. Additionally, all the messages of a logged in user will be saved so the next time a user logs in, they can revisit their chat history.</p>
+<ul class="simple">
+<li><p>General health diagnosis system*</p></li>
+</ul>
+<p>As normal people, they can only feel the symptoms, it’s hard for them to logically link all the	symptoms together and infer the potential risks, due to lack of professional knowledge. Our chatbot can provide GP-level diagnosis result as guidance for patients. Beyond that, there is 24/7 availability which significantly reduces the workload of healthcare workers and gives patients early awareness of their illness.  Patients only need to tell the chatbot about his/her current condition in natural language. The chatbot would utilize the pre-trained machine learning model to analyze the symptoms, determine the possibility of each illness with further inquiries. All the symptoms during the queries would be recorded in patient’s profile, this could help doctors save time during by checking a patient’s health profile, so that they don’t have to waste time doing redundant things.</p>
+<ul class="simple">
+<li><p>COVID19 support</p></li>
+</ul>
+<p>Nowadays, covid-19 is still a big health risk for our human society. It is highly contagious and leaves the elderly vulnerable. It takes weeks or months to recover after the infection. Because of that, it’s extremely important to prevent people going out if they are potential covid-19 virus carrier. However, many people can’t be aware of that due to the high similarity of covid-19 to normal cold. Our chatbot learns from the online covid-19 database and trains a custom decision tree model to help patients have a better understanding of its infection conditions. It reaches 93% of accuracy in the test sample, which it’s enough to provide a guidance for users. User only needs to answer a series of questions, and our chatbot would predict the risk of infection as suggestion. This could help users be aware of their condition and reduce their outdoor activities if they are risky. Besides, we also provide COVID-related information such as the followings:</p>
+<ul class="simple">
+<li><p>COVID19 statistics based on Australia, user can also ask for a particular state covid case number.</p></li>
+<li><p>Isolation tips in links format scraped from the NHS UK website. Vaccine information is also given based on the US CDC website.</p></li>
+<li><p>COVID-19 hotspot suburb-based information. User can specify a particular state.</p></li>
+<li><p>COVID19 symptom diagnosis capability uses will be asked on a series of symptom and the ML model will determine whether the user have caught coronavirus.</p></li>
+<li><p>Location-based support</p></li>
+</ul>
+<p>Information can be useful or unnecessary based on the locations. We want to provide our users with relevant information, hence, determining the location of user becomes a factor to be included. During the start of our chatbot, we ask user for permission to share their location. Location-based features are only available if users agree to sharing their location. Then, the coordinates of the user current location will be sent to our chatbot server.</p>
+<p>With location-based support enabled, our chatbot can find nearby clinics for the user and provide the link to Google Maps where they can have the directions to their desired clinic. For users who are travelling to another country and have health concerns, our chatbot can inform users about the common diseases and some advice on how to avoid them.</p>
+<ul class="simple">
+<li><p>User-friendly interface</p></li>
+</ul>
+<p>User may have trouble in typing out full sentence or problem in understanding how the chatbot operates, therefore, we introduce features such as shortcut and multiple-choice options to improve accessibility. Besides, the implemented natural language processing engine enables users to express query in standard text form, which makes the interface user-friendly.</p>
+<ul class="simple">
+<li><p>Access to doctor</p></li>
+</ul>
+<p>User can ask for help from the doctor and leave message to a randomly assigned doctor (we assume registered doctor are all GPs).</p>
+<p>The doctor can view patient health information, specify their concerns in text format, their underlying health condition and if there is a record of symptom diagnosis from the chatbot, it will be displayed too.</p>
+<p>We assume doctor is at GP level and so when user ask for a doctor to view their request, a doctor will be randomly assigned.</p>
+<p>Doctor account has the following access:</p>
+<ul class="simple">
+<li><p>There is a dedicate page for the user to view and modify their profile</p></li>
+<li><p>The doctor can view the patient’s health summary</p></li>
+<li><p>The doctor can create profile with doctor label</p></li>
+<li><p>The doctor leaves their contact and allow user to contact them for further diagnosis</p></li>
+<li><p>Personalized health recommendation</p></li>
+<li><p>The recipe recommendation is based on the user health profile. For example, profile that are flagged with overweight would lead to a much lower calories recipe suggestion. This allows us to provide a personalized health service.</p></li>
+<li><p>Platform integration</p></li>
+</ul>
+<p>For the convenience of users, our chatbot is integrated into other messaging platforms. This way, users have more choices to interact with our chatbot. Currently, our chatbot has been integrated to Discord and Facebook Messenger. This demonstrates that the chatbot is generic and modular.</p>
+<p>See Jira board for how user stories links to the objective.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="third-party-functionalities">
+<h1>Third-party functionalities<a class="headerlink" href="#third-party-functionalities" title="Permalink to this headline">#</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Licence</p></th>
+<th class="text-align:left head"><p>Licencing term impact</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>MIT</p></td>
+<td class="text-align:left"><p>No impact for commercial use and distribution if include the original licence material of the library in the licence of the final product.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Proprietary</p></td>
+<td class="text-align:left"><p><p>The free of usage is a subject to change and there is limited number of requests can be made. This may impact the project in terms of long-term maintenance.</p><p>API e.g. its efficiency, complexity may change which means the maintenance of software relies on the quality of the APIs.</p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>clause BSD</p></td>
+<td class="text-align:left"><p><p>Low restriction on redistribution </p><p>Open source meaning that the project is maintained by the community and thus free but may not guarantee long-term support</p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Package Name</p></th>
+<th class="text-align:left head"><p>Uses &amp; Justification</p></th>
+<th class="text-align:left head"><p>Licence</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>React (Facebook Inc, 2021)</p></td>
+<td class="text-align:left"><p>React is used for building UI</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Redux</p></td>
+<td class="text-align:left"><p>Redux is used for holding the app state such as user profile, local chat history</p></td>
+<td class="text-align:left"><p><p>MIT</p><p>	</p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Lodash</p></td>
+<td class="text-align:left"><p>Used as utility function library</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Material-UI (MUI-org, 2021)</p></td>
+<td class="text-align:left"><p>Material-UI is used as components library</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Dayjs (iamkun, 2021)</p></td>
+<td class="text-align:left"><p>Used for parsing and format dates</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Uuid (uuidjs, 2021)</p></td>
+<td class="text-align:left"><p>Uuid is used for generating unique id for sessions and chat history</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Notistack (iamhosseindhv, 2021)</p></td>
+<td class="text-align:left"><p>Notistack is used for sending notifications for feedback for</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>React-hook-form (react-hook-form, 2021)</p></td>
+<td class="text-align:left"><p>It is used for handling form validation such as the sign-up form</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>React-router-dom (remix-run, 2021)</p></td>
+<td class="text-align:left"><p>It is used to provide frontend routing so users can access different pages for various functionalities</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>React-virtuoso (petyosi, 2021)</p></td>
+<td class="text-align:left"><p>Virtualised list for rendering chat history and</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Axios (Axios, 2021)</p></td>
+<td class="text-align:left"><p>Axios is used for handling requests</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Edamam recipe api</p></td>
+<td class="text-align:left"><p>Edamam provides receipt suggestion based on different health tags.  The health profile collects user health info which enables us to give personalised healthy food suggestion.</p></td>
+<td class="text-align:left"><p>Proprietary</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Google Maps</p></td>
+<td class="text-align:left"><p>Google Maps API provide the current location to the system as the user request. It helps the system find the nearby clinic.</p></td>
+<td class="text-align:left"><p>Proprietary</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>News.api</p></td>
+<td class="text-align:left"><p>The news API which provides current news on health category.</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Dialogflow</p></td>
+<td class="text-align:left"><p>The Dialogflow library is used so that we can establish a contact point between our backend and Dialogflow Console. Dialogflow library provides the code to send texts to the Console for Natural Language Understanding and respond to our backend with intents of the text, where our backend will handle the intents accordingly.</p></td>
+<td class="text-align:left"><p>Proprietary</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Discord</p></td>
+<td class="text-align:left"><p>Discord API is used to integrate our chatbot to the discord</p></td>
+<td class="text-align:left"><p>Proprietary</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Messenger</p></td>
+<td class="text-align:left"><p>Facebook messenger API is used to integrate our chatbot to messenger.</p></td>
+<td class="text-align:left"><p>Proprietary</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Flask</p></td>
+<td class="text-align:left"><p><p>It is easy to pick up and the framework allows us to build up the web application.</p><p>lightweight compared with another populat option such as Django. </p></p></td>
+<td class="text-align:left"><p>clause BSD</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>MongoDB Cloud</p></td>
+<td class="text-align:left"><p>No-SQL database allows semi-structured data which is common in natural language and thus is used.</p></td>
+<td class="text-align:left"><p>Proprietary</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>BeautifulSoup</p></td>
+<td class="text-align:left"><p>It allows us to scrape different websites in a lightweight and efficient way</p></td>
+<td class="text-align:left"><p>MIT</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Infermedica</p></td>
+<td class="text-align:left"><p>This gives professional symptom diagnosis with high accuracy and corresponding feedback.</p></td>
+<td class="text-align:left"><p>Proprietary</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementation-challenges">
+<h1>Implementation challenges<a class="headerlink" href="#implementation-challenges" title="Permalink to this headline">#</a></h1>
+<p>Covid prediction model</p>
+<p>It is hard to find any available model for the covid-19 prediction online. So, I must find out the data to train the custom model by myself. For any machine learning project, the training data is the key for model. I need search through Internet to find out the data which contain the large amount record data, and its parameters are restricted to the common symptoms. Finally find the appropriate the database in the Kaggle competition website, which contains 3 million recorded patient’s covid diagnosis result and symptoms. The information of the recording data isn’t quite complete. I need to do the feature cleaning and extraction to remove the deficient record, transfer the style for machining learning use. Model choosing is another challenge task, with such large amount of data, I need to balance the training time between accuracy, especially I don’t have especial server to do the training. The model like XGBoost, Navies Bayes are not accessible, even though they might reach good performance. The final decision for the model is the Decision Tree, it takes fair amount of training time and reach 93% accuracy in the test dataset, which is highly acceptable.</p>
+<section id="chat-history-rendering">
+<h2>Chat History Rendering<a class="headerlink" href="#chat-history-rendering" title="Permalink to this headline">#</a></h2>
+<p>When I was implementing the user interface for chatting with the bot, I realised the issue that as the user chats with the bot, the number of nodes for chat history that are held in DOM will increase and the child nodes of these chat history can sometimes be complicated (e.g.  when rendering a list of items COVID-19). At some point, there would be performance issue. My solution is to render the chat history in a virtualised list implemented by third-party where only the components in the user’s view will be rendered. This method is more memory efficient, and performance can be guaranteed.</p>
+<p>However, all the UI updates are done asynchronously and cannot be access outside the component, which requires other updates, in this case, the auto scroll to bottom feature, to use setTimeout to wait for it. And to avoid memory leak a React useEffect hook will be called to clean up the timeout object.</p>
+</section>
+<section id="web-scraping">
+<h2>Web Scraping<a class="headerlink" href="#web-scraping" title="Permalink to this headline">#</a></h2>
+<p>Website – hard to scrape</p>
+<p>Web scraping is the primary method we used to obtain different types of data with no API available. However, some websites are built to prevent such scraping. For example, the website (Coronavirus (COVID-19) case numbers and statistics, 2021) which contains Australia national COVID-19 statistics, has no right click option to view page source. Besides, the table rendered uses JavaScript and fetch it at real time. In some other websites encountered, some purposely uses unstructured page source to prevent user from scraping. Selenium Python library is tried to get over such problem. However, it fails just like BeautifulSoup python library, and it also requires extra setup which is to install 300MB Chrome or Firefox core that enables headless (without GUI) browsing.</p>
+<p>After comparing different methods, we decide that, for those that could not be scraped, we will use non-official websites such as <a class="reference external" href="https://covidlive.com.au/">https://covidlive.com.au/</a> that provides the same information to get over this challenge. Another problem on where to find the website that is appropriate to scrape from. We then find out that different state websites contain links to other state weblink. On top of this, some popular non-official websites provide links to where the resource is based on which allow us to quickly identify the key websites to crawl.</p>
+<p>Speed</p>
+<p>To improve speed of the scraping, we use SoupStrainer function which is an implementation from Beautifulsoup that enables fast filtering based on the given html tags. Besides, we also use “lxml” and installed the library as mentioned in the official documentation improving performance section (Beautiful Soup Documentation, 2021). Since most endpoints requires single request, multi-thread parallel scraping for multiple requests is not considered.</p>
+<p>Session object is also initialised for requests to allow cookie for future requests which make the scraping more efficient.</p>
+</section>
+<section id="dialogflow-intention-handler">
+<h2>Dialogflow Intention Handler<a class="headerlink" href="#dialogflow-intention-handler" title="Permalink to this headline">#</a></h2>
+<p>Since most of our features uses Dialogflow to interpret intentions, we come up with an architecture for backend that uses Dialogflow as a gateway so it can interpret user text input and dispatch the request according to the intention. Each request contains a context that includes information such as location, user ID. Such context will be pass to the registered intention handler.</p>
+<p>For the response, it always contains 3 parts. The “type” field acts as a discriminator. The frontend will render the message according to the type. The “message” field contains the response from the bot.  Whereas the “data” field contains extra information such as recipe information that will be rendered alongside the message.</p>
+<p>Such architecture follows the Open-Close Principle, which allows us to simply add new feature by writing and registering a new handler. However, Dialogflow cannot handle the symptom descriptions properly due to the complexity of human language, which means we cannot directly add handler to it.</p>
+<p>The workaround we used is that users can initiate diagnosis through Dialogflow. Then it will send a response to frontend and the frontend will set a flag in the internal redux store (namely, “chat.diagnosis”) which will then send following requests directly to the backend without Dialogflow. And once the diagnosis is completed, the backend will send back a response with a specific type (namely, “diagnosis/result”) to indicate frontend to unset the flag.</p>
+</section>
+<section id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">#</a></h2>
+<p>Flask</p>
+<p>We initially consider using Flask. Then we come across Flask-RESTPlus which has full Swagger support and a more modern class implementation for the REST API. Then we find out that it is not maintained anymore but Flask-RESTX, which is a fork version of RESTPlus is currently being maintained by the community and is used in the project.</p>
+<p>Integration</p>
+<p>For Facebook Messenger chatbot integration, we found that it requires webhook for connection. After some research, there are many popular free choices to expose localhost to a public domain name as listed here in a GitHub collection page (Pitman, 2021). Ngrok and Localtunnel service are the top free choice selected. Localtunnel, however, is unstable during the testing and cannot be validated by Facebook and it only provides free service. Considering that Ngrok has a paid version and shown more reliable during the testing, it is chosen.</p>
+<p>Third-party API</p>
+<p>Professional third-party API all has a similar API documentation where the data structure is detailed with different endpoint demo. This is one main measurement we use to determine the quality of the API (there are many APIS available, but many are not reliable or powerful). Other considerations are the number of requests quota per month and if free of charge. Besides, to avoid possible downtime caused by the API maintenance, two general symptom check APIs has been implemented. The current using one is Infermedica, where the other – EndlessMedicalAPI being the backup.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="user-documentation-manual">
+<h1>User Documentation / Manual<a class="headerlink" href="#user-documentation-manual" title="Permalink to this headline">#</a></h1>
+<section id="project-setup">
+<h2>Project Setup<a class="headerlink" href="#project-setup" title="Permalink to this headline">#</a></h2>
+<p>The section contains instructions to setup and run the project.</p>
+<p>The chosen system is <strong>Lubuntu.</strong></p>
+<p>It assumes you have the project source code ready in the path project.</p>
+</section>
+<section id="dialogflow-account">
+<h2>Dialogflow account:<a class="headerlink" href="#dialogflow-account" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Account: xxx</p></li>
+<li><p>Password: xxx</p></li>
+<li><p>Starplatinum branch</p></li>
+<li><p><img alt="Graphical user interface, text, application, chat or text message Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.002.png" /></p></li>
+</ul>
+<section id="prerequisite">
+<h3>Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Nodejs == 14.17.16 # <a class="reference external" href="https://github.com/nvm-sh/nvm#installing-and-updating">https://github.com/nvm-sh/nvm#installing-and-updating</a></p></li>
+<li><p>Python == 3.8.10</p></li>
+</ul>
+</section>
+<section id="folder-structure">
+<h3>Folder structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">#</a></h3>
+<p>|<p>project</p><p>├── README.md</p><p>├── backend			# Source code for backend</p><p>├── docker-compose.yml</p><p>├── frontend			# Source code for frontend</p><p>└── workDiaries</p>|</p>
+<!-- | :- | -->
+</section>
+<section id="frontend-web-interface">
+<h3>Frontend – Web Interface<a class="headerlink" href="#frontend-web-interface" title="Permalink to this headline">#</a></h3>
+<p><strong>[Prerequisite] Install yarn if you did not have it</strong></p>
+<p>You can install yarn with the following command</p>
+<p>|<p><span class="math notranslate nohighlight">\( npm i -g yarn&lt;/p&gt;&lt;p&gt;\)</span> yarn –-version #Check installation </p>|</p>
+<!-- | :- | -->
+<p><strong>Step 1 – install dependency with</strong> yarn</p>
+<p>Please make you are at the project root. If you don’t, please do</p>
+<p>|$ cd project/|</p>
+<!-- | :- | -->
+<p>Then install dependencies with the following commands</p>
+<p>|<p><span class="math notranslate nohighlight">\( cd frontend&lt;/p&gt;&lt;p&gt;\)</span> yarn </p>|</p>
+<!-- | :- | -->
+<p><strong>Step 2 – Start the dev server</strong></p>
+<p>|$ yarn start|</p>
+<!-- | :- | -->
+<p>Once succeed, you will see the following output:</p>
+<p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.003.png" /></p>
+</section>
+<section id="backend-main-server">
+<h3>Backend - Main server<a class="headerlink" href="#backend-main-server" title="Permalink to this headline">#</a></h3>
+<p><strong>Step 1 – Create virtual environment</strong></p>
+<p>Please make you are at the project root. If you don’t, please do</p>
+<p>|$ cd project/|</p>
+<!-- | :- | -->
+<p>Then, create and activate virtual environment</p>
+<p>|<p><span class="math notranslate nohighlight">\( cd backend&lt;/p&gt;&lt;p&gt;\)</span> python3 -m venv ./venv</p>|</p>
+<!-- | :- | -->
+<p><strong>Step 2 – Install dependencies</strong></p>
+<p>|<p><span class="math notranslate nohighlight">\( source ./venv/bin/activate&lt;/p&gt;&lt;p&gt;(venv) \)</span> python3 -m pip install -r requirements.txt</p>|</p>
+<!-- | :- | -->
+<p><strong>Step 3 – Start backend server</strong></p>
+<p>|(venv) python3 ./run.py –cloud # using cloud database|</p>
+<!-- | :- | -->
+</section>
+<section id="ml-model-training">
+<h3>ML Model Training<a class="headerlink" href="#ml-model-training" title="Permalink to this headline">#</a></h3>
+<p>|<p><span class="math notranslate nohighlight">\( cd backend/covidChecker &lt;/p&gt;&lt;p&gt;\)</span> bash train.bash</p>|</p>
+<!-- | :- | -->
+<p>*Notice the database contain 3 million record data, make sure have enough space and time to train. The existing model is put on the model folder.</p>
+</section>
+<section id="messenger">
+<h3>Messenger<a class="headerlink" href="#messenger" title="Permalink to this headline">#</a></h3>
+<p><strong>Step 1 – run webhook</strong></p>
+<p>Open a new terminal</p>
+<p>|<p><span class="math notranslate nohighlight">\( cd backend&lt;/p&gt;&lt;p&gt;\)</span> source ./venv/bin/activate<br>(venv) $ python3 <a class="reference external" href="http://messenger.py">messenger.py</a> # default port 8000</p>|</p>
+<!-- | :- | -->
+<p><strong>Step 2 – install and run ngrok</strong></p>
+<p>Open a new terminal</p>
+<p>|<p>(venv) <span class="math notranslate nohighlight">\( cd integration&lt;/p&gt;&lt;p&gt;(venv) \)</span> wget <a class="reference external" href="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip">https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip</a></p><p>(venv) <span class="math notranslate nohighlight">\( unzip ngrok-stable-linux-amd64.zip&lt;/p&gt;&lt;p&gt;(venv) \)</span> ./ngrok http 8000 # ur localhost port</p>|</p>
+<!-- | :- | -->
+<p><strong>Step 3 – Edit call-back URL</strong></p>
+<p>Copy the https secure URL from the terminal, in below example, it is:  <a class="reference external" href="https://9e4d-129-94-8-155.ngrok.io">https://9e4d-129-94-8-155.ngrok.io</a></p>
+<p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.004.png" /></p>
+<p>Then go to the Facebook developer portal: <a class="reference external" href="https://developers.facebook.com/apps/1486417798399089/messenger/settings/">https://developers.facebook.com/apps/1486417798399089/messenger/settings/</a></p>
+</section>
+</section>
+<section id="and-login">
+<h2>and login:<a class="headerlink" href="#and-login" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Account: xxx</p></li>
+<li><p>Password: xxx</p></li>
+</ul>
+<p>Now, change the call-back URL to the one previously copied. (In messenger setting section)</p>
+<p>Also add the <strong>verify token</strong>: covid19.</p>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.005.png" /></p>
+<p><strong>Step 4 – login and test out</strong></p>
+<p>Login a Facebook messenger account and search: <strong>“Health Chat Star”</strong> in the messenger (we created)</p>
+<p>Now, you can test out the same features described below except for the general symptom check functionality.</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.006.png" /></p>
+<section id="discord">
+<h3>Discord<a class="headerlink" href="#discord" title="Permalink to this headline">#</a></h3>
+<p><strong>[Prerequisite] A Discord account is required to chat with our chatbot.</strong></p>
+<p><strong>Step 1 – Join chatbot server</strong></p>
+<p>Use the link provided to join the Discord channel: <a class="reference external" href="https://discord.gg/BNJKVJ6q5U">https://discord.gg/BNJKVJ6q5U</a></p>
+<p><img alt="A screenshot of a computer Description automatically generated with medium confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.007.png" /></p>
+<p>You may need to register for a Discord account if you do not have one.</p>
+<p><img alt="A screenshot of a computer Description automatically generated with medium confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.008.png" /></p>
+<p>Click on “Accept Invite” and you will be brought to the Discord app if you have it installed or click on “Continue to Discord” to go to Discord Web App on your browser.</p>
+<p>On Discord, choose the HealthBotServer channel on left panel (should be indicated with a ‘H’) and you should see the channel name HealthBotServer on top left corner. Click on “general” under Text Channels to join the text channel. The chatbot is currently offline as we have not started the client yet.</p>
+<p><strong>Step 2 – Start Discord client</strong></p>
+<p>Open a new terminal</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p><p><span class="math notranslate nohighlight">\( cd backend&lt;/p&gt;&lt;p&gt;\)</span> source ./venv/bin/activate</p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>(venv)$ python3 <a class="reference external" href="http://discordbot.py">discordbot.py</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>You should see the following output:</p>
+<p><img alt="Text Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.009.png" /></p>
+<p>Now, we can go back to Discord and start chatting. You will see HealthBotChatty is online now.</p>
+</section>
+</section>
+<section id="how-to-use-the-chatbot">
+<h2>How to use the chatbot<a class="headerlink" href="#how-to-use-the-chatbot" title="Permalink to this headline">#</a></h2>
+<section id="user-sign-up">
+<h3>User Sign up<a class="headerlink" href="#user-sign-up" title="Permalink to this headline">#</a></h3>
+<p>A guest user can sign up by clicking the “Register” button in the top right corner to sign into their account.</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.010.png" /></p>
+<p>Once the button is clicked, they will be redirected to the sign-up page. They need to fill in their personal details to proceed. If the information is incorrect, the border of corresponding text field will turn into red, and an error message will be shown below. Please note, the password requires at least one digit, at least one capital letter, at least one lower case letter, and at least eight characters long. If the user ticks the box of “I’m doctor”, they will be assigned to the role of ‘doctor’, otherwise, the account will be ‘patient’.  Once they have filled the form, they will be directed to the next page to create health profile.</p>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.011.png" /></p>
+<p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.012.png" /></p>
+<p>Users can use the radio buttons to choose their answers for the corresponding questions. All the options are default to False. Users can choose the options that reflect their health conditions. Once finished, they can click finish to log into the system.</p>
+<p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.013.png" /></p>
+</section>
+<section id="user-sign-in">
+<h3>User Sign In<a class="headerlink" href="#user-sign-in" title="Permalink to this headline">#</a></h3>
+<p>Users can sign into their account by using the button in the top-right corner.</p>
+<p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.014.png" /></p>
+<p>Once they are on login page, they can type in their username and password. If they are invalid (wrong email format or does not match the records in the database), the input field will turn red, and an error message will be shown underneath. Once the users signed in successfully, they will be redirected to the home page.</p>
+<p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.015.png" /> <img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.016.png" />
+<img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.017.png" /></p>
+</section>
+<section id="modify-profile">
+<h3>Modify Profile<a class="headerlink" href="#modify-profile" title="Permalink to this headline">#</a></h3>
+<p>Users can modify their profile to update their current health conditions, by clicking the gears button on top right corner and select profile from the dropdown menu.</p>
+<p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.018.png" /></p>
+<p>This page works in the same way as the profile creation step for signing up. Users can use radio buttons to choose their answer and click finish to update their profile.</p>
+</section>
+<section id="view-chat-history">
+<h3>View Chat History<a class="headerlink" href="#view-chat-history" title="Permalink to this headline">#</a></h3>
+<p>Logged in users can view history by clicking the gears button on top right corner and select profile from the dropdown menu.</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.019.png" /></p>
+<p>At History page, they can view all the chat history that is stored on the server, and the history is split into multiple pages.</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.020.png" /></p>
+</section>
+<section id="requesting-real-doctor-to-diagnose">
+<h3>Requesting Real doctor to diagnose<a class="headerlink" href="#requesting-real-doctor-to-diagnose" title="Permalink to this headline">#</a></h3>
+<p>Registered users can send support tickets describing their health concerns to a real doctor for help by clicking the gear button on the top-right corner and select “New Request” from the menu.</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.021.png" /></p>
+<p>They can type in their message and click submit to send. However, if they have an active ticket, they cannot send any request until the current ticket is dismissed.</p>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.022.png" /><img alt="Graphical user interface, text, application, email Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.023.png" /></p>
+<p>If the doctor has replied to a ticket, patients will see the doctor’s message the next time they log in. Then, the ticket will be dismissed.</p>
+<p><img alt="Graphical user interface, text, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.024.png" /></p>
+</section>
+<section id="view-reply-support-tickets-from-users">
+<h3>View &amp; Reply Support Tickets from Users<a class="headerlink" href="#view-reply-support-tickets-from-users" title="Permalink to this headline">#</a></h3>
+<p>Doctors can view support tickets assigned to them by clicking the gears button and choose “Ticket” from the menu.</p>
+<p><img alt="Graphical user interface, application Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.025.png" /></p>
+<p>The table shows a list of tickets assigned to them. Doctors can view and reply to the ticket by clicking the “view” button in each row.</p>
+<p><img alt="Graphical user interface, application, email Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.026.png" /></p>
+<p>The ticket detail page shows the detail of the patients including personal information, health conditions and recent diagnosis information. Doctors can type in their message in the “Response” section. And once SUBMIT is clicked the message will be added to the ticket.</p>
+<p><img alt="Graphical user interface, text, application, email Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.027.png" /></p>
+</section>
+<section id="shortcut">
+<h3>Shortcut<a class="headerlink" href="#shortcut" title="Permalink to this headline">#</a></h3>
+<p>Click below bubble to directly make query without typing.</p>
+<p><img alt="Graphical user interface, text, application, chat or text message Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.028.png" /></p>
+</section>
+<section id="readme-standard-response-template">
+<h3>README - Standard Response template<a class="headerlink" href="#readme-standard-response-template" title="Permalink to this headline">#</a></h3>
+<p><img alt="Graphical user interface, application, Word Description automatically generated" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.029.png" />
+All responses use a standard UI component, which contains heading, content, source link of the data. In most situation, they are clickable link that redirects the user to the source of that information.</p>
+</section>
+<section id="covid-statistic-aus">
+<h3>COVID Statistic (Aus)<a class="headerlink" href="#covid-statistic-aus" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>“Covid case in NSW”, “Covid case in new south wales”</p></td>
+<td class="text-align:left"><p>Return COVID statistics given a particular state</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>“Covid case”</p></td>
+<td class="text-align:left"><p>Return default location which is Australia nationwide</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.030.png" /></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hotspot">
+<h3>Hotspot<a class="headerlink" href="#hotspot" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>“Hotspot in NSW”, “hotspot in new south wales”</p></td>
+<td class="text-align:left"><p><p>Return COVID statistics given a particular state</p><p></p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>“Hotspot”</p></td>
+<td class="text-align:left"><p>Return default location which is Australia nationwide</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>“hotspot in asdsds”</p></td>
+<td class="text-align:left"><p>Return default NSW state hotspot</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.031.png" /></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="isolation">
+<h3>Isolation<a class="headerlink" href="#isolation" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>“I want some isolation tips”</p></td>
+<td class="text-align:left"><p>Return COVID statistics given a particular state</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.032.png" />Vaccine</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>“I want some vaccine information”</p></td>
+<td class="text-align:left"><p>Return three vaccine information – J&amp;J, Pifzer, Moderna based on CDC</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.033.png" /></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="travel-advice">
+<h3>Travel advice<a class="headerlink" href="#travel-advice" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>“I want some travel advice to China”</p></td>
+<td class="text-align:left"><p>Return country keyword and return travel suggestion e.g. potential health crisis in given location</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Travel advice to invalid country</p></td>
+<td class="text-align:left"><p>Return “Please specify a country and try again”</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.034.png" /></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="covid-symptom-check">
+<h3>COVID symptom check<a class="headerlink" href="#covid-symptom-check" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>User: “I want some COVID health check”<br>Bot: “Do you have {this} symptom?”<br>User: “Yes”<br>…<br>Bot “You are diagnosed positive”</p></td>
+<td class="text-align:left"><p>After a series of symptom asking, the bot will predict based on the given symptoms whether the user has caught COVID.<br><strong>Note</strong><br>During the Q&amp;A, input will be disable.</p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.035.png" /></p>
+<p><img alt="" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.036.png" /></p>
+</section>
+<section id="general-symptom-check">
+<h3>General symptom check<a class="headerlink" href="#general-symptom-check" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><p>User: “I want some symptom check”<br>Bot: “Do you have {this} symptom?”<br>User: “Yes”<br>…<br>Bot: “You are likely to have following risks: <br>COVID-19 <br>0.4416</p><p>… ”</p></p></td>
+<td class="text-align:left"><p>After a series of symptom asking, the bot will predict based on the given symptoms, the disease that the user is most likely to get.<br>The probability is mentioned under each potential result.<br><strong>Note</strong><br>During the Q&amp;A, input will be disable.</p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.037.png" /></p>
+</section>
+<section id="receipt-suggestion">
+<h3>Receipt suggestion<a class="headerlink" href="#receipt-suggestion" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>“I want some recipe suggestion”</p></td>
+<td class="text-align:left"><p>Return receipt recommendation based on user’s health profile.<br>Different health tags are used for the food suggestion based on user profile. Calories is the measurement displayed.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.038.png" /></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="health-news">
+<h3>Health news<a class="headerlink" href="#health-news" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>“I want some health news feed”</p></td>
+<td class="text-align:left"><p>Return news feed from trusted source<br>Each links are clickable to redirect other news websites.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.039.png" /></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nearby-clinic">
+<h3>Nearby clinic<a class="headerlink" href="#nearby-clinic" title="Permalink to this headline">#</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Input</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>“What are some nearby clinic”</p></td>
+<td class="text-align:left"><p>Return nearby clinic based on user location if allowed.<br>Each links are clickable to redirect google map with a route from current user location to the destination.<br>After user login, there will be a pop up asking for user location permission. If users give no permission, then a sign of no permission allow will be shown instead.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><img alt="Background pattern Description automatically generated with low confidence" src="../../../../_images/Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.040.png" /></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bibliography">
+<h1>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h1>
+<p>Axios. (2021). <em>Promise based HTTP client for the browser and node.js</em>. Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/axios/axios">https://github.com/axios/axios</a></p>
+<p><em>Beautiful Soup Documentation</em>. (2021). Retrieved from Beautiful Soup: <a class="reference external" href="https://beautiful-soup-4.readthedocs.io/en/latest/#improving-performance">https://beautiful-soup-4.readthedocs.io/en/latest/#improving-performance</a></p>
+<p><em>Coronavirus (COVID-19) case numbers and statistics</em>. (2021, November). Retrieved from Australian Govenment Department of Health: <a class="reference external" href="https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-case-numbers-and-statistics">https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-case-numbers-and-statistics</a></p>
+<p>Facebook Inc. (2021). <em>A declarative, efficient, and flexible JavaScript library for building user interfaces.</em> Retrieved Nov 11, 2021, from <a class="reference external" href="https://github.com/facebook/react">https://github.com/facebook/react</a></p>
+<p>iamhosseindhv. (2021). <em>Highly customizable notification snackbars (toasts) that can be stacked on top of each other</em>. Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/iamhosseindhv/notistack">https://github.com/iamhosseindhv/notistack</a></p>
+<p>iamkun. (2021). <em>Day.js 2kB immutable date-time library alternative to Moment.js with the same modern API</em>. Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/iamkun/dayjs">https://github.com/iamkun/dayjs</a></p>
+<p>Lodash. (2021). <em>A modern JavaScript utility library delivering modularity, performance, &amp; extras.</em> Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/lodash/lodash">https://github.com/lodash/lodash</a></p>
+<p>MUI-org. (2021). <em>MUI (formerly Material-UI) is the React UI library you always wanted.</em> Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/mui-org/material-ui">https://github.com/mui-org/material-ui</a></p>
+<p>petyosi. (2021). <em>The most powerful virtual list component for React</em>. Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/petyosi/react-virtuoso">https://github.com/petyosi/react-virtuoso</a></p>
+<p>Pitman, A. (2021). <em>awesome-tunneling</em>. Retrieved from GitHub: <a class="reference external" href="https://github.com/anderspitman/awesome-tunneling">https://github.com/anderspitman/awesome-tunneling</a></p>
+<p>react-hook-form. (2021). <em>React Hooks for forms validation (Web + React Native)</em>. Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/react-hook-form/react-hook-form">https://github.com/react-hook-form/react-hook-form</a></p>
+<p>reduxjs. (2021). <em>Predictable state container for JavaScript apps</em>. Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/reduxjs/redux">https://github.com/reduxjs/redux</a></p>
+<p>remix-run. (2021). <em>Declarative routing for React</em>. Retrieved from <a class="reference external" href="https://github.com/remix-run/react-router">https://github.com/remix-run/react-router</a></p>
+<p>uuidjs. (2021). <em>Generate RFC-compliant UUIDs in JavaScript</em>. Retrieved 11 17, 2021, from <a class="reference external" href="https://github.com/uuidjs/uuid">https://github.com/uuidjs/uuid</a></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ds-courses/unsw/3900/project"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../3900-intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Capstone (UNSW)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../3431/3431-intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">ROS &amp; CV (UNSW)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jerry<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,1071 +1,730 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lane detection &#8212; My Jupter Notebook on data science.</title>
-    
+    <title>Lane detection &#8212; My study notebook on AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=c1a6f12f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=97881d71"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ds-courses/unsw/9517/9517-lane_detection';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Vehicle detection (by teammate)" href="9517-vehicle-detection.html" />
     <link rel="prev" title="Report on Basic image processing, etc" href="9517-a1/report.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">My Jupter Notebook on data science.</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  About
- </span>
-</p>
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My study notebook on AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://postsent.github.io/categories/">
-   Back to Blog
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../reference.html">
-   Acknowledgement
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://postsent.github.io/home/">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Acknowledgement</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Data Science Related Courses
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Science Related Courses</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../9417/9417-intro.html">
-   Machine Learning (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../9417/9417-basic.html">
-     Basic with examples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../9417/9417-project.html">
-     Project - Classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../9417/9417-report/report.html">
-     Project - report
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../9418/9418-intro.html">
-   PGM (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../9418/9418-EDA.html">
-     EDA on Times Series Dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../9418/9418-project.html">
-     Time series project code
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../9418/9418-project/report.html">
-     Time series report
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="9517-intro.html">
-   Computer Vision (UNSW)
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="9517-a1-code.html">
-     Basic image processing, thresholding, count cells
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="9517-a1/report.html">
-     Report on Basic image processing, etc
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Lane detection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="9517-vehicle-detection.html">
-     Vehicle detection (by teammate)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../9444/9444-intro.html">
-   Deep Learning (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../9444/9444-project.html">
-     Image classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../9444/assignment1/assignment1.html">
-     Characters, Spirals and Hidden Unit Dynamics
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../3900/3900-intro.html">
-   Capstone (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3900/project/3900-project.html">
-     <strong>
-      Chatbot
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../3431/3431-intro.html">
-   ROS &amp; CV (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3431/project/project.html">
-     Mini self-driving
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../usyd/5046/5046-intro.html">
-   NLP (USYD)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5046/a2/a2.html">
-     Report - In-game Toxicity Detection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5046/a2.html">
-     In Game Toxicity seq2seq classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5046/a1.html">
-     Binary text classification
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../usyd/5349/5349-intro.html">
-   Cloud Computing (USYD)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5349/a2/a2.html">
-     Data Preprocessing and Performance Tuning with Spark
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5349/a2.html">
-     Data Preprocessing and Performance Tuning with Spark
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5349/a1.html">
-     Text Analysis with Spark RDD API
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5349/a1-report.html">
-     Report – Text Analysis with Spark RDD API
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../usyd/5338/5338-intro.html">
-   NoSQL&amp;Graph Data Model(USYD)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5338/a1.html">
-     NoSQL basic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5338/a2.html">
-     NoSQL Aggregation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5338/a2-report/report.html">
-     <strong>
-      Performance Observation Task
-     </strong>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5338/a3.html">
-     Neo4j Basic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5338/a4.html">
-     Neo4j Query
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../usyd/5048/5048-intro.html">
-   Visual Analytics Tableau (USYD)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5048/individual.html">
-     Individual Report
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5048/group.html">
-     Group Report (My part)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../usyd/5328/5328-intro.html">
-   Advance ML
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5328/a1.html">
-     NMF
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../usyd/5328/a2.html">
-     Label Noise Learning
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../9417/9417-intro.html">Machine Learning (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9417/9417-basic.html">Basic with examples</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../9417/9417-project.html">Project - Classification</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../9417/9417-report/report.html">Project - report</a></li>
+
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../9418/9418-intro.html">PGM (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9418/9418-EDA.html">EDA on Times Series Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9418/9418-project.html">Time series project code</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../9418/9418-project/report.html">Time series report</a></li>
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="9517-intro.html">Computer Vision (UNSW)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="9517-a1-code.html">Basic image processing, thresholding, count cells</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="9517-a1/report.html">Report on Basic image processing, etc</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lane detection</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="9517-vehicle-detection.html">Vehicle detection (by teammate)</a></li>
+
+
+
+
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../9444/9444-intro.html">Deep Learning (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9444/9444-project.html">Image classification</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../9444/assignment1/assignment1.html">Characters, Spirals and Hidden Unit Dynamics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3900/3900-intro.html">Capstone (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3900/project/3900-project.html"><strong>Chatbot</strong></a></li>
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3431/3431-intro.html">ROS &amp; CV (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3431/project/project.html">Mini self-driving</a></li>
+
+
+
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../usyd/5046/5046-intro.html">NLP (USYD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5046/a2/a2.html">Report - In-game Toxicity Detection</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5046/a2.html">In Game Toxicity seq2seq classification</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5046/a1.html">Binary text classification</a></li>
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../usyd/5349/5349-intro.html">Cloud Computing (USYD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5349/a2/a2.html">Data Preprocessing and Performance Tuning with Spark</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5349/a2.html">Data Preprocessing and Performance Tuning with Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5349/a1.html">Text Analysis with Spark RDD API</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5349/a1-report.html">Report – Text Analysis with Spark RDD API</a></li>
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../usyd/5338/5338-intro.html">NoSQL &amp; Neo4j (USYD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5338/a1.html">NoSQL basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5338/a2.html">NoSQL Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5338/a2-report/report.html"><strong>Performance Observation Task</strong></a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5338/a3.html">Neo4j Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5338/a4.html">Neo4j Query</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../usyd/5048/5048-intro.html">Visual Analytics Tableau (USYD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5048/individual.html">Individual Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5048/group.html">Group Report (My part)</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../usyd/5328/5328-intro.html">Advance ML (USYD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5328/a1.html">NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usyd/5328/a2.html">Label Noise Learning</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Machine Learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../ml/regression/regression.html">
-   Regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../ml/regression/p1-crypto-prediction.html">
-     Crypto Prediction
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ml/classification/classification.html">
-   Classification (placeholder)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ml/time-series/time-series.html">
-   Time Series (placeholder)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ml/ml.html">
-   General
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ml/regression/regression.html">Regression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ml/regression/p1-crypto-prediction.html">Crypto Prediction</a></li>
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml/classification/classification.html">Classification (placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml/time-series/time-series.html">Time Series (placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml/ml.html">General</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Deep Learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../dl/dl.html">
-   General
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dl/dl.html">General</a></li>
+
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  NLP
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/nlp.html">
-   placeholder
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/nlp.html">placeholder</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Computer Vision
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer Vision</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../cv/cv.html">
-   Placeholder
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cv/cv.html">Placeholder</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Misc
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Misc</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../misc/math.html">
-   Math
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../misc/misc.html">
-   Misc
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../misc/term.html">
-   Terminology
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../misc/todo.html">
-   TODO
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/math.html">Math</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/misc.html">Misc</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/term.html">Terminology</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/todo.html">TODO</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Coding Basic
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Coding Basic</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../python/basic-intro.html">
-   Numpy, Pandas, Python
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../python/numpy.html">
-     Numpy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../python/pandas.html">
-     Pandas
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../python/leetcode.html">
-     Leetcode
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../python/basic-intro.html">Numpy, Pandas, Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/numpy.html">Numpy</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../python/pandas.html">Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/leetcode.html">Leetcode</a></li>
+
+
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Side Projects
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Side Projects</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../side-project/web-scrapter.html">
-   Course Enrolment Scrapter
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../side-project/web-scrapter.html">Course Enrolment Scrapter</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Unfinished
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unfinished</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nlp-book.html">
-   NLP Book
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/intro.html">
-     Intro
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nn.html">
-     Feed-Forward Networks for NLP
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/prac-ch3.html">
-     Chapter 3
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../unfinished/jigsaw-intro.html">
-   Jigsaw
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/README.html">
-     Folder Structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">
-     Simple
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm.html">
-     Upgrade RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper.html">
-     Common
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../unfinished/nlp-reading.html">
-   Book Reading
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nlp-book.html">NLP Book</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/intro.html">Intro</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nn.html">Feed-Forward Networks for NLP</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/prac-ch3.html">Chapter 3</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../unfinished/jigsaw-intro.html">Jigsaw</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/README.html">Folder Structure</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">Simple</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm.html">Upgrade RNN</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper.html">Common</a></li>
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unfinished/nlp-reading.html">Book Reading</a></li>
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/postsent/nb/main?urlpath=tree/docs/ds-courses/unsw/9517/9517-lane_detection.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/postsent/home/main?urlpath=tree/docs/ds-courses/unsw/9517/9517-lane_detection.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+<a href="https://github.com/postsent/home" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/postsent/nb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../../_sources/ds-courses/unsw/9517/9517-lane_detection.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/ds-courses/unsw/9517/9517-lane_detection.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
-</label>
+</button>
 
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Lane detection
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import">
-   import
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#helper">
-   helper
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#merge-lines">
-   merge lines
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#houghtransform">
-   houghtransform
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-close-lines">
-     find close lines
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extrapolate-lines">
-     extrapolate lines
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cut-lines">
-     cut lines
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#show-lines">
-     show lines
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#draw-lines">
-     draw lines
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#start">
-   start
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#threshold">
-     threshold
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#sobel-operator">
-       sobel operator
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#canny-no-parameter">
-       canny no parameter
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#hsl">
-       HSL
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#combine-filter-and-show-steps">
-     combine filter and show steps
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#k-means-image-segmentation">
-     k means - image segmentation
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#final">
-     final
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluate-result">
-     evaluate result
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evulation">
-     evulation
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#make-videos">
-     make videos
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trial">
-     trial
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lane detection</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Lane detection
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import">
-   import
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#helper">
-   helper
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#merge-lines">
-   merge lines
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#houghtransform">
-   houghtransform
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-close-lines">
-     find close lines
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extrapolate-lines">
-     extrapolate lines
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cut-lines">
-     cut lines
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#show-lines">
-     show lines
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#draw-lines">
-     draw lines
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#start">
-   start
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#threshold">
-     threshold
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#sobel-operator">
-       sobel operator
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#canny-no-parameter">
-       canny no parameter
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#hsl">
-       HSL
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#combine-filter-and-show-steps">
-     combine filter and show steps
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#k-means-image-segmentation">
-     k means - image segmentation
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#final">
-     final
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluate-result">
-     evaluate result
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evulation">
-     evulation
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#make-videos">
-     make videos
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trial">
-     trial
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lane detection</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lane detection</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import">import</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#helper">helper</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-lines">merge lines</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#houghtransform">houghtransform</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-close-lines">find close lines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrapolate-lines">extrapolate lines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cut-lines">cut lines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-lines">show lines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-lines">draw lines</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#start">start</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold">threshold</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sobel-operator">sobel operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canny-no-parameter">canny no parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hsl">HSL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-filter-and-show-steps">combine filter and show steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-image-segmentation">k means - image segmentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final">final</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-result">evaluate result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evulation">evulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-videos">make videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trial">trial</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <h1>Table of Contents<span class="tocSkip"></span></h1>
 <div class="toc"><ul class="toc-item"><li><span><a href="#import" data-toc-modified-id="import-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>import</a></span></li><li><span><a href="#helper" data-toc-modified-id="helper-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>helper</a></span></li><li><span><a href="#merge-lines" data-toc-modified-id="merge-lines-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>merge lines</a></span></li><li><span><a href="#houghtransform" data-toc-modified-id="houghtransform-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>houghtransform</a></span><ul class="toc-item"><li><span><a href="#find-close-lines" data-toc-modified-id="find-close-lines-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>find close lines</a></span></li><li><span><a href="#extrapolate-lines" data-toc-modified-id="extrapolate-lines-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>extrapolate lines</a></span></li><li><span><a href="#cut-lines" data-toc-modified-id="cut-lines-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>cut lines</a></span></li><li><span><a href="#show-lines" data-toc-modified-id="show-lines-4.4"><span class="toc-item-num">4.4&nbsp;&nbsp;</span>show lines</a></span></li><li><span><a href="#draw-lines" data-toc-modified-id="draw-lines-4.5"><span class="toc-item-num">4.5&nbsp;&nbsp;</span>draw lines</a></span></li></ul></li><li><span><a href="#start" data-toc-modified-id="start-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>start</a></span><ul class="toc-item"><li><span><a href="#threshold" data-toc-modified-id="threshold-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>threshold</a></span><ul class="toc-item"><li><span><a href="#sobel-operator" data-toc-modified-id="sobel-operator-5.1.1"><span class="toc-item-num">5.1.1&nbsp;&nbsp;</span>sobel operator</a></span></li><li><span><a href="#canny-no-parameter" data-toc-modified-id="canny-no-parameter-5.1.2"><span class="toc-item-num">5.1.2&nbsp;&nbsp;</span>canny no parameter</a></span></li><li><span><a href="#HSL" data-toc-modified-id="HSL-5.1.3"><span class="toc-item-num">5.1.3&nbsp;&nbsp;</span>HSL</a></span></li></ul></li><li><span><a href="#combine-filter-and-show-steps" data-toc-modified-id="combine-filter-and-show-steps-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>combine filter and show steps</a></span></li><li><span><a href="#k-means---image-segmentation" data-toc-modified-id="k-means---image-segmentation-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>k means - image segmentation</a></span></li><li><span><a href="#final" data-toc-modified-id="final-5.4"><span class="toc-item-num">5.4&nbsp;&nbsp;</span>final</a></span></li><li><span><a href="#evaluate-result" data-toc-modified-id="evaluate-result-5.5"><span class="toc-item-num">5.5&nbsp;&nbsp;</span>evaluate result</a></span></li><li><span><a href="#make-videos" data-toc-modified-id="make-videos-5.6"><span class="toc-item-num">5.6&nbsp;&nbsp;</span>make videos</a></span></li><li><span><a href="#evulation" data-toc-modified-id="evulation-5.7"><span class="toc-item-num">5.7&nbsp;&nbsp;</span>evulation</a></span></li><li><span><a href="#trial" data-toc-modified-id="trial-5.8"><span class="toc-item-num">5.8&nbsp;&nbsp;</span>trial</a></span></li><li><span><a href="#normal-houghtransform" data-toc-modified-id="normal-houghtransform-5.9"><span class="toc-item-num">5.9&nbsp;&nbsp;</span>normal houghtransform</a></span></li></ul></li></ul></div><section class="tex2jax_ignore mathjax_ignore" id="lane-detection">
-<h1>Lane detection<a class="headerlink" href="#lane-detection" title="Permalink to this headline">#</a></h1>
+<h1>Lane detection<a class="headerlink" href="#lane-detection" title="Link to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="import">
-<h1>import<a class="headerlink" href="#import" title="Permalink to this headline">#</a></h1>
+<h1>import<a class="headerlink" href="#import" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
@@ -1105,7 +764,7 @@ title="Print to PDF"
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="helper">
-<h1>helper<a class="headerlink" href="#helper" title="Permalink to this headline">#</a></h1>
+<h1>helper<a class="headerlink" href="#helper" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_one_img</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
@@ -1159,11 +818,11 @@ title="Print to PDF"
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="merge-lines">
-<h1>merge lines<a class="headerlink" href="#merge-lines" title="Permalink to this headline">#</a></h1>
+<h1>merge lines<a class="headerlink" href="#merge-lines" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge_lane_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">slope_similarity_threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">intercept_similarity_threshold</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">min_slope_threshold</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">max_slope_threshold</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Merges lane lines to output a single line per lane, using the slope and intercept as similarity measures.</span>
 <span class="sd">    Also, filters horizontal lane lines based on a minimum slope threshold.</span>
 
@@ -1211,9 +870,9 @@ title="Print to PDF"
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="houghtransform">
-<h1>houghtransform<a class="headerlink" href="#houghtransform" title="Permalink to this headline">#</a></h1>
+<h1>houghtransform<a class="headerlink" href="#houghtransform" title="Link to this heading">#</a></h1>
 <section id="find-close-lines">
-<h2>find close lines<a class="headerlink" href="#find-close-lines" title="Permalink to this headline">#</a></h2>
+<h2>find close lines<a class="headerlink" href="#find-close-lines" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_closest_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
@@ -1242,7 +901,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="extrapolate-lines">
-<h2>extrapolate lines<a class="headerlink" href="#extrapolate-lines" title="Permalink to this headline">#</a></h2>
+<h2>extrapolate lines<a class="headerlink" href="#extrapolate-lines" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extrapolate_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">):</span>
@@ -1289,11 +948,11 @@ title="Print to PDF"
 </div>
 </section>
 <section id="cut-lines">
-<h2>cut lines<a class="headerlink" href="#cut-lines" title="Permalink to this headline">#</a></h2>
+<h2>cut lines<a class="headerlink" href="#cut-lines" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line_y_intersection</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    get y intercept between inner most two lines</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -1360,7 +1019,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="show-lines">
-<h2>show lines<a class="headerlink" href="#show-lines" title="Permalink to this headline">#</a></h2>
+<h2>show lines<a class="headerlink" href="#show-lines" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">display_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">1280</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">720</span><span class="p">):</span>
@@ -1514,7 +1173,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="draw-lines">
-<h2>draw lines<a class="headerlink" href="#draw-lines" title="Permalink to this headline">#</a></h2>
+<h2>draw lines<a class="headerlink" href="#draw-lines" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_lines</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>   <span class="c1"># Draw the right and left lines on image</span>
@@ -1534,11 +1193,11 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="start">
-<h1>start<a class="headerlink" href="#start" title="Permalink to this headline">#</a></h1>
+<h1>start<a class="headerlink" href="#start" title="Link to this heading">#</a></h1>
 <section id="threshold">
-<h2>threshold<a class="headerlink" href="#threshold" title="Permalink to this headline">#</a></h2>
+<h2>threshold<a class="headerlink" href="#threshold" title="Link to this heading">#</a></h2>
 <section id="sobel-operator">
-<h3>sobel operator<a class="headerlink" href="#sobel-operator" title="Permalink to this headline">#</a></h3>
+<h3>sobel operator<a class="headerlink" href="#sobel-operator" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">abs_sobel_thresh</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">)):</span>
@@ -1572,7 +1231,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="canny-no-parameter">
-<h3>canny no parameter<a class="headerlink" href="#canny-no-parameter" title="Permalink to this headline">#</a></h3>
+<h3>canny no parameter<a class="headerlink" href="#canny-no-parameter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.pyimagesearch.com/2015/04/06/zero-parameter-automatic-canny-edge-detection-with-python-and-opencv/</span>
@@ -1608,7 +1267,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="hsl">
-<h3>HSL<a class="headerlink" href="#hsl" title="Permalink to this headline">#</a></h3>
+<h3>HSL<a class="headerlink" href="#hsl" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hls_select</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">sthresh</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span><span class="n">lthresh</span><span class="o">=</span><span class="p">()):</span>
@@ -1635,7 +1294,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="combine-filter-and-show-steps">
-<h2>combine filter and show steps<a class="headerlink" href="#combine-filter-and-show-steps" title="Permalink to this headline">#</a></h2>
+<h2>combine filter and show steps<a class="headerlink" href="#combine-filter-and-show-steps" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binary_pipeline</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
@@ -1670,7 +1329,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="k-means-image-segmentation">
-<h2>k means - image segmentation<a class="headerlink" href="#k-means-image-segmentation" title="Permalink to this headline">#</a></h2>
+<h2>k means - image segmentation<a class="headerlink" href="#k-means-image-segmentation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
@@ -1712,7 +1371,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="final">
-<h2>final<a class="headerlink" href="#final" title="Permalink to this headline">#</a></h2>
+<h2>final<a class="headerlink" href="#final" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">final_pipline</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">is_demo</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_line</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1758,7 +1417,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="evaluate-result">
-<h2>evaluate result<a class="headerlink" href="#evaluate-result" title="Permalink to this headline">#</a></h2>
+<h2>evaluate result<a class="headerlink" href="#evaluate-result" title="Link to this heading">#</a></h2>
 <p>Methods and evaluation</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Problem Definition 
 	
@@ -1817,32 +1476,32 @@ Pipeline
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>binary
 </pre></div>
 </div>
-<img alt="../../../_images/9517-lane_detection_42_1.png" src="../../../_images/9517-lane_detection_42_1.png" />
+<img alt="../../../_images/b773b86eaa20480ac83b227457abfefeb3bbbd447fcd8b0120db4ab91a95be69.png" src="../../../_images/b773b86eaa20480ac83b227457abfefeb3bbbd447fcd8b0120db4ab91a95be69.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>medianblur mask
 </pre></div>
 </div>
-<img alt="../../../_images/9517-lane_detection_42_3.png" src="../../../_images/9517-lane_detection_42_3.png" />
+<img alt="../../../_images/9ed84c175cb96dcabcc1a8ddadd3d4c0e2496e32f842fc522f587ab263232336.png" src="../../../_images/9ed84c175cb96dcabcc1a8ddadd3d4c0e2496e32f842fc522f587ab263232336.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>binary after masked
 </pre></div>
 </div>
-<img alt="../../../_images/9517-lane_detection_42_5.png" src="../../../_images/9517-lane_detection_42_5.png" />
+<img alt="../../../_images/a0f9db4fccf08974e8b6736c583d717bcadf3c6a93629ee9b3a9633b20e9b0b9.png" src="../../../_images/a0f9db4fccf08974e8b6736c583d717bcadf3c6a93629ee9b3a9633b20e9b0b9.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hough transform
 </pre></div>
 </div>
-<img alt="../../../_images/9517-lane_detection_42_7.png" src="../../../_images/9517-lane_detection_42_7.png" />
+<img alt="../../../_images/2a87c0e251ab3e99a4b53d42b8f450e1acadffac4876843f15dd2028cc9f4dfc.png" src="../../../_images/2a87c0e251ab3e99a4b53d42b8f450e1acadffac4876843f15dd2028cc9f4dfc.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after merged
 </pre></div>
 </div>
-<img alt="../../../_images/9517-lane_detection_42_9.png" src="../../../_images/9517-lane_detection_42_9.png" />
+<img alt="../../../_images/69cea489aa63b20117c5d1d3606a6da289946975cdf163e053947d76067a0aec.png" src="../../../_images/69cea489aa63b20117c5d1d3606a6da289946975cdf163e053947d76067a0aec.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after extrapolate
 </pre></div>
 </div>
-<img alt="../../../_images/9517-lane_detection_42_11.png" src="../../../_images/9517-lane_detection_42_11.png" />
+<img alt="../../../_images/9a1884e91a1edf4f4e6497c7ab54571835ca1592919fe8e53cd9a5336fff6bfe.png" src="../../../_images/9a1884e91a1edf4f4e6497c7ab54571835ca1592919fe8e53cd9a5336fff6bfe.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>afer close line
 </pre></div>
 </div>
-<img alt="../../../_images/9517-lane_detection_42_13.png" src="../../../_images/9517-lane_detection_42_13.png" />
-<img alt="../../../_images/9517-lane_detection_42_14.png" src="../../../_images/9517-lane_detection_42_14.png" />
+<img alt="../../../_images/4ff056f5dc7006e34689f24e24a527fb2e27fc51c9ca4952bfc99ae42ca22a35.png" src="../../../_images/4ff056f5dc7006e34689f24e24a527fb2e27fc51c9ca4952bfc99ae42ca22a35.png" />
+<img alt="../../../_images/c55ca90648648013ad87e8ea10b833223cc837e9b43a581a8f3a0c9df9c277fe.png" src="../../../_images/c55ca90648648013ad87e8ea10b833223cc837e9b43a581a8f3a0c9df9c277fe.png" />
 </div>
 </div>
 <p>discussion of performance</p>
@@ -1886,18 +1545,18 @@ Pipeline
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/9517-lane_detection_44_0.png" src="../../../_images/9517-lane_detection_44_0.png" />
-<img alt="../../../_images/9517-lane_detection_44_1.png" src="../../../_images/9517-lane_detection_44_1.png" />
-<img alt="../../../_images/9517-lane_detection_44_2.png" src="../../../_images/9517-lane_detection_44_2.png" />
-<img alt="../../../_images/9517-lane_detection_44_3.png" src="../../../_images/9517-lane_detection_44_3.png" />
-<img alt="../../../_images/9517-lane_detection_44_4.png" src="../../../_images/9517-lane_detection_44_4.png" />
-<img alt="../../../_images/9517-lane_detection_44_5.png" src="../../../_images/9517-lane_detection_44_5.png" />
-<img alt="../../../_images/9517-lane_detection_44_6.png" src="../../../_images/9517-lane_detection_44_6.png" />
+<img alt="../../../_images/eb58e187f8abac8f19dfacdbfa236833c6ef915e38e83926404fccdc1173ad3e.png" src="../../../_images/eb58e187f8abac8f19dfacdbfa236833c6ef915e38e83926404fccdc1173ad3e.png" />
+<img alt="../../../_images/db46bdca1ec78916b3b8b058203ba9543a8d9479157eb9bc6ddf45ff2fa0b465.png" src="../../../_images/db46bdca1ec78916b3b8b058203ba9543a8d9479157eb9bc6ddf45ff2fa0b465.png" />
+<img alt="../../../_images/f5162e9951d1521b61f3b3b7fe17d3b8108c0ec1e781bb60848bfee00511e662.png" src="../../../_images/f5162e9951d1521b61f3b3b7fe17d3b8108c0ec1e781bb60848bfee00511e662.png" />
+<img alt="../../../_images/d945738cfe30aab411bc0ea3595a9c0eb79758799eb5e02710d34ba52c75a06b.png" src="../../../_images/d945738cfe30aab411bc0ea3595a9c0eb79758799eb5e02710d34ba52c75a06b.png" />
+<img alt="../../../_images/cedf20239fd64d32dc0f194c2e9eb746f9efbf6f25ebae0bba9a68575d09b244.png" src="../../../_images/cedf20239fd64d32dc0f194c2e9eb746f9efbf6f25ebae0bba9a68575d09b244.png" />
+<img alt="../../../_images/84eaedae4cf35f11c41457b60eb09162263df8999760ea598dd0055e0f91460d.png" src="../../../_images/84eaedae4cf35f11c41457b60eb09162263df8999760ea598dd0055e0f91460d.png" />
+<img alt="../../../_images/ee7471906f90de9e43428147e98f03f09ee0036c438e9bf179e660aade2f88be.png" src="../../../_images/ee7471906f90de9e43428147e98f03f09ee0036c438e9bf179e660aade2f88be.png" />
 </div>
 </div>
 </section>
 <section id="evulation">
-<h2>evulation<a class="headerlink" href="#evulation" title="Permalink to this headline">#</a></h2>
+<h2>evulation<a class="headerlink" href="#evulation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">output_json</span><span class="p">(</span><span class="n">output_lanes</span><span class="p">):</span>
@@ -2036,7 +1695,7 @@ Pipeline
 </div>
 </section>
 <section id="make-videos">
-<h2>make videos<a class="headerlink" href="#make-videos" title="Permalink to this headline">#</a></h2>
+<h2>make videos<a class="headerlink" href="#make-videos" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import os</span>
@@ -2066,7 +1725,7 @@ Pipeline
 </div>
 </section>
 <section id="trial">
-<h2>trial<a class="headerlink" href="#trial" title="Permalink to this headline">#</a></h2>
+<h2>trial<a class="headerlink" href="#trial" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># gray = cv2.cvtColor(km_res, cv.COLOR_RGB2GRAY)</span>
@@ -2120,58 +1779,139 @@ Pipeline
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./ds-courses/unsw/9517"
+            name: "python3",
+            path: "./ds-courses\unsw\9517"
         },
         predefinedOutput: true
     }
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="9517-a1/report.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Report on Basic image processing, etc</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="9517-a1/report.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Report on Basic image processing, etc</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="9517-vehicle-detection.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="9517-vehicle-detection.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Vehicle detection (by teammate)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lane detection</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import">import</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#helper">helper</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-lines">merge lines</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#houghtransform">houghtransform</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-close-lines">find close lines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrapolate-lines">extrapolate lines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cut-lines">cut lines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-lines">show lines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-lines">draw lines</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#start">start</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold">threshold</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sobel-operator">sobel operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canny-no-parameter">canny no parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hsl">HSL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-filter-and-show-steps">combine filter and show steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-image-segmentation">k means - image segmentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final">final</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-result">evaluate result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evulation">evulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-videos">make videos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trial">trial</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Jerry<br/>
-  
-      &copy; Copyright 2021.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Jerry
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

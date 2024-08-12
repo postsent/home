@@ -1,1069 +1,733 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>In Game Toxicity seq2seq classification &#8212; My Jupter Notebook on data science.</title>
-    
+    <title>In Game Toxicity seq2seq classification &#8212; My study notebook on AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=c1a6f12f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=97881d71"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ds-courses/usyd/5046/a2';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Binary text classification" href="a1.html" />
     <link rel="prev" title="Report - In-game Toxicity Detection" href="a2/a2.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">My Jupter Notebook on data science.</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  About
- </span>
-</p>
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My study notebook on AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://postsent.github.io/categories/">
-   Back to Blog
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../reference.html">
-   Acknowledgement
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://postsent.github.io/home/">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference.html">Acknowledgement</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Data Science Related Courses
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Science Related Courses</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../unsw/9417/9417-intro.html">
-   Machine Learning (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9417/9417-basic.html">
-     Basic with examples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9417/9417-project.html">
-     Project - Classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9417/9417-report/report.html">
-     Project - report
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../unsw/9418/9418-intro.html">
-   PGM (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9418/9418-EDA.html">
-     EDA on Times Series Dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9418/9418-project.html">
-     Time series project code
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9418/9418-project/report.html">
-     Time series report
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../unsw/9517/9517-intro.html">
-   Computer Vision (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9517/9517-a1-code.html">
-     Basic image processing, thresholding, count cells
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9517/9517-a1/report.html">
-     Report on Basic image processing, etc
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9517/9517-lane_detection.html">
-     Lane detection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9517/9517-vehicle-detection.html">
-     Vehicle detection (by teammate)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../unsw/9444/9444-intro.html">
-   Deep Learning (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9444/9444-project.html">
-     Image classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/9444/assignment1/assignment1.html">
-     Characters, Spirals and Hidden Unit Dynamics
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../unsw/3900/3900-intro.html">
-   Capstone (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/3900/project/3900-project.html">
-     <strong>
-      Chatbot
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../unsw/3431/3431-intro.html">
-   ROS &amp; CV (UNSW)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../unsw/3431/project/project.html">
-     Mini self-driving
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="5046-intro.html">
-   NLP (USYD)
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="a2/a2.html">
-     Report - In-game Toxicity Detection
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     In Game Toxicity seq2seq classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="a1.html">
-     Binary text classification
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../5349/5349-intro.html">
-   Cloud Computing (USYD)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5349/a2/a2.html">
-     Data Preprocessing and Performance Tuning with Spark
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5349/a2.html">
-     Data Preprocessing and Performance Tuning with Spark
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5349/a1.html">
-     Text Analysis with Spark RDD API
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5349/a1-report.html">
-     Report – Text Analysis with Spark RDD API
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../5338/5338-intro.html">
-   NoSQL&amp;Graph Data Model(USYD)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5338/a1.html">
-     NoSQL basic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5338/a2.html">
-     NoSQL Aggregation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5338/a2-report/report.html">
-     <strong>
-      Performance Observation Task
-     </strong>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5338/a3.html">
-     Neo4j Basic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5338/a4.html">
-     Neo4j Query
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../5048/5048-intro.html">
-   Visual Analytics Tableau (USYD)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5048/individual.html">
-     Individual Report
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5048/group.html">
-     Group Report (My part)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../5328/5328-intro.html">
-   Advance ML
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5328/a1.html">
-     NMF
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5328/a2.html">
-     Label Noise Learning
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsw/9417/9417-intro.html">Machine Learning (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9417/9417-basic.html">Basic with examples</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9417/9417-project.html">Project - Classification</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9417/9417-report/report.html">Project - report</a></li>
+
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsw/9418/9418-intro.html">PGM (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9418/9418-EDA.html">EDA on Times Series Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9418/9418-project.html">Time series project code</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9418/9418-project/report.html">Time series report</a></li>
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsw/9517/9517-intro.html">Computer Vision (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9517/9517-a1-code.html">Basic image processing, thresholding, count cells</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9517/9517-a1/report.html">Report on Basic image processing, etc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9517/9517-lane_detection.html">Lane detection</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9517/9517-vehicle-detection.html">Vehicle detection (by teammate)</a></li>
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsw/9444/9444-intro.html">Deep Learning (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9444/9444-project.html">Image classification</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/9444/assignment1/assignment1.html">Characters, Spirals and Hidden Unit Dynamics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsw/3900/3900-intro.html">Capstone (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/3900/project/3900-project.html"><strong>Chatbot</strong></a></li>
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsw/3431/3431-intro.html">ROS &amp; CV (UNSW)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsw/3431/project/project.html">Mini self-driving</a></li>
+
+
+
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="5046-intro.html">NLP (USYD)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="a2/a2.html">Report - In-game Toxicity Detection</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">In Game Toxicity seq2seq classification</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="a1.html">Binary text classification</a></li>
+
+
+
+
+
+
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../5349/5349-intro.html">Cloud Computing (USYD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../5349/a2/a2.html">Data Preprocessing and Performance Tuning with Spark</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../5349/a2.html">Data Preprocessing and Performance Tuning with Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5349/a1.html">Text Analysis with Spark RDD API</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../5349/a1-report.html">Report – Text Analysis with Spark RDD API</a></li>
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../5338/5338-intro.html">NoSQL &amp; Neo4j (USYD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../5338/a1.html">NoSQL basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5338/a2.html">NoSQL Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5338/a2-report/report.html"><strong>Performance Observation Task</strong></a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../5338/a3.html">Neo4j Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5338/a4.html">Neo4j Query</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../5048/5048-intro.html">Visual Analytics Tableau (USYD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../5048/individual.html">Individual Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5048/group.html">Group Report (My part)</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../5328/5328-intro.html">Advance ML (USYD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../5328/a1.html">NMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5328/a2.html">Label Noise Learning</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Machine Learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../ml/regression/regression.html">
-   Regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../ml/regression/p1-crypto-prediction.html">
-     Crypto Prediction
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ml/classification/classification.html">
-   Classification (placeholder)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ml/time-series/time-series.html">
-   Time Series (placeholder)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../ml/ml.html">
-   General
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ml/regression/regression.html">Regression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ml/regression/p1-crypto-prediction.html">Crypto Prediction</a></li>
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml/classification/classification.html">Classification (placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml/time-series/time-series.html">Time Series (placeholder)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ml/ml.html">General</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Deep Learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../dl/dl.html">
-   General
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dl/dl.html">General</a></li>
+
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  NLP
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NLP</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../nlp/nlp.html">
-   placeholder
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nlp/nlp.html">placeholder</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Computer Vision
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer Vision</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../cv/cv.html">
-   Placeholder
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cv/cv.html">Placeholder</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Misc
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Misc</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../misc/math.html">
-   Math
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../misc/misc.html">
-   Misc
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../misc/term.html">
-   Terminology
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../misc/todo.html">
-   TODO
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/math.html">Math</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/misc.html">Misc</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/term.html">Terminology</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/todo.html">TODO</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Coding Basic
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Coding Basic</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../python/basic-intro.html">
-   Numpy, Pandas, Python
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../python/numpy.html">
-     Numpy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../python/pandas.html">
-     Pandas
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../python/leetcode.html">
-     Leetcode
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../python/basic-intro.html">Numpy, Pandas, Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/numpy.html">Numpy</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../python/pandas.html">Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../python/leetcode.html">Leetcode</a></li>
+
+
+
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Side Projects
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Side Projects</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../side-project/web-scrapter.html">
-   Course Enrolment Scrapter
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../side-project/web-scrapter.html">Course Enrolment Scrapter</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Unfinished
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unfinished</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nlp-book.html">
-   NLP Book
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/intro.html">
-     Intro
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nn.html">
-     Feed-Forward Networks for NLP
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/prac-ch3.html">
-     Chapter 3
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../unfinished/jigsaw-intro.html">
-   Jigsaw
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/README.html">
-     Folder Structure
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">
-     Simple
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm.html">
-     Upgrade RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper.html">
-     Common
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../unfinished/nlp-reading.html">
-   Book Reading
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nlp-book.html">NLP Book</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/intro.html">Intro</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/nn.html">Feed-Forward Networks for NLP</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/pytorch-nlp-bk/prac-ch3.html">Chapter 3</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../unfinished/jigsaw-intro.html">Jigsaw</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/README.html">Folder Structure</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn.html">Simple</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm.html">Upgrade RNN</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper.html">Common</a></li>
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unfinished/nlp-reading.html">Book Reading</a></li>
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/postsent/nb/main?urlpath=tree/docs/ds-courses/usyd/5046/a2.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/postsent/home/main?urlpath=tree/docs/ds-courses/usyd/5046/a2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+<a href="https://github.com/postsent/home" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/postsent/nb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../../_sources/ds-courses/usyd/5046/a2.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/ds-courses/usyd/5046/a2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
-</label>
+</button>
 
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   In Game Toxicity seq2seq classification
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-data">
-   Load data
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#batch-train">
-   batch train
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-program">
-   Test Program
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#funcs">
-     funcs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#run-all">
-     run all
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#additional-tests">
-     additional tests
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#oop">
-   OOP
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-file">
-     Set up file
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#import">
-       Import
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#google-drive-connection">
-       Google drive connection
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#helper-file">
-     Helper file
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preprocessing-file">
-     Preprocessing file
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#tokenisation-demo">
-       tokenisation demo
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#embedding">
-     Embedding
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-file">
-     Model file
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#attn">
-       attn
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#model">
-       model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eval-f1">
-     eval f1
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pipeline-not-batched">
-     pipeline - not batched
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>In Game Toxicity seq2seq classification</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   In Game Toxicity seq2seq classification
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-data">
-   Load data
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#batch-train">
-   batch train
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-program">
-   Test Program
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#funcs">
-     funcs
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#run-all">
-     run all
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#additional-tests">
-     additional tests
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#oop">
-   OOP
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-file">
-     Set up file
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#import">
-       Import
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#google-drive-connection">
-       Google drive connection
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#helper-file">
-     Helper file
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preprocessing-file">
-     Preprocessing file
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#tokenisation-demo">
-       tokenisation demo
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#embedding">
-     Embedding
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-file">
-     Model file
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#attn">
-       attn
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#model">
-       model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eval-f1">
-     eval f1
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pipeline-not-batched">
-     pipeline - not batched
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>In Game Toxicity seq2seq classification</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">In Game Toxicity seq2seq classification</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-train">batch train</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-program">Test Program</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcs">funcs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-all">run all</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-tests">additional tests</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oop">OOP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-file">Set up file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-drive-connection">Google drive connection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-file">Helper file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-file">Preprocessing file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenisation-demo">tokenisation demo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding">Embedding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-file">Model file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attn">attn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eval-f1">eval f1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-not-batched">pipeline - not batched</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="in-game-toxicity-seq2seq-classification">
-<h1>In Game Toxicity seq2seq classification<a class="headerlink" href="#in-game-toxicity-seq2seq-classification" title="Permalink to this headline">#</a></h1>
+<h1>In Game Toxicity seq2seq classification<a class="headerlink" href="#in-game-toxicity-seq2seq-classification" title="Link to this heading">#</a></h1>
 <p>A2</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="load-data">
-<h1>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h1>
+<h1>Load data<a class="headerlink" href="#load-data" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/train.csv&quot;</span><span class="p">)</span>
@@ -1167,14 +831,14 @@ LABEL: O O SEPA P O O O / SENTENCE: just end [SEPA] i wan nex game
       <button class="colab-df-convert" onclick="convertToInteractive('df-e6d1a047-a232-41c4-9ea5-e4cab9f70617')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
-
+        
   <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
        width="24px">
     <path d="M0 0h24v24H0V0z" fill="none"/>
     <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
   </svg>
       </button>
-
+      
   <style>
     .colab-df-container {
       display:flex;
@@ -1239,7 +903,7 @@ LABEL: O O SEPA P O O O / SENTENCE: just end [SEPA] i wan nex game
       </script>
     </div>
   </div>
-</div></div>
+  </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1404,7 +1068,7 @@ LABEL: O O SEPA P O O O / SENTENCE: just end [SEPA] i wan nex game
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="batch-train">
-<h1>batch train<a class="headerlink" href="#batch-train" title="Permalink to this headline">#</a></h1>
+<h1>batch train<a class="headerlink" href="#batch-train" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_torch</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1447,9 +1111,9 @@ LABEL: O O SEPA P O O O / SENTENCE: just end [SEPA] i wan nex game
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="test-program">
-<h1>Test Program<a class="headerlink" href="#test-program" title="Permalink to this headline">#</a></h1>
+<h1>Test Program<a class="headerlink" href="#test-program" title="Link to this heading">#</a></h1>
 <section id="funcs">
-<h2>funcs<a class="headerlink" href="#funcs" title="Permalink to this headline">#</a></h2>
+<h2>funcs<a class="headerlink" href="#funcs" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
@@ -1652,7 +1316,7 @@ LABEL: O O SEPA P O O O / SENTENCE: just end [SEPA] i wan nex game
 </div>
 </section>
 <section id="run-all">
-<h2>run all<a class="headerlink" href="#run-all" title="Permalink to this headline">#</a></h2>
+<h2>run all<a class="headerlink" href="#run-all" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_performance</span><span class="p">()</span>
@@ -1876,7 +1540,7 @@ weighted avg       0.98      0.97      0.97     29738
 </div>
 </section>
 <section id="additional-tests">
-<h2>additional tests<a class="headerlink" href="#additional-tests" title="Permalink to this headline">#</a></h2>
+<h2>additional tests<a class="headerlink" href="#additional-tests" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Note: Typing mistake. The log text should print 3 embeddings.</p></li>
 </ul>
@@ -2015,80 +1679,80 @@ weighted avg       0.98      0.98      0.98     29717
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="oop">
-<h1>OOP<a class="headerlink" href="#oop" title="Permalink to this headline">#</a></h1>
+<h1>OOP<a class="headerlink" href="#oop" title="Link to this heading">#</a></h1>
 <section id="set-up-file">
-<h2>Set up file<a class="headerlink" href="#set-up-file" title="Permalink to this headline">#</a></h2>
+<h2>Set up file<a class="headerlink" href="#set-up-file" title="Link to this heading">#</a></h2>
 <section id="import">
-<h3>Import<a class="headerlink" href="#import" title="Permalink to this headline">#</a></h3>
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>############################################ general ###########################################
-import shutil # move files
-import os
-from typing import *
-import warnings
-warnings.filterwarnings(&quot;ignore&quot;, category=DeprecationWarning) 
-import string
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">############################################ general ###########################################</span>
+<span class="kn">import</span> <span class="nn">shutil</span> <span class="c1"># move files</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span> 
+<span class="kn">import</span> <span class="nn">string</span>
 
-import time
-import math
-import random
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
 
-############################################ data manipulation ############################################
-import pandas as pd
-import numpy as np
+<span class="c1">############################################ data manipulation ############################################</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-############################################ pretrain  ############################################
-# TODO: Glove 
-from gensim.models import Word2Vec 
-from gensim.models import FastText
-import gensim.downloader as api
+<span class="c1">############################################ pretrain  ############################################</span>
+<span class="c1"># TODO: Glove </span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span> 
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">FastText</span>
+<span class="kn">import</span> <span class="nn">gensim.downloader</span> <span class="k">as</span> <span class="nn">api</span>
 
-############################################ preprocessing ############################################
-import nltk
-nltk.download(&#39;punkt&#39;, quiet=True)
-from nltk.tokenize import word_tokenize
+<span class="c1">############################################ preprocessing ############################################</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
 
-import re
-############################################ Spacy ############################################
-# !pip install -U -q pip setuptools wheel
-!pip -q install -U  spacy
-!python -q -m spacy download en_core_web_sm  | grep -v &#39;already satisfied&#39; # en_core_web_trf
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="c1">############################################ Spacy ############################################</span>
+<span class="c1"># !pip install -U -q pip setuptools wheel</span>
+<span class="err">!</span><span class="n">pip</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span>  <span class="n">spacy</span>
+<span class="err">!</span><span class="n">python</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">m</span> <span class="n">spacy</span> <span class="n">download</span> <span class="n">en_core_web_sm</span>  <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="s1">&#39;already satisfied&#39;</span> <span class="c1"># en_core_web_trf</span>
 
-import spacy
-from spacy.tokenizer import Tokenizer
-############################################ pytorch ############################################
-import torch
-import torch.nn as nn
-from torch import optim
-import torch.nn.functional as F
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">from</span> <span class="nn">spacy.tokenizer</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+<span class="c1">############################################ pytorch ############################################</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">optim</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 
-device = torch.device(&quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 
-############################################ sklearn ############################################
-from sklearn.metrics import f1_score
+<span class="c1">############################################ sklearn ############################################</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
 
-############################################ clean up pwd ############################################
-!rm -r /content/sample_data # remove default data folder
+<span class="c1">############################################ clean up pwd ############################################</span>
+<span class="err">!</span><span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">sample_data</span> <span class="c1"># remove default data folder</span>
 
-############################################ set seed ############################################
+<span class="c1">############################################ set seed ############################################</span>
 
-CONFIG = {
-    &#39;seed&#39;: 23
-}
+<span class="n">CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">23</span>
+<span class="p">}</span>
 
-def set_seed(seed=42):
-    &#39;&#39;&#39;Sets seed so result unchanged - reproducibility&#39;&#39;&#39;
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    # When running on the CuDNN backend, two further options must be set
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    # Set a fixed value for the hash seed
-    os.environ[&#39;PYTHONHASHSEED&#39;] = str(seed)
+<span class="k">def</span> <span class="nf">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Sets seed so result unchanged - reproducibility&#39;&#39;&#39;</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="c1"># When running on the CuDNN backend, two further options must be set</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1"># Set a fixed value for the hash seed</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PYTHONHASHSEED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     
-set_seed(CONFIG[&#39;seed&#39;])
+<span class="n">set_seed</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2119,30 +1783,30 @@ You can now load the package via spacy.load(&#39;en_core_web_sm&#39;)
 </div>
 </section>
 <section id="google-drive-connection">
-<h3>Google drive connection<a class="headerlink" href="#google-drive-connection" title="Permalink to this headline">#</a></h3>
+<h3>Google drive connection<a class="headerlink" href="#google-drive-connection" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install -U -q PyDrive
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
-from google.colab import auth
-from oauth2client.client import GoogleCredentials
-import numpy as np
-# Authenticate
-gdrive = None
-def authenticate():
-    global gdrive
-    auth.authenticate_user()
-    gauth = GoogleAuth()
-    gauth.credentials = GoogleCredentials.get_application_default()
-    gdrive = GoogleDrive(gauth)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="o">-</span><span class="n">q</span> <span class="n">PyDrive</span>
+<span class="kn">from</span> <span class="nn">pydrive.auth</span> <span class="kn">import</span> <span class="n">GoogleAuth</span>
+<span class="kn">from</span> <span class="nn">pydrive.drive</span> <span class="kn">import</span> <span class="n">GoogleDrive</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">auth</span>
+<span class="kn">from</span> <span class="nn">oauth2client.client</span> <span class="kn">import</span> <span class="n">GoogleCredentials</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># Authenticate</span>
+<span class="n">gdrive</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">def</span> <span class="nf">authenticate</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">gdrive</span>
+    <span class="n">auth</span><span class="o">.</span><span class="n">authenticate_user</span><span class="p">()</span>
+    <span class="n">gauth</span> <span class="o">=</span> <span class="n">GoogleAuth</span><span class="p">()</span>
+    <span class="n">gauth</span><span class="o">.</span><span class="n">credentials</span> <span class="o">=</span> <span class="n">GoogleCredentials</span><span class="o">.</span><span class="n">get_application_default</span><span class="p">()</span>
+    <span class="n">gdrive</span> <span class="o">=</span> <span class="n">GoogleDrive</span><span class="p">(</span><span class="n">gauth</span><span class="p">)</span>
 
-#Download files
-def downloadFiles(fileIds):
-    authenticate()
-    for fileId in fileIds:    
-        downloaded = gdrive.CreateFile({&quot;id&quot;: fileId[1]})
-        downloaded.GetContentFile(fileId[0])
+<span class="c1">#Download files</span>
+<span class="k">def</span> <span class="nf">downloadFiles</span><span class="p">(</span><span class="n">fileIds</span><span class="p">):</span>
+    <span class="n">authenticate</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">fileId</span> <span class="ow">in</span> <span class="n">fileIds</span><span class="p">:</span>    
+        <span class="n">downloaded</span> <span class="o">=</span> <span class="n">gdrive</span><span class="o">.</span><span class="n">CreateFile</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">fileId</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
+        <span class="n">downloaded</span><span class="o">.</span><span class="n">GetContentFile</span><span class="p">(</span><span class="n">fileId</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2150,7 +1814,7 @@ def downloadFiles(fileIds):
 </section>
 </section>
 <section id="helper-file">
-<h2>Helper file<a class="headerlink" href="#helper-file" title="Permalink to this headline">#</a></h2>
+<h2>Helper file<a class="headerlink" href="#helper-file" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Helper</span><span class="p">:</span>
@@ -2205,7 +1869,7 @@ def downloadFiles(fileIds):
             <span class="bp">self</span><span class="o">.</span><span class="n">load_one_gdrive_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">f_link</span><span class="p">)</span>
                                    
     <span class="k">def</span> <span class="nf">load_one_gdrive_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">gdrive_link</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Download file if not existing&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download file if not existing&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">_</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
@@ -2213,7 +1877,7 @@ def downloadFiles(fileIds):
             <span class="n">_</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">move_files_in_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder_dict</span><span class="p">:</span><span class="nb">dict</span><span class="p">,</span> <span class="n">folder_name</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Move files from pwd to a dedicated folder&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Move files from pwd to a dedicated folder&quot;&quot;&quot;</span>
         
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder_name</span><span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">folder_name</span><span class="p">)</span>
@@ -2222,7 +1886,7 @@ def downloadFiles(fileIds):
             <span class="n">fname</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">f</span>
             <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pwd</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folder_name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="c1"># Note: Due to time contraints, this is the third worst code design I ever coded.</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    from google.colab import files</span>
 <span class="sd">    files.download(&#39;pos_features.npy&#39;) </span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2243,7 +1907,7 @@ def downloadFiles(fileIds):
 </div>
 </section>
 <section id="preprocessing-file">
-<h2>Preprocessing file<a class="headerlink" href="#preprocessing-file" title="Permalink to this headline">#</a></h2>
+<h2>Preprocessing file<a class="headerlink" href="#preprocessing-file" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Preprocessing</span><span class="p">:</span>
@@ -2278,7 +1942,7 @@ def downloadFiles(fileIds):
     <span class="c1">########################### encode str to index ###########################</span>
 
     <span class="k">def</span> <span class="nf">get_word_to_ix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Xs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;set up a vocab to index dictionary&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;set up a vocab to index dictionary&quot;&quot;&quot;</span>
 
         <span class="n">word_to_ix</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">PAD</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
         <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">Xs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">,</span> <span class="s1">&#39;X_train + X_val + X_test&#39;</span>
@@ -2306,7 +1970,7 @@ def downloadFiles(fileIds):
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ix_to_tag</span>
 
     <span class="k">def</span> <span class="nf">encode_to_index_and_pad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sent_tokenised_list</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="mi">72</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; construct token index lists for input, output and target &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; construct token index lists for input, output and target &quot;&quot;&quot;</span>
         <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1"># TODO: decide whether to use tge largest or manully set one</span>
         
@@ -2319,7 +1983,7 @@ def downloadFiles(fileIds):
             <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">res</span>
     <span class="k">def</span> <span class="nf">encode_to_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token_list</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; construct token index lists for input, output and target &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; construct token index lists for input, output and target &quot;&quot;&quot;</span>
         <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">token_list</span><span class="p">:</span>
             <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">dictionary</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tok</span><span class="p">])</span>
@@ -2339,9 +2003,9 @@ def downloadFiles(fileIds):
 </div>
 </div>
 </div>
-<p>![image.png](data:image/png;base64,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K5Gbq5bvkS1r1dQZ15NZdhGZ6xZ/V1yMz5HvEdW+ts1dcOmmSr5HVDduaS7ldTeZ15FxDN9SvVRl5JjIHFX3SRBZnAl9YUREJGF+SUSNA/M6qpjJI+kiznO6K9W+YNci7c/T6YWwc3DU3iayhBaOGqnyX4T4AqV8hqh2tXMpgr0CyC7U4Fo+052tE+XXn0liuivLLqLq0tf/otPVcHBw0N4mqm0i3UWlqeHqyDRHdUOf1x2T0p0z0x1VwKQgXVFREQoLOUWMal96ejqysrLg6uoKHx8f+SxRzeXl5SE1NRX+/v7yGaLapVKpkJKSAjs7O7Ro0UI+S7YqMTERHh4ecHZ2ls8QkalEXinyTHENeXp6ymeJapeoF4qgsLu7u3yGqHYlJSVp2yQinxP5HZExnO5KRERERERERERkZQzSERERERERERERWRmDdERERERERERERFbGIB0REREREREREZGVMUhHRERERERERERkZQzSERERERERERERWRmDdERERERERERERFbGIB0REREREREREZGVMUhHRERERERERERkZQzSERERERERERERWRmDdERERERERERERFbGIB0REREREREREZGVMUhHRERERERERERkZQzSERERERERERERWRmDdERERERERERERFbGIB0REREREREREZGVMUhHRERERERERERkZQqNRL5doaKiIhQWFsr3iGpPeno6srKy4OrqCh8fH/ksUc3l5eUhNTUV/v7+8hnL0WejJmSnjZadXePrE1KpVEhJSdH+21u0aCGftRyR3hpqmlMoFNrDliQmJsLDwwPOzs7yGctpyN91bdOnI1tLT42NyCtFnimuIU9PT/msZfD6qVpjLKMFUS90cHCAu7u7fMZyGku6Yx5cPUlJSdo2icjnRH5nSSJmI9Icv4uKNZS8jkE6qlcYpKPaUltBOpGFqtVq+R5VRFQYlEqlfK9xqK0gnSiTxdGQifQg/i62VJGsrSCdyF8aQ0OvJkQ60qcpaphqK0jH68d04vppbNdQbQTpRHrTB0sam8aYhqqrtoJ0jNWYTrRH6nv9k1cREZGZRCWMATrTMJhpGbYQoBP06YGN58rxb2Qa8TeylWuDLEc0Wnn9mI51GssQf8fGmu4a87/dmnjdVk9DqFsxSEdEZCZWRKpH/L3YiDaf+PvZWppjeqgYGzvVx/REekwL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4URO87CuYL76XF+o8yCdJRgG2ybdLp80gbmvo7pTm0G66jAM0m34ZESlGzwYqizYRtbFIF39wCCd+Ww1zTFIZ1xjr3hnHF+LGQt3I9d7EN5eZlrPvcAgXcPEIF39wSCd+ZjudBikqxiDdPVHfa4vNI4cmIiIiIjqJTFrYuvHJWvWTHlhOp5auBtZyiBMmmt6gI6IiIiooWOQjoiIiIisKB/5ySVr1iTluqBj7xF4+8NZGFzzQahEREREDQaDdERERERkNWIB/Yff+hzr/6c7IlYuxHsvDkKXpvITiIiIiBoJBumIiIiIyCZwPToSuEaT+XgNERFZF4N0RERmYCXWPPy7EZmG1wqR+Xj9EFFjwLzONjXI3V3JdtWX3V3J9lh6d1eBOypVX2PaedHSu7sKtpbmbGkXQUvv7iq+Z1vczbc2NaZdKW2NpXd35fVjHlE+N5Yd2AVL7+7KdMd8uCqW3t2Vac589XkXYl5BRERmakwBJ0sQlTb+vWrGlhpPIi2wIl8x/n2qR/y9mL+QnkgLjSnYZAnMc2qusf8NmYbqHv/m5qnv5QNH0lG9wpF0VFtqYySdILJQkUeKn6KgJONEBaKx/X1qYySdnj7NNVS2WKm09Eg6PfE963vJmceUJ/4+Ii2xkdKwWXoknZ6+jKaKNeZryNIj6fQaU7oT/1ZRNtliuV4bLD2STk+f5vTfB5XXkPI6BumoXmGQjmpLbQXpiCpSm0E6qn9qK0hH1BjUVpCOqDK1FaQjqkhtBenItjDcTUREREREREREZGUM0hEREREREREREVkZg3RERERERERERERWxiAdERERERERERGRlTFIR0REREREREREZGUM0hEREREREREREVkZg3RERERERERERERWxiAdERERERERERGRlTFIR0REREREREREZGUM0hEREREREREREVkZg3RERERERERERERWxiAdERERERERERGRlTFIR0REREREREREZGUM0hEREREREREREVkZg3RERERERERERERWptBI5NsVKioq0h5EtS0hIQEiSSoUCjRr1kw+S1RzWVlZyMnJYbqiOpOWloa8vDzmZ42EKL8cHR3h7e0tnyEiU+nrf0qlEr6+vvJZotol0p1Ic02bNpXPENUufV5nb2/PdEcVMilIR1RXkpOTkZGRAXd3d/j5+clniWouNzcXiYmJCAgIkM8Q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)</p>
+<p><img alt="image.png" src="data:image/png;base64,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K5Gbq5bvkS1r1dQZ15NZdhGZ6xZ/V1yMz5HvEdW+ts1dcOmmSr5HVDduaS7ldTeZ15FxDN9SvVRl5JjIHFX3SRBZnAl9YUREJGF+SUSNA/M6qpjJI+kiznO6K9W+YNci7c/T6YWwc3DU3iayhBaOGqnyX4T4AqV8hqh2tXMpgr0CyC7U4Fo+052tE+XXn0liuivLLqLq0tf/otPVcHBw0N4mqm0i3UWlqeHqyDRHdUOf1x2T0p0z0x1VwKQgXVFREQoLOUWMal96ejqysrLg6uoKHx8f+SxRzeXl5SE1NRX+/v7yGaLapVKpkJKSAjs7O7Ro0UI+S7YqMTERHh4ecHZ2ls8QkalEXinyTHENeXp6ymeJapeoF4qgsLu7u3yGqHYlJSVp2yQinxP5HZExnO5KRERERERERERkZQzSERERERERERERWRmDdERERERERERERFbGIB0REREREREREZGVMUhHRERERERERERkZQzSERERERERERERWRmDdERERERERERERFbGIB0REREREREREZGVMUhHRERERERERERkZQzSERERERERERERWRmDdERERERERERERFbGIB0REREREREREZGVMUhHRERERERERERkZQzSERERERERERERWRmDdERERERERERERFbGIB0REREREREREZGVMUhHRERERERERERkZQqNRL5doaKiIhQWFsr3iGpPeno6srKy4OrqCh8fH/ksUc3l5eUhNTUV/v7+8hnL0WejJmSnjZadXePrE1KpVEhJSdH+21u0aCGftRyR3hpqmlMoFNrDliQmJsLDwwPOzs7yGctpyN91bdOnI1tLT42NyCtFnimuIU9PT/msZfD6qVpjLKMFUS90cHCAu7u7fMZyGku6Yx5cPUlJSdo2icjnRH5nSSJmI9Icv4uKNZS8jkE6qlcYpKPaUltBOpGFqtVq+R5VRFQYlEqlfK9xqK0gnSiTxdGQifQg/i62VJGsrSCdyF8aQ0OvJkQ60qcpaphqK0jH68d04vppbNdQbQTpRHrTB0sam8aYhqqrtoJ0jNWYTrRH6nv9k1cREZGZRCWMATrTMJhpGbYQoBP06YGN58rxb2Qa8TeylWuDLEc0Wnn9mI51GssQf8fGmu4a87/dmnjdVk9DqFsxSEdEZCZWRKpH/L3YiDaf+PvZWppjeqgYGzvVx/REekwL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4URO87CuYL76XF+o8yCdJRgG2ybdLp80gbmvo7pTm0G66jAM0m34ZESlGzwYqizYRtbFIF39wCCd+Ww1zTFIZ1xjr3hnHF+LGQt3I9d7EN5eZlrPvcAgXcPEIF39wSCd+ZjudBikqxiDdPVHfa4vNI4cmIiIiIjqJTFrYuvHJWvWTHlhOp5auBtZyiBMmmt6gI6IiIiooWOQjoiIiIisKB/5ySVr1iTluqBj7xF4+8NZGFzzQahEREREDQaDdERERERkNWIB/Yff+hzr/6c7IlYuxHsvDkKXpvITiIiIiBoJBumIiIiIyCZwPToSuEaT+XgNERFZF4N0RERmYCXWPPy7EZmG1wqR+Xj9EFFjwLzONjXI3V3JdtWX3V3J9lh6d1eBOypVX2PaedHSu7sKtpbmbGkXQUvv7iq+Z1vczbc2NaZdKW2NpXd35fVjHlE+N5Yd2AVL7+7KdMd8uCqW3t2Vac589XkXYl5BRERmakwBJ0sQlTb+vWrGlhpPIi2wIl8x/n2qR/y9mL+QnkgLjSnYZAnMc2qusf8NmYbqHv/m5qnv5QNH0lG9wpF0VFtqYySdILJQkUeKn6KgJONEBaKx/X1qYySdnj7NNVS2WKm09Eg6PfE963vJmceUJ/4+Ii2xkdKwWXoknZ6+jKaKNeZryNIj6fQaU7oT/1ZRNtliuV4bLD2STk+f5vTfB5XXkPI6BumoXmGQjmpLbQXpiCpSm0E6qn9qK0hH1BjUVpCOqDK1FaQjqkhtBenItjDcTUREREREREREZGUM0hEREREREREREVkZg3RERERERERERERWxiAdERERERERERGRlTFIR0REREREREREZGUM0hEREREREREREVkZg3RERERERERERERWxiAdERERERERERGRlTFIR0REREREREREZGUM0hEREREREREREVkZg3RERERERERERERWxiAdERERERERERGRlTFIR0REREREREREZGUM0hEREREREREREVkZg3RERERERERERERWptBI5NsVKioq0h5EtS0hIQEiSSoUCjRr1kw+S1RzWVlZyMnJYbqiOpOWloa8vDzmZ42EKL8cHR3h7e0tnyEiU+nrf0qlEr6+vvJZotol0p1Ic02bNpXPENUufV5nb2/PdEcVMilIR1RXkpOTkZGRAXd3d/j5+clniWouNzcXiYmJCAgIkM8Q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" /></p>
 <section id="tokenisation-demo">
-<h3>tokenisation demo<a class="headerlink" href="#tokenisation-demo" title="Permalink to this headline">#</a></h3>
+<h3>tokenisation demo<a class="headerlink" href="#tokenisation-demo" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Based on below, we should not use word_token()</span>
@@ -2376,7 +2040,7 @@ def downloadFiles(fileIds):
 </section>
 </section>
 <section id="embedding">
-<h2>Embedding<a class="headerlink" href="#embedding" title="Permalink to this headline">#</a></h2>
+<h2>Embedding<a class="headerlink" href="#embedding" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;lemmatizer&quot;</span><span class="p">])</span>  <span class="c1"># en_core_web_trf</span>
@@ -2397,11 +2061,11 @@ def downloadFiles(fileIds):
 
     <span class="c1">########################### Feature embedding ###########################</span>
     <span class="k">def</span> <span class="nf">_np</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;convert to numpy features&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;convert to numpy features&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">f</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">get_dep_and_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;use spacy API to get POS tag and dependency path</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;use spacy API to get POS tag and dependency path</span>
 <span class="sd">        return: list of predicted tags for each token</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># split by spaces only</span>
@@ -2427,7 +2091,7 @@ def downloadFiles(fileIds):
     <span class="c1">#     return np.array(res)</span>
 
     <span class="k">def</span> <span class="nf">get_predicted_word_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;return the pos and depdency path feature for each seq&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return the pos and depdency path feature for each seq&quot;&quot;&quot;</span>
         <span class="n">res</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;pos&#39;</span><span class="p">:{},</span> <span class="c1"># detail pos</span>
             <span class="s1">&#39;dep&#39;</span><span class="p">:{}</span>
@@ -2459,7 +2123,7 @@ def downloadFiles(fileIds):
         <span class="k">return</span> <span class="n">res</span>
 
     <span class="k">def</span> <span class="nf">get_word_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;return the len feature for each seq&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return the len feature for each seq&quot;&quot;&quot;</span>
         <span class="n">data_</span> <span class="o">=</span> <span class="n">Prep</span><span class="o">.</span><span class="n">tokenise_only</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
         <span class="n">res</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;len&#39;</span><span class="p">:</span> <span class="p">{},</span>
@@ -2490,14 +2154,14 @@ def downloadFiles(fileIds):
         <span class="k">return</span> <span class="n">res</span>
 
     <span class="c1">########################################################################################################################################</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Build training model for word embeddings: You are to build a training model for word embeddings. </span>
 <span class="sd">    You are required to articulate the hyperparameters [Lab2] you choose (dimension of embeddings and window size) </span>
 <span class="sd">    in Section 4.1. Note that any word embeddings model [Lab2] (e.g. word2vec-CBOW, word2vec-Skip gram, fasttext, glove) </span>
 <span class="sd">    can be applied. (Section 4.1. and Section 4.3., Justify your decision)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">make_self_trained_gensim_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">posts_</span><span class="p">,</span> <span class="n">dimension_</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">window_</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">which_</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">Word2Vec</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;contruct gensim word2vec model</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;contruct gensim word2vec model</span>
 <span class="sd">        Args:</span>
 <span class="sd">            posts_(List[str]): a list of string: either F - Feeler or T - Thinker</span>
 <span class="sd">        Returns:</span>
@@ -2511,7 +2175,7 @@ def downloadFiles(fileIds):
         <span class="k">return</span> <span class="n">models</span><span class="p">[</span><span class="n">which_</span><span class="p">](</span><span class="n">sentences</span><span class="o">=</span><span class="n">posts_</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">dimension_</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window_</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sg</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">build_concat_embed_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word_list_</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">object</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Build the embedding table from the pre-train model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Build the embedding table from the pre-train model.</span>
 <span class="sd">        Extract those word embedding that exists in the vocab of the current dataset</span>
 <span class="sd">        Args:</span>
 <span class="sd">            word_list_(list): a list of unique word in the corpus</span>
@@ -2617,9 +2281,9 @@ def downloadFiles(fileIds):
 </div>
 </section>
 <section id="model-file">
-<h2>Model file<a class="headerlink" href="#model-file" title="Permalink to this headline">#</a></h2>
+<h2>Model file<a class="headerlink" href="#model-file" title="Link to this heading">#</a></h2>
 <section id="attn">
-<h3>attn<a class="headerlink" href="#attn" title="Permalink to this headline">#</a></h3>
+<h3>attn<a class="headerlink" href="#attn" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Attention_type</span><span class="p">:</span>
@@ -2634,7 +2298,7 @@ def downloadFiles(fileIds):
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MultiheadAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial6/Transformers_and_MHAttention.html&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial6/Transformers_and_MHAttention.html&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">attn_score</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">embed_dim</span> <span class="o">%</span> <span class="n">num_heads</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Embedding dimension must be 0 modulo number of heads.&quot;</span>
@@ -2731,7 +2395,7 @@ def downloadFiles(fileIds):
 </div>
 </section>
 <section id="model">
-<h3>model<a class="headerlink" href="#model" title="Permalink to this headline">#</a></h3>
+<h3>model<a class="headerlink" href="#model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -2740,7 +2404,7 @@ def downloadFiles(fileIds):
 <span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
 
 <span class="k">class</span> <span class="nc">BiLSTM_attn</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;minibatch&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;minibatch&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BiLSTM_attn</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         
@@ -2765,7 +2429,7 @@ def downloadFiles(fileIds):
 
         
         <span class="c1">##############################################################################################################################</span>
-        <span class="sd">&quot;&quot;&quot;Here we use the embedding matrix as the initial weights of nn.Embedding&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Here we use the embedding matrix as the initial weights of nn.Embedding&quot;&quot;&quot;</span>
         <span class="n">embed_tmp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;embed_matrix&#39;</span><span class="p">])</span>
         <span class="c1"># freeze pretrained weights</span>
         <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="s1">&#39;is_pretrained&#39;</span><span class="p">]:</span>
@@ -2811,7 +2475,7 @@ def downloadFiles(fileIds):
                 <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">h_0_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit_hidden_dim</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentences</span><span class="p">,</span> <span class="n">X_lengths</span><span class="p">,</span> <span class="n">attn_pad_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        X_lengths: longest sequence length - size(20)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
@@ -2877,13 +2541,13 @@ def downloadFiles(fileIds):
 </section>
 </section>
 <section id="eval-f1">
-<h2>eval f1<a class="headerlink" href="#eval-f1" title="Permalink to this headline">#</a></h2>
+<h2>eval f1<a class="headerlink" href="#eval-f1" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 
 <span class="k">def</span> <span class="nf">cal_f1</span><span class="p">(</span><span class="n">model_</span><span class="p">,</span> <span class="n">input_batch</span><span class="p">,</span> <span class="n">output_batch</span><span class="p">,</span> <span class="n">len_batch</span><span class="p">,</span> <span class="n">pad_batch</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;ignore O, pad and sepa tag  accuracy&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ignore O, pad and sepa tag  accuracy&quot;&quot;&quot;</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span> <span class="o">=</span> <span class="n">input_batch</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -2914,7 +2578,7 @@ def downloadFiles(fileIds):
     <span class="k">return</span> <span class="p">(</span><span class="n">ground_truth_no_O</span><span class="p">,</span> <span class="n">predicted_no_O</span><span class="p">),</span> <span class="p">(</span><span class="n">ground_truth_O</span><span class="p">,</span> <span class="n">predicted_O</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">eval_f1</span><span class="p">(</span><span class="n">model_</span><span class="p">,</span> <span class="n">generator</span><span class="p">,</span> <span class="n">is_report</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Generates the model predictions using the input data and calculates the f1 by </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates the model predictions using the input data and calculates the f1 by </span>
 <span class="sd">    comparing the model predictions with the ground truth labels.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2945,22 +2609,22 @@ def downloadFiles(fileIds):
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create custom dataset class</span>
 <span class="k">class</span> <span class="nc">CustomDataSet</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    References:</span>
 <span class="sd">    standford: https://stanford.edu/~shervine/blog/pytorch-how-to-generate-data-parallel</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">lens</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">pad</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialization&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialization&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">text</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">labels</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ls</span> <span class="o">=</span> <span class="n">lens</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pad</span> <span class="o">=</span> <span class="n">pad</span>
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Denotes the total number of samples&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Denotes the total number of samples&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generates one sample of data&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates one sample of data&quot;&quot;&quot;</span>
         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ls</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
@@ -2972,7 +2636,7 @@ def downloadFiles(fileIds):
 </div>
 </section>
 <section id="pipeline-not-batched">
-<h2>pipeline - not batched<a class="headerlink" href="#pipeline-not-batched" title="Permalink to this headline">#</a></h2>
+<h2>pipeline - not batched<a class="headerlink" href="#pipeline-not-batched" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">argmax</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
@@ -3007,8 +2671,8 @@ def downloadFiles(fileIds):
 
         <span class="bp">self</span><span class="o">.</span><span class="n">n_direction</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stack_layers</span> <span class="o">=</span> <span class="mi">1</span>
-            
-        <span class="sd">&quot;&quot;&quot;Here we use the embedding matrix as the initial weights of nn.Embedding&quot;&quot;&quot;</span>
+<span class="w">            </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Here we use the embedding matrix as the initial weights of nn.Embedding&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">word_embeds</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">embed_matrix</span><span class="p">))</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">hidden_dim</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
@@ -3052,8 +2716,8 @@ def downloadFiles(fileIds):
         <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_hidden</span><span class="p">()</span>
         <span class="n">embeds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">word_embeds</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">lstm_out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">embeds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span><span class="p">)</span>
-        
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        https://pytorch.org/docs/stable/_modules/torch/nn/modules/activation.html#MultiheadAttention</span>
 <span class="sd">        Examples::</span>
 
@@ -3149,7 +2813,7 @@ def downloadFiles(fileIds):
         <span class="k">return</span> <span class="n">path_score</span><span class="p">,</span> <span class="n">best_path</span>
 
 <span class="k">def</span> <span class="nf">cal_f1_pipline</span><span class="p">(</span><span class="n">model</span><span class="p">:</span><span class="nb">object</span><span class="p">,</span> <span class="n">input_index</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">output_index</span><span class="p">:</span><span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Generates the model predictions using the input data and calculates the f1 by </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates the model predictions using the input data and calculates the f1 by </span>
 <span class="sd">    comparing the model predictions with the ground truth labels.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="p">[]</span>
@@ -3241,7 +2905,7 @@ def downloadFiles(fileIds):
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="reference">
-<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h1>
+<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h1>
 <p>The multihead attetion is modified based on the course material from the University of Amsterdam.<br />
 Note that only one head is used for the experiment. Using multihead becaues it gives more flexibilty when need to upscale the model which is not the case in this relatively simple dataset.<br />
 Link here: <a class="reference external" href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial6/Transformers_and_MHAttention.html">https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial6/Transformers_and_MHAttention.html</a></p>
@@ -3259,58 +2923,142 @@ Link here: <a class="reference external" href="https://uvadlc-notebooks.readthed
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./ds-courses/usyd/5046"
+            name: "python3",
+            path: "./ds-courses\usyd\5046"
         },
         predefinedOutput: true
     }
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="a2/a2.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Report - In-game Toxicity Detection</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="a2/a2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Report - In-game Toxicity Detection</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="a1.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="a1.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Binary text classification</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">In Game Toxicity seq2seq classification</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-train">batch train</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-program">Test Program</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcs">funcs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-all">run all</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-tests">additional tests</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oop">OOP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-file">Set up file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-drive-connection">Google drive connection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-file">Helper file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-file">Preprocessing file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenisation-demo">tokenisation demo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding">Embedding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-file">Model file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attn">attn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eval-f1">eval f1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-not-batched">pipeline - not batched</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Jerry<br/>
-  
-      &copy; Copyright 2021.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Jerry
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

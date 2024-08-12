@@ -1,11 +1,8 @@
 ﻿# Mini self-driving 
 
+with turtlebot   
 
 [Demo here](https://postsent.github.io/2021/12/11/courses/#comp3431-robotic-software-architecture)
-
-
-
-with turtlebot, waffle pi
 
 **COMP3431**
 
@@ -13,7 +10,7 @@ with turtlebot, waffle pi
 
 **Autonomous driving using TurtleBot in a simulated road environment**
 
-``**November 2020**
+`					`**November 2020**
 
 Team name: Boston Static
 

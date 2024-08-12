@@ -1,7 +1,5 @@
 format: jb-book
 root: index
-defaults:  # The defaults key will be applied to all chapters and sub-sections
-  maxdepth: 3
 
 parts:
 
@@ -11,7 +9,7 @@ parts:
     title: Home
   - file: reference
 
-- caption: Data Science Related Courses
+- caption: Courses
   chapters:
   
   - file: ds-courses/unsw/9417/9417-intro

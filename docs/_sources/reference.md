@@ -9,3 +9,5 @@
 4. Similarly, those under "USYD" are my work in sydney uni, thanks all the great teaching usyd : )
 
 5. Thanks for all my teammates in the group projects.
+
+6. For the research part, great thanks to my advisors at polyU ~

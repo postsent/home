@@ -91,7 +91,7 @@ Read {fas}`arrow-right`
 :margin: 3  
 :class-body: text-center  
 :class-header: bg-light text-center  
-:link: https://postsent.github.io/home/ds-courses/unsw/3431/project/project.html  
+:link: https://postsent.github.io/home/ds-courses/unsw/9417/9417-report/report.html
 
 **Machine Learning**  
 ^^^  
@@ -108,7 +108,7 @@ Read {fas}`arrow-right`
 :margin: 3
 :class-body: text-center
 :class-header: bg-light text-center
-:link: https://postsent.github.io/home/ds-courses/unsw/9417/9417-report/report.html
+:link: https://postsent.github.io/home/ds-courses/usyd/5048/group.html
 
 **Data Visualization**
 ^^^

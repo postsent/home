@@ -10,87 +10,6 @@ University of New South Wales
 
 This project report is submitted on 18.11.2021
 
-Group Members:
-
-**Table of contents**
-
-[Overview	3](#_Toc88155380)
-
-[Architecture and Design of software	3](#_Toc88155381)
-
-[Software Functionalities	4](#_Toc88155382)
-
-[Third-party functionalities	6](#_Toc88155383)
-
-[Implementation challenges	8](#_Toc88155384)
-
-[Covid prediction model	8](#_Toc88155385)
-
-[Chat History Rendering	8](#_Toc88155386)
-
-[Web Scraping	8](#_Toc88155387)
-
-[Dialogflow Intention Handler	9](#_Toc88155388)
-
-[Others	9](#_Toc88155389)
-
-[User Documentation / Manual	10](#_Toc88155390)
-
-[Project Setup	10](#_Toc88155391)
-
-[Prerequisite	10](#_Toc88155392)
-
-[Folder structure	10](#_Toc88155393)
-
-[Frontend – Web Interface	10](#_Toc88155394)
-
-[Backend - Main server	11](#_Toc88155395)
-
-[ML Model Training	11](#_Toc88155396)
-
-[Messenger	11](#_Toc88155397)
-
-[Discord	13](#_Toc88155398)
-
-[How to use the chatbot	14](#_Toc88155399)
-
-[User Sign up	14](#_Toc88155400)
-
-[User Sign In	15](#_Toc88155401)
-
-[Modify Profile	16](#_Toc88155402)
-
-[View Chat History	16](#_Toc88155403)
-
-[Requesting Real doctor to diagnose	17](#_Toc88155404)
-
-[View & Reply Support Tickets from Users	18](#_Toc88155405)
-
-[Shortcut	19](#_Toc88155406)
-
-[README - Standard Response template	19](#_Toc88155407)
-
-[COVID Statistic (Aus)	20](#_Toc88155408)
-
-[Hotspot	20](#_Toc88155409)
-
-[Isolation	20](#_Toc88155410)
-
-[Travel advice	20](#_Toc88155411)
-
-[COVID symptom check	21](#_Toc88155412)
-
-[General symptom check	21](#_Toc88155413)
-
-[Receipt suggestion	21](#_Toc88155414)
-
-[Health news	22](#_Toc88155415)
-
-[Nearby clinic	22](#_Toc88155416)
-
-[Bibliography	23](#_Toc88155417)
-
-
 # Overview
 This project implements a chatbot that provides the service of general query answering with a focus on the medical system and COVID19 support.
 ## Architecture and Design of software
@@ -98,7 +17,7 @@ The software is mainly split into 2 modules – frontend and backend. Frontend i
 
 As the diagram shown below, the frontend will only interact with the server layer for providing services like user authentication and registration, symptom diagnosis and chat history. The conversation with the chatbot begins with the chat endpoint. Frontend data such as user information and chat history will be stored in the MongoDB. After that, the chat messages and context are passed to the Dialogflow gateway to extract keywords and infer the intent of that message. If the intent has a registered handler implemented in our backend, the handler will be called with extracted parameters by Dialogflow and the context by frontend. The handlers are typically requests to third-party APIs or web scrapers for acquiring the necessary data so that we can provide appropriate respond to the users. Finally, the Facebook Messenger and Discord third-party platforms are used for chatbot integration will communicate with Dialogflow Gateway directly for efficiency and it makes the chatbot generic and modular. 
 
-![](Aspose.Words.5dca8fd7-3572-4136-9b8a-b42b0e958147.001.png)
+![](3900-architecture.png)
 
 # Software Functionalities
 This project aims to create a natural language understanding chatbot that can address the health enquiries of our users. The general usage of this software is to have users ask questions of any concerns they have in the scope of medicine and health. By incorporating Natural Language Understanding, we allow the users to converse with our chatbot non-restrictively, using normal everyday language. Then, our chatbot will process the user’s enquiries and provide an informative response. Frequent users of the chatbot can also have the choice to create an account, allowing the chatbot to hold more useful information about the user so it can give personalised health recommendations. Additionally, our project will include doctors and medical professionals who can provide additional support for the users of our chatbot.

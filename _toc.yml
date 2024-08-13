@@ -9,6 +9,11 @@ parts:
     title: Home
   - file: reference
 
+- caption: Research
+  chapters:
+  - file: research/polyu/dd/report.md
+  - file: research/polyu/dp/report.md
+
 - caption: Courses
   chapters:
 

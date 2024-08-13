@@ -1,4 +1,4 @@
-# Visual Analytics Tableau (USYD)
+# Visual Analytics (USYD)
 
 My dashboard
 

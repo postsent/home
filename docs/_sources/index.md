@@ -12,9 +12,9 @@ Below are my coding journey, from ML, CV, DL, NLP to more.
 :class-body: text-center
 :class-header: bg-light text-center
 :link: https://www.inferentialthinking.com/
-**Data filtering Research**
+**Data filtering in recommendation**
 ^^^
-```{image} https://cdn.snorkel.ai/wp-content/uploads/2022/05/Technology-DCAI_1.png
+```{image} https://media.licdn.com/dms/image/C5612AQETZulmYBRx6A/article-cover_image-shrink_720_1280/0/1642504478034?e=2147483647&v=beta&t=2Rmr0onfLd0fP0FFervDfyEcLY19txAZQVUitK2t6Bo
 :height: 100
 ```
 

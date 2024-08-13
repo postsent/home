@@ -11,7 +11,7 @@ Below are my coding journey, from ML, CV, DL, NLP to more.
 :margin: 3
 :class-body: text-center
 :class-header: bg-light text-center
-:link: https://www.inferentialthinking.com/
+:link: https://postsent.github.io/home/research/polyu/dp/report.html
 **Data Filtering in Recommendation**
 ^^^
 ```{image} https://media.licdn.com/dms/image/C5612AQETZulmYBRx6A/article-cover_image-shrink_720_1280/0/1642504478034?e=2147483647&v=beta&t=2Rmr0onfLd0fP0FFervDfyEcLY19txAZQVUitK2t6Bo
@@ -108,7 +108,7 @@ Read {fas}`arrow-right`
 :margin: 3
 :class-body: text-center
 :class-header: bg-light text-center
-:link: https://postsent.github.io/home/ds-courses/usyd/5048/group.html
+:link: https://postsent.github.io/home/ds-courses/unsw/9417/9417-report/report.html
 
 **Data Visualization**
 ^^^

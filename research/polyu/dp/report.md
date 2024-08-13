@@ -25,6 +25,8 @@
 
 ## Main
 
+MoE + Pruning gives the best performance with minimal training requirement.
+
 <center>Recall@20/100.</center>
 
 ![](main.jpg)
@@ -32,6 +34,12 @@
 <center>MRR@20/100.</center>
 
 ![](main_mrr.jpg)
+
+## MoE Performance
+
+MoE perform well in both Recall (if recommended item is in topk) and MRR metrics (how close the rank is to top1)
+
+![](moe_perf.jpg)
 
 ### Ablation
 

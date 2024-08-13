@@ -655,7 +655,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment">Experiment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">Main</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">Main</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moe-performance">MoE Performance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation">Ablation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-statistics">Dataset Statistics</a></li>
 </ul>
@@ -691,10 +692,16 @@ document.write(`
 </section>
 <section id="main">
 <h2>Main<a class="headerlink" href="#main" title="Link to this heading">#</a></h2>
+<p>MoE + Pruning gives the best performance with minimal training requirement.</p>
 <center>Recall@20/100.</center>
 <p><img alt="" src="../../../_images/main.jpg" /></p>
 <center>MRR@20/100.</center>
 <p><img alt="" src="../../../_images/main_mrr.jpg" /></p>
+</section>
+<section id="moe-performance">
+<h2>MoE Performance<a class="headerlink" href="#moe-performance" title="Link to this heading">#</a></h2>
+<p>MoE perform well in both Recall (if recommended item is in topk) and MRR metrics (how close the rank is to top1)</p>
+<p><img alt="" src="../../../_images/moe_perf.jpg" /></p>
 <section id="ablation">
 <h3>Ablation<a class="headerlink" href="#ablation" title="Link to this heading">#</a></h3>
 <center>MoE vs Ensemble vs Single model on data pruning.</center>
@@ -778,7 +785,8 @@ Keep 30% data for Yoochoose, 60% for Amazon-M2. AMZ-M2 is much larger thus requi
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment">Experiment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">Main</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">Main</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moe-performance">MoE Performance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation">Ablation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-statistics">Dataset Statistics</a></li>
 </ul>

@@ -11,8 +11,8 @@ parts:
 
 - caption: Research
   chapters:
-  - file: research/polyu/dd/report.md
   - file: research/polyu/dp/report.md
+  - file: research/polyu/dd/report.md
 
 - caption: Courses
   chapters:

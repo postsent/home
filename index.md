@@ -12,7 +12,7 @@ Below are my coding journey, from ML, CV, DL, NLP to more.
 :class-body: text-center
 :class-header: bg-light text-center
 :link: https://www.inferentialthinking.com/
-**Data filtering in recommendation**
+**Data Filtering in Recommendation**
 ^^^
 ```{image} https://media.licdn.com/dms/image/C5612AQETZulmYBRx6A/article-cover_image-shrink_720_1280/0/1642504478034?e=2147483647&v=beta&t=2Rmr0onfLd0fP0FFervDfyEcLY19txAZQVUitK2t6Bo
 :height: 100
@@ -48,10 +48,10 @@ Read {fas}`arrow-right`
 
 **Chatbot**
 ^^^
-```{image} https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA8P_wW-Gs3h8b0fyhnB4zBKCoHx_FmaggAA&s
+```{image} https://www.hp.com/us-en/shop/app/assets/images/uploads/prod/what-is-a-chatbot-hero1567113994866165.jpg?impolicy=prdimg&imdensity=1&imwidth=1000
 :height: 100
 ```
-Backend, APIs
+Backend, APIs, general query answering, google dialogflow
 
 +++
 Read {fas}`arrow-right`

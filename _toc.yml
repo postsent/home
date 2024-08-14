@@ -13,6 +13,7 @@ parts:
   chapters:
   - file: research/polyu/dp/report.md
   - file: research/polyu/dd/report.md
+  - file: research/polyu/story/page.md
 
 - caption: Courses
   chapters:

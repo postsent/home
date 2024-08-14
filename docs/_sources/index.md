@@ -15,10 +15,10 @@ Below are my coding journey, from ML, CV, DL, NLP to more.
 **Data Filtering in Recommendation**
 ^^^
 ```{image} https://media.licdn.com/dms/image/C5612AQETZulmYBRx6A/article-cover_image-shrink_720_1280/0/1642504478034?e=2147483647&v=beta&t=2Rmr0onfLd0fP0FFervDfyEcLY19txAZQVUitK2t6Bo
-:height: 100
+:height: 50
 ```
 
-Algorithms to optimize data by heruistics / distillation
+Recommendation Algorithms, Pytorch, Optimize data by heruistics / distillation
 +++
 Read {fas}`arrow-right` 
 :::  
@@ -32,7 +32,7 @@ Read {fas}`arrow-right`
 **Robotics**  
 ^^^  
 ```{image} https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMHwLTudrJS8grEijdLxI-68x_hxETWXHzEg&s  
-:height: 100
+:height: 150
 ```
 
 ROS, Turtblebot3, Gazebo
@@ -79,7 +79,7 @@ Read {fas}`arrow-right`
 **Natural Language Processing**
 ^^^
 ```{image} https://miro.medium.com/v2/resize:fit:1040/format:webp/1*NC990qGVdZlsvvOHEy27IQ.png
-:height: 100
+:height: 150
 ```
 
 In game toxicity detection
@@ -96,7 +96,7 @@ Read {fas}`arrow-right`
 **Machine Learning**  
 ^^^  
 ```{image} https://www.wordstream.com/wp-content/uploads/2021/07/machine-learning1-1.png
-:height: 100
+:height: 150
 ```
 
 Tabular Classification

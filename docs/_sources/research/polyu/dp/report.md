@@ -43,7 +43,7 @@ MoE perform well in both Recall (if recommended item is in topk) and MRR metrics
 
 ![](moe_perf.jpg)
 
-### Ablation
+## Ablation
 
 <center>MoE vs Ensemble vs Single model on data pruning.</center>
 Keep 30% data for Yoochoose, 60% for Amazon-M2. AMZ-M2 is much larger thus requires more data to have close performance as if it is trained on the full dataset.
@@ -54,13 +54,13 @@ Keep 30% data for Yoochoose, 60% for Amazon-M2. AMZ-M2 is much larger thus requi
 
 ![](abla2.jpg)
 
-### Dataset Statistics
+## Dataset Statistics
 
 ![](data.jpg)
 
 ![](more_data.jpg)
 
-### EDA
+## EDA
 
 ![](metrics_dff_data.jpg)
 

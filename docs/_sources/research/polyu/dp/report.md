@@ -59,3 +59,13 @@ Keep 30% data for Yoochoose, 60% for Amazon-M2. AMZ-M2 is much larger thus requi
 ![](data.jpg)
 
 ![](more_data.jpg)
+
+### EDA
+
+![](metrics_dff_data.jpg)
+
+We use AUM as the heuristic to filter data. Different data quality metrics perform differently depending on the dataset applied to. In general, AUM gives on avg the best results since the data subset have a health coverage on both easy (left) and hard (right) and medium samples (middle) i.e. the bell shape. 
+
+![](pred_overlap.jpg)
+
+Model prediction can complement each other since each has its own strength. Prediction overlap for different models 0~4: transformer, attention based, GNN, GRU, self attention. 

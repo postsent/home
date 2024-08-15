@@ -667,6 +667,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moe-performance">MoE Performance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation">Ablation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a></li>
 </ul>
 </li>
 </ul>
@@ -724,6 +725,13 @@ Keep 30% data for Yoochoose, 60% for Amazon-M2. AMZ-M2 is much larger thus requi
 <h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading">#</a></h3>
 <p><img alt="" src="../../../_images/data.jpg" /></p>
 <p><img alt="" src="../../../_images/more_data.jpg" /></p>
+</section>
+<section id="eda">
+<h3>EDA<a class="headerlink" href="#eda" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../../../_images/metrics_dff_data.jpg" /></p>
+<p>We use AUM as the heuristic to filter data. Different data quality metrics perform differently depending on the dataset applied to. In general, AUM gives on avg the best results since the data subset have a health coverage on both easy (left) and hard (right) and medium samples (middle) i.e. the bell shape.</p>
+<p><img alt="" src="../../../_images/pred_overlap.jpg" /></p>
+<p>Model prediction can complement each other since each has its own strength. Prediction overlap for different models 0~4: transformer, attention based, GNN, GRU, self attention.</p>
 </section>
 </section>
 </section>
@@ -798,6 +806,7 @@ Keep 30% data for Yoochoose, 60% for Amazon-M2. AMZ-M2 is much larger thus requi
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moe-performance">MoE Performance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation">Ablation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a></li>
 </ul>
 </li>
 </ul>

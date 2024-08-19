@@ -2,46 +2,6 @@
 
 [Question](https://www.cse.unsw.edu.au/~cs9444/21T2/hw1/)
 
-# Contents
-[Question 1 - NetLin	1](#_Toc76828508)
-
-[Question 2 - NetFull	2](#_Toc76828509)
-
-[Question 3 - NetConv	2](#_Toc76828510)
-
-[Question 4 – result discussion	2](#_Toc76828511)
-
-[**PART 2 - Rectangular Spirals Task**	4](#_Toc76828512)
-
-[Question 1 - code	4](#_Toc76828513)
-
-[Question 2 - code	4](#_Toc76828514)
-
-[Question 3 – show result picture (1 hidden layer)	4](#_Toc76828515)
-
-[Question 4 - show result picture (2 hidden layers)	5](#_Toc76828516)
-
-[Question 5 – result discussion	6](#_Toc76828517)
-
-[**PART 3 - Encoder Networks**	7](#_Toc76828518)
-
-[**PART 4 - Hidden Unit Dynamics for Recurrent Networks**	9](#_Toc76828519)
-
-[Question 1 – SRN, illustrate hidden state	9](#_Toc76828520)
-
-[Question 2 - an bn	9](#_Toc76828521)
-
-[Question 3 - result discussion	10](#_Toc76828522)
-
-[Question 4 - an bn cn	11](#_Toc76828523)
-
-[Question 5 – result discussion	11](#_Toc76828524)
-
-[Question 6 – LSTM, analysis behaviour  and explain	12](#_Toc76828525)
-
-[APPENDIX	15](#_Toc76828526)
-
-
 
 **PART 1- Japanese Character Recognition**
 # Question 1 - NetLin

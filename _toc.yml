@@ -19,10 +19,12 @@ parts:
 - caption: Courses
   chapters:
 
-  - file: ds-courses/unsw/9444/9444-intro
-    sections:
-    - file: ds-courses/unsw/9444/9444-project
-    - file: ds-courses/unsw/9444/assignment1/assignment1.md
+  - file: ds-courses/unsw/9417/9417-intro
+    sections:  
+    - file: ds-courses/unsw/9417/9417-project
+    - file: ds-courses/unsw/9417/9417-report/report
+    - file: ds-courses/unsw/9417/9417-basic
+
   - file: ds-courses/unsw/3900/3900-intro
     sections:
     - file: ds-courses/unsw/3900/project/3900-project
@@ -36,18 +38,17 @@ parts:
     - file: ds-courses/usyd/5046/a2/a2.md
     - file: ds-courses/usyd/5046/a2
     - file: ds-courses/usyd/5046/a1
-  - file: ds-courses/unsw/9417/9417-intro
-    sections:  
-      - file: ds-courses/unsw/9417/9417-basic
-      - file: ds-courses/unsw/9417/9417-project
-      - file: ds-courses/unsw/9417/9417-report/report
+
   - file: ds-courses/unsw/9517/9517-intro
     sections:
     - file: ds-courses/unsw/9517/9517-a1-code
     - file: ds-courses/unsw/9517/9517-a1/report
     - file: ds-courses/unsw/9517/9517-lane_detection
     - file: ds-courses/unsw/9517/9517-vehicle-detection
-
+  - file: ds-courses/unsw/9444/9444-intro
+    sections:
+    - file: ds-courses/unsw/9444/9444-project
+    - file: ds-courses/unsw/9444/assignment1/assignment1.md
   - file: ds-courses/usyd/5349/5349-intro
     sections:
     - file: ds-courses/usyd/5349/a2/a2.md

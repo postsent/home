@@ -174,6 +174,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../dp/report.html">Data Pruning</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Dataset Distillation</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../story/page.html">DD Motivation</a></li>
 
 
@@ -186,8 +188,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ds-courses/unsw/9444/9444-intro.html">Deep Learning (UNSW)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9444/9444-project.html">Image classification</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ds-courses/unsw/9417/9417-intro.html">Machine Learning (UNSW)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9417/9417-project.html">Project - Classification</a></li>
 
 
 
@@ -196,7 +198,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9444/assignment1/assignment1.html">Characters, Spirals and Hidden Unit Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9417/9417-report/report.html">Project - report</a></li>
 
 
 
@@ -204,12 +206,7 @@
 
 
 
-
-
-
-
-
-
+<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9417/9417-basic.html">Basic with examples</a></li>
 
 
 
@@ -241,6 +238,7 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/ros/doc.html">ROS</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../ds-courses/usyd/5046/5046-intro.html">NLP (USYD)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -267,34 +265,6 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ds-courses/unsw/9417/9417-intro.html">Machine Learning (UNSW)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9417/9417-basic.html">Basic with examples</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9417/9417-project.html">Project - Classification</a></li>
-
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9417/9417-report/report.html">Project - report</a></li>
-
-
-
-
-
-
-
-</ul>
-</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../ds-courses/unsw/9517/9517-intro.html">Computer Vision (UNSW)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9517/9517-a1-code.html">Basic image processing, thresholding, count cells</a></li>
 
@@ -308,6 +278,38 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9517/9517-vehicle-detection.html">Vehicle detection (by teammate)</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../ds-courses/unsw/9444/9444-intro.html">Deep Learning (UNSW)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9444/9444-project.html">Image classification</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../ds-courses/unsw/9444/assignment1/assignment1.html">Characters, Spirals and Hidden Unit Dynamics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -640,7 +642,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -656,6 +660,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dataset Distillation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#report">Report</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -667,6 +682,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dataset-distillation">
 <h1>Dataset Distillation<a class="headerlink" href="#dataset-distillation" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="report">
+<h1>Report<a class="headerlink" href="#report" title="Link to this heading">#</a></h1>
 <p><img alt="" src="../../../_images/adv_ml___DD_page-0001.jpg" />
 <img alt="" src="../../../_images/adv_ml___DD_page-0002.jpg" />
 <img alt="" src="../../../_images/adv_ml___DD_page-0003.jpg" />
@@ -679,6 +697,551 @@ document.write(`
 <img alt="" src="../../../_images/adv_ml___DD_page-0010.jpg" />
 <img alt="" src="../../../_images/adv_ml___DD_page-0011.jpg" />
 <img alt="" src="../../../_images/adv_ml___DD_page-0012.jpg" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="code">
+<h1>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h1>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python37</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on 19 Sep, 2019</span>
+
+<span class="sd">@author: wangshuo</span>
+
+<span class="sd"># train</span>
+<span class="sd">!python dc_pretrain.py --dataset_path=&quot;../autodl-fs/digi/&quot; --data_path=&quot;../autodl-fs/&quot; \</span>
+<span class="sd">                        --n_sess 500 --sess_len 6 --embed_dim 50 \</span>
+<span class="sd">                        --batch_size 1000 --batch_syn 500 \</span>
+<span class="sd">                        --Iteration 500  --eval_freq 1 --epoch_retrain 61 \</span>
+<span class="sd">                        --model narm \</span>
+<span class="sd">                        --outer_loop 20 --inner_loop 1 \</span>
+<span class="sd">                        --match grad --saved_epoch 5 --saved_name digi &gt; digi.txt </span>
+<span class="sd"># test</span>
+<span class="sd">!python dc_pretrain.py --dataset_path=&quot;../autodl-fs/yoo1_64/&quot; --data_path=&quot;../autodl-fs/&quot; \</span>
+<span class="sd">                        --n_sess 500 --sess_len 6 --embed_dim 50 \</span>
+<span class="sd">                        --batch_size 50 --batch_syn 50 \</span>
+<span class="sd">                        --Iteration 500  --eval_freq 1 --epoch_retrain 61 \</span>
+<span class="sd">                        --model narm \</span>
+<span class="sd">                        --outer_loop 20 --inner_loop 1 \</span>
+<span class="sd">                        --match grad --test --distill_data=&quot;../autodl-fs/distill_data_100.pth.tar&quot;</span>
+<span class="sd">                        </span>
+<span class="sd"># warmup</span>
+<span class="sd">!python dc_pretrain.py --dataset_path=&quot;../autodl-fs/yoo1_64/&quot; --data_path=&quot;../autodl-fs/&quot; \</span>
+<span class="sd">                        --n_sess 500 --sess_len 6 --embed_dim 50 \</span>
+<span class="sd">                        --batch_size 1000 --batch_syn 500 \</span>
+<span class="sd">                        --Iteration 500  --eval_freq 1 --epoch_retrain 31 \</span>
+<span class="sd">                        --model narm \</span>
+<span class="sd">                        --outer_loop 50 --inner_loop 1 \</span>
+<span class="sd">                        --match grad --warmup --eval_freq 5</span>
+<span class="sd">                        </span>
+<span class="sd"># data aug + test</span>
+<span class="sd">!python dc_pretrain.py --dataset_path=&quot;../autodl-fs/digi/&quot; --data_path=&quot;../autodl-fs/&quot; \</span>
+<span class="sd">                        --n_sess 500 --sess_len 6 --embed_dim 50 \</span>
+<span class="sd">                        --batch_size 1000 --batch_syn 500 \</span>
+<span class="sd">                        --Iteration 500  --eval_freq 1 --epoch_retrain 200 \</span>
+<span class="sd">                        --model narm \</span>
+<span class="sd">                        --outer_loop 1 --inner_loop 1 \</span>
+<span class="sd">                        --match grad --test --test_mode test --data_aug --distill_data digi_test_100.pth.tar</span>
+<span class="sd">                        </span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">StepLR</span>
+<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
+<span class="kn">from</span> <span class="nn">torch.backends</span> <span class="kn">import</span> <span class="n">cudnn</span>
+
+<span class="kn">import</span> <span class="nn">metric</span>
+
+<span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">load_data</span><span class="p">,</span> <span class="n">RecSysDataset</span><span class="p">,</span> <span class="n">assign_category_class</span><span class="p">,</span> <span class="n">load_movie_data</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">collate_fn</span><span class="p">,</span> <span class="n">collate_fn_syn</span><span class="p">,</span> <span class="n">get_time</span><span class="p">,</span> <span class="n">generate_split_seq</span><span class="p">,</span> <span class="n">get_loops</span><span class="p">,</span> \
+                    <span class="n">match_loss</span><span class="p">,</span> <span class="n">get_network</span><span class="p">,</span> <span class="n">SimilaritySearch</span><span class="p">,</span> <span class="n">set_seed</span><span class="p">,</span> <span class="n">set_emb_grad</span><span class="p">,</span> <span class="n">softmax_all</span>
+
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">torch.utils.tensorboard</span> <span class="kn">import</span> <span class="n">SummaryWriter</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="kn">from</span> <span class="nn">data_aug</span> <span class="kn">import</span> <span class="n">DiffAugment</span>
+
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--dataset_path&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;datasets/digi/&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;dataset directory path: datasets/digi/yoo1_4/yoo1_64&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--batch_size&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;input batch size&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--hidden_size&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;hidden state size of gru module&#39;</span><span class="p">)</span>
+<span class="c1"># parser.add_argument(&#39;--epoch&#39;, type=int, default=100, help=&#39;the number of epochs to train for&#39;)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--test&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--topk&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;number of top score items selected for calculating recall and mrr metrics&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--valid_portion&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;split the portion of training set as validation set&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--n_sess&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;#sessions in the distilled data&#39;</span><span class="p">)</span> 
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--sess_len&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;length of each sessions in the distilled data&#39;</span><span class="p">)</span> 
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--embed_dim&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;the dimension of item embedding&quot;</span><span class="p">)</span> <span class="c1">#SLDD use 50, same for embed layer and distill data so that can map</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--init&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>  <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;real&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;which sampling / distillation methods &#39;</span><span class="p">)</span> 
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--Iteration&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;how many distillation steps to perform&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--batch_syn&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;should only use this if you run out of VRAM&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--lr&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;learning rate&#39;</span><span class="p">)</span>  <span class="c1"># TODO: no lr decay used in original paper</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--lr_data&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;learning rate for updating synthetic images&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--lr_retrain&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;learning rate for updating synthetic images&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--data_aug&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;this turns off diff aug during distillation&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--epoch_retrain&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;#epochs to retrain model for eval&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--eval_freq&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;freq to eval model&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--dis_metric&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;layerwise&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>  <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span> <span class="s1">&#39;cos&#39;</span><span class="p">,</span> <span class="s1">&#39;layerwise&#39;</span><span class="p">,</span> <span class="s1">&#39;ours&#39;</span><span class="p">])</span> <span class="c1"># TODO: layerwise, structure-aware loss</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--use_pretrain_weight&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;use pretrain model to init weight&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--ablation&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--data_path&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span> 
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--outer_loop&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> 
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--inner_loop&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> 
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--model&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;narm&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>  <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;narm&#39;</span><span class="p">,</span> <span class="s1">&#39;bert&#39;</span><span class="p">,</span> <span class="s1">&#39;nextit&#39;</span><span class="p">,</span> <span class="s1">&#39;stamp&#39;</span><span class="p">,</span> <span class="s1">&#39;narm_conv&#39;</span><span class="p">,</span> <span class="s1">&#39;narm_lstm&#39;</span><span class="p">,</span> <span class="s1">&#39;narm_rnn&#39;</span><span class="p">])</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--max_len&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;max len&#39;</span><span class="p">)</span> 
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--eval_many&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--is_exp&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;experiment mode not save&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--saved_name&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span> 
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--emb_grad&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># alabtion study, experiment purpose</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--match&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;grad&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>  <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;grad&#39;</span><span class="p">,</span> <span class="s1">&#39;feat&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;param&#39;</span><span class="p">])</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--n_class&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;max len&#39;</span><span class="p">)</span> 
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--use_fasttext_emb&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;use fasttext over model learnt embed&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--batch_val&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;validation batch size, 15000 - yoo1/4&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--saved_epoch&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;validation batch size, 15000 - yoo1/4&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--use_discrete_data&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;experiment mode not save&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--no_emb&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--distill_data&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;distill_data_latest_10.pth.tar&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--test_model&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--eval_emb&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--warmup&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--random_emb&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--eval_pretrain_weight&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--test_mode&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--combo&#39;</span><span class="p">,</span>  <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+
+<span class="c1"># TODO batch size</span>
+<span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_syn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">batch_syn</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">n_sess</span> <span class="o">*</span> <span class="n">args</span><span class="o">.</span><span class="n">sess_len</span> <span class="c1"># use all syn</span>
+<span class="n">args</span><span class="o">.</span><span class="n">outer_loop</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">inner_loop</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">outer_loop</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">inner_loop</span> <span class="c1"># get_loops(args.n_sess) # TODO: hyperparam </span>
+<span class="n">args</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+<span class="n">here</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+
+<span class="n">MODELS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;narm&#39;</span><span class="p">,</span> <span class="s1">&#39;narm_rnn&#39;</span><span class="p">,</span> <span class="s1">&#39;narm_lstm&#39;</span><span class="p">,</span> <span class="s1">&#39;stamp&#39;</span><span class="p">,</span> <span class="s1">&#39;nextit&#39;</span><span class="p">,</span> <span class="p">]</span> <span class="c1"># &#39;bert&#39;, &#39;gru&#39;</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">ablation</span><span class="p">:</span>
+    <span class="n">set_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loading data...&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">dataset_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;digi&#39;</span><span class="p">,</span> <span class="s1">&#39;yoo1_64&#39;</span><span class="p">,</span> <span class="s1">&#39;yoo1_4&#39;</span><span class="p">]:</span> 
+        <span class="n">train</span><span class="p">,</span> <span class="n">valid</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dataset_path</span><span class="p">,</span> <span class="n">valid_portion</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">valid_portion</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">max_len</span><span class="p">)</span>  
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">dataset_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ml_20m&#39;</span><span class="p">]:</span>
+        <span class="n">train</span><span class="p">,</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">load_movie_data</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dataset_path</span><span class="p">,)</span>
+    <span class="n">distill_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_sess</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">sess_len</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="c1"># TODO: init from real data pass in embed layer</span>
+                        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">n_class</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">train_cat_idx</span> <span class="o">=</span> <span class="n">assign_category_class</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># TODO</span>
+    
+    <span class="c1"># uncomment below to get used data size</span>
+    <span class="c1"># get_data_size(train)</span>
+
+    <span class="n">syn</span> <span class="o">=</span> <span class="n">generate_split_seq</span><span class="p">(</span><span class="n">distill_data</span><span class="p">)</span>
+    
+    <span class="n">syn_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">RecSysDataset</span><span class="p">(</span><span class="n">syn</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_syn</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">collate_fn</span><span class="p">)</span> <span class="c1"># collate_fn_syn</span>
+    <span class="n">valid_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">RecSysDataset</span><span class="p">(</span><span class="n">valid</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_val</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">collate_fn</span><span class="p">)</span>
+    <span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">RecSysDataset</span><span class="p">(</span><span class="n">train</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">collate_fn</span><span class="p">)</span>
+    <span class="n">test_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">RecSysDataset</span><span class="p">(</span><span class="n">test</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span> <span class="o">=</span> <span class="n">collate_fn</span><span class="p">)</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">test_loader</span> <span class="o">=</span> <span class="n">test_loader</span>
+    <span class="n">pretrain_emb</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">use_fasttext_emb</span><span class="p">:</span>
+        <span class="n">pretrain_emb</span> <span class="o">=</span> <span class="s1">&#39;fasttext&#39;</span>
+        
+    <span class="n">args</span><span class="o">.</span><span class="n">dataset_name</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">dataset_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">dataset_name</span> <span class="o">==</span> <span class="s1">&#39;digi&#39;</span><span class="p">:</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">n_items</span> <span class="o">=</span> <span class="mi">43098</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">dataset_name</span> <span class="o">==</span> <span class="s1">&#39;yoo1_64&#39;</span><span class="p">:</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">n_items</span> <span class="o">=</span> <span class="mi">37484</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">dataset_name</span> <span class="o">==</span> <span class="s1">&#39;yoo1_4&#39;</span><span class="p">:</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">n_items</span> <span class="o">=</span> <span class="mi">37484</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">dataset_name</span> <span class="o">==</span> <span class="s1">&#39;ml_20m&#39;</span><span class="p">:</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">n_items</span> <span class="o">=</span> <span class="mi">11617</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Unknown Dataset!&#39;</span><span class="p">)</span>
+    
+    <span class="n">args</span><span class="o">.</span><span class="n">embed_matrix</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">                 </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;training&#39;&#39;&#39;</span>
+    <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>  
+    <span class="n">optimizer_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">([</span><span class="n">distill_data</span><span class="p">],</span> <span class="n">lr</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">lr_data</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># for synthetic data, , lr=args.lr_data  ; not: Adam, AdamW , Adagrad, Adadelta </span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">match</span> <span class="o">==</span> <span class="s1">&#39;feat&#39;</span><span class="p">:</span>
+        <span class="n">optimizer_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">([</span><span class="n">distill_data</span><span class="p">])</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> training begins&#39;</span><span class="o">%</span><span class="n">get_time</span><span class="p">())</span>
+
+    <span class="n">len_train_loader</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span>
+    <span class="n">len_syn_loader</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">syn_loader</span><span class="p">)</span>
+    
+    <span class="n">train_loader_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span>
+    
+    <span class="n">iter_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;print training info&#39;&#39;&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[CONFIG]: </span><span class="se">\</span>
+<span class="s1">        outer_loop: </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">outer_loop</span><span class="si">}</span><span class="s1">, inner_loop: </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">inner_loop</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">        (n_sess, sess_len, embed_dim): (</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">n_sess</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">sess_len</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">embed_dim</span><span class="si">}</span><span class="s1">) </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">        use data aug: </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">data_aug</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">        dis_metric: </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">dis_metric</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">        use_pretrain_weight: </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">use_pretrain_weight</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">        Eval models: </span><span class="si">{</span><span class="n">MODELS</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">use_pretrain_weight</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">embed_matrix</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">test_mode</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">eval_many</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">distill_data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[TEST]: load </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">distill_data</span><span class="si">}</span><span class="s2">, epoch=</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">data_loader</span> <span class="o">=</span> <span class="n">test_loader</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">test_mode</span> <span class="o">==</span> <span class="s1">&#39;test&#39;</span> <span class="k">else</span> <span class="n">valid_loader</span>
+        <span class="n">evaluate_iter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">data_loader</span><span class="p">,</span> <span class="n">early_exit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eval_iter</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[TEST]: Finished&#39;</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">Iteration</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[INFO]: Iteartion </span><span class="si">{</span><span class="n">it</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">Iteration</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;get a different model initialisation for every epoch&#39;&#39;&#39;</span>   
+        <span class="n">model</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">use_pretrain_weight</span><span class="p">,</span> <span class="n">embed_matrix</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">embed_matrix</span><span class="p">)</span>
+        <span class="n">model_real</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">warmup</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">use_pretrain_weight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">embed_matrix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">which_ep</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># match ep0 to ep30 to make converge faster</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">train_loader</span>
+            <span class="n">model_real</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">use_pretrain_weight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">embed_matrix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">which_ep</span><span class="o">=</span><span class="mi">29</span><span class="p">)</span> <span class="c1"># TODO</span>
+            <span class="n">model_real</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">combo</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">use_pretrain_weight</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">embed_matrix</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+            <span class="c1"># model_real = model</span>
+            <span class="n">model_real</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">use_pretrain_weight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">embed_matrix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">which_ep</span><span class="o">=</span><span class="mi">29</span><span class="p">)</span>
+            <span class="n">model_real</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">optimizer_model</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">args</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+        
+        <span class="n">loss_avg</span> <span class="o">=</span> <span class="p">[]</span> 
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;outer loop&#39;&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">ol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">outer_loop</span><span class="p">):</span> 
+            
+            <span class="n">time_outer</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">distill_data</span> <span class="o">=</span> <span class="n">softmax_all</span><span class="p">(</span><span class="n">distill_data</span><span class="p">)</span>
+            <span class="c1"># create a int matrix for input whose grad will be updated to the distilled data</span>
+            <span class="n">syn_tmp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">n_items</span> <span class="o">*</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">distill_data</span><span class="o">.</span><span class="n">detach</span><span class="p">()))</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+            <span class="n">syn</span> <span class="o">=</span> <span class="n">generate_split_seq</span><span class="p">(</span><span class="n">syn_tmp</span><span class="p">)</span> <span class="c1"># TODO: remove this reset, note it gives error: view change during backprop atm</span>
+            <span class="n">syn_loader_raw</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">RecSysDataset</span><span class="p">(</span><span class="n">syn</span><span class="p">),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_syn</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">collate_fn</span><span class="p">)</span> <span class="c1"># collate_fn_syn</span>
+            
+            <span class="n">start</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">len_train_loader</span><span class="o">-</span><span class="n">len_syn_loader</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">real_loader_raw</span> <span class="o">=</span> <span class="n">train_loader_list</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">len_syn_loader</span><span class="p">]</span> <span class="c1"># same # batch but could be different batch size</span>
+            
+            <span class="n">real_loader</span><span class="p">,</span> <span class="n">syn_loader</span> <span class="o">=</span> <span class="n">real_loader_raw</span><span class="p">,</span> <span class="n">syn_loader_raw</span>
+            <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">data_aug</span><span class="p">:</span>
+                <span class="c1"># set random seed so that both augment same</span>
+                <span class="n">seed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100000</span> <span class="c1"># TODO: unfix seed to avoid get network getting the same weight init</span>
+                <span class="n">syn_loader</span> <span class="o">=</span> <span class="n">DiffAugment</span><span class="p">(</span><span class="n">syn_loader_raw</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+                <span class="n">real_loader</span> <span class="o">=</span> <span class="n">DiffAugment</span><span class="p">(</span><span class="n">real_loader_raw</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+<span class="w">                </span>
+<span class="w">            </span><span class="sd">&#39;&#39;&#39;grad for real / syn data&#39;&#39;&#39;</span>
+            <span class="n">set_emb_grad</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">require_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">time_grad</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            
+            <span class="n">property_real_steps</span> <span class="o">=</span> <span class="n">get_match_property</span><span class="p">(</span><span class="n">model_real</span><span class="p">,</span> <span class="n">real_loader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">property_syn_steps</span>  <span class="o">=</span> <span class="n">get_match_property</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">syn_loader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="w">            </span>
+<span class="w">            </span><span class="sd">&#39;&#39;&#39;gather loss from all training steps&#39;&#39;&#39;</span>
+            <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">property_syn_steps</span><span class="p">)):</span>
+                <span class="n">loss</span> <span class="o">+=</span> <span class="n">match_loss</span><span class="p">(</span><span class="n">property_syn_steps</span><span class="p">[</span><span class="n">step</span><span class="p">],</span> <span class="n">property_real_steps</span><span class="p">[</span><span class="n">step</span><span class="p">],</span> <span class="n">args</span><span class="p">)</span>
+                    
+            <span class="c1"># print(f&#39;[INFO]: get grad time {round(time.time() - time_grad, 2)}&#39; )</span>
+<span class="w">            </span><span class="sd">&#39;&#39;&#39;loss backward&#39;&#39;&#39;</span>
+            <span class="n">optimizer_data</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+                        
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> 
+            <span class="c1"># assign grad from int matrix to float mat</span>
+            <span class="n">distill_data</span><span class="o">.</span><span class="n">grad</span> <span class="o">=</span> <span class="n">syn_tmp</span><span class="o">.</span><span class="n">grad</span>
+            <span class="n">before_step</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">distill_data</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+            <span class="n">optimizer_data</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="n">after_step</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">distill_data</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+        
+            <span class="n">loss_avg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="w">            </span>
+<span class="w">            </span><span class="sd">&#39;&#39;&#39; update model using synthetic data&#39;&#39;&#39;</span>
+            <span class="n">syn_inp</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">distill_data</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+            <span class="n">collate_fn_inner</span> <span class="o">=</span> <span class="n">collate_fn_syn</span>
+            <span class="n">is_syn_inner</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">use_discrete_data</span><span class="p">:</span>
+                <span class="n">syn_inp</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">sim_search</span><span class="o">.</span><span class="n">to_discrete_all</span><span class="p">(</span><span class="n">syn_inp</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                <span class="n">collate_fn_inner</span> <span class="o">=</span> <span class="n">collate_fn</span>
+                <span class="n">is_syn_inner</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">syn_loader_detach</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">RecSysDataset</span><span class="p">(</span><span class="n">generate_split_seq</span><span class="p">(</span><span class="n">syn_inp</span><span class="p">)),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_syn</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">collate_fn_inner</span><span class="p">)</span>
+            
+            <span class="n">loss_syn</span><span class="p">,</span> <span class="n">time_syn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">epoch_inner</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">inner_loop</span><span class="p">):</span> 
+                <span class="c1"># if args.warmup:</span>
+                <span class="c1">#     l2, t2 = trainForEpoch(args.train_loader, model, optimizer_model, criterion, is_syn=False, is_aug=args.data_aug) # TODO: use full dataest args.train_loader</span>
+                <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">combo</span><span class="p">:</span>
+                    <span class="n">syn_discrete</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">sim_search</span><span class="o">.</span><span class="n">to_discrete_all</span><span class="p">(</span><span class="n">syn_inp</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                    <span class="n">syn_discrete_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">RecSysDataset</span><span class="p">(</span><span class="n">generate_split_seq</span><span class="p">(</span><span class="n">syn_discrete</span><span class="p">)),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_syn</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">collate_fn</span><span class="p">)</span>
+                    <span class="n">l2</span><span class="p">,</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">trainForEpoch</span><span class="p">(</span><span class="n">syn_discrete_loader</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">optimizer_model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_aug</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">data_aug</span><span class="p">)</span>
+                    
+                <span class="n">l</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">trainForEpoch</span><span class="p">(</span><span class="n">syn_loader_detach</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">optimizer_model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="n">is_syn_inner</span><span class="p">,</span> <span class="n">is_aug</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">data_aug</span><span class="p">)</span>
+                <span class="n">loss_syn</span> <span class="o">+=</span> <span class="n">l</span>
+                <span class="n">time_syn</span> <span class="o">+=</span> <span class="n">t</span>
+            <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">inner_loop</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[INFO]: </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">inner_loop</span><span class="si">}</span><span class="s1"> Inner loops: avg loss: </span><span class="si">{</span><span class="n">loss_syn</span><span class="o">/</span><span class="n">args</span><span class="o">.</span><span class="n">inner_loop</span><span class="si">}</span><span class="s1">, time_syn: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">time_syn</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">s&#39;</span><span class="p">)</span>
+            <span class="n">data_diff_mean</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">before_step</span> <span class="o">-</span> <span class="n">after_step</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[INFO]: Outer loop </span><span class="si">{</span><span class="n">ol</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">outer_loop</span><span class="si">}</span><span class="s1"> loss (avg step): &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">property_syn_steps</span><span class="p">),</span> <span class="mi">6</span><span class="p">),</span> \
+                <span class="sa">f</span><span class="s2">&quot;, Outer Time: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">time_outer</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">,</span>\
+                <span class="sa">f</span><span class="s2">&quot;, data diff: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">before_step</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">after_step</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, data_diff_mean: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">data_diff_mean</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="w">            </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;eval&#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">it</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">eval_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
+            <span class="n">evaluate_iter</span><span class="p">(</span><span class="n">distill_data</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">valid_loader</span><span class="p">,</span> <span class="p">)</span> <span class="c1"># early_exit=False if args.data_aug else True</span>
+<span class="w">            </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;save&#39;&#39;&#39;</span>
+        <span class="c1"># store best loss and save a model checkpoint</span>
+        <span class="n">ckpt_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;epoch&#39;</span><span class="p">:</span> <span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">distill_data</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">it</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">saved_epoch</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">is_exp</span><span class="p">:</span>  <span class="c1">#  and it &gt;= 100</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[INFO]: Save data at iteration </span><span class="si">{</span><span class="n">it</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">saved_name</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">saved_name</span> <span class="k">else</span> <span class="s1">&#39;distill_data&#39;</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">ckpt_dict</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">it</span><span class="si">}</span><span class="s1">.pth.tar&#39;</span><span class="p">)</span>
+            
+        <span class="c1"># torch.save(ckpt_dict, f&#39;distill_data_latest.pth.tar&#39;)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[INFO]: Iteration </span><span class="si">{</span><span class="n">it</span><span class="si">}</span><span class="s1"> time: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">iter_start_time</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">s&#39;</span><span class="p">)</span>
+        <span class="n">iter_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO]: Finished&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_match_property</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">match</span> <span class="o">==</span> <span class="s1">&#39;grad&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_grad</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">match</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">get_feat</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">match</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">exit</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No such proerpty exist: </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">match</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+<span class="k">def</span> <span class="nf">get_grad</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+    
+    <span class="n">grad_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">lens</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataloader</span><span class="p">):</span> 
+        <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> 
+        <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">flags</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">lens</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="n">is_syn</span><span class="p">)</span> <span class="c1"># 1s: nextit</span>
+        <span class="c1"># print(&#39;get a output: &#39;, time.time() - s)</span>
+        <span class="n">model_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">]</span> 
+        <span class="k">if</span> <span class="n">is_syn</span><span class="p">:</span> <span class="c1"># 0.05 * 5 = 0.25s</span>
+            <span class="n">target_hard</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">sim_search</span><span class="o">.</span><span class="n">get_closest_vec</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span> <span class="c1"># converet soft label to hard to avoid soft label size mismatch output size</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">target_hard</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        
+        <span class="n">gw</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">model_params</span><span class="p">,</span> <span class="n">create_graph</span><span class="o">=</span><span class="n">is_syn</span><span class="p">,</span> <span class="n">allow_unused</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 0.002s</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_syn</span><span class="p">:</span>
+            <span class="n">gw</span> <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">_</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">gw</span><span class="p">))</span>
+        <span class="n">grad_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gw</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">grad_list</span>
+
+<span class="k">def</span> <span class="nf">get_feat</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;feat&#39;</span><span class="p">):</span>
+    <span class="n">feature_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">lens</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataloader</span><span class="p">):</span> 
+        <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> 
+        <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">flags</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;feat&#39;</span><span class="p">:</span>
+                <span class="n">features</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">lens</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="n">is_syn</span><span class="p">,</span> <span class="n">is_feat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 1s: nextit</span>
+            <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;output&#39;</span><span class="p">:</span>
+                <span class="n">features</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">lens</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="n">is_syn</span><span class="p">)</span>
+        <span class="n">feature_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="c1"># print(&#39;get a output: &#39;, time.time() - s)</span>
+        
+    <span class="k">return</span> <span class="n">feature_list</span>
+
+<span class="k">def</span> <span class="nf">trainForEpoch</span><span class="p">(</span><span class="n">train_loader_raw</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="p">,</span> <span class="n">is_aug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">sum_epoch_loss</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">train_loader</span> <span class="o">=</span> <span class="n">train_loader_raw</span>
+    <span class="k">if</span> <span class="n">is_aug</span><span class="p">:</span>
+        <span class="n">train_loader</span> <span class="o">=</span> <span class="n">DiffAugment</span><span class="p">(</span><span class="n">train_loader_raw</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="n">is_syn</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100000</span><span class="p">)</span> <span class="c1"># diff per epoch, increase epoch len</span>
+        
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">lens</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>  <span class="c1"># lens=19 since 10 steps truncated BPTT, seq: (19, 512)</span>
+        <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="c1"># torch.Size([512])</span>
+        
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">lens</span><span class="p">,</span> <span class="n">is_syn</span><span class="p">)</span> <span class="c1"># torch.Size([512, 37484])</span>
+        <span class="n">target_train</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="k">if</span> <span class="n">is_syn</span><span class="p">:</span>
+            <span class="n">target_train</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">sim_search</span><span class="o">.</span><span class="n">get_closest_vec</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> 
+
+        <span class="n">loss_val</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">sum_epoch_loss</span> <span class="o">+=</span> <span class="n">loss_val</span>
+        
+    <span class="n">avg_batch_loss</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">sum_epoch_loss</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">avg_batch_loss</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">recalls</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">mrrs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">seq</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">lens</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">):</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">lens</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># TODO</span>
+            <span class="n">logits</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">recall</span><span class="p">,</span> <span class="n">mrr</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">topk</span><span class="p">)</span>
+            <span class="n">recalls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recall</span><span class="p">)</span>
+            <span class="n">mrrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mrr</span><span class="p">)</span>
+    
+    <span class="n">mean_recall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">recalls</span><span class="p">)</span>
+    <span class="n">mean_mrr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mrrs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mean_recall</span><span class="p">,</span> <span class="n">mean_mrr</span>
+
+<span class="k">def</span> <span class="nf">evaluate_iter</span><span class="p">(</span><span class="n">distill_data</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">valid_loader</span><span class="p">,</span> <span class="n">early_exit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">eval_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">model_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">]</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span> <span class="o">!=</span> <span class="s1">&#39;ensemble&#39;</span> <span class="k">else</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">eval_many</span><span class="p">:</span>
+        <span class="n">model_list</span> <span class="o">+=</span> <span class="p">[</span><span class="n">mo</span> <span class="k">for</span> <span class="n">mo</span> <span class="ow">in</span> <span class="n">MODELS</span> <span class="k">if</span> <span class="n">mo</span> <span class="o">!=</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">test_model</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">model_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">test_model</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">random_emb</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">eval_pretrain_weight</span><span class="p">:</span>
+            <span class="n">model_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">test_model</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model_list</span><span class="p">):</span>
+        <span class="c1"># p = f&#39;{args.data_path}embed_matrix_{args.dataset_name}_{m}_d{args.embed_dim}.npy&#39;</span>
+        <span class="c1"># if m == &#39;gru&#39;: # TODO: current withpout negative sampling, GRU is very bad, remove </span>
+        <span class="c1">#     p = f&#39;{args.data_path}embed_matrix_{args.dataset_name}_narm_d{args.embed_dim}.npy&#39; # np.load(p, allow_pickle=True)</span>
+        
+        <span class="n">embed_matrix_eval</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">embed_matrix</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">eval_emb</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">data_path</span><span class="si">}</span><span class="s1">embed_matrix_</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">dataset_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">eval_emb</span><span class="si">}</span><span class="s1">_d</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">embed_dim</span><span class="si">}</span><span class="s1">.npy&#39;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">collate_fn_eval</span> <span class="o">=</span> <span class="n">collate_fn</span> <span class="c1"># collate_fn_syn</span>
+        <span class="n">is_syn_eval</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">syn_inp</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">distill_data</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span> 
+        <span class="n">which</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">pretrain_w</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">use_discrete_data</span><span class="p">:</span>
+            <span class="n">syn_inp</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">sim_search</span><span class="o">.</span><span class="n">to_discrete_all</span><span class="p">(</span><span class="n">syn_inp</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+            <span class="n">embed_matrix_eval</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">collate_fn_eval</span> <span class="o">=</span> <span class="n">collate_fn</span>
+            <span class="n">is_syn_eval</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">no_emb</span><span class="p">:</span>
+            <span class="n">embed_matrix_eval</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">warmup</span><span class="p">:</span>
+            <span class="n">embed_matrix_eval</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">eval_iter</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">random_emb</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">eval_pretrain_weight</span><span class="p">:</span>
+            <span class="n">which</span> <span class="o">=</span> <span class="n">idx</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">eval_pretrain_weight</span><span class="p">:</span>
+            <span class="n">pretrain_w</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">syn_loader_detach</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">RecSysDataset</span><span class="p">(</span><span class="n">generate_split_seq</span><span class="p">(</span><span class="n">syn_inp</span><span class="p">)),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_syn</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">collate_fn_eval</span><span class="p">)</span>
+
+        <span class="n">model_eval</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">use_pretrain_weight</span><span class="o">=</span><span class="n">pretrain_w</span><span class="p">,</span> <span class="n">embed_matrix</span><span class="o">=</span><span class="n">embed_matrix_eval</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="n">which</span><span class="p">,</span> <span class="n">random_emb</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">random_emb</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">warmup</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[REAL]: load 1ep fixed pretrain weight&#39;</span><span class="p">)</span>
+            <span class="n">model_eval</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">use_pretrain_weight</span><span class="o">=</span><span class="n">pretrain_w</span><span class="p">,</span> <span class="n">embed_matrix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">warmup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="c1"># l2, _ = trainForEpoch(args.train_loader, model_eval, optimizer_model_eval, criterion, is_syn=False, is_aug=args.data_aug) </span>
+            <span class="c1"># print(f&#39;[TRAIN-REAL]: loss: {l2}&#39;)</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">combo</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[EVAL]: No pretrained embedding&#39;</span><span class="p">)</span>
+            <span class="n">model_eval</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">use_pretrain_weight</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">embed_matrix</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">optimizer_model_eval</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model_eval</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">args</span><span class="o">.</span><span class="n">lr_retrain</span><span class="p">)</span>
+        <span class="n">set_emb_grad</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">model_eval</span><span class="p">,</span> <span class="n">require_grad</span><span class="o">=</span><span class="kc">True</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">emb_grad</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># TODO</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[EVAL]: </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> with emb: </span><span class="si">{</span><span class="n">embed_matrix_eval</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  
+        
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">eval_pretrain_weight</span><span class="p">:</span>
+            <span class="n">recall</span><span class="p">,</span> <span class="n">mrr</span> <span class="o">=</span> <span class="n">validate</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">,</span> <span class="n">model_eval</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;validation: Recall@</span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.4f}</span><span class="s1">, MRR@</span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">topk</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">topk</span><span class="p">,</span> <span class="n">mrr</span><span class="p">))</span>
+            <span class="k">continue</span> 
+        
+        <span class="n">re</span> <span class="o">=</span>  <span class="p">[]</span>
+        <span class="n">best_model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">best_recall</span><span class="p">,</span> <span class="n">best_epoch</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+         
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">epoch_retrain</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">combo</span><span class="p">:</span>
+                <span class="n">syn_discrete</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">sim_search</span><span class="o">.</span><span class="n">to_discrete_all</span><span class="p">(</span><span class="n">syn_inp</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                <span class="n">syn_discrete_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">RecSysDataset</span><span class="p">(</span><span class="n">generate_split_seq</span><span class="p">(</span><span class="n">syn_discrete</span><span class="p">)),</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_syn</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">collate_fn</span><span class="p">)</span>
+                <span class="n">l2</span><span class="p">,</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">trainForEpoch</span><span class="p">(</span><span class="n">syn_discrete_loader</span><span class="p">,</span> <span class="n">model_eval</span><span class="p">,</span> <span class="n">optimizer_model_eval</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_aug</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">data_aug</span><span class="p">)</span>
+            <span class="n">l</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">trainForEpoch</span><span class="p">(</span><span class="n">syn_loader_detach</span><span class="p">,</span> <span class="n">model_eval</span><span class="p">,</span> <span class="n">optimizer_model_eval</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">is_syn</span><span class="o">=</span><span class="n">is_syn_eval</span><span class="p">,</span> <span class="n">is_aug</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">data_aug</span><span class="p">)</span> 
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">eval_iter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">recall</span><span class="p">,</span> <span class="n">mrr</span> <span class="o">=</span> <span class="n">validate</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">,</span> <span class="n">model_eval</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epoch </span><span class="si">{}</span><span class="s1"> validation: Recall@</span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.4f}</span><span class="s1">, MRR@</span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.4f}</span><span class="s1"> Train loss: </span><span class="si">{}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">topk</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">topk</span><span class="p">,</span> <span class="n">mrr</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
+                <span class="n">re</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recall</span><span class="p">)</span>
+                
+                <span class="k">if</span> <span class="n">recall</span> <span class="o">&gt;</span> <span class="n">best_recall</span><span class="p">:</span>
+                    <span class="n">best_recall</span> <span class="o">=</span> <span class="n">recall</span>
+                    <span class="n">best_model</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">model_eval</span><span class="p">)</span>
+                    <span class="n">best_epoch</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">if</span> <span class="n">early_exit</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">re</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">re</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="ow">and</span> <span class="n">re</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">re</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="c1"># not improve for 2 rounds, exit</span>
+                <span class="k">break</span>
+            
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[TEST]: Use best eval model&#39;</span><span class="p">)</span>
+        <span class="n">recall</span><span class="p">,</span> <span class="n">mrr</span> <span class="o">=</span> <span class="n">validate</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">test_loader</span><span class="p">,</span> <span class="n">best_model</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epoch </span><span class="si">{}</span><span class="s1"> Test: Recall@</span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.4f}</span><span class="s1">, MRR@</span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.4f}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_epoch</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">topk</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">topk</span><span class="p">,</span> <span class="n">mrr</span><span class="p">))</span>
+        
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -735,6 +1298,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dataset Distillation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#report">Report</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ROS &amp; CV (UNSW) &#8212; My AI Notebook</title>
+    <title>ROS &#8212; My AI Notebook</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ds-courses/unsw/3431/3431-intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ds-courses/unsw/ros/doc';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Mini self-driving" href="project/project.html" />
-    <link rel="prev" title="Chatbot" href="../3900/project/3900-project.html" />
+    <link rel="next" title="NLP (USYD)" href="../../usyd/5046/5046-intro.html" />
+    <link rel="prev" title="Mini self-driving" href="../3431/project/project.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -229,8 +229,8 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">ROS &amp; CV (UNSW)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="project/project.html">Mini self-driving</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../3431/3431-intro.html">ROS &amp; CV (UNSW)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../3431/project/project.html">Mini self-driving</a></li>
 
 
 
@@ -240,7 +240,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../ros/doc.html">ROS</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">ROS</a></li>
 
 </ul>
 </details></li>
@@ -570,7 +570,7 @@
       
       
       
-      <li><a href="../../../_sources/ds-courses/unsw/3431/3431-intro.md" target="_blank"
+      <li><a href="../../../_sources/ds-courses/unsw/ros/doc.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -641,7 +641,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -652,11 +654,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>ROS & CV (UNSW)</h1>
+    <h1>ROS</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">ROS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#code">code</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -666,9 +678,219 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ros-cv-unsw">
-<h1>ROS &amp; CV (UNSW)<a class="headerlink" href="#ros-cv-unsw" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="ros">
+<h1>ROS<a class="headerlink" href="#ros" title="Link to this heading">#</a></h1>
+<p><img alt="" src="../../../_images/pub_sub.png" /></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Terminal 1:    
+
+    $ roscore
+
+Terminal 2:
+
+    $ python pub.py
+Terminal 3:
+
+    $ python sub.py
+Terminal 4:
+
+    $ python control.py
+
+Then enter &quot;m&quot; or &quot;s&quot; for control.py
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="code">
+<h1>code<a class="headerlink" href="#code" title="Link to this heading">#</a></h1>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># control.py</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
+<span class="kn">from</span> <span class="nn">pub</span> <span class="kn">import</span> <span class="n">movement_lock</span>
+
+<span class="k">def</span> <span class="nf">talker</span><span class="p">():</span>
+    
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;lock&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;control&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+        <span class="k">global</span> <span class="n">movement_lock</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">(</span><span class="s2">&quot;Move or stop enter m/s: &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="s2">&quot;m&quot;</span><span class="p">:</span>
+            <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">))</span>
+            <span class="c1"># movement_lock = False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1">#movement_lock = True</span>
+            <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">))</span>
+
+        <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">talker</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span> <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pub.py</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
+
+<span class="n">movement_lock</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">movement_lock</span>
+    <span class="c1">#rospy.loginfo(&quot;Received goal: %s&quot;,data.data[-1])</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">:</span>
+        <span class="n">movement_lock</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">movement_lock</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">talker</span><span class="p">():</span>
+    
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;talker&#39;</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;lock&quot;</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+        <span class="k">global</span> <span class="n">movement_lock</span>
+
+        <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Move to goal A&quot;</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">movement_lock</span><span class="p">:</span>
+            <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;stop&quot;</span>
+            <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="n">talker</span><span class="p">()</span>
+        
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span> <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sub.py</span>
+<span class="c1">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Received goal: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">listener</span><span class="p">():</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;listener&#39;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;chatter&quot;</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">listener</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># laser scan</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Acknowledgement: This code example is by my lab tutor: Joshua Goncalves, from COMP3431</span>
+<span class="sd">Link (dont recall if useful): https://www.youtube.com/watch?v=q3Dn5U3cSWk&amp;feature=emb_logo&amp;ab_channel=TheConstruct</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">LaserScan</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Bool</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+
+    <span class="c1"># Min/Max Range of the LIDAR in metres</span>
+    <span class="c1"># 120mm ~ 3500mm approximately </span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;range_min: &quot;</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">range_min</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;range_max: &quot;</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">range_max</span><span class="p">)</span>
+
+    <span class="c1"># Min/Max Angle of the LIDAR in radians</span>
+    <span class="c1"># 0 radians to 6.28 (0 degrees to 360 degree)</span>
+    <span class="c1"># Accuracy of 1 degree or 0.017 radians</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;angle_min: &#39;</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;angle_max: &#39;</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">)</span>
+
+    <span class="c1"># The ranges have 360 values, one for each degree</span>
+    <span class="c1"># The ranges are the distance in metres of the detected objects at each degree</span>
+    <span class="c1">#       If an object is closer than 0.1199 metres or further away than 3.5 metres, it will appear as 0.0</span>
+    <span class="c1">#       Distance accuracy also degrades the further away it is, but you probably dont need to worry too much about this</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;len(ranges): &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
+
+    <span class="c1"># The intensities have 360 values, one for each degree</span>
+    <span class="c1"># The intensities are basically the reflectivity of the surface that is hit</span>
+    <span class="c1">#       Surfaces that are highly reflective will reflect the majority of the beam and have a high intensity (like a mirror)</span>
+    <span class="c1">#       Surfaces that do not have high reflectivity will have low intensity (like some black, matte material)</span>
+    <span class="c1"># This might be useful in detecting walls based on their reflectivity, but I&#39;m not too sure how sensitive the intensity is</span>
+    <span class="c1">#       or how obvious a wall will be. Otherwise it can probably be used to just confirm that you&#39;ve actually found an</span>
+    <span class="c1">#       object based on its intensity.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;intensities: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">intensities</span><span class="p">))</span>
+
+    <span class="n">target_distance</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># 0.1m or 100mm</span>
+    <span class="n">target_intensity</span> <span class="o">=</span> <span class="mf">4800.0</span> <span class="c1"># You&#39;ll need to confirm this against the wall to ensure it&#39;s correct</span>
+    <span class="n">laser_ranges</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">ranges</span>
+
+    <span class="c1"># From the wheel end going in an anti-clockwise direction</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;distance at angle 0: &#39;</span><span class="p">,</span><span class="n">laser_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;distance at angle 45: &#39;</span><span class="p">,</span><span class="n">laser_ranges</span><span class="p">[</span><span class="mi">44</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;distance at angle 90: &#39;</span><span class="p">,</span><span class="n">laser_ranges</span><span class="p">[</span><span class="mi">90</span><span class="p">])</span>
+    <span class="c1"># print(&#39;distance at angle 180: &#39;, laser_ranges[180])</span>
+    <span class="c1"># print(&#39;distance at angle 270: &#39;,laser_ranges[270])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">()</span>
+<span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;laser_scan_example&#39;</span><span class="p">)</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/scan&#39;</span><span class="p">,</span> <span class="n">LaserScan</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># face detection and stop robot</span>
+<span class="s2">&quot;Includes code from https://towardsdatascience.com/face-detection-in-2-minutes-using-opencv-python-90f89d7c0f81&quot;</span>
+
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Bool</span>
+<span class="kn">from</span> <span class="nn">cv_bridge</span> <span class="kn">import</span> <span class="n">CvBridge</span>
+
+<span class="n">faceDetected</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">face_detect</span><span class="p">(</span><span class="n">img_data</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">faceDetected</span>
+    <span class="c1">#print &quot;callback&quot;</span>
+    <span class="n">cvB</span> <span class="o">=</span> <span class="n">CvBridge</span><span class="p">()</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">cvB</span><span class="o">.</span><span class="n">imgmsg_to_cv2</span><span class="p">(</span><span class="n">img_data</span><span class="p">,</span> <span class="s2">&quot;bgr8&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Load the cascade</span>
+    <span class="n">face_cascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">(</span><span class="s1">&#39;haarcascade_frontalface_default.xml&#39;</span><span class="p">)</span>
+    <span class="c1"># Convert into grayscale</span>
+    <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+    <span class="c1"># Detect faces</span>
+    <span class="n">faces</span> <span class="o">=</span> <span class="n">face_cascade</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="c1"># Draw rectangle around the faces</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="c1">#publish that faces were found</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">person_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Bool</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">faceDetected</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;detected&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">faceDetected</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
+            <span class="n">person_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Bool</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not detected&quot;</span><span class="p">)</span>
+            <span class="n">faceDetected</span> <span class="o">=</span> <span class="kc">False</span>
+    
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;face_node&quot;</span><span class="p">)</span>
+    <span class="n">person_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;/movementLock&quot;</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">sub_image</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/raspicam_node/image&quot;</span><span class="p">,</span> <span class="n">Image</span><span class="p">,</span> <span class="n">face_detect</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+</pre></div>
 </div>
 </section>
 
@@ -685,7 +907,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./ds-courses\unsw\3431"
+            path: "./ds-courses\unsw\ros"
         },
         predefinedOutput: true
     }
@@ -703,20 +925,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../3900/project/3900-project.html"
+       href="../3431/project/project.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Chatbot</strong></p>
+        <p class="prev-next-title">Mini self-driving</p>
       </div>
     </a>
     <a class="right-next"
-       href="project/project.html"
+       href="../../usyd/5046/5046-intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mini self-driving</p>
+        <p class="prev-next-title">NLP (USYD)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -726,6 +948,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">ROS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#code">code</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

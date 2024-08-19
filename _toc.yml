@@ -29,6 +29,7 @@ parts:
   - file: ds-courses/unsw/3431/3431-intro
     sections:
     - file: ds-courses/unsw/3431/project/project.md
+    - file: ds-courses/unsw/ros/doc.md
 
   - file: ds-courses/usyd/5046/5046-intro
     sections:

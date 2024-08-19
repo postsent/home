@@ -80,47 +80,10 @@ parts:
     - file: ds-courses/unsw/9418/9418-project
     - file: ds-courses/unsw/9418/9418-project/report
 
-- caption: Machine Learning
+- caption: Projects
   chapters:
-  - file: ml/regression/regression
-    sections:
-    - file: ml/regression/p1-crypto-prediction
-  - file: ml/classification/classification
-  - file: ml/time-series/time-series
-  - file: ml/ml
-
-- caption: Deep Learning
-  chapters:
-  - file: dl/dl
-
-- caption: NLP
-  chapters:
-  - file: nlp/nlp
-  
-- caption: Computer Vision
-  chapters:
-  - file: cv/cv
-
-- caption: Misc
-  chapters:
-  - file: misc/math
-  - file: misc/misc
-  - file: misc/term
-  - file: misc/todo
-
-- caption: Coding Basic
-  chapters:
-  - file: python/basic-intro
-    sections:
-    - file: python/numpy
-    - file: python/pandas
-    - file: python/leetcode
-- caption: Side Projects
-  chapters:
+  - file: ml/regression/p1-crypto-prediction
   - file: side-project/web-scrapter
-
-- caption: Unfinished
-  chapters:
   - file:  unfinished/pytorch-nlp-bk/nlp-book
     sections:
     - file:  unfinished/pytorch-nlp-bk/intro
@@ -132,7 +95,29 @@ parts:
     - file: unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/simple-rnn
     - file: unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/lstm
     - file: unfinished/jiagsaw-toxic-comment-serverity-rate/notebooks/helper
-  - file: unfinished/nlp-reading
+
+
+- caption: Misc
+  chapters:
+  - file: dl/dl
+  - file: misc/math
+  - file: misc/misc
+  # - file: misc/term
+  # - file: misc/todo
+
+- caption: Coding Basic
+  chapters:
+  - file: python/basic-intro
+    sections:
+    - file: python/numpy
+    - file: python/pandas
+    - file: python/leetcode
+  
+
+# - caption: Unfinished
+#   chapters:
+
+  # - file: unfinished/nlp-reading
     # sections:
 #     - file: start/overview
 #     - file: start/create
